@@ -1,0 +1,59 @@
+{
+    "name": "Angular & E2E Testing Dev Container",
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:1-bullseye",
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "lts"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "angular.ng-template",
+                "ms-playwright.playwright",
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "mhutchie.git-graph",
+                "ms-vscode.live-server",
+                "bradlc.vscode-tailwindcss",
+                "Gruntfuggly.todo-tree"
+            ],
+            "settings": {
+                "[json]": {
+                    "editor.defaultFormatter": "esbenp.prettier-vscode",
+                },
+            "[html]": {
+                "editor.defaultFormatter": "esbenp.prettier-vscode",
+              },
+              "[typescript]": {
+                "editor.defaultFormatter": "esbenp.prettier-vscode",
+              },
+              "editor.formatOnSave": true,
+              "editor.codeActionsOnSave": {
+                "source.organizeImports": "explicit",
+                "source.fixAll.eslint":"explicit",
+                "source.fixAll.tslint": "explicit",
+                "source.fixAll.stylelint": "explicit"
+              },
+              "editor.suggest.snippetsPreventQuickSuggestions": false,
+              "editor.inlineSuggest.enabled": true
+            }
+        }
+    },
+    "postCreateCommand": "npm install -g @angular/cli npm-run-all playwright @playwright/test puppeteer",
+    "remoteUser": "node",
+    "containerEnv": {
+        "NODE_ENV": "development"
+    },
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+    "workspaceFolder": "/workspace",
+    // "mounts": [
+    //     "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"
+    // ],
+    "runArgs": [
+        "--init"
+    ],
+    "containerUser": "node",
+    // "updateContentCommand": "npm install",
+    "postStartCommand": "playwright install && playwright install-deps"
+}
