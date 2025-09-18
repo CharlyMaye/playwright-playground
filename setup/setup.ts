@@ -1,13 +1,6 @@
-import { register } from "../engine";
-import {
-  AngularMaterialAutocompletePOM,
-  AngularMaterialPOM,
-  AutocompletePOM,
-} from "../POM";
-import {
-  AngularMaterialButtonPOM,
-  ButtonPOM,
-} from "../POM/AngularMaterialButtonPOM";
+import { register } from '../engine';
+import { AngularMaterialAutocompletePOM, AngularMaterialPOM, AutocompletePOM } from '../POM';
+import { AngularMaterialButtonPOM, ButtonPOM } from '../POM/AngularMaterialButtonPOM';
 
 let isAlreadySetup = false;
 export function setup() {

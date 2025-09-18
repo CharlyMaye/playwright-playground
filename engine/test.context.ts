@@ -1,4 +1,4 @@
-import { APIRequestContext, Browser, Page } from "@playwright/test";
+import { APIRequestContext, Browser, Page } from '@playwright/test';
 
 export abstract class TestContext {
   abstract get page(): Page;

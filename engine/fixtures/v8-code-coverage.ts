@@ -1,5 +1,5 @@
-import { BrowserType, Page, test } from "@playwright/test";
-import { addCoverageReport } from "monocart-reporter";
+import { BrowserType, Page, test } from '@playwright/test';
+import { addCoverageReport } from 'monocart-reporter';
 
 export type CollectV8CodeCoverageOptions = {
   browserType: BrowserType;
@@ -10,15 +10,13 @@ export type CollectV8CodeCoverageOptions = {
 };
 
 function browserSupportsV8CodeCoverage(browserType: BrowserType): boolean {
-  return browserType.name() === "chromium";
+  return browserType.name() === 'chromium';
 }
 
 // See https://playwright.dev/docs/api/class-coverage.
 // This instruments code using v8 and then attaches the code coverage data
 // to the monocart-reporter.
-export async function collectV8CodeCoverageAsync(
-  options: CollectV8CodeCoverageOptions
-): Promise<void> {
+export async function collectV8CodeCoverageAsync(options: CollectV8CodeCoverageOptions): Promise<void> {
   // prettier-ignore
   const v8CodeCoverageSupported = browserSupportsV8CodeCoverage(options.browserType);
   // prettier-ignore

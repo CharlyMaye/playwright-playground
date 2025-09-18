@@ -5,14 +5,11 @@ import {
   PlaywrightWorkerArgs,
   PlaywrightWorkerOptions,
   TestType,
-} from "@playwright/test";
-import { ExpectContext, resolve } from "../index";
-import { ConcreteTestContext, TestContext } from "../test.context";
-import { AbstractType } from "../type";
-import {
-  collectV8CodeCoverageAsync,
-  CollectV8CodeCoverageOptions,
-} from "./v8-code-coverage";
+} from '@playwright/test';
+import { ExpectContext, resolve } from '../index';
+import { ConcreteTestContext, TestContext } from '../test.context';
+import { AbstractType } from '../type';
+import { collectV8CodeCoverageAsync, CollectV8CodeCoverageOptions } from './v8-code-coverage';
 
 type MyFixtures<T = any> = {
   instance: T;
@@ -39,13 +36,13 @@ export function test<T>(token: AbstractType<T>) {
       async ({}, use) => {
         await use();
       },
-      { scope: "worker", auto: true },
+      { scope: 'worker', auto: true },
     ],
     beforeAll: [
       async ({}, use) => {
         await use();
       },
-      { scope: "worker", auto: true },
+      { scope: 'worker', auto: true },
     ],
     page: async ({ page, request, browser, browserName }, use) => {
       const testContext = resolve(TestContext) as ConcreteTestContext;
@@ -98,10 +95,10 @@ export function test<T>(token: AbstractType<T>) {
       async ({}, use) => {
         await use();
       },
-      { scope: "worker", auto: true },
+      { scope: 'worker', auto: true },
     ],
   });
 
   return typedTest;
 }
-export { expect } from "@playwright/test";
+export { expect } from '@playwright/test';

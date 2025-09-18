@@ -1,5 +1,5 @@
-import { ExpectContext, TestContext } from "../engine";
-import { BuilderPOM, ConcreteBuilderPOM } from "./BuilderPOM";
+import { ExpectContext, TestContext } from '../engine';
+import { BuilderPOM, ConcreteBuilderPOM } from './BuilderPOM';
 
 type ButtonSelector = {
   component: string;
@@ -14,12 +14,9 @@ export abstract class ButtonPOM extends BuilderPOM<ButtonSelector> {
   public abstract focusOut(): ButtonPOM;
 }
 
-export class AngularMaterialButtonPOM
-  extends ConcreteBuilderPOM<ButtonSelector>
-  implements ButtonPOM
-{
+export class AngularMaterialButtonPOM extends ConcreteBuilderPOM<ButtonSelector> implements ButtonPOM {
   protected _selectors: ButtonSelector = {
-    component: "button[matbutton]",
+    component: 'button[matbutton]',
   };
   constructor(testContext: TestContext, expectContext: ExpectContext) {
     super(testContext, expectContext);
@@ -28,9 +25,7 @@ export class AngularMaterialButtonPOM
   // Technique
   public scrollIntoViewIfNeeded(): ButtonPOM {
     return this._addAction(async () => {
-      await this._page
-        .locator(this._selectors.component)
-        .scrollIntoViewIfNeeded();
+      await this._page.locator(this._selectors.component).scrollIntoViewIfNeeded();
     });
   }
 

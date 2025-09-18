@@ -1,6 +1,6 @@
-import { ExpectContext, resolve, TestContext } from "../engine";
-import { AutocompletePOM } from "./AngularMaterialAutocompletePOM";
-import { ButtonPOM } from "./AngularMaterialButtonPOM";
+import { ExpectContext, resolve, TestContext } from '../engine';
+import { AutocompletePOM } from './AngularMaterialAutocompletePOM';
+import { ButtonPOM } from './AngularMaterialButtonPOM';
 
 export class AngularMaterialPOM {
   constructor(
@@ -8,7 +8,7 @@ export class AngularMaterialPOM {
     protected expectContext: ExpectContext
   ) {}
   async goto() {
-    await this.testContext.page.goto("https://material.angular.io/");
+    await this.testContext.page.goto('https://material.angular.io/');
   }
 
   //#region Autocomplete
@@ -18,7 +18,7 @@ export class AngularMaterialPOM {
 
     const componentPom = resolve(AutocompletePOM);
     await componentPom
-      .updateSelector("component", "#autocomplete-simple mat-form-field")
+      .updateSelector('component', '#autocomplete-simple mat-form-field')
       .scrollIntoViewIfNeeded()
       //.enableScreenshot()
       .hover()
@@ -42,51 +42,45 @@ export class AngularMaterialPOM {
     const componentPom = resolve(AutocompletePOM);
 
     await componentPom
-      .updateSelector("component", "#autocomplete-require-selection")
+      .updateSelector('component', '#autocomplete-require-selection')
       .scrollIntoViewIfNeeded()
       //.enableScreenshot()
       .focus()
-      .setInputValue("T")
+      .setInputValue('T')
       .closeDropDown()
       .execute();
 
-    await this.expectContext.checkValue(
-      componentPom.getLabelValue.bind(componentPom),
-      "Number"
-    );
-    await this.expectContext.checkValue(
-      componentPom.getInputValue.bind(componentPom),
-      ""
-    );
+    await this.expectContext.checkValue(componentPom.getLabelValue.bind(componentPom), 'Number');
+    await this.expectContext.checkValue(componentPom.getInputValue.bind(componentPom), '');
   }
   // Vérification du comportement
   async testAutocompleteKeyboardBehavior() {
     await this.#gotoAutocompletePage();
     const componentPom = resolve(AutocompletePOM);
     await componentPom
-      .updateSelector("component", "#autocomplete-auto-active-first-option")
+      .updateSelector('component', '#autocomplete-auto-active-first-option')
       .scrollIntoViewIfNeeded()
       // .enableScreenshot()
       .focus()
-      .selectOptionUsingKeyboard("ArrowDown")
+      .selectOptionUsingKeyboard('ArrowDown')
       .execute();
   }
 
   async #gotoAutocompletePage() {
-    const url = "https://material.angular.dev/components/autocomplete/examples";
+    const url = 'https://material.angular.dev/components/autocomplete/examples';
     console.warn(`Navigating to ${url}`);
     await this.testContext.page.goto(url, {
-      waitUntil: "load",
+      waitUntil: 'load',
     });
 
     try {
       await this.testContext.page
-        .locator("button", {
-          hasText: "Okay, got it",
+        .locator('button', {
+          hasText: 'Okay, got it',
         })
         .click();
     } catch (error) {
-      console.warn("No cookie banner to dismiss");
+      console.warn('No cookie banner to dismiss');
     }
   }
   //#endregion
@@ -98,10 +92,7 @@ export class AngularMaterialPOM {
 
     const componentPom = resolve(ButtonPOM);
     await componentPom
-      .updateSelector(
-        "component",
-        "#button-disabled-interactive button[matbutton][disabledinteractive]"
-      )
+      .updateSelector('component', '#button-disabled-interactive button[matbutton][disabledinteractive]')
       .scrollIntoViewIfNeeded()
       // .enableScreenshot()
       .focus()
@@ -110,10 +101,7 @@ export class AngularMaterialPOM {
       .execute();
 
     await componentPom
-      .updateSelector(
-        "component",
-        "#button-disabled-interactive button[matbutton][disabled]"
-      )
+      .updateSelector('component', '#button-disabled-interactive button[matbutton][disabled]')
       .scrollIntoViewIfNeeded()
       // .enableScreenshot()
       .focus()
@@ -123,20 +111,20 @@ export class AngularMaterialPOM {
   }
 
   async #gotoButtonPage() {
-    const url = "https://material.angular.dev/components/button/examples";
+    const url = 'https://material.angular.dev/components/button/examples';
     console.warn(`Navigating to ${url}`);
     await this.testContext.page.goto(url, {
-      waitUntil: "load",
+      waitUntil: 'load',
     });
 
     try {
       await this.testContext.page
-        .locator("button", {
-          hasText: "Okay, got it",
+        .locator('button', {
+          hasText: 'Okay, got it',
         })
         .click();
     } catch (error) {
-      console.warn("No cookie banner to dismiss");
+      console.warn('No cookie banner to dismiss');
     }
   }
   //#endregion

@@ -1,9 +1,6 @@
-import { isInjectorType } from "./injector.decorator";
-import {
-  camelToPascalCase,
-  getConstructorParameterNames,
-} from "./reflection.utils";
-import { AbstractType, isType, Type } from "./type";
+import { isInjectorType } from './injector.decorator';
+import { camelToPascalCase, getConstructorParameterNames } from './reflection.utils';
+import { AbstractType, isType, Type } from './type';
 
 class Injector {
   #types = new Map<AbstractType<any> | Type<any>, Type<any>>();
@@ -51,9 +48,7 @@ class Injector {
     let constructorArgs: unknown[] = [];
 
     if (isInjectorType<T>(resolved) && resolved.injectorOptions?.Provide) {
-      constructorArgs = resolved.injectorOptions.Provide.map(
-        (dep: AbstractType<unknown>) => this.get(dep)
-      );
+      constructorArgs = resolved.injectorOptions.Provide.map((dep: AbstractType<unknown>) => this.get(dep));
     } else {
       const parameterNames = getConstructorParameterNames(resolved);
       constructorArgs = parameterNames.map((paramName) => {

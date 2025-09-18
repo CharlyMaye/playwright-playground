@@ -1,20 +1,15 @@
-import { Page } from "@playwright/test";
-import { ExpectContext, TestContext } from "../engine";
+import { Page } from '@playwright/test';
+import { ExpectContext, TestContext } from '../engine';
 
 export abstract class BuilderPOM<TSelector = Record<string, string>> {
   public abstract enableScreenshot(): this;
   public abstract disableScreenshot(): this;
 
-  public abstract updateSelector<K extends keyof TSelector>(
-    key: K,
-    value: TSelector[K]
-  ): this;
+  public abstract updateSelector<K extends keyof TSelector>(key: K, value: TSelector[K]): this;
   public abstract execute(): Promise<void>;
 }
 
-export abstract class ConcreteBuilderPOM<TSelector = Record<string, string>>
-  implements BuilderPOM<TSelector>
-{
+export abstract class ConcreteBuilderPOM<TSelector = Record<string, string>> implements BuilderPOM<TSelector> {
   protected _page: Page;
   protected abstract _selectors: TSelector;
 
@@ -48,10 +43,7 @@ export abstract class ConcreteBuilderPOM<TSelector = Record<string, string>>
     return this;
   }
 
-  public updateSelector<K extends keyof TSelector>(
-    key: K,
-    value: TSelector[K]
-  ) {
+  public updateSelector<K extends keyof TSelector>(key: K, value: TSelector[K]) {
     return this._addAction(async () => {
       this._selectors[key] = value;
     });
