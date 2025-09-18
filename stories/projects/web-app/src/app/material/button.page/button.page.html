@@ -1,1 +1,145 @@
-<p>button.page works!</p>
+<table>
+  <thead>
+    <tr>
+      <th>Button</th>
+      <th>Enabled</th>
+      <th>Interactive Disabled</th>
+      <th>Disabled</th>
+      <th>Anchor</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (btnType of buttonType; track $index) {
+      <tr>
+        <td>{{ btnType }}</td>
+        <td><button [matButton]="btnType">Button</button></td>
+        <td><button [matButton]="btnType" disabled disabledInteractive>Button</button></td>
+        <td><button [matButton]="btnType" disabled>Button</button></td>
+        <td>
+          <a [matButton]="btnType" href="https://angular.io" target="_blank" rel="noopener"
+            >Anchor</a
+          >
+        </td>
+      </tr>
+    }
+    <tr>
+      <td>matIconButton</td>
+      <td>
+        <button matIconButton aria-label="Example icon button with a delete icon">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+      <td>
+        <button
+          matIconButton
+          disabled
+          disabledInteractive
+          aria-label="Example icon button with a delete icon"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+      <td>
+        <button matIconButton disabled aria-label="Example icon button with a delete icon">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+      <td>
+        <a matIconButton href="https://angular.io" target="_blank" rel="noopener">
+          <mat-icon>delete</mat-icon>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>matFab</td>
+      <td>
+        <button matFab aria-label="Example icon button with a delete icon">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+      <td>
+        <button
+          matFab
+          disabled
+          disabledInteractive
+          aria-label="Example icon button with a delete icon"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+      <td>
+        <button matFab disabled aria-label="Example icon button with a delete icon">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+      <td>
+        <a matFab href="https://angular.io" target="_blank" rel="noopener">
+          <mat-icon>delete</mat-icon>
+        </a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>matMiniFab</td>
+      <td>
+        <button matMiniFab aria-label="Example icon button with a delete icon">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+      <td>
+        <button
+          matMiniFab
+          disabled
+          disabledInteractive
+          aria-label="Example icon button with a delete icon"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+      <td>
+        <button matMiniFab disabled aria-label="Example icon button with a delete icon">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+      <td>
+        <a matMiniFab href="https://angular.io" target="_blank" rel="noopener">
+          <mat-icon>delete</mat-icon>
+        </a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>matFab extended</td>
+      <td>
+        <button matFab extended aria-label="Example icon button with a delete icon">
+          <mat-icon>delete</mat-icon>
+          Delete
+        </button>
+      </td>
+      <td>
+        <button
+          matFab
+          extended
+          disabled
+          disabledInteractive
+          aria-label="Example icon button with a delete icon"
+        >
+          <mat-icon>delete</mat-icon>
+          Delete
+        </button>
+      </td>
+      <td>
+        <button matFab extended disabled aria-label="Example icon button with a delete icon">
+          <mat-icon>delete</mat-icon>
+          Delete
+        </button>
+      </td>
+      <td>
+        <a matFab extended href="https://angular.io" target="_blank" rel="noopener">
+          <mat-icon>delete</mat-icon>
+          Delete
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
