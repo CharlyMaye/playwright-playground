@@ -87,21 +87,11 @@ export class AngularMaterialPOM {
 
   //#region Button
   // vérification du style
-  async testButtonStyle() {
+  async testButtonStyle(selector: string) {
     await this.#gotoButtonPage();
-
     const componentPom = resolve(ButtonPOM);
     await componentPom
-      .updateSelector('component', '#button-disabled-interactive button[matbutton][disabledinteractive]')
-      .scrollIntoViewIfNeeded()
-      // .enableScreenshot()
-      .focus()
-      .focusOut()
-      .hover()
-      .execute();
-
-    await componentPom
-      .updateSelector('component', '#button-disabled-interactive button[matbutton][disabled]')
+      .updateSelector('component', selector)
       .scrollIntoViewIfNeeded()
       // .enableScreenshot()
       .focus()
@@ -111,7 +101,7 @@ export class AngularMaterialPOM {
   }
 
   async #gotoButtonPage() {
-    const url = 'https://material.angular.dev/components/button/examples';
+    const url = 'http://localhost:4200/material/button';
     console.warn(`Navigating to ${url}`);
     await this.testContext.page.goto(url, {
       waitUntil: 'load',

@@ -1,27 +1,50 @@
 import { test as baseTest } from '../engine';
 import { AngularMaterialPOM } from '../POM';
 
-const it = baseTest(AngularMaterialPOM);
-const { describe } = it;
+const test = baseTest(AngularMaterialPOM);
+const { describe } = test;
 
 describe('Angular Material WebSite', () => {
-  it('Angular Material WebSite', {}, async ({ instance, expectContext, testContext }) => {
+  test('Angular Material WebSite', {}, async ({ instance, expectContext, testContext }) => {
     await instance.goto();
   });
   describe('Autocomplete', () => {
-    it('visual', {}, async ({ instance, expectContext, testContext }) => {
+    test('visual', {}, async ({ instance, expectContext, testContext }) => {
       await instance.testAutocompleteStyle();
     });
-    it('filter', {}, async ({ instance, expectContext, testContext }) => {
+    test('filter', {}, async ({ instance, expectContext, testContext }) => {
       await instance.testAutocompleteFilterBehavior();
     });
-    it('keyboard', {}, async ({ instance, expectContext, testContext }) => {
+    test('keyboard', {}, async ({ instance, expectContext, testContext }) => {
       await instance.testAutocompleteKeyboardBehavior();
     });
   });
-  describe('Button', () => {
-    it('visual', {}, async ({ instance, expectContext, testContext }) => {
-      await instance.testButtonStyle();
-    });
+  describe('Button', async () => {
+    const btnPrefix = 'btn';
+    const btnType = [
+      'text',
+      'filled',
+      'elevated',
+      'outlined',
+      'tonal',
+      'mat-icon-button',
+      'mat-fab',
+      'mat-mini-fab',
+      'mat-fab-extended',
+    ];
+    const btnState = ['', 'disabled-interactive', 'disabled', 'anchor'];
+    const selectors = [];
+    for (const type of btnType) {
+      for (const state of btnState) {
+        const id = state ? `${btnPrefix}-${type}-${state}` : `${btnPrefix}-${type}`;
+        const selector = `[id="${id}"]`;
+        selectors.push(selector);
+      }
+    }
+    for (const selector of selectors) {
+      test(`visual for ${selector}`, {}, async ({ instance, expectContext, testContext }) => {
+        await instance.testButtonStyle(selector);
+      });
+    }
   });
 });

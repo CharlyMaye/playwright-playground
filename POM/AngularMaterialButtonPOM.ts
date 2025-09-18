@@ -31,7 +31,13 @@ export class AngularMaterialButtonPOM extends ConcreteBuilderPOM<ButtonSelector>
 
   public hover(): ButtonPOM {
     return this._addAction(async () => {
-      await this._page.locator(this._selectors.component).hover();
+      const element = this._page.locator(this._selectors.component);
+      const isDisabled = await element.isDisabled();
+      if (isDisabled) {
+        await element.hover({ force: true });
+      } else {
+        await element.hover();
+      }
     });
   }
 
