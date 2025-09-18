@@ -1,6 +1,6 @@
 import { Locator } from "@playwright/test";
 import { ExpectContext, TestContext } from "../engine";
-import { BuilderPOM } from "./BuilderPOM";
+import { BuilderPOM, ConcreteBuilderPOM } from "./BuilderPOM";
 
 type AutocompleteSelector = {
   component: string;
@@ -35,7 +35,10 @@ export abstract class AutocompletePOM extends BuilderPOM<AutocompleteSelector> {
   public abstract getInputValue(): Promise<string>;
 }
 
-export class AngularMaterialAutocompletePOM extends AutocompletePOM {
+export class AngularMaterialAutocompletePOM
+  extends ConcreteBuilderPOM<AutocompleteSelector>
+  implements AutocompletePOM
+{
   protected _selectors: AutocompleteSelector = {
     component: "mat-form-field",
     label: "mat-label",

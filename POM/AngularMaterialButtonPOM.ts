@@ -1,5 +1,5 @@
 import { ExpectContext, TestContext } from "../engine";
-import { BuilderPOM } from "./BuilderPOM";
+import { BuilderPOM, ConcreteBuilderPOM } from "./BuilderPOM";
 
 type ButtonSelector = {
   component: string;
@@ -14,7 +14,10 @@ export abstract class ButtonPOM extends BuilderPOM<ButtonSelector> {
   public abstract focusOut(): ButtonPOM;
 }
 
-export class AngularMaterialButtonPOM extends ButtonPOM {
+export class AngularMaterialButtonPOM
+  extends ConcreteBuilderPOM<ButtonSelector>
+  implements ButtonPOM
+{
   protected _selectors: ButtonSelector = {
     component: "",
   };
