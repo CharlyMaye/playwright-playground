@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-export function provideFeatur(options: {}) {
+export function provideFeature(options: {}) {
   const routes: Routes = [
     {
       path: '',
