@@ -5,6 +5,10 @@ import { AbstractType, isType, Type } from './type';
 class Injector {
   #types = new Map<AbstractType<any> | Type<any>, Type<any>>();
   #typesByName = new Map<string, AbstractType<any>>();
+
+  #singletonTypes = new Map<AbstractType<any> | Type<any>, Type<any>>();
+  #singletonTypesByName = new Map<string, AbstractType<any>>();
+
   #createdInstance = new Map<AbstractType<any> | Type<any>, any>();
 
   public register<TConcrete>(token: Type<TConcrete>): void;
@@ -23,23 +27,56 @@ class Injector {
     this.#typesByName.set(token.name, token);
   }
 
+  public registerSingleton<TConcrete>(token: Type<TConcrete>): void;
+  public registerSingleton<TAbstract, TConcrete>(
+    token: AbstractType<TAbstract> | Type<TAbstract>,
+    useClass?: Type<TConcrete>
+  ): void {
+    if (this.#singletonTypes.has(token)) {
+      // throw new Error(`Token ${token.name} is already registered`);
+      return;
+    }
+    if (!isType(useClass)) {
+      useClass = token as Type<TConcrete>;
+    }
+    this.#singletonTypes.set(token, useClass);
+    this.#singletonTypesByName.set(token.name, token);
+  }
+
   public get<T>(token: AbstractType<T> | Type<T>): T {
+    // Est il enregistrer dans la liste des singletons ?
+    if (this.#singletonTypes.has(token)) {
+      return this.#getSingleton(token);
+    }
+
     const resolved = this.#types.get(token);
     if (!resolved) {
       throw new Error(`Token ${token.name} is not registered`);
-    }
-    if (this.#createdInstance.has(resolved)) {
-      return this.#createdInstance.get(resolved);
     }
 
     let constructorArgs = this.#handleArgsInConstructor<T>(resolved);
     this.#handleTestContext(resolved, constructorArgs);
 
     const instance = new resolved(...constructorArgs);
-    this.#createdInstance.set(resolved, instance);
     return instance as T;
   }
 
+  #getSingleton<T>(token: AbstractType<T> | Type<T>): T {
+    const resolved = this.#singletonTypes.get(token);
+    if (!resolved) {
+      throw new Error(`Token ${token.name} is not registered as singleton`);
+    }
+    if (this.#createdInstance.has(token)) {
+      return this.#createdInstance.get(token);
+    }
+
+    let constructorArgs = this.#handleArgsInConstructor<T>(resolved);
+    this.#handleTestContext(resolved, constructorArgs);
+
+    const instance = new resolved(...constructorArgs);
+    this.#createdInstance.set(token, instance);
+    return instance as T;
+  }
   #handleTestContext<T>(resolved: Type<T>, constructorArgs: unknown[]) {
     // Manipulez le contexte de test ici si nécessaire
   }
@@ -53,7 +90,7 @@ class Injector {
       const parameterNames = getConstructorParameterNames(resolved);
       constructorArgs = parameterNames.map((paramName) => {
         const typeName = camelToPascalCase(paramName);
-        const abstractType = this.#typesByName.get(typeName);
+        const abstractType = this.#typesByName.get(typeName) || this.#singletonTypesByName.get(typeName);
         if (abstractType) {
           return this.get(abstractType);
         } else {

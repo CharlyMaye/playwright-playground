@@ -15,10 +15,22 @@ export function register<TAbstract, TConcrete>(
   return (INJECTOR as any).register(token, useClass);
 }
 
+export function registerSingleton<TConcrete>(token: Type<TConcrete>): void;
+export function registerSingleton<TAbstract, TConcrete>(
+  token: AbstractType<TAbstract> | Type<TAbstract>,
+  useClass?: Type<TConcrete>
+): void;
+export function registerSingleton<TAbstract, TConcrete>(
+  token: AbstractType<TAbstract> | Type<TAbstract>,
+  useClass?: Type<TConcrete>
+) {
+  return (INJECTOR as any).registerSingleton(token, useClass);
+}
+
 export const resolve = INJECTOR.get.bind(INJECTOR);
 
-register(TestContext, ConcreteTestContext);
-register(ExpectContext, ConcreteExpectContext);
+registerSingleton(TestContext, ConcreteTestContext);
+registerSingleton(ExpectContext, ConcreteExpectContext);
 
 export { expect, test } from './fixtures';
 export { Injector, InjectorMetadata } from './injector.decorator';
