@@ -19,7 +19,7 @@ export class AngularMaterialButtonPOM
   implements ButtonPOM
 {
   protected _selectors: ButtonSelector = {
-    component: "",
+    component: "button[matbutton]",
   };
   constructor(testContext: TestContext, expectContext: ExpectContext) {
     super(testContext, expectContext);

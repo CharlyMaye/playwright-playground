@@ -14,13 +14,18 @@ describe("Angular Material WebSite", () => {
   );
   describe("Autocomplete", () => {
     it("visual", {}, async ({ instance, expectContext, testContext }) => {
-      await instance.testStyle();
+      await instance.testAutocompleteStyle();
     });
     it("filter", {}, async ({ instance, expectContext, testContext }) => {
-      await instance.testFilterBehavior();
+      await instance.testAutocompleteFilterBehavior();
     });
     it("keyboard", {}, async ({ instance, expectContext, testContext }) => {
-      await instance.testKeyboardBehavior();
+      await instance.testAutocompleteKeyboardBehavior();
+    });
+  });
+  describe("Button", () => {
+    it("visual", {}, async ({ instance, expectContext, testContext }) => {
+      await instance.testButtonStyle();
     });
   });
 });

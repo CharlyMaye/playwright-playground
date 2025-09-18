@@ -1,5 +1,6 @@
 import { ExpectContext, resolve, TestContext } from "../engine";
 import { AutocompletePOM } from "./AngularMaterialAutocompletePOM";
+import { ButtonPOM } from "./AngularMaterialButtonPOM";
 
 export class AngularMaterialPOM {
   constructor(
@@ -12,8 +13,8 @@ export class AngularMaterialPOM {
 
   //#region Autocomplete
   // vérification du style
-  async testStyle() {
-    await this.#gotoAutocomplete();
+  async testAutocompleteStyle() {
+    await this.#gotoAutocompletePage();
 
     const componentPom = resolve(AutocompletePOM);
     await componentPom
@@ -35,8 +36,8 @@ export class AngularMaterialPOM {
       .execute();
   }
   // Vérification du comportement
-  async testFilterBehavior() {
-    await this.#gotoAutocomplete();
+  async testAutocompleteFilterBehavior() {
+    await this.#gotoAutocompletePage();
 
     const componentPom = resolve(AutocompletePOM);
 
@@ -59,8 +60,8 @@ export class AngularMaterialPOM {
     );
   }
   // Vérification du comportement
-  async testKeyboardBehavior() {
-    await this.#gotoAutocomplete();
+  async testAutocompleteKeyboardBehavior() {
+    await this.#gotoAutocompletePage();
     const componentPom = resolve(AutocompletePOM);
     await componentPom
       .updateSelector("component", "#autocomplete-auto-active-first-option")
@@ -71,8 +72,58 @@ export class AngularMaterialPOM {
       .execute();
   }
 
-  async #gotoAutocomplete() {
+  async #gotoAutocompletePage() {
     const url = "https://material.angular.dev/components/autocomplete/examples";
+    console.warn(`Navigating to ${url}`);
+    await this.testContext.page.goto(url, {
+      waitUntil: "load",
+    });
+
+    try {
+      await this.testContext.page
+        .locator("button", {
+          hasText: "Okay, got it",
+        })
+        .click();
+    } catch (error) {
+      console.warn("No cookie banner to dismiss");
+    }
+  }
+  //#endregion
+
+  //#region Button
+  // vérification du style
+  async testButtonStyle() {
+    await this.#gotoButtonPage();
+
+    const componentPom = resolve(ButtonPOM);
+    await componentPom
+      .updateSelector(
+        "component",
+        "#button-disabled-interactive button[matbutton][disabledinteractive]"
+      )
+      .scrollIntoViewIfNeeded()
+      // .enableScreenshot()
+      .focus()
+      .focusOut()
+      .hover()
+      .execute();
+
+    await componentPom
+      .updateSelector(
+        "component",
+        "#button-disabled-interactive button[matbutton][disabled]"
+      )
+      .scrollIntoViewIfNeeded()
+      // .enableScreenshot()
+      .focus()
+      .focusOut()
+      .hover()
+      .execute();
+  }
+
+  async #gotoButtonPage() {
+    const url = "https://material.angular.dev/components/button/examples";
     console.warn(`Navigating to ${url}`);
     await this.testContext.page.goto(url, {
       waitUntil: "load",
