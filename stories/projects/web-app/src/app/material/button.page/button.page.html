@@ -12,20 +12,43 @@
     @for (btnType of buttonType; track $index) {
       <tr>
         <td>{{ btnType }}</td>
-        <td><button [matButton]="btnType">Button</button></td>
-        <td><button [matButton]="btnType" disabled disabledInteractive>Button</button></td>
-        <td><button [matButton]="btnType" disabled>Button</button></td>
+        <td><button [matButton]="btnType" [id]="'btn-' + btnType">Button</button></td>
         <td>
-          <a [matButton]="btnType" href="https://angular.io" target="_blank" rel="noopener"
-            >Anchor</a
+          <button
+            [matButton]="btnType"
+            disabled
+            disabledInteractive
+            [id]="'btn-' + btnType + '-disabled-interactive'"
           >
+            Button
+          </button>
+        </td>
+        <td>
+          <button [matButton]="btnType" disabled [id]="'btn-' + btnType + '-disabled'">
+            Button
+          </button>
+        </td>
+        <td>
+          <a
+            [matButton]="btnType"
+            href="https://angular.io"
+            target="_blank"
+            rel="noopener"
+            [id]="'btn-' + btnType + '-anchor'"
+          >
+            Anchor
+          </a>
         </td>
       </tr>
     }
     <tr>
       <td>matIconButton</td>
       <td>
-        <button matIconButton aria-label="Example icon button with a delete icon">
+        <button
+          matIconButton
+          aria-label="Example icon button with a delete icon"
+          [id]="'btn-mat-icon-button'"
+        >
           <mat-icon>delete</mat-icon>
         </button>
       </td>
@@ -35,17 +58,29 @@
           disabled
           disabledInteractive
           aria-label="Example icon button with a delete icon"
+          [id]="'btn-mat-icon-button-disabled-interactive'"
         >
           <mat-icon>delete</mat-icon>
         </button>
       </td>
       <td>
-        <button matIconButton disabled aria-label="Example icon button with a delete icon">
+        <button
+          matIconButton
+          disabled
+          aria-label="Example icon button with a delete icon"
+          [id]="'btn-mat-icon-button-disabled'"
+        >
           <mat-icon>delete</mat-icon>
         </button>
       </td>
       <td>
-        <a matIconButton href="https://angular.io" target="_blank" rel="noopener">
+        <a
+          matIconButton
+          href="https://angular.io"
+          target="_blank"
+          rel="noopener"
+          [id]="'btn-mat-icon-button-anchor'"
+        >
           <mat-icon>delete</mat-icon>
         </a>
       </td>
@@ -53,7 +88,7 @@
     <tr>
       <td>matFab</td>
       <td>
-        <button matFab aria-label="Example icon button with a delete icon">
+        <button matFab aria-label="Example icon button with a delete icon" [id]="'btn-mat-fab'">
           <mat-icon>delete</mat-icon>
         </button>
       </td>
@@ -63,17 +98,29 @@
           disabled
           disabledInteractive
           aria-label="Example icon button with a delete icon"
+          [id]="'btn-mat-fab-disabled-interactive'"
         >
           <mat-icon>delete</mat-icon>
         </button>
       </td>
       <td>
-        <button matFab disabled aria-label="Example icon button with a delete icon">
+        <button
+          matFab
+          disabled
+          aria-label="Example icon button with a delete icon"
+          [id]="'btn-mat-fab-disabled'"
+        >
           <mat-icon>delete</mat-icon>
         </button>
       </td>
       <td>
-        <a matFab href="https://angular.io" target="_blank" rel="noopener">
+        <a
+          matFab
+          href="https://angular.io"
+          target="_blank"
+          rel="noopener"
+          [id]="'btn-mat-fab-anchor'"
+        >
           <mat-icon>delete</mat-icon>
         </a>
       </td>
@@ -82,7 +129,11 @@
     <tr>
       <td>matMiniFab</td>
       <td>
-        <button matMiniFab aria-label="Example icon button with a delete icon">
+        <button
+          matMiniFab
+          aria-label="Example icon button with a delete icon"
+          [id]="'btn-mat-mini-fab'"
+        >
           <mat-icon>delete</mat-icon>
         </button>
       </td>
@@ -92,17 +143,29 @@
           disabled
           disabledInteractive
           aria-label="Example icon button with a delete icon"
+          [id]="'btn-mat-mini-fab-disabled-interactive'"
         >
           <mat-icon>delete</mat-icon>
         </button>
       </td>
       <td>
-        <button matMiniFab disabled aria-label="Example icon button with a delete icon">
+        <button
+          matMiniFab
+          disabled
+          aria-label="Example icon button with a delete icon"
+          [id]="'btn-mat-mini-fab-disabled'"
+        >
           <mat-icon>delete</mat-icon>
         </button>
       </td>
       <td>
-        <a matMiniFab href="https://angular.io" target="_blank" rel="noopener">
+        <a
+          matMiniFab
+          href="https://angular.io"
+          target="_blank"
+          rel="noopener"
+          [id]="'btn-mat-mini-fab-anchor'"
+        >
           <mat-icon>delete</mat-icon>
         </a>
       </td>
@@ -111,7 +174,12 @@
     <tr>
       <td>matFab extended</td>
       <td>
-        <button matFab extended aria-label="Example icon button with a delete icon">
+        <button
+          matFab
+          extended
+          aria-label="Example icon button with a delete icon"
+          [id]="'btn-mat-fab-extended'"
+        >
           <mat-icon>delete</mat-icon>
           Delete
         </button>
@@ -123,19 +191,33 @@
           disabled
           disabledInteractive
           aria-label="Example icon button with a delete icon"
+          [id]="'btn-mat-fab-extended-disabled-interactive'"
         >
           <mat-icon>delete</mat-icon>
           Delete
         </button>
       </td>
       <td>
-        <button matFab extended disabled aria-label="Example icon button with a delete icon">
+        <button
+          matFab
+          extended
+          disabled
+          aria-label="Example icon button with a delete icon"
+          [id]="'btn-mat-fab-extended-disabled'"
+        >
           <mat-icon>delete</mat-icon>
           Delete
         </button>
       </td>
       <td>
-        <a matFab extended href="https://angular.io" target="_blank" rel="noopener">
+        <a
+          matFab
+          extended
+          href="https://angular.io"
+          target="_blank"
+          rel="noopener"
+          [id]="'btn-mat-fab-extended-anchor'"
+        >
           <mat-icon>delete</mat-icon>
           Delete
         </a>
