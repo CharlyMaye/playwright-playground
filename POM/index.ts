@@ -1,2 +1,2 @@
-export * from "./AngularMaterialAutocompletePOM";
-export * from "./AngularMaterialPOM";
+export * from './AngularMaterialAutocompletePOM';
+export * from './AngularMaterialPOM';

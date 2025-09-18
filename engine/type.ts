@@ -10,9 +10,5 @@ export interface Type<T> extends Function {
 }
 
 export function isType<T>(obj: any): obj is Type<T> {
-  return (
-    typeof obj === "function" &&
-    obj.prototype &&
-    obj.prototype.constructor === obj
-  );
+  return typeof obj === 'function' && obj.prototype && obj.prototype.constructor === obj;
 }

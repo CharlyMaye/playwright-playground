@@ -1,5 +1,5 @@
-import { TestContext } from "../index";
-import { AnotherFakeClass } from "./AnotherFakeClass";
+import { TestContext } from '../index';
+import { AnotherFakeClass } from './AnotherFakeClass';
 
 export abstract class FakeService {}
 export class ConcreteFakeService extends FakeService {

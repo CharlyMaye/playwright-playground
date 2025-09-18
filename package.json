@@ -6,7 +6,9 @@
   "scripts": {
     "test": "npx playwright test",
     "test:ui": "npx playwright test --ui",
-    "result": "npx playwright show-report ./test-results/html-report --host 0.0.0.0"
+    "result": "npx playwright show-report ./test-results/html-report --host 0.0.0.0",
+    "cleanup:node": "find . -type d -name 'node_modules' -exec rm -rf {} \\;",
+    "format": "prettier --loglevel warn --write \"./**/*.{html,ts,js,tsx,jsx,json,scss,css,vue,svelte}\""
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,7 @@
     "@playwright/test": "^1.55.0",
     "@types/node": "^24.5.0",
     "monocart-reporter": "^2.9.22",
+    "prettier": "^3.6.2",
     "typescript": "^5.9.2",
     "zod": "^4.1.9"
   }

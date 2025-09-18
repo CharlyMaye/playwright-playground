@@ -1,5 +1,5 @@
-import { Injector } from "../index";
-import { FakeService } from "./FakeService";
+import { Injector } from '../index';
+import { FakeService } from './FakeService';
 
 export abstract class FakeClass {}
 

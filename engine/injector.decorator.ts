@@ -1,4 +1,4 @@
-import { AbstractType, Type } from "./type";
+import { AbstractType, Type } from './type';
 
 export type InjectorMetadata = {
   Provide?: AbstractType<any>[];
@@ -9,7 +9,7 @@ export type InjectorType<T> = Type<T> & {
 };
 
 export function isInjectorType<T>(obj: any): obj is InjectorType<T> {
-  return typeof obj === "function" && "injectorOptions" in obj;
+  return typeof obj === 'function' && 'injectorOptions' in obj;
 }
 
 export function Injector(options?: InjectorMetadata) {

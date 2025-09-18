@@ -1,5 +1,5 @@
-import { ExpectContext, TestContext } from "../engine";
-import { BuilderPOM } from "./BuilderPOM";
+import { ExpectContext, TestContext } from '../engine';
+import { BuilderPOM, ConcreteBuilderPOM } from './BuilderPOM';
 
 type ButtonSelector = {
   component: string;
@@ -14,9 +14,9 @@ export abstract class ButtonPOM extends BuilderPOM<ButtonSelector> {
   public abstract focusOut(): ButtonPOM;
 }
 
-export class AngularMaterialButtonPOM extends ButtonPOM {
+export class AngularMaterialButtonPOM extends ConcreteBuilderPOM<ButtonSelector> implements ButtonPOM {
   protected _selectors: ButtonSelector = {
-    component: "",
+    component: 'button[matbutton]',
   };
   constructor(testContext: TestContext, expectContext: ExpectContext) {
     super(testContext, expectContext);
@@ -25,15 +25,19 @@ export class AngularMaterialButtonPOM extends ButtonPOM {
   // Technique
   public scrollIntoViewIfNeeded(): ButtonPOM {
     return this._addAction(async () => {
-      await this._page
-        .locator(this._selectors.component)
-        .scrollIntoViewIfNeeded();
+      await this._page.locator(this._selectors.component).scrollIntoViewIfNeeded();
     });
   }
 
   public hover(): ButtonPOM {
     return this._addAction(async () => {
-      await this._page.locator(this._selectors.component).hover();
+      const element = this._page.locator(this._selectors.component);
+      const isDisabled = await element.isDisabled();
+      if (isDisabled) {
+        await element.hover({ force: true });
+      } else {
+        await element.hover();
+      }
     });
   }
 

@@ -1,6 +1,6 @@
-import { Locator } from "@playwright/test";
-import { ExpectContext, TestContext } from "../engine";
-import { BuilderPOM } from "./BuilderPOM";
+import { Locator } from '@playwright/test';
+import { ExpectContext, TestContext } from '../engine';
+import { BuilderPOM, ConcreteBuilderPOM } from './BuilderPOM';
 
 type AutocompleteSelector = {
   component: string;
@@ -25,9 +25,7 @@ export abstract class AutocompletePOM extends BuilderPOM<AutocompleteSelector> {
   public abstract focusOptionByIndex(index: number): AutocompletePOM;
   public abstract selectOptionByIndex(index: number): AutocompletePOM;
 
-  public abstract selectOptionUsingKeyboard(
-    key: "ArrowDown" | "ArrowUp" | "ArrowRight" | "ArrowLeft"
-  ): AutocompletePOM;
+  public abstract selectOptionUsingKeyboard(key: 'ArrowDown' | 'ArrowUp' | 'ArrowRight' | 'ArrowLeft'): AutocompletePOM;
 
   public abstract setInputValue(value: string): AutocompletePOM;
 
@@ -35,14 +33,17 @@ export abstract class AutocompletePOM extends BuilderPOM<AutocompleteSelector> {
   public abstract getInputValue(): Promise<string>;
 }
 
-export class AngularMaterialAutocompletePOM extends AutocompletePOM {
+export class AngularMaterialAutocompletePOM
+  extends ConcreteBuilderPOM<AutocompleteSelector>
+  implements AutocompletePOM
+{
   protected _selectors: AutocompleteSelector = {
-    component: "mat-form-field",
-    label: "mat-label",
+    component: 'mat-form-field',
+    label: 'mat-label',
     input: 'input[role="combobox"]',
     dropDown:
       'div.cdk-overlay-container > div.cdk-overlay-connected-position-bounding-box > div.cdk-overlay-pane > div[role="listbox"]',
-    option: "mat-option",
+    option: 'mat-option',
   };
   constructor(testContext: TestContext, expectContext: ExpectContext) {
     super(testContext, expectContext);
@@ -51,15 +52,19 @@ export class AngularMaterialAutocompletePOM extends AutocompletePOM {
   // Technique
   public scrollIntoViewIfNeeded(): AutocompletePOM {
     return this._addAction(async () => {
-      await this._page
-        .locator(this._selectors.component)
-        .scrollIntoViewIfNeeded();
+      await this._page.locator(this._selectors.component).scrollIntoViewIfNeeded();
     });
   }
 
   public hover(): AutocompletePOM {
     return this._addAction(async () => {
-      await this._page.locator(this._selectors.component).hover();
+      const element = this._page.locator(this._selectors.component);
+      const isDisabled = await element.isDisabled();
+      if (isDisabled) {
+        await element.hover({ force: true });
+      } else {
+        await element.hover();
+      }
     });
   }
 
@@ -85,7 +90,7 @@ export class AngularMaterialAutocompletePOM extends AutocompletePOM {
     return this._addAction(async () => {
       const input = this.#getInputLocator();
       await input.focus();
-      await input.press("Escape");
+      await input.press('Escape');
     });
   }
 
@@ -111,16 +116,14 @@ export class AngularMaterialAutocompletePOM extends AutocompletePOM {
     });
   }
 
-  public selectOptionUsingKeyboard(
-    key: "ArrowDown" | "ArrowUp" | "ArrowRight" | "ArrowLeft"
-  ) {
+  public selectOptionUsingKeyboard(key: 'ArrowDown' | 'ArrowUp' | 'ArrowRight' | 'ArrowLeft') {
     return this._addAction(async () => {
       const options = await this.#getOptionsLocator();
       await this.#hasOptions(options);
       const input = this.#getInputLocator();
       await input.focus();
       await input.press(key);
-      await input.press("Enter");
+      await input.press('Enter');
     });
   }
 
@@ -128,15 +131,12 @@ export class AngularMaterialAutocompletePOM extends AutocompletePOM {
     return this._addAction(async () => {
       const input = this.#getInputLocator();
       await input.fill(value);
-      await input.dispatchEvent("input");
+      await input.dispatchEvent('input');
     });
   }
 
   public async getLabelValue(): Promise<string> {
-    const result = await this._page
-      .locator(this._selectors.component)
-      .locator(this._selectors.label)
-      .innerText();
+    const result = await this._page.locator(this._selectors.component).locator(this._selectors.label).innerText();
     this._cleanActions();
     return result;
   }
@@ -147,27 +147,21 @@ export class AngularMaterialAutocompletePOM extends AutocompletePOM {
   }
 
   #getInputLocator() {
-    return this._page
-      .locator(this._selectors.component)
-      .locator(this._selectors.input);
+    return this._page.locator(this._selectors.component).locator(this._selectors.input);
   }
   #isDropDownOpen() {
     return this._page.locator(this._selectors.dropDown).isVisible();
   }
   async #getOptionsLocator() {
     if (!(await this.#isDropDownOpen())) {
-      throw new Error("Dropdown is not open");
+      throw new Error('Dropdown is not open');
     }
-    return this._page
-      .locator(this._selectors.dropDown)
-      .locator(this._selectors.option);
+    return this._page.locator(this._selectors.dropDown).locator(this._selectors.option);
   }
   async #isIndexValid(options: Locator, index: number) {
     const count = await options.count();
     if (index < 0 || index >= count) {
-      throw new Error(
-        `Index ${index} is out of bounds. There are ${count} options.`
-      );
+      throw new Error(`Index ${index} is out of bounds. There are ${count} options.`);
     }
   }
   async #hasOptions(options: Locator) {
