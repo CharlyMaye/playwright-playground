@@ -7,8 +7,7 @@ This workspace contains a comprehensive Playwright testing framework featuring d
 
 - **Dependency Injection System**: Custom DI container for managing test dependencies
 - **Page Object Model**: Structured approach to web element interactions
-- **Code Coverage**: V8 coverage reporting with Monocart reporter based on 
-<https://github.com/edumserrano/playwright-adventures/blob/main/demos/code-coverage-with-monocart-reporter/playwright.global-setup.ts>
+- **Code Coverage**: V8 coverage reporting with Monocart reporter, based on [this example global setup script](https://github.com/edumserrano/playwright-adventures/blob/main/demos/code-coverage-with-monocart-reporter/playwright.global-setup.ts).
 
 - **Visual Testing**: Screenshot and visual regression testing capabilities
 - **Angular Material Testing**: Specialized testing for Angular Material components
