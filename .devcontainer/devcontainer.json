@@ -47,11 +47,7 @@
   },
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
   "workspaceFolder": "/workspace",
-  // "mounts": [
-  //     "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"
-  // ],
   "runArgs": ["--init"],
   "containerUser": "node",
-  // "updateContentCommand": "npm install",
   "postStartCommand": "playwright install && playwright install-deps"
 }

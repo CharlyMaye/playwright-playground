@@ -49,6 +49,9 @@
               ],
               "outputHashing": "all"
             },
+            "qa": {
+              "sourceMap": true
+            },
             "development": {
               "optimization": false,
               "extractLicenses": false,
@@ -62,6 +65,9 @@
           "configurations": {
             "production": {
               "buildTarget": "web-app:build:production"
+            },
+            "qa": {
+              "buildTarget": "web-app:build:production,qa"
             },
             "development": {
               "buildTarget": "web-app:build:development"
@@ -88,5 +94,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

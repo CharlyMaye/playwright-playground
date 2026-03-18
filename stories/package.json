@@ -4,7 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open --host 0.0.0.0",
+    "start:qa": "ng serve --open --host 0.0.0.0 --configuration=production,qa",
     "build": "ng build",
+    "build:qa": "ng build --configuration=production,qa",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:web-app": "node dist/web-app/server/server.mjs"
