@@ -6,31 +6,21 @@ import { DomAnalyzer } from '../engine/dom-analyzer';
 const test = baseTest<DomAnalyzer>(DomAnalyzer);
 const { describe } = test;
 
+const data = [
+  { name: 'button-examples', url: 'https://material.angular.dev/components/button/examples' },
+  { name: 'select-examples', url: 'https://material.angular.dev/components/select/overview' },
+  { name: 'checkbox-examples', url: 'https://material.angular.dev/components/checkbox/overview' },
+];
+
 describe('Analyze', () => {
-  test('button-examples', {}, async ({ instance, testContext }) => {
-    await testContext.page.goto('https://material.angular.dev/components/button/examples', { waitUntil: 'load' });
+  for (const { name, url } of data) {
+    test(name, {}, async ({ instance, testContext }) => {
+      await testContext.page.goto(url, { waitUntil: 'load' });
 
-    const elements = await instance.analyze();
-    saveAnalysis('button-examples', elements);
+      const elements = await instance.analyze();
+      saveAnalysis(name, elements);
 
-    console.log(`[analyze] button-examples: ${elements.length} elements saved`);
-  });
-
-  test('select-examples', {}, async ({ instance, testContext }) => {
-    await testContext.page.goto('https://material.angular.dev/components/select/overview', { waitUntil: 'load' });
-
-    const elements = await instance.analyze();
-    saveAnalysis('select-examples', elements);
-
-    console.log(`[analyze] select-examples: ${elements.length} elements saved`);
-  });
-
-  test('checkbox-examples', {}, async ({ instance, testContext }) => {
-    await testContext.page.goto('https://material.angular.dev/components/checkbox/overview', { waitUntil: 'load' });
-
-    const elements = await instance.analyze();
-    saveAnalysis('checkbox-examples', elements);
-
-    console.log(`[analyze] checkbox-examples: ${elements.length} elements saved`);
-  });
+      console.log(`[analyze] ${name}: ${elements.length} elements saved`);
+    });
+  }
 });
