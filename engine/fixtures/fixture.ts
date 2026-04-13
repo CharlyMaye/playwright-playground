@@ -53,7 +53,7 @@ export function test<T>(token: AbstractType<T>) {
       await use(page);
     },
     forEachTest: [
-      async ({ page }, use) => {
+      async ({}, use) => {
         await use();
       },
       { auto: true },
@@ -66,7 +66,7 @@ export function test<T>(token: AbstractType<T>) {
       const expectContext = resolve(ExpectContext);
       await use(expectContext);
     },
-    instance: async ({ page }, use) => {
+    instance: async ({}, use) => {
       const instance = resolve<T>(token);
       await use(instance);
     },

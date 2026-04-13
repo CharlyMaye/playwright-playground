@@ -78,14 +78,12 @@ class Injector {
     return instance;
   }
 
-  #handleArgsInConstructor<T>(resolved: Type<unknown>) {
-    let constructorArgs: unknown[] = [];
-
+  #handleArgsInConstructor<T>(resolved: Type<unknown>): unknown[] {
     if (isInjectorType<T>(resolved) && resolved.injectorOptions?.Provide) {
-      constructorArgs = resolved.injectorOptions.Provide.map((dep: AbstractType<unknown>) => this.get(dep));
+      return resolved.injectorOptions.Provide.map((dep: AbstractType<unknown>) => this.get(dep));
     } else {
       const parameterNames = getConstructorParameterNames(resolved);
-      constructorArgs = parameterNames.map((paramName) => {
+      return parameterNames.map((paramName) => {
         const typeName = camelToPascalCase(paramName);
         const abstractType = this.#typesByName.get(typeName) || this.#singletonTypesByName.get(typeName);
         if (abstractType) {
@@ -97,8 +95,6 @@ class Injector {
         }
       });
     }
-
-    return constructorArgs;
   }
 }
 

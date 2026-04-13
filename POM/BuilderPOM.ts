@@ -55,7 +55,7 @@ export abstract class ConcreteBuilderPOM<TSelector = Record<string, string>> imp
   public async execute() {
     // On ajoute une action pour désactiver les screenshots à la fin
     this.disableScreenshot();
-    for await (const action of this.#actionsToExecute) {
+    for (const action of this.#actionsToExecute) {
       await action();
       if (!this.#disableScreenshot) {
         await this._expectContext.expectToHaveScreenshot();

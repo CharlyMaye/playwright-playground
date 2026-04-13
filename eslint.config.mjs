@@ -31,6 +31,12 @@ export default tseslint.config(
       '@typescript-eslint/no-explicit-any': 'off',
     },
   },
+  {
+    files: ['**/fixtures/**'],
+    rules: {
+      'no-empty-pattern': 'off',
+    },
+  },
 
   {
     files: ['tests//*.ts', 'engine/tests//.ts', '**/.spec.ts'],

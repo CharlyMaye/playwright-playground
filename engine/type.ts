@@ -11,6 +11,12 @@ export interface Type<T> extends Function {
   new (...args: any[]): T;
 }
 
-export function isType<T>(obj: any): obj is Type<T> {
-  return typeof obj === 'function' && obj.prototype && obj.prototype.constructor === obj;
+export function isType<T>(obj: unknown): obj is Type<T> {
+  return (
+    typeof obj === 'function' &&
+    'prototype' in obj &&
+    obj.prototype !== null &&
+    typeof obj.prototype === 'object' &&
+    (obj.prototype as Record<string, unknown>).constructor === obj
+  );
 }
