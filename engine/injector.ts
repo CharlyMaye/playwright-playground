@@ -35,6 +35,10 @@ class Injector {
   public registerSingleton<TAbstract, TConcrete>(
     token: AbstractType<TAbstract> | Type<TAbstract>,
     useClass?: Type<TConcrete>
+  ): void;
+  public registerSingleton<TAbstract, TConcrete>(
+    token: AbstractType<TAbstract> | Type<TAbstract>,
+    useClass?: Type<TConcrete>
   ): void {
     if (this.#singletonTypes.has(token)) {
       // throw new Error(`Token ${token.name} is already registered`);
