@@ -1,6 +1,15 @@
-import { FullConfig } from '@playwright/test';
+import { FullConfig, ReporterDescription } from '@playwright/test';
 
 // See https://playwright.dev/docs/test-global-setup-teardown#option-2-configure-globalsetup-and-globalteardown
+
+type PartialDescription = {
+  name: string;
+  outputFile: string;
+  coverage: {
+    outputDir: string;
+    reportPath: string;
+  };
+};
 
 function startupLog(config: FullConfig) {
   console.log(''); // just for the new line
@@ -15,9 +24,10 @@ function startupLog(config: FullConfig) {
   console.log(`- webServer.reuseExistingServer: ${config.webServer?.reuseExistingServer}`);
   console.log(`- testDir: ${config.projects[0].testDir}`);
   console.log(`- outputDir: ${config.projects[0].outputDir}`);
-  const monocartReporter = config.reporter[1];
+  const monocartReporter: ReporterDescription = config.reporter[1];
+
   if (monocartReporter) {
-    const monocartReporterOptions = monocartReporter[1];
+    const monocartReporterOptions: PartialDescription = monocartReporter[1] as PartialDescription;
     // prettier-ignore
     console.log(`- monocart-reporter outputFile: ${monocartReporterOptions.outputFile}`);
     // prettier-ignore
@@ -31,6 +41,7 @@ function startupLog(config: FullConfig) {
 
 async function globalSetup(config: FullConfig): Promise<void> {
   startupLog(config);
+  return await Promise.resolve();
 }
 
 export default globalSetup;

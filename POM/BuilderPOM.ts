@@ -30,22 +30,25 @@ export abstract class ConcreteBuilderPOM<TSelector = Record<string, string>> imp
   }
 
   public enableScreenshot() {
-    this._addAction(async () => {
+    this._addAction(() => {
       this.#disableScreenshot = false;
+      return Promise.resolve();
     });
     return this;
   }
 
   public disableScreenshot() {
-    this._addAction(async () => {
+    this._addAction(() => {
       this.#disableScreenshot = true;
+      return Promise.resolve();
     });
     return this;
   }
 
   public updateSelector<K extends keyof TSelector>(key: K, value: TSelector[K]) {
-    return this._addAction(async () => {
+    return this._addAction(() => {
       this._selectors[key] = value;
+      return Promise.resolve();
     });
   }
 

@@ -3,7 +3,7 @@ import { FakeClass } from './FakeClass';
 
 const test = baseTest(FakeClass);
 
-test('fake test with fixture', async ({ instance }) => {
+test('fake test with fixture', ({ instance }) => {
   expect(instance).toBeDefined();
   expect(instance).toBeInstanceOf(FakeClass);
 });

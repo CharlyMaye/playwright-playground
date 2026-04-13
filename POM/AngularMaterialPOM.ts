@@ -31,7 +31,7 @@ export class AngularMaterialPOM {
           hasText: 'Okay, got it',
         })
         .click();
-    } catch (error) {
+    } catch {
       console.warn('No cookie banner to dismiss');
     }
   }
