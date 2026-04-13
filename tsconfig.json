@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "target": "ES2022",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "lib": ["ES2022", "DOM"],
+        "types": ["node", "@playwright/test"],
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "experimentalDecorators": true,
+        "skipLibCheck": true,
+        "noEmit": true
+    },
+    "include": [
+        "playwright.config.ts",
+        "engine/**/*.ts",
+        "setup/**/*.ts",
+        "tests/**/*.ts",
+        "POM/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "test-results"
+    ]
+}

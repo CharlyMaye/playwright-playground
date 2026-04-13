@@ -11,7 +11,7 @@ import { ConcreteTestContext, TestContext } from '../test.context';
 import { AbstractType } from '../type';
 import { collectV8CodeCoverageAsync, CollectV8CodeCoverageOptions } from './v8-code-coverage';
 
-type MyFixtures<T = any> = {
+type IngTestFixture<T = any> = {
   instance: T;
   testContext: TestContext;
   expectContext: ExpectContext;
@@ -20,7 +20,7 @@ type MyFixtures<T = any> = {
   codeCoverageAutoTestFixture: void;
 };
 
-type MyWorkerFixtures = {
+type IngWorkerTestFixtures = {
   beforeAll: void;
   afterAll: void;
   forEachWorker: void;
@@ -29,9 +29,9 @@ type MyWorkerFixtures = {
 //https://playwright.dev/docs/test-fixtures
 export function test<T>(token: AbstractType<T>) {
   const typedTest: TestType<
-    PlaywrightTestArgs & PlaywrightTestOptions & MyFixtures<T>,
-    PlaywrightWorkerArgs & PlaywrightWorkerOptions & MyWorkerFixtures
-  > = base.extend<MyFixtures<T>, MyWorkerFixtures>({
+    PlaywrightTestArgs & PlaywrightTestOptions & IngTestFixture<T>,
+    PlaywrightWorkerArgs & PlaywrightWorkerOptions & IngWorkerTestFixtures
+  > = base.extend<IngTestFixture<T>, IngWorkerTestFixtures>({
     forEachWorker: [
       async ({}, use) => {
         await use();

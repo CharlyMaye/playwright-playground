@@ -15,7 +15,7 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.55.0",
-    "@types/node": "^24.5.0",
+    "@types/node": "^24.12.2",
     "monocart-reporter": "^2.9.22",
     "prettier": "^3.6.2",
     "typescript": "^5.9.2",
