@@ -1,6 +1,6 @@
 import { register } from '../engine';
 import { ConcreteDomAnalyzer, DomAnalyzer } from '../engine/dom-analyzer';
-import { AngularMaterialPOM } from '../POM';
+import { AngularMaterialPOM, ConcreteVisualRegressionPOM, VisualRegressionPOM } from '../POM';
 
 let isAlreadySetup = false;
 export function setup() {
@@ -8,6 +8,7 @@ export function setup() {
     return;
   }
   register(AngularMaterialPOM);
+  register(VisualRegressionPOM, ConcreteVisualRegressionPOM);
   register(DomAnalyzer, ConcreteDomAnalyzer);
   isAlreadySetup = true;
 }

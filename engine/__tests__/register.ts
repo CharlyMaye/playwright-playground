@@ -1,3 +1,4 @@
+import { ConcreteDomAnalyzer, DomAnalyzer } from '../dom-analyzer';
 import { register } from '../index';
 import { AnotherFakeClass } from './AnotherFakeClass';
 import { ConcreteFakeClass, FakeClass } from './FakeClass';
@@ -7,4 +8,5 @@ export function setup() {
   register(FakeClass, ConcreteFakeClass);
   register(FakeService, ConcreteFakeService);
   register(AnotherFakeClass);
+  register(DomAnalyzer, ConcreteDomAnalyzer);
 }

@@ -1,0 +1,648 @@
+[
+  {
+    "key": "element-4",
+    "type": "button",
+    "selector": "a",
+    "label": "More details",
+    "interactionModel": {
+      "capabilities": [
+        "click",
+        "hover",
+        "focus"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus",
+        "active",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "hover",
+          "steps": [
+            {
+              "type": "hover"
+            }
+          ]
+        },
+        {
+          "name": "click",
+          "steps": [
+            {
+              "type": "click"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "element-9",
+    "type": "button",
+    "selector": "button",
+    "label": "Okay, got it",
+    "interactionModel": {
+      "capabilities": [
+        "click",
+        "hover",
+        "focus"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus",
+        "active",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "hover",
+          "steps": [
+            {
+              "type": "hover"
+            }
+          ]
+        },
+        {
+          "name": "click",
+          "steps": [
+            {
+              "type": "click"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "select-a-version",
+    "type": "button",
+    "selector": "[aria-label=\"Select a version\"]",
+    "label": "Select a version",
+    "interactionModel": {
+      "capabilities": [
+        "click",
+        "hover",
+        "focus"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus",
+        "active",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "hover",
+          "steps": [
+            {
+              "type": "hover"
+            }
+          ]
+        },
+        {
+          "name": "click",
+          "steps": [
+            {
+              "type": "click"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "select-a-theme",
+    "type": "button",
+    "selector": "[aria-label=\"Select a theme\"]",
+    "label": "Select a theme",
+    "interactionModel": {
+      "capabilities": [
+        "click",
+        "hover",
+        "focus"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus",
+        "active",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "hover",
+          "steps": [
+            {
+              "type": "hover"
+            }
+          ]
+        },
+        {
+          "name": "click",
+          "steps": [
+            {
+              "type": "click"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "element-101",
+    "type": "button",
+    "selector": "button",
+    "label": "menu Menu",
+    "interactionModel": {
+      "capabilities": [
+        "click",
+        "hover",
+        "focus"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus",
+        "active",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "hover",
+          "steps": [
+            {
+              "type": "hover"
+            }
+          ]
+        },
+        {
+          "name": "click",
+          "steps": [
+            {
+              "type": "click"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "copy-link-to-basic-checkboxes-example-to-the-clipboard",
+    "type": "button",
+    "selector": "[aria-label=\"Copy link to Basic checkboxes example to the clipboard\"]",
+    "label": "Copy link to Basic checkboxes example to the clipboard",
+    "interactionModel": {
+      "capabilities": [
+        "click",
+        "hover",
+        "focus"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus",
+        "active",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "hover",
+          "steps": [
+            {
+              "type": "hover"
+            }
+          ]
+        },
+        {
+          "name": "click",
+          "steps": [
+            {
+              "type": "click"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "view-source",
+    "type": "button",
+    "selector": "[aria-label=\"View source\"]",
+    "label": "View source",
+    "interactionModel": {
+      "capabilities": [
+        "click",
+        "hover",
+        "focus"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus",
+        "active",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "hover",
+          "steps": [
+            {
+              "type": "hover"
+            }
+          ]
+        },
+        {
+          "name": "click",
+          "steps": [
+            {
+              "type": "click"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "edit-this-example-in-stackblitz",
+    "type": "button",
+    "selector": "[aria-label=\"Edit this example in StackBlitz\"]",
+    "label": "Edit this example in StackBlitz",
+    "interactionModel": {
+      "capabilities": [
+        "click",
+        "hover",
+        "focus"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus",
+        "active",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "hover",
+          "steps": [
+            {
+              "type": "hover"
+            }
+          ]
+        },
+        {
+          "name": "click",
+          "steps": [
+            {
+              "type": "click"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "mat-mdc-checkbox-0",
+    "type": "checkbox",
+    "selector": "#mat-mdc-checkbox-0",
+    "interactionModel": {
+      "capabilities": [
+        "toggle",
+        "focus"
+      ],
+      "states": [
+        "unchecked",
+        "checked",
+        "indeterminate",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "toggle",
+          "steps": [
+            {
+              "type": "click"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "mat-mdc-checkbox-0-input",
+    "type": "input-text",
+    "selector": "#mat-mdc-checkbox-0-input",
+    "interactionModel": {
+      "capabilities": [
+        "fill",
+        "focus"
+      ],
+      "states": [
+        "empty",
+        "filled",
+        "focused",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "fill",
+          "steps": [
+            {
+              "type": "focus"
+            },
+            {
+              "type": "fill"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "mat-mdc-checkbox-1",
+    "type": "checkbox",
+    "selector": "#mat-mdc-checkbox-1",
+    "interactionModel": {
+      "capabilities": [
+        "toggle",
+        "focus"
+      ],
+      "states": [
+        "unchecked",
+        "checked",
+        "indeterminate",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "toggle",
+          "steps": [
+            {
+              "type": "click"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "mat-mdc-checkbox-1-input",
+    "type": "input-text",
+    "selector": "#mat-mdc-checkbox-1-input",
+    "interactionModel": {
+      "capabilities": [
+        "fill",
+        "focus"
+      ],
+      "states": [
+        "empty",
+        "filled",
+        "focused",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "fill",
+          "steps": [
+            {
+              "type": "focus"
+            },
+            {
+              "type": "fill"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "mat-mdc-checkbox-2",
+    "type": "checkbox",
+    "selector": "#mat-mdc-checkbox-2",
+    "interactionModel": {
+      "capabilities": [
+        "toggle",
+        "focus"
+      ],
+      "states": [
+        "unchecked",
+        "checked",
+        "indeterminate",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "toggle",
+          "steps": [
+            {
+              "type": "click"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "mat-mdc-checkbox-2-input",
+    "type": "input-text",
+    "selector": "#mat-mdc-checkbox-2-input",
+    "interactionModel": {
+      "capabilities": [
+        "fill",
+        "focus"
+      ],
+      "states": [
+        "empty",
+        "filled",
+        "focused",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "fill",
+          "steps": [
+            {
+              "type": "focus"
+            },
+            {
+              "type": "fill"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "mat-mdc-checkbox-3",
+    "type": "checkbox",
+    "selector": "#mat-mdc-checkbox-3",
+    "interactionModel": {
+      "capabilities": [
+        "toggle",
+        "focus"
+      ],
+      "states": [
+        "unchecked",
+        "checked",
+        "indeterminate",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "toggle",
+          "steps": [
+            {
+              "type": "click"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "mat-mdc-checkbox-3-input",
+    "type": "input-text",
+    "selector": "#mat-mdc-checkbox-3-input",
+    "interactionModel": {
+      "capabilities": [
+        "fill",
+        "focus"
+      ],
+      "states": [
+        "empty",
+        "filled",
+        "focused",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "fill",
+          "steps": [
+            {
+              "type": "focus"
+            },
+            {
+              "type": "fill"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "mat-mdc-checkbox-4",
+    "type": "checkbox",
+    "selector": "#mat-mdc-checkbox-4",
+    "interactionModel": {
+      "capabilities": [
+        "toggle",
+        "focus"
+      ],
+      "states": [
+        "unchecked",
+        "checked",
+        "indeterminate",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "toggle",
+          "steps": [
+            {
+              "type": "click"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "mat-mdc-checkbox-4-input",
+    "type": "input-text",
+    "selector": "#mat-mdc-checkbox-4-input",
+    "interactionModel": {
+      "capabilities": [
+        "fill",
+        "focus"
+      ],
+      "states": [
+        "empty",
+        "filled",
+        "focused",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "fill",
+          "steps": [
+            {
+              "type": "focus"
+            },
+            {
+              "type": "fill"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "mat-mdc-checkbox-5",
+    "type": "checkbox",
+    "selector": "#mat-mdc-checkbox-5",
+    "interactionModel": {
+      "capabilities": [
+        "toggle",
+        "focus"
+      ],
+      "states": [
+        "unchecked",
+        "checked",
+        "indeterminate",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "toggle",
+          "steps": [
+            {
+              "type": "click"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "mat-mdc-checkbox-5-input",
+    "type": "input-text",
+    "selector": "#mat-mdc-checkbox-5-input",
+    "interactionModel": {
+      "capabilities": [
+        "fill",
+        "focus"
+      ],
+      "states": [
+        "empty",
+        "filled",
+        "focused",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "fill",
+          "steps": [
+            {
+              "type": "focus"
+            },
+            {
+              "type": "fill"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

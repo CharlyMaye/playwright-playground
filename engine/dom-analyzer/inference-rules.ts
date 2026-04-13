@@ -20,6 +20,8 @@ function buildKey(el: Element, index: number): string {
   return `element-${index}`;
 }
 
+export { buildKey };
+
 function buildSelector(el: Element): string {
   const id = el.getAttribute('id');
   if (id) return `#${id}`;
@@ -31,6 +33,8 @@ function buildSelector(el: Element): string {
   if (name) return `[name="${name}"]`;
   return el.tagName.toLowerCase();
 }
+
+export { buildSelector };
 
 export const INFERENCE_RULES: InferenceRule[] = [
   // mat-select

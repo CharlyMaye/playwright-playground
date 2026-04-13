@@ -1,0 +1,192 @@
+[
+  {
+    "key": "element-4",
+    "type": "button",
+    "selector": "a",
+    "label": "More details",
+    "interactionModel": {
+      "capabilities": [
+        "click",
+        "hover",
+        "focus"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus",
+        "active",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "hover",
+          "steps": [
+            {
+              "type": "hover"
+            }
+          ]
+        },
+        {
+          "name": "click",
+          "steps": [
+            {
+              "type": "click"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "element-9",
+    "type": "button",
+    "selector": "button",
+    "label": "Okay, got it",
+    "interactionModel": {
+      "capabilities": [
+        "click",
+        "hover",
+        "focus"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus",
+        "active",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "hover",
+          "steps": [
+            {
+              "type": "hover"
+            }
+          ]
+        },
+        {
+          "name": "click",
+          "steps": [
+            {
+              "type": "click"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "select-a-version",
+    "type": "button",
+    "selector": "[aria-label=\"Select a version\"]",
+    "label": "Select a version",
+    "interactionModel": {
+      "capabilities": [
+        "click",
+        "hover",
+        "focus"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus",
+        "active",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "hover",
+          "steps": [
+            {
+              "type": "hover"
+            }
+          ]
+        },
+        {
+          "name": "click",
+          "steps": [
+            {
+              "type": "click"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "select-a-theme",
+    "type": "button",
+    "selector": "[aria-label=\"Select a theme\"]",
+    "label": "Select a theme",
+    "interactionModel": {
+      "capabilities": [
+        "click",
+        "hover",
+        "focus"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus",
+        "active",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "hover",
+          "steps": [
+            {
+              "type": "hover"
+            }
+          ]
+        },
+        {
+          "name": "click",
+          "steps": [
+            {
+              "type": "click"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "key": "element-101",
+    "type": "button",
+    "selector": "button",
+    "label": "menu Menu",
+    "interactionModel": {
+      "capabilities": [
+        "click",
+        "hover",
+        "focus"
+      ],
+      "states": [
+        "default",
+        "hover",
+        "focus",
+        "active",
+        "disabled"
+      ],
+      "scenarios": [
+        {
+          "name": "hover",
+          "steps": [
+            {
+              "type": "hover"
+            }
+          ]
+        },
+        {
+          "name": "click",
+          "steps": [
+            {
+              "type": "click"
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
