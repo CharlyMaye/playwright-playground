@@ -15,6 +15,10 @@ class Injector {
   public register<TAbstract, TConcrete>(
     token: AbstractType<TAbstract> | Type<TAbstract>,
     useClass?: Type<TConcrete>
+  ): void;
+  public register<TAbstract, TConcrete>(
+    token: AbstractType<TAbstract> | Type<TAbstract>,
+    useClass?: Type<TConcrete>
   ): void {
     if (this.#types.has(token)) {
       // throw new Error(`Token ${token.name} is already registered`);
@@ -28,6 +32,10 @@ class Injector {
   }
 
   public registerSingleton<TConcrete>(token: Type<TConcrete>): void;
+  public registerSingleton<TAbstract, TConcrete>(
+    token: AbstractType<TAbstract> | Type<TAbstract>,
+    useClass?: Type<TConcrete>
+  ): void;
   public registerSingleton<TAbstract, TConcrete>(
     token: AbstractType<TAbstract> | Type<TAbstract>,
     useClass?: Type<TConcrete>
@@ -54,45 +62,36 @@ class Injector {
       throw new Error(`Token ${token.name} is not registered`);
     }
 
-    let constructorArgs = this.#handleArgsInConstructor<T>(resolved);
-    this.#handleTestContext(resolved, constructorArgs);
-
-    const instance = new resolved(...constructorArgs);
-    return instance as T;
+    const constructorArgs = this.#handleArgsInConstructor<T>(resolved);
+    const instance: T = new resolved(...constructorArgs) as T;
+    return instance;
   }
 
   #getSingleton<T>(token: AbstractType<T> | Type<T>): T {
-    const resolved = this.#singletonTypes.get(token);
+    const resolved: Type<T> = this.#singletonTypes.get(token) as Type<T>;
     if (!resolved) {
       throw new Error(`Token ${token.name} is not registered as singleton`);
     }
     if (this.#createdInstance.has(token)) {
-      return this.#createdInstance.get(token);
+      return this.#createdInstance.get(token) as T;
     }
 
-    let constructorArgs = this.#handleArgsInConstructor<T>(resolved);
-    this.#handleTestContext(resolved, constructorArgs);
-
+    const constructorArgs = this.#handleArgsInConstructor<T>(resolved);
     const instance = new resolved(...constructorArgs);
     this.#createdInstance.set(token, instance);
-    return instance as T;
-  }
-  #handleTestContext<T>(resolved: Type<T>, constructorArgs: unknown[]) {
-    // Manipulez le contexte de test ici si nécessaire
+    return instance;
   }
 
-  #handleArgsInConstructor<T>(resolved: Type<unknown>) {
-    let constructorArgs: unknown[] = [];
-
+  #handleArgsInConstructor<T>(resolved: Type<unknown>): unknown[] {
     if (isInjectorType<T>(resolved) && resolved.injectorOptions?.Provide) {
-      constructorArgs = resolved.injectorOptions.Provide.map((dep: AbstractType<unknown>) => this.get(dep));
+      return resolved.injectorOptions.Provide.map((dep: AbstractType<unknown>) => this.get(dep));
     } else {
       const parameterNames = getConstructorParameterNames(resolved);
-      constructorArgs = parameterNames.map((paramName) => {
+      return parameterNames.map((paramName) => {
         const typeName = camelToPascalCase(paramName);
         const abstractType = this.#typesByName.get(typeName) || this.#singletonTypesByName.get(typeName);
         if (abstractType) {
-          return this.get(abstractType);
+          return this.get(abstractType) as unknown;
         } else {
           throw new Error(
             `No registered type found for parameter '${paramName}' (looking for type '${typeName}'). Make sure it is registered in the injector or the argument name is equal to its type.`
@@ -100,8 +99,6 @@ class Injector {
         }
       });
     }
-
-    return constructorArgs;
   }
 }
 

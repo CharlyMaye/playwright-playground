@@ -5,12 +5,13 @@ import { playwrightEnv } from './setup/playwright.env-vars';
 import { getMonocartReporterOptions } from './setup/playwright.monocart-reporter';
 import { setup } from './setup/setup';
 
-const _webServerPort = 4200;
-const _webServerHost = '127.0.0.1';
-const _webServerUrl = `http://${_webServerHost}:${_webServerPort}`;
-const _webServerCommand = playwrightCliOptions.UIMode
-  ? `npx ng serve --host ${_webServerHost} --port ${_webServerPort}`
-  : `npx ng serve --host ${_webServerHost} --port ${_webServerPort} --watch false`;
+// TODO: move this to a separate file and export it so it can be used in the global setup and in the config file.
+// const _webServerPort = 4200;
+// const _webServerHost = '127.0.0.1';
+// const _webServerUrl = `http://${_webServerHost}:${_webServerPort}`;
+// const _webServerCommand = playwrightCliOptions.UIMode
+//   ? `npx ng serve --host ${_webServerHost} --port ${_webServerPort}`
+//   : `npx ng serve --host ${_webServerHost} --port ${_webServerPort} --watch false`;
 
 const _isRunningOnCI = playwrightEnv.CI;
 const _testsDir = path.resolve('./tests');

@@ -1,4 +1,3 @@
-
 # Playwright Test Framework with Dependency Injection
 
 This workspace contains a comprehensive Playwright testing framework featuring dependency injection, Page Object Model (POM) patterns, and advanced testing capabilities for Angular Material components. The framework provides code coverage reporting, visual testing, and automated test execution for web applications.
@@ -16,6 +15,7 @@ This workspace contains a comprehensive Playwright testing framework featuring d
 ## Directory Structure
 
 ### `engine/`
+
 The core testing engine providing dependency injection and test infrastructure:
 
 - **`injector.ts`**: Main dependency injection container implementation
@@ -26,12 +26,14 @@ The core testing engine providing dependency injection and test infrastructure:
 - **`__tests__/`**: Unit tests for the testing engine itself
 
 ### `POM/` (Page Object Model)
+
 Reusable page objects for interacting with web components.
 
 - **`BuilderPOM.ts`**: Builder pattern implementation for POM construction
 - **`InteractionPOM.ts`**: Base interaction patterns and common behaviors
 
 ### `setup/`
+
 Configuration and setup utilities for the testing framework:
 
 - **`setup.ts`**: Main setup function for dependency registration
@@ -42,16 +44,19 @@ Configuration and setup utilities for the testing framework:
 - **`global-setup.ts`**: Global test setup and teardown
 
 ### `stories/`
+
 Angular application serving as a test target.
 
 Contains a full Angular application used for testing various UI components and interactions.
 
 ### `tests/`
+
 Test specifications and test cases.
 
 ## Usage
 
 ### Running Tests
+
 ```bash
 npm test                    # Run all tests
 npm run test:ui            # Run tests with Playwright UI
@@ -59,7 +64,9 @@ npm run result             # View test results
 ```
 
 ### Code Coverage
+
 The framework automatically generates code coverage reports using V8 coverage data, available in multiple formats (HTML, LCOV, Cobertura).
 
 ### Visual Testing
+
 Tests include screenshot capabilities for visual regression testing, with automatic failure captures and trace recording.

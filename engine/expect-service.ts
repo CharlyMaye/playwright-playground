@@ -8,10 +8,10 @@ export class ConcreteExpectContext extends ExpectContext {
   constructor(protected testContext: TestContext) {
     super();
   }
-  async expectToHaveScreenshot() {
+  public async expectToHaveScreenshot(): Promise<void> {
     await expect(this.testContext.page).toHaveScreenshot();
   }
-  async checkValue(getInputValue: () => Promise<string>, expectedValue: string) {
+  public async checkValue(getInputValue: () => Promise<string>, expectedValue: string): Promise<void> {
     const actualValue = await getInputValue();
     if (actualValue !== expectedValue) {
       throw new Error(`Expected "${expectedValue}", but got "${actualValue}"`);

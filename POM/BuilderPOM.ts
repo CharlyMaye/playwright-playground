@@ -23,36 +23,38 @@ export abstract class ConcreteBuilderPOM<TSelector = Record<string, string>> imp
   }
 
   #actionsToExecute: (() => Promise<void>)[] = [];
-
   protected _addAction(action: () => Promise<void>) {
     this.#actionsToExecute.push(action);
     return this;
   }
 
-  public enableScreenshot() {
-    this._addAction(async () => {
+  public enableScreenshot(): this {
+    this._addAction(() => {
       this.#disableScreenshot = false;
+      return Promise.resolve();
     });
     return this;
   }
 
-  public disableScreenshot() {
-    this._addAction(async () => {
+  public disableScreenshot(): this {
+    this._addAction(() => {
       this.#disableScreenshot = true;
+      return Promise.resolve();
     });
     return this;
   }
 
-  public updateSelector<K extends keyof TSelector>(key: K, value: TSelector[K]) {
-    return this._addAction(async () => {
+  public updateSelector<K extends keyof TSelector>(key: K, value: TSelector[K]): this {
+    return this._addAction(() => {
       this._selectors[key] = value;
+      return Promise.resolve();
     });
   }
 
-  public async execute() {
+  public async execute(): Promise<void> {
     // On ajoute une action pour désactiver les screenshots à la fin
     this.disableScreenshot();
-    for await (const action of this.#actionsToExecute) {
+    for (const action of this.#actionsToExecute) {
       await action();
       if (!this.#disableScreenshot) {
         await this._expectContext.expectToHaveScreenshot();
@@ -61,7 +63,7 @@ export abstract class ConcreteBuilderPOM<TSelector = Record<string, string>> imp
     this._cleanActions();
   }
 
-  protected _cleanActions() {
+  protected _cleanActions(): void {
     this.#actionsToExecute.length = 0;
   }
 }

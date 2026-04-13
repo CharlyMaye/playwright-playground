@@ -4,7 +4,7 @@ import { FakeClass } from './FakeClass';
 const test = baseTest(FakeClass);
 
 // 1. Test de base avec fixture (fonction résolvant l'injection de dépendance)
-test('basic test with dependency injection', async ({ instance }) => {
+test('basic test with dependency injection', ({ instance }) => {
   expect(instance).toBeDefined();
   expect(instance).toBeInstanceOf(FakeClass);
 });
@@ -19,13 +19,13 @@ test(
       { type: 'documentation', description: 'See docs/testing.md' },
     ],
   },
-  async ({ instance }) => {
+  ({ instance }) => {
     expect(instance).toBeDefined();
   }
 );
 
 // 3. Test avec test.SKIP()
-test.skip('test that is skipped', async ({ instance }) => {
+test.skip('test that is skipped', () => {
   throw new Error('This should not run');
 });
 
@@ -35,7 +35,7 @@ test.skip(
   {
     tag: '@manual',
   },
-  async ({ instance }) => {
+  () => {
     throw new Error('This should not run either');
   }
 );
@@ -47,7 +47,7 @@ test.skip(
 
 // 6. Test avec test.DESCRIBE()
 test.describe('Group of related tests', () => {
-  test('first test in group', async ({ instance }) => {
+  test('first test in group', ({ instance }) => {
     expect(instance).toBeDefined();
   });
 
@@ -56,14 +56,14 @@ test.describe('Group of related tests', () => {
     {
       tag: '@fast',
     },
-    async ({ instance }) => {
+    ({ instance }) => {
       expect(instance).toBeDefined();
     }
   );
 
   // Nested describe
   test.describe('Nested group', () => {
-    test('nested test', async ({ instance }) => {
+    test('nested test', ({ instance }) => {
       expect(instance).toBeDefined();
     });
   });
@@ -72,7 +72,7 @@ test.describe('Group of related tests', () => {
 // 7. Démonstration que tous les types d'overloads fonctionnent
 test.describe('Overload demonstrations', () => {
   // Overload 1: (title, body)
-  test('simple overload', async ({ instance }) => {
+  test('simple overload', ({ instance }) => {
     expect(instance).toBeInstanceOf(FakeClass);
   });
 
@@ -83,7 +83,7 @@ test.describe('Overload demonstrations', () => {
       tag: '@complex',
       annotation: { type: 'performance', description: 'Check response time' },
     },
-    async ({ instance }) => {
+    ({ instance }) => {
       expect(instance).toBeInstanceOf(FakeClass);
     }
   );

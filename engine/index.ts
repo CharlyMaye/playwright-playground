@@ -12,7 +12,7 @@ export function register<TAbstract, TConcrete>(
   token: AbstractType<TAbstract> | Type<TAbstract>,
   useClass?: Type<TConcrete>
 ) {
-  return (INJECTOR as any).register(token, useClass);
+  return INJECTOR.register(token, useClass);
 }
 
 export function registerSingleton<TConcrete>(token: Type<TConcrete>): void;
@@ -24,7 +24,7 @@ export function registerSingleton<TAbstract, TConcrete>(
   token: AbstractType<TAbstract> | Type<TAbstract>,
   useClass?: Type<TConcrete>
 ) {
-  return (INJECTOR as any).registerSingleton(token, useClass);
+  return INJECTOR.registerSingleton(token, useClass);
 }
 
 export const resolve = INJECTOR.get.bind(INJECTOR);

@@ -69,14 +69,14 @@ function getCodeCoverageOptions(codeCoverageDir: string): CoverageReportOptions 
     outputDir: codeCoverageDir, // all code coverage reports will be created in this dir.
     reportPath: path.resolve(codeCoverageDir, v8RelativeFilePath), // code coverage html report filepath which shows up in the monocart report under global attachments.
     reports: _codeCoverageReports,
-    entryFilter: (entry: any) => {
+    entryFilter: (entry: { url: string }) => {
       // Exclude files that aren't excluded by sourceFilter because they
       // are not included in the sourcemap.See:
       // - https://github.com/cenfun/monocart-reporter/issues/60
       //
       // Configure this filter accordingly to your app, you might not
       // even need it if sourceFilter is enough.
-      const url = entry.url as string;
+      const url = entry.url;
       return (
         !url.includes('@vite') &&
         !url.includes('@fs') &&
