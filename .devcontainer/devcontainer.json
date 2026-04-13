@@ -36,7 +36,9 @@
           "source.fixAll.stylelint": "explicit"
         },
         "editor.suggest.snippetsPreventQuickSuggestions": false,
-        "editor.inlineSuggest.enabled": true
+        "editor.inlineSuggest.enabled": true,
+        "github.copilot.chat.tools.codebase.enabled": true,
+        "github.copilot.chat.tools.memory.enabled": true
       }
     }
   },
