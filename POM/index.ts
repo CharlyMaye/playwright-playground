@@ -1,1 +1,1 @@
-export * from './AngularMaterialPOM';
+export { AngularMaterialPOM } from './AngularMaterialPOM';

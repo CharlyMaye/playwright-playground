@@ -23,13 +23,12 @@ export abstract class ConcreteBuilderPOM<TSelector = Record<string, string>> imp
   }
 
   #actionsToExecute: (() => Promise<void>)[] = [];
-
   protected _addAction(action: () => Promise<void>) {
     this.#actionsToExecute.push(action);
     return this;
   }
 
-  public enableScreenshot() {
+  public enableScreenshot(): this {
     this._addAction(() => {
       this.#disableScreenshot = false;
       return Promise.resolve();
@@ -37,7 +36,7 @@ export abstract class ConcreteBuilderPOM<TSelector = Record<string, string>> imp
     return this;
   }
 
-  public disableScreenshot() {
+  public disableScreenshot(): this {
     this._addAction(() => {
       this.#disableScreenshot = true;
       return Promise.resolve();
@@ -45,14 +44,14 @@ export abstract class ConcreteBuilderPOM<TSelector = Record<string, string>> imp
     return this;
   }
 
-  public updateSelector<K extends keyof TSelector>(key: K, value: TSelector[K]) {
+  public updateSelector<K extends keyof TSelector>(key: K, value: TSelector[K]): this {
     return this._addAction(() => {
       this._selectors[key] = value;
       return Promise.resolve();
     });
   }
 
-  public async execute() {
+  public async execute(): Promise<void> {
     // On ajoute une action pour désactiver les screenshots à la fin
     this.disableScreenshot();
     for (const action of this.#actionsToExecute) {
@@ -64,7 +63,7 @@ export abstract class ConcreteBuilderPOM<TSelector = Record<string, string>> imp
     this._cleanActions();
   }
 
-  protected _cleanActions() {
+  protected _cleanActions(): void {
     this.#actionsToExecute.length = 0;
   }
 }

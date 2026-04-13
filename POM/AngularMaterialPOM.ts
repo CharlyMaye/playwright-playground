@@ -5,20 +5,20 @@ export class AngularMaterialPOM {
     protected testContext: TestContext,
     protected expectContext: ExpectContext
   ) {}
-  async goto() {
+  public async goto(): Promise<void> {
     await this.#gotoAutocompletePage('https://material.angular.dev/');
   }
 
   // vérification du style
-  public async testAutocompleteStyle() {
+  public async testAutocompleteStyle(): Promise<void> {
     await this.#gotoAutocompletePage('https://material.angular.dev/components/button/examples#button-overview');
   }
   // Vérification du comportement
-  public async testAutocompleteFilterBehavior() {
+  public async testAutocompleteFilterBehavior(): Promise<void> {
     await this.#gotoAutocompletePage('https://material.angular.dev/components/button/examples#button-overview');
   }
 
-  async #gotoAutocompletePage(url: string) {
+  async #gotoAutocompletePage(url: string): Promise<void> {
     console.warn(`Navigating to ${url}`);
     await this.testContext.page.goto(url, {
       waitUntil: 'load',

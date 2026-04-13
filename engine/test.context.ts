@@ -7,12 +7,15 @@ export abstract class TestContext {
   abstract get browserName(): string;
 }
 export class ConcreteTestContext extends TestContext {
-  #page: Page;
-  #request: APIRequestContext;
-  #browser: Browser;
-  #browserName: string;
+  #page!: Page;
+  #request!: APIRequestContext;
+  #browser!: Browser;
+  #browserName!: string;
 
   get page() {
+    if (!this.#page) {
+      throw new Error('Page is not initialized yet');
+    }
     return this.#page;
   }
   set page(value: Page) {
@@ -20,6 +23,9 @@ export class ConcreteTestContext extends TestContext {
   }
 
   get request() {
+    if (!this.#request) {
+      throw new Error('Request context is not initialized yet');
+    }
     return this.#request;
   }
   set request(value: APIRequestContext) {
@@ -27,6 +33,9 @@ export class ConcreteTestContext extends TestContext {
   }
 
   get browser() {
+    if (!this.#browser) {
+      throw new Error('Browser is not initialized yet');
+    }
     return this.#browser;
   }
   set browser(value: Browser) {
@@ -34,6 +43,9 @@ export class ConcreteTestContext extends TestContext {
   }
 
   get browserName() {
+    if (!this.#browserName) {
+      throw new Error('Browser name is not initialized yet');
+    }
     return this.#browserName;
   }
   set browserName(value: string) {

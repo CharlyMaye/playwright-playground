@@ -11,7 +11,7 @@ type PartialDescription = {
   };
 };
 
-function startupLog(config: FullConfig) {
+function startupLog(config: FullConfig): void {
   console.log(''); // just for the new line
   console.log('Starting playwright tests:');
   console.log(`- Playwright version: ${config.version}`);

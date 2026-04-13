@@ -27,7 +27,12 @@ type IngWorkerTestFixtures = {
 };
 
 //https://playwright.dev/docs/test-fixtures
-export function test<T>(token: AbstractType<T>) {
+export function test<T>(
+  token: AbstractType<T>
+): TestType<
+  PlaywrightTestArgs & PlaywrightTestOptions & IngTestFixture<T>,
+  PlaywrightWorkerArgs & PlaywrightWorkerOptions & IngWorkerTestFixtures
+> {
   const typedTest: TestType<
     PlaywrightTestArgs & PlaywrightTestOptions & IngTestFixture<T>,
     PlaywrightWorkerArgs & PlaywrightWorkerOptions & IngWorkerTestFixtures
