@@ -32,6 +32,8 @@ export const resolve = INJECTOR.get.bind(INJECTOR);
 registerSingleton(TestContext, ConcreteTestContext);
 registerSingleton(ExpectContext, ConcreteExpectContext);
 
+export { ConcreteDomAnalyzer, DomAnalyzer } from './dom-analyzer';
+export type { Capability, ElementModel, InferenceRule, InteractionModel, Scenario, ScenarioStep } from './dom-analyzer';
 export { expect, test } from './fixtures';
 export { Injector, InjectorMetadata } from './injector.decorator';
 export { ExpectContext, TestContext };
