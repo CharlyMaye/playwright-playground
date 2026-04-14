@@ -30,6 +30,8 @@ Construire un moteur d'exploration automatique d'interface au-dessus de Playwrig
 
 ### 1.1 Définir le type `ExplorationConfig`
 
+> ⚠️ **Contrainte DI** : le moteur DI résout les dépendances par nom de paramètre constructeur correspondant à une classe enregistrée. Un simple type/interface ne peut pas être injecté. Il faut donc créer une **classe** `ExplorationConfig` (abstraite + concrète `ConcreteExplorationConfig`) qui encapsule la config et expose les valeurs. L'alternative est une classe wrapper injectable avec un champ `config` interne.
+
 - [ ] Créer `explorer/ExplorationConfig.ts`
 - [ ] Définir les paramètres de **stratégie d'exploration** :
   - `strategy` : `'bfs' | 'dfs'` — parcours en largeur ou profondeur
@@ -56,7 +58,9 @@ Construire un moteur d'exploration automatique d'interface au-dessus de Playwrig
 
 ### 1.2 Validation de la configuration
 
-- [ ] Valider avec Zod (déjà installé dans le projet) que la config fournie est cohérente
+> ⚠️ **Zod v4** : le projet utilise `zod@^4.1.9`. L'API Zod v4 diffère de la v3 — l'import se fait via `import { z } from 'zod/v4'` (pas `'zod'`). Vérifier la doc Zod v4 pour le schéma.
+
+- [ ] Valider avec Zod v4 que la config fournie est cohérente
 - [ ] Lever des erreurs explicites si `maxDepth` < 1, `timeout` < 1000, etc.
 
 ### 1.3 Tests unitaires
@@ -188,7 +192,12 @@ Construire un moteur d'exploration automatique d'interface au-dessus de Playwrig
   - `extract(): Promise<ElementFact[]>`
 - [ ] Classe concrète `ConcreteDOMExtractor` :
   - Reçoit `ExplorationScope` et `ExplorationConfig` via DI
-  - Parcourt `scope.root.locator('*')` pour les éléments du scope
+  - ⚠️ **Performance** : `scope.root.locator('*')` cible **tous** les descendants (y compris non-interactifs). Sur une page réelle, cela peut générer des centaines/milliers d'éléments. Préférer un sélecteur ciblé :
+    ```ts
+    const INTERACTIVE_SELECTOR =
+      'a, button, input, select, textarea, [role], [tabindex], [contenteditable], details, summary, [aria-expanded], [aria-controls], [aria-haspopup]';
+    scope.root.locator(INTERACTIVE_SELECTOR);
+    ```
   - Si `boundary === 'overflow'`, parcourt aussi les `overflowSelectors`
 
 ### 4.2 Extraction des propriétés par élément
@@ -430,7 +439,7 @@ Construire un moteur d'exploration automatique d'interface au-dessus de Playwrig
 #### Analyse
 
 - [ ] `getCycles(): Transition[][]` — boucles détectées
-- [ ] `getUnexploredActions(stateId: string, allCandidates: CandidateAction[]): CandidateAction[]` — actions pas encore tentées depuis cet état
+- [ ] ~~`getUnexploredActions()`~~ — **déplacé vers `Explorer` (phase 9)**. Le graphe ne doit stocker que des états/transitions. La logique de filtrage des actions non explorées relève de l'orchestrateur, pas de la structure de données (SRP).
 - [ ] `getDepth(): number` — profondeur max du graphe
 - [ ] `getStats(): { states: number; transitions: number; maxDepth: number; cycles: number; deadEnds: number }`
 
@@ -485,7 +494,7 @@ Construire un moteur d'exploration automatique d'interface au-dessus de Playwrig
   5. Tant que la file n'est pas vide ET limites non atteintes :
      a. Dépiler/défiler un état
      b. RulesEngine.evaluate(état.facts) → actions candidates
-     c. Filtrer : ExplorationGraph.getUnexploredActions(état, candidates)
+     c. Filtrer les actions déjà tentées depuis cet état (via les transitions existantes du graphe)
      d. Pour chaque action (dans l'ordre de priorité) :
         i.   ActionExecutor.execute(action) → résultat
         ii.  Si succès : DOMExtractor.extract() → nouveaux faits
@@ -547,8 +556,8 @@ Construire un moteur d'exploration automatique d'interface au-dessus de Playwrig
 - [ ] Enregistrements singleton :
   - `registerSingleton(ExplorationGraph, ConcreteExplorationGraph)`
   - `registerSingleton(StateManager, ConcreteStateManager)`
-  - `registerSingleton(RulesEngine, ConcreteRulesEngine)`
-- [ ] `ExplorationConfig` : enregistrer comme singleton avec la config par défaut, ou fournir via fixture
+  - `registerSingleton(RulesEngine, ConcreteRulesEngine)` — ⚠️ **Vérifier** : si les règles chargées doivent varier par exploration, `RulesEngine` devrait être **transient** et non singleton. Singleton uniquement si un seul jeu de règles est utilisé pour toute la durée de vie du conteneur.
+- [ ] `ExplorationConfig` : doit être une **classe injectable** (pas un simple type). Enregistrer `registerSingleton(ExplorationConfig, ConcreteExplorationConfig)`. La config par défaut est fournie dans le constructeur ; le merge partiel se fait via une fixture ou un setter.
 
 ### 10.2 Décorateurs `@Injector`
 
@@ -569,9 +578,11 @@ Construire un moteur d'exploration automatique d'interface au-dessus de Playwrig
 
 - [ ] Étendre le système de fixtures dans `engine/fixtures/fixture.ts`
 - [ ] Ajouter une fixture `explorer` :
+  > ⚠️ Le projet utilise `test<T>(token)` qui résout via le DI engine (voir `engine/fixtures/fixture.ts`). Le snippet ci-dessous doit s'adapter au pattern existant avec `injector.get()`, pas un appel direct à `resolve()`.
   ```ts
-  explorer: async ({ page }, use) => {
-    const explorer = resolve(Explorer);
+  explorer: async ({ instance, testContext }, use) => {
+    // Résoudre via le DI existant, pas via resolve() direct
+    const explorer = injector.get(Explorer);
     await use(explorer);
   };
   ```
@@ -819,7 +830,7 @@ La page `https://www.iana.org/help/example-domains` a la structure suivante :
 - [ ] **Config** :
   ```ts
   {
-    rootSelector: '#main_right',  // sélecteur à confirmer lors de l'implémentation
+    rootSelector: '#main_right',  // ⚠️ SÉLECTEUR NON VÉRIFIÉ — inspecter le DOM réel de la page IANA avant implémentation
     boundary: 'strict',
     strategy: 'bfs',
     maxDepth: 1,
@@ -866,7 +877,7 @@ La page `https://www.iana.org/help/example-domains` a la structure suivante :
 - [ ] **Config** :
   ```ts
   {
-    rootSelector: '#sidebar_left',  // sélecteur à confirmer
+    rootSelector: '#sidebar_left',  // ⚠️ SÉLECTEUR NON VÉRIFIÉ — inspecter le DOM réel de la page IANA avant implémentation
     boundary: 'strict',
     strategy: 'bfs',
     maxDepth: 1,
