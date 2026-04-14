@@ -687,7 +687,7 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1776173277686,
+        "timestamp": 1776177925489,
         "scopeSelector": "body"
       }
     ],
@@ -702,7 +702,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 492,
+        "duration": 552,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -720,7 +720,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 500,
+        "duration": 560,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -738,7 +738,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 511,
+        "duration": 532,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -756,7 +756,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 495,
+        "duration": 520,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -774,31 +774,13 @@
           "priority": 5
         },
         "success": true,
-        "duration": 503,
+        "duration": 512,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
           "modified": []
         },
         "navigationUrl": "https://www.iana.org/about"
-      },
-      {
-        "id": "6f3ccf49dbfa9944->nav:click:a[5]",
-        "from": "6f3ccf49dbfa9944",
-        "to": "__external_navigation__",
-        "action": {
-          "type": "click",
-          "targetUid": "a[5]",
-          "priority": 5
-        },
-        "success": true,
-        "duration": 648,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "navigationUrl": "https://datatracker.ietf.org/doc/html/rfc2606"
       },
       {
         "id": "6f3ccf49dbfa9944->nav:click:a[6]",
@@ -810,13 +792,13 @@
           "priority": 5
         },
         "success": true,
-        "duration": 549,
+        "duration": 352,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
           "modified": []
         },
-        "navigationUrl": "https://datatracker.ietf.org/doc/html/rfc6761"
+        "navigationUrl": "https://datatracker.ietf.org/doc/html/rfc2606"
       },
       {
         "id": "6f3ccf49dbfa9944->nav:click:a[7]",
@@ -828,7 +810,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 502,
+        "duration": 520,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -846,42 +828,24 @@
           "priority": 5
         },
         "success": true,
-        "duration": 405,
+        "duration": 431,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
           "modified": []
         },
         "navigationUrl": "https://www.iana.org/domains"
-      },
-      {
-        "id": "6f3ccf49dbfa9944->nav:click:a[9]",
-        "from": "6f3ccf49dbfa9944",
-        "to": "__external_navigation__",
-        "action": {
-          "type": "click",
-          "targetUid": "a[9]",
-          "priority": 5
-        },
-        "success": true,
-        "duration": 354,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "navigationUrl": "https://www.iana.org/domains/root"
       }
     ]
   },
   "summary": {
     "statesDiscovered": 1,
-    "transitions": 10,
+    "transitions": 8,
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 9504,
-    "failedActions": 0
+    "totalDuration": 9274,
+    "failedActions": 2
   },
   "actions": [
     {
@@ -1002,19 +966,6 @@
       ]
     },
     {
-      "name": "click_a[5]",
-      "steps": [
-        {
-          "type": "click",
-          "targetUid": "a[5]",
-          "priority": 5
-        }
-      ],
-      "selectors": [
-        "a[5]"
-      ]
-    },
-    {
       "name": "click_a[6]",
       "steps": [
         {
@@ -1052,22 +1003,9 @@
       "selectors": [
         "a[8]"
       ]
-    },
-    {
-      "name": "click_a[9]",
-      "steps": [
-        {
-          "type": "click",
-          "targetUid": "a[9]",
-          "priority": 5
-        }
-      ],
-      "selectors": [
-        "a[9]"
-      ]
     }
   ],
-  "mermaid": "stateDiagram-v2\n  state \"6f3ccf49 (d=0)\" as s_6f3ccf49\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click",
-  "dot": "digraph {\n  \"6f3ccf49dbfa9944\" [label=\"6f3ccf49\\nd=0 f=28\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n}",
-  "generatedAt": "2026-04-14T13:28:06.559Z"
+  "mermaid": "stateDiagram-v2\n  state \"6f3ccf49 (d=0)\" as s_6f3ccf49\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click",
+  "dot": "digraph {\n  \"6f3ccf49dbfa9944\" [label=\"6f3ccf49\\nd=0 f=28\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n}",
+  "generatedAt": "2026-04-14T14:45:33.562Z"
 }

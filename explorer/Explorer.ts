@@ -22,6 +22,7 @@ export type ExplorationSummary = {
 export abstract class Explorer {
   abstract explore(): Promise<ExplorationGraph>;
   abstract getSummary(): ExplorationSummary;
+  abstract get graph(): ExplorationGraph;
 }
 
 @Injector({
@@ -65,6 +66,10 @@ export class ConcreteExplorer extends Explorer {
     this.#stateManager = stateManager;
     this.#graph = explorationGraph;
     this.#config = explorationConfig;
+  }
+
+  get graph(): ExplorationGraph {
+    return this.#graph;
   }
 
   async explore(): Promise<ExplorationGraph> {

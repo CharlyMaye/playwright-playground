@@ -1,16 +1,19 @@
 import { test as base, expect } from '@playwright/test';
 import { resolve } from '../engine';
 import { collectV8CodeCoverageAsync, CollectV8CodeCoverageOptions } from '../engine/fixtures/v8-code-coverage';
+import { INJECTOR } from '../engine/injector';
 import { ConcreteTestContext, TestContext } from '../engine/test.context';
-import { ConcreteExplorationConfig, PartialExplorationConfig } from './ExplorationConfig';
+import { ConcreteExplorationConfig, ExplorationConfig, PartialExplorationConfig } from './ExplorationConfig';
 import { ExplorationGraph } from './ExplorationGraph';
 import { Explorer } from './Explorer';
+import { RulesEngine } from './RulesEngine';
 import { ConcreteScenarioExporter, ScenarioExporter } from './ScenarioExporter';
 
 type ExplorerTestFixture = {
   explorationConfig: PartialExplorationConfig;
   explorer: Explorer;
   explorationGraph: ExplorationGraph;
+  rulesEngine: RulesEngine;
   scenarioExporter: ScenarioExporter;
   testContext: TestContext;
   forEachTest: void;
@@ -76,19 +79,24 @@ export const explorerTest = base.extend<ExplorerTestFixture, ExplorerWorkerFixtu
   },
 
   explorer: async ({ explorationConfig }, use) => {
-    // Register a fresh config singleton before resolving the explorer tree
-    // We need to re-create the config with the test-specific overrides
-    const config = new ConcreteExplorationConfig(explorationConfig);
-    // Temporarily stash the config so DI can pick it up
-    (globalThis as Record<string, unknown>).__explorationConfigOverride = config;
-    const explorer = resolve(Explorer);
-    await use(explorer);
-    (globalThis as Record<string, unknown>).__explorationConfigOverride = undefined;
+    INJECTOR.beginScope();
+    try {
+      const config = new ConcreteExplorationConfig(explorationConfig);
+      INJECTOR.provideScopedInstance(ExplorationConfig, config);
+      const explorer = resolve(Explorer);
+      await use(explorer);
+    } finally {
+      INJECTOR.endScope();
+    }
   },
 
-  explorationGraph: async ({}, use) => {
-    const graph = resolve(ExplorationGraph);
-    await use(graph);
+  explorationGraph: async ({ explorer }, use) => {
+    await use(explorer.graph);
+  },
+
+  rulesEngine: async ({}, use) => {
+    const rulesEngine = resolve(RulesEngine);
+    await use(rulesEngine);
   },
 
   scenarioExporter: async ({ explorationGraph }, use) => {
@@ -124,3 +132,18 @@ export const explorerTest = base.extend<ExplorerTestFixture, ExplorerWorkerFixtu
 });
 
 export { expect };
+
+export async function withExplorationScope<T>(
+  config: PartialExplorationConfig,
+  fn: (explorer: Explorer) => Promise<T>
+): Promise<T> {
+  INJECTOR.beginScope();
+  try {
+    const c = new ConcreteExplorationConfig(config);
+    INJECTOR.provideScopedInstance(ExplorationConfig, c);
+    const explorer = resolve(Explorer);
+    return await fn(explorer);
+  } finally {
+    INJECTOR.endScope();
+  }
+}

@@ -29,6 +29,18 @@ export function registerSingleton<TAbstract, TConcrete>(
 
 export const resolve = INJECTOR.get.bind(INJECTOR);
 
+export function registerScoped<TConcrete>(token: Type<TConcrete>): void;
+export function registerScoped<TAbstract, TConcrete>(
+  token: AbstractType<TAbstract> | Type<TAbstract>,
+  useClass?: Type<TConcrete>
+): void;
+export function registerScoped<TAbstract, TConcrete>(
+  token: AbstractType<TAbstract> | Type<TAbstract>,
+  useClass?: Type<TConcrete>
+) {
+  return INJECTOR.registerScoped(token, useClass);
+}
+
 registerSingleton(TestContext, ConcreteTestContext);
 registerSingleton(ExpectContext, ConcreteExpectContext);
 

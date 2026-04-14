@@ -494,7 +494,7 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1776173301750,
+        "timestamp": 1776177949927,
         "scopeSelector": "footer"
       }
     ],
@@ -509,7 +509,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 480,
+        "duration": 499,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -545,7 +545,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 488,
+        "duration": 506,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -563,85 +563,13 @@
           "priority": 5
         },
         "success": true,
-        "duration": 492,
+        "duration": 516,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
           "modified": []
         },
         "navigationUrl": "https://www.iana.org/domains/arpa"
-      },
-      {
-        "id": "eb3084a787e3b3f7->nav:click:a[4]",
-        "from": "eb3084a787e3b3f7",
-        "to": "__external_navigation__",
-        "action": {
-          "type": "click",
-          "targetUid": "a[4]",
-          "priority": 5
-        },
-        "success": true,
-        "duration": 509,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "navigationUrl": "https://www.iana.org/domains/idn-tables"
-      },
-      {
-        "id": "eb3084a787e3b3f7->nav:click:a[5]",
-        "from": "eb3084a787e3b3f7",
-        "to": "__external_navigation__",
-        "action": {
-          "type": "click",
-          "targetUid": "a[5]",
-          "priority": 5
-        },
-        "success": true,
-        "duration": 499,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "navigationUrl": "https://www.iana.org/numbers"
-      },
-      {
-        "id": "eb3084a787e3b3f7->nav:click:a[6]",
-        "from": "eb3084a787e3b3f7",
-        "to": "__external_navigation__",
-        "action": {
-          "type": "click",
-          "targetUid": "a[6]",
-          "priority": 5
-        },
-        "success": true,
-        "duration": 497,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "navigationUrl": "https://www.iana.org/abuse"
-      },
-      {
-        "id": "eb3084a787e3b3f7->nav:click:a[7]",
-        "from": "eb3084a787e3b3f7",
-        "to": "__external_navigation__",
-        "action": {
-          "type": "click",
-          "targetUid": "a[7]",
-          "priority": 5
-        },
-        "success": true,
-        "duration": 504,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "navigationUrl": "https://www.iana.org/protocols"
       },
       {
         "id": "eb3084a787e3b3f7->nav:click:a[8]",
@@ -653,13 +581,13 @@
           "priority": 5
         },
         "success": true,
-        "duration": 413,
+        "duration": 352,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
           "modified": []
         },
-        "navigationUrl": "https://www.iana.org/protocols"
+        "navigationUrl": "https://www.iana.org/domains/idn-tables"
       },
       {
         "id": "eb3084a787e3b3f7->nav:click:a[9]",
@@ -671,7 +599,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 511,
+        "duration": 519,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -683,12 +611,12 @@
   },
   "summary": {
     "statesDiscovered": 1,
-    "transitions": 10,
+    "transitions": 6,
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 9434,
-    "failedActions": 0
+    "totalDuration": 7281,
+    "failedActions": 4
   },
   "actions": [
     {
@@ -796,58 +724,6 @@
       ]
     },
     {
-      "name": "click_a[4]",
-      "steps": [
-        {
-          "type": "click",
-          "targetUid": "a[4]",
-          "priority": 5
-        }
-      ],
-      "selectors": [
-        "a[4]"
-      ]
-    },
-    {
-      "name": "click_a[5]",
-      "steps": [
-        {
-          "type": "click",
-          "targetUid": "a[5]",
-          "priority": 5
-        }
-      ],
-      "selectors": [
-        "a[5]"
-      ]
-    },
-    {
-      "name": "click_a[6]",
-      "steps": [
-        {
-          "type": "click",
-          "targetUid": "a[6]",
-          "priority": 5
-        }
-      ],
-      "selectors": [
-        "a[6]"
-      ]
-    },
-    {
-      "name": "click_a[7]",
-      "steps": [
-        {
-          "type": "click",
-          "targetUid": "a[7]",
-          "priority": 5
-        }
-      ],
-      "selectors": [
-        "a[7]"
-      ]
-    },
-    {
       "name": "click_a[8]",
       "steps": [
         {
@@ -874,7 +750,7 @@
       ]
     }
   ],
-  "mermaid": "stateDiagram-v2\n  state \"eb3084a7 (d=0)\" as s_eb3084a7\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click",
-  "dot": "digraph {\n  \"eb3084a787e3b3f7\" [label=\"eb3084a7\\nd=0 f=20\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n}",
-  "generatedAt": "2026-04-14T13:28:30.724Z"
+  "mermaid": "stateDiagram-v2\n  state \"eb3084a7 (d=0)\" as s_eb3084a7\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click",
+  "dot": "digraph {\n  \"eb3084a787e3b3f7\" [label=\"eb3084a7\\nd=0 f=20\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n}",
+  "generatedAt": "2026-04-14T14:45:56.531Z"
 }
