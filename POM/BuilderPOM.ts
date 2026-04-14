@@ -1,7 +1,9 @@
 import { Page } from '@playwright/test';
 import { ExpectContext, TestContext } from '../engine';
 import type { ElementModel } from '../engine/dom-analyzer/interaction-model';
-import { matchesTarget, PomRule } from './pom-rule';
+import type { Action } from '../engine/execution/action';
+import { matchesElement } from '../engine/execution/action';
+import { getExecutionRules } from '../engine/execution/execution-rule-registry';
 
 /**
  * BuilderPOM — public contract.
@@ -11,9 +13,10 @@ export abstract class BuilderPOM<TSelector = Record<string, string>> {
   public abstract disableScreenshot(): this;
   public abstract updateSelector<K extends keyof TSelector>(key: K, value: TSelector[K]): this;
   public abstract loadModel(elements: ElementModel[]): this;
-  public abstract addRule(rule: PomRule): this;
+  public abstract addRule(rule: Action): this;
   public abstract setScope(selector: string): this;
   public abstract buildRules(): this;
+  public abstract buildScenarios(): this;
   public abstract execute(): Promise<void>;
 }
 
@@ -91,7 +94,7 @@ export abstract class ConcreteBuilderPOM<TSelector = Record<string, string>> ext
  */
 export abstract class RuleEnginePOM<TSelector = Record<string, string>> extends ConcreteBuilderPOM<TSelector> {
   #model: ElementModel[] = [];
-  #rules: PomRule[] = [];
+  #rules: Action[] = [];
   #scope: string | undefined;
 
   public loadModel(elements: ElementModel[]): this {
@@ -99,7 +102,7 @@ export abstract class RuleEnginePOM<TSelector = Record<string, string>> extends 
     return this;
   }
 
-  public addRule(rule: PomRule): this {
+  public addRule(rule: Action): this {
     this.#rules.push(rule);
     return this;
   }
@@ -123,7 +126,7 @@ export abstract class RuleEnginePOM<TSelector = Record<string, string>> extends 
 
     for (const rule of sorted) {
       for (const el of this.#model) {
-        if (!matchesTarget(el, rule.target)) continue;
+        if (!matchesElement(el, rule.target)) continue;
         if (rule.when && !rule.when(el)) continue;
 
         const dedupeKey = `${el.key}::${rule.action}`;
@@ -163,8 +166,36 @@ export abstract class RuleEnginePOM<TSelector = Record<string, string>> extends 
     }
 
     this.#rules.length = 0;
-    this.#model.length = 0;
     this.#scope = undefined;
+    // #model is preserved so buildScenarios() can iterate multiple scenarios
+    return this;
+  }
+
+  /**
+   * buildScenarios() — reads scenarios from the loaded ElementModel[],
+   * applies EXECUTION_RULES (same pattern as INFERENCE_RULES) to produce PomRules,
+   * then calls buildRules() per scenario so each gets its own screenshot.
+   * No rules are hardcoded here — all logic lives in execution-rules.ts.
+   */
+  public buildScenarios(): this {
+    const snapshot = [...this.#model];
+
+    for (const el of snapshot) {
+      for (const scenario of el.interactionModel.scenarios) {
+        // First matching ExecutionRule wins — same pattern as INFERENCE_RULES
+        for (const execRule of getExecutionRules()) {
+          if (execRule.match(scenario, el)) {
+            const actions = execRule.produce(scenario, el);
+            actions.forEach((r) => this.addRule(r));
+            break;
+          }
+        }
+        // Enqueue this scenario's actions into the queue + screenshot auto
+        this.buildRules();
+      }
+    }
+
+    this.#model.length = 0;
     return this;
   }
 }

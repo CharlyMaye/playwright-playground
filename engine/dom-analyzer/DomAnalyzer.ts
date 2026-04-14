@@ -1,6 +1,6 @@
 import { Injector } from '../injector.decorator';
 import { TestContext } from '../test.context';
-import { INFERENCE_RULES, buildKey, buildSelector } from './inference-rules';
+import { getInferenceHelpers, getInferenceRules } from './inference-rule-registry';
 import type { ElementModel } from './interaction-model';
 
 export abstract class DomAnalyzer {
@@ -14,20 +14,24 @@ export class ConcreteDomAnalyzer extends DomAnalyzer {
   }
 
   async analyze(scope?: string): Promise<ElementModel[]> {
-    const serializedRules = INFERENCE_RULES.map((rule) => ({
+    const rules = getInferenceRules();
+    const helpers = getInferenceHelpers();
+
+    const serializedRules = rules.map((rule) => ({
+      name: rule.name,
       match: rule.match.toString(),
       produce: rule.produce.toString(),
     }));
 
     // Serialize helpers so they are available inside the browser context
     const serializedHelpers = {
-      buildKey: buildKey.toString(),
-      buildSelector: buildSelector.toString(),
+      buildKey: helpers.buildKey.toString(),
+      buildSelector: helpers.buildSelector.toString(),
     };
 
     const elements = await this.testContext.page.evaluate(
       ({ rules, scopeSelector, helpers }) => {
-        type SerializedRule = { match: string; produce: string };
+        type SerializedRule = { name: string; match: string; produce: string };
 
         // Reconstruct helpers in the browser context
         // eslint-disable-next-line @typescript-eslint/no-implied-eval
@@ -36,7 +40,10 @@ export class ConcreteDomAnalyzer extends DomAnalyzer {
           index: number
         ) => string;
         // eslint-disable-next-line @typescript-eslint/no-implied-eval
-        const buildSelectorFn = new Function('el', `return (${helpers.buildSelector})(el)`) as (el: Element) => string;
+        const buildSelectorFn = new Function('el', `return (${helpers.buildSelector})(el)`) as (el: Element) => {
+          selector: string;
+          strategy: string;
+        };
 
         const container: Element = scopeSelector
           ? (document.querySelector(scopeSelector) ?? document.body)
@@ -67,7 +74,9 @@ export class ConcreteDomAnalyzer extends DomAnalyzer {
 
             if (!seenKeys.has(key)) {
               seenKeys.add(key);
-              results.push(model);
+              // Inject traceability fields: matchedRule and selectorStrategy come from the model
+              // (rules set them via buildSelector which returns { selector, strategy })
+              results.push({ ...model, matchedRule: raw.name });
             }
             break;
           }
