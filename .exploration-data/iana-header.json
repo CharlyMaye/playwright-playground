@@ -34,7 +34,8 @@
               "height": 22
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#logo > a"
           },
           {
             "uid": "a[1]",
@@ -58,7 +59,8 @@
               "height": 30
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#header > div:nth-of-type(2) > ul > li:nth-of-type(1) > a"
           },
           {
             "uid": "a[2]",
@@ -82,7 +84,8 @@
               "height": 30
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#header > div:nth-of-type(2) > ul > li:nth-of-type(2) > a"
           },
           {
             "uid": "a[3]",
@@ -106,7 +109,8 @@
               "height": 30
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#header > div:nth-of-type(2) > ul > li:nth-of-type(3) > a"
           },
           {
             "uid": "a[4]",
@@ -130,11 +134,12 @@
               "height": 30
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#header > div:nth-of-type(2) > ul > li:nth-of-type(4) > a"
           }
         ],
         "depth": 0,
-        "timestamp": 1776177942340,
+        "timestamp": 1776179248530,
         "scopeSelector": "header"
       }
     ],
@@ -149,7 +154,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 479,
+        "duration": 492,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -167,7 +172,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 505,
+        "duration": 501,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -185,7 +190,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 517,
+        "duration": 519,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -203,7 +208,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 510,
+        "duration": 521,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -221,7 +226,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 526,
+        "duration": 511,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -237,7 +242,7 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 4741,
+    "totalDuration": 4709,
     "failedActions": 0
   },
   "actions": [
@@ -336,5 +341,5 @@
   ],
   "mermaid": "stateDiagram-v2\n  state \"60ec5a92 (d=0)\" as s_60ec5a92\n  s_60ec5a92 --> s___extern : click\n  s_60ec5a92 --> s___extern : click\n  s_60ec5a92 --> s___extern : click\n  s_60ec5a92 --> s___extern : click\n  s_60ec5a92 --> s___extern : click",
   "dot": "digraph {\n  \"60ec5a925fbc9f2d\" [label=\"60ec5a92\\nd=0 f=5\"];\n  \"60ec5a925fbc9f2d\" -> \"__external_navigation__\" [label=\"click\"];\n  \"60ec5a925fbc9f2d\" -> \"__external_navigation__\" [label=\"click\"];\n  \"60ec5a925fbc9f2d\" -> \"__external_navigation__\" [label=\"click\"];\n  \"60ec5a925fbc9f2d\" -> \"__external_navigation__\" [label=\"click\"];\n  \"60ec5a925fbc9f2d\" -> \"__external_navigation__\" [label=\"click\"];\n}",
-  "generatedAt": "2026-04-14T14:45:46.902Z"
+  "generatedAt": "2026-04-14T15:07:32.989Z"
 }

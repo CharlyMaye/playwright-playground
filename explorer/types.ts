@@ -29,6 +29,7 @@ export type ElementFact = {
   boundingBox: BoundingBox | null;
   isInScope: boolean;
   parentUid: string | null;
+  cssSelector: string;
 };
 
 // ============================================================

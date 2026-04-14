@@ -22,6 +22,7 @@ function makeFact(overrides: Partial<ElementFact> = {}): ElementFact {
     boundingBox: null,
     isInScope: true,
     parentUid: null,
+    cssSelector: 'body > button',
     ...overrides,
   };
 }

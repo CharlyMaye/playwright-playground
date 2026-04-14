@@ -80,6 +80,30 @@ export class ConcreteDOMExtractor extends DOMExtractor {
 
       const props = await el.evaluate((node) => {
         const htmlEl = node as HTMLElement;
+
+        const computeCssSelector = (target: HTMLElement): string => {
+          const parts: string[] = [];
+          let current: HTMLElement | null = target;
+          while (current && current !== document.documentElement) {
+            let selector = current.tagName.toLowerCase();
+            if (current.id) {
+              parts.unshift(`#${CSS.escape(current.id)}`);
+              break;
+            }
+            const parent: HTMLElement | null = current.parentElement;
+            if (parent) {
+              const siblings = Array.from(parent.children).filter((c: Element) => c.tagName === current!.tagName);
+              if (siblings.length > 1) {
+                const idx = siblings.indexOf(current) + 1;
+                selector += `:nth-of-type(${idx})`;
+              }
+            }
+            parts.unshift(selector);
+            current = parent;
+          }
+          return parts.join(' > ');
+        };
+
         return {
           tag: htmlEl.tagName.toLowerCase(),
           role: htmlEl.getAttribute('role'),
@@ -100,6 +124,7 @@ export class ConcreteDOMExtractor extends DOMExtractor {
             null,
           disabled: (htmlEl as HTMLButtonElement).disabled ?? false,
           focusable: htmlEl.tabIndex >= 0,
+          cssSelector: computeCssSelector(htmlEl),
         };
       });
 
@@ -124,6 +149,7 @@ export class ConcreteDOMExtractor extends DOMExtractor {
         boundingBox,
         isInScope,
         parentUid: null,
+        cssSelector: props.cssSelector,
       };
     } catch {
       return null;

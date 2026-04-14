@@ -1,6 +1,7 @@
 import { register } from '../engine';
 import { registerExplorerDependencies } from '../explorer';
 import { AngularMaterialPOM } from '../POM';
+import { ConcreteExplorationPOM, ExplorationPOM } from '../POM/ExplorationPOM';
 
 let isAlreadySetup = false;
 export function setup() {
@@ -9,6 +10,7 @@ export function setup() {
   }
   registerExplorerDependencies();
   register(AngularMaterialPOM);
+  register(ExplorationPOM, ConcreteExplorationPOM);
 
   isAlreadySetup = true;
 }

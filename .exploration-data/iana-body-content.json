@@ -34,7 +34,8 @@
               "height": 22
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#body > article > main > div > p:nth-of-type(1) > a:nth-of-type(1)"
           },
           {
             "uid": "a[1]",
@@ -58,7 +59,8 @@
               "height": 22
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#body > article > main > div > p:nth-of-type(1) > a:nth-of-type(2)"
           },
           {
             "uid": "a[2]",
@@ -82,11 +84,12 @@
               "height": 22
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#body > article > main > div > ul > li > a"
           }
         ],
         "depth": 0,
-        "timestamp": 1776177959905,
+        "timestamp": 1776179268024,
         "scopeSelector": "#body"
       }
     ],
@@ -101,7 +104,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 589,
+        "duration": 593,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -119,7 +122,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 611,
+        "duration": 569,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -137,7 +140,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 593,
+        "duration": 500,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -153,7 +156,7 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 3548,
+    "totalDuration": 3167,
     "failedActions": 0
   },
   "actions": [
@@ -216,5 +219,5 @@
   ],
   "mermaid": "stateDiagram-v2\n  state \"6d860f3c (d=0)\" as s_6d860f3c\n  s_6d860f3c --> s___extern : click\n  s_6d860f3c --> s___extern : click\n  s_6d860f3c --> s___extern : click",
   "dot": "digraph {\n  \"6d860f3cb18b884a\" [label=\"6d860f3c\\nd=0 f=3\"];\n  \"6d860f3cb18b884a\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6d860f3cb18b884a\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6d860f3cb18b884a\" -> \"__external_navigation__\" [label=\"click\"];\n}",
-  "generatedAt": "2026-04-14T14:46:03.309Z"
+  "generatedAt": "2026-04-14T15:07:51.063Z"
 }

@@ -7,7 +7,6 @@
     "test": "npx playwright test",
     "test:ui": "npx playwright test --ui",
     "explore": "npx playwright test --project=exploration",
-    "test:validate": "npx playwright test --project=chromium tests/iana-validation.spec.ts",
     "result": "npx playwright show-report ./test-results/html-report --host 0.0.0.0",
     "cleanup:node": "find . -type d -name 'node_modules' -exec rm -rf {} \\;",
     "format": "prettier --loglevel warn --write \"./**/*.{html,ts,js,tsx,jsx,json,scss,css,vue,svelte}\"",

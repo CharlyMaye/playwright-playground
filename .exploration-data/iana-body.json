@@ -35,7 +35,8 @@
               "height": 22
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#logo > a"
           },
           {
             "uid": "a[1]",
@@ -59,7 +60,8 @@
               "height": 30
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#header > div:nth-of-type(2) > ul > li:nth-of-type(1) > a"
           },
           {
             "uid": "a[2]",
@@ -83,7 +85,8 @@
               "height": 30
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#header > div:nth-of-type(2) > ul > li:nth-of-type(2) > a"
           },
           {
             "uid": "a[3]",
@@ -107,7 +110,8 @@
               "height": 30
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#header > div:nth-of-type(2) > ul > li:nth-of-type(3) > a"
           },
           {
             "uid": "a[4]",
@@ -131,7 +135,8 @@
               "height": 30
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#header > div:nth-of-type(2) > ul > li:nth-of-type(4) > a"
           },
           {
             "uid": "a[5]",
@@ -155,7 +160,8 @@
               "height": 22
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#body > article > main > div > p:nth-of-type(1) > a:nth-of-type(1)"
           },
           {
             "uid": "a[6]",
@@ -179,7 +185,8 @@
               "height": 22
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#body > article > main > div > p:nth-of-type(1) > a:nth-of-type(2)"
           },
           {
             "uid": "a[7]",
@@ -203,7 +210,8 @@
               "height": 22
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#body > article > main > div > ul > li > a"
           },
           {
             "uid": "a[8]",
@@ -227,7 +235,8 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(1) > a"
           },
           {
             "uid": "a[9]",
@@ -251,7 +260,8 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(1) > a"
           },
           {
             "uid": "a[10]",
@@ -275,7 +285,8 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(2) > a"
           },
           {
             "uid": "a[11]",
@@ -299,7 +310,8 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(3) > a"
           },
           {
             "uid": "a[12]",
@@ -323,7 +335,8 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(4) > a"
           },
           {
             "uid": "a[13]",
@@ -347,7 +360,8 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#footer > table > tbody > tr:nth-of-type(2) > td:nth-of-type(1) > a"
           },
           {
             "uid": "a[14]",
@@ -371,7 +385,8 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#footer > table > tbody > tr:nth-of-type(2) > td:nth-of-type(2) > ul > li > a"
           },
           {
             "uid": "a[15]",
@@ -395,7 +410,8 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#footer > table > tbody > tr:nth-of-type(3) > td:nth-of-type(1) > a"
           },
           {
             "uid": "a[16]",
@@ -419,7 +435,8 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#footer > table > tbody > tr:nth-of-type(3) > td:nth-of-type(2) > ul > li:nth-of-type(1) > a"
           },
           {
             "uid": "a[17]",
@@ -443,7 +460,8 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#footer > table > tbody > tr:nth-of-type(3) > td:nth-of-type(2) > ul > li:nth-of-type(2) > a"
           },
           {
             "uid": "a[18]",
@@ -467,7 +485,8 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(1) > a"
           },
           {
             "uid": "a[19]",
@@ -491,7 +510,8 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > ul > li:nth-of-type(1) > a"
           },
           {
             "uid": "a[20]",
@@ -515,7 +535,8 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > ul > li:nth-of-type(2) > a"
           },
           {
             "uid": "a[21]",
@@ -539,7 +560,8 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > ul > li:nth-of-type(3) > a"
           },
           {
             "uid": "a[22]",
@@ -563,7 +585,8 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > ul > li:nth-of-type(4) > a"
           },
           {
             "uid": "a[23]",
@@ -587,7 +610,8 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > ul > li:nth-of-type(5) > a"
           },
           {
             "uid": "a[24]",
@@ -611,7 +635,8 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#custodian > p > a:nth-of-type(1)"
           },
           {
             "uid": "a[25]",
@@ -635,7 +660,8 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#custodian > p > a:nth-of-type(2)"
           },
           {
             "uid": "a[26]",
@@ -659,7 +685,8 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#legalnotice > ul > li:nth-of-type(1) > a"
           },
           {
             "uid": "a[27]",
@@ -683,11 +710,12 @@
               "height": 17
             },
             "isInScope": true,
-            "parentUid": null
+            "parentUid": null,
+            "cssSelector": "#legalnotice > ul > li:nth-of-type(2) > a"
           }
         ],
         "depth": 0,
-        "timestamp": 1776177925489,
+        "timestamp": 1776179231069,
         "scopeSelector": "body"
       }
     ],
@@ -702,7 +730,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 552,
+        "duration": 537,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -720,7 +748,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 560,
+        "duration": 529,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -738,7 +766,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 532,
+        "duration": 518,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -756,7 +784,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 520,
+        "duration": 518,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -774,7 +802,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 512,
+        "duration": 521,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -810,7 +838,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 520,
+        "duration": 512,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -828,7 +856,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 431,
+        "duration": 425,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -844,7 +872,7 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 9274,
+    "totalDuration": 9459,
     "failedActions": 2
   },
   "actions": [
@@ -1007,5 +1035,5 @@
   ],
   "mermaid": "stateDiagram-v2\n  state \"6f3ccf49 (d=0)\" as s_6f3ccf49\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click",
   "dot": "digraph {\n  \"6f3ccf49dbfa9944\" [label=\"6f3ccf49\\nd=0 f=28\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n}",
-  "generatedAt": "2026-04-14T14:45:33.562Z"
+  "generatedAt": "2026-04-14T15:07:19.101Z"
 }
