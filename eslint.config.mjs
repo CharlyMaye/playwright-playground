@@ -32,7 +32,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['**/fixtures/**'],
+    files: ['**/fixtures/**', '**/fixture.ts'],
     rules: {
       'no-empty-pattern': 'off',
     },

@@ -81,6 +81,13 @@ export default defineConfig({
       testMatch: /global-setup\.ts/,
     },
     {
+      name: 'unit-tests',
+      testDir: '.',
+      testMatch: /(__tests__\/.*\.spec\.ts)$/,
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['setup injector'],
+    },
+    {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['setup injector'],

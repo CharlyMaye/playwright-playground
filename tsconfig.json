@@ -15,6 +15,7 @@
     "include": [
         "playwright.config.ts",
         "engine/**/*.ts",
+        "explorer/**/*.ts",
         "setup/**/*.ts",
         "tests/**/*.ts",
         "POM/**/*.ts"
