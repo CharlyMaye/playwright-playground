@@ -1,0 +1,340 @@
+{
+  "url": "https://www.iana.org/help/example-domains",
+  "scope": "header",
+  "config": {
+    "rootSelector": "header",
+    "maxDepth": 1,
+    "maxStates": 20,
+    "timeout": 10000
+  },
+  "graph": {
+    "states": [
+      {
+        "id": "60ec5a925fbc9f2d",
+        "facts": [
+          {
+            "uid": "a[0]",
+            "tag": "a",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 90,
+              "y": 80,
+              "width": 234,
+              "height": 22
+            },
+            "isInScope": true,
+            "parentUid": null
+          },
+          {
+            "uid": "a[1]",
+            "tag": "a",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Domains",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 872,
+              "y": 37,
+              "width": 80,
+              "height": 30
+            },
+            "isInScope": true,
+            "parentUid": null
+          },
+          {
+            "uid": "a[2]",
+            "tag": "a",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Protocols",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 956,
+              "y": 37,
+              "width": 85,
+              "height": 30
+            },
+            "isInScope": true,
+            "parentUid": null
+          },
+          {
+            "uid": "a[3]",
+            "tag": "a",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Numbers",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1045,
+              "y": 37,
+              "width": 83,
+              "height": 30
+            },
+            "isInScope": true,
+            "parentUid": null
+          },
+          {
+            "uid": "a[4]",
+            "tag": "a",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "About",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1132,
+              "y": 37,
+              "width": 58,
+              "height": 30
+            },
+            "isInScope": true,
+            "parentUid": null
+          }
+        ],
+        "depth": 0,
+        "timestamp": 1776173294626,
+        "scopeSelector": "header"
+      }
+    ],
+    "transitions": [
+      {
+        "id": "60ec5a925fbc9f2d->nav:click:a[0]",
+        "from": "60ec5a925fbc9f2d",
+        "to": "__external_navigation__",
+        "action": {
+          "type": "click",
+          "targetUid": "a[0]",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 477,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "navigationUrl": "https://www.iana.org/"
+      },
+      {
+        "id": "60ec5a925fbc9f2d->nav:click:a[1]",
+        "from": "60ec5a925fbc9f2d",
+        "to": "__external_navigation__",
+        "action": {
+          "type": "click",
+          "targetUid": "a[1]",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 497,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "navigationUrl": "https://www.iana.org/domains"
+      },
+      {
+        "id": "60ec5a925fbc9f2d->nav:click:a[2]",
+        "from": "60ec5a925fbc9f2d",
+        "to": "__external_navigation__",
+        "action": {
+          "type": "click",
+          "targetUid": "a[2]",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 501,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "navigationUrl": "https://www.iana.org/protocols"
+      },
+      {
+        "id": "60ec5a925fbc9f2d->nav:click:a[3]",
+        "from": "60ec5a925fbc9f2d",
+        "to": "__external_navigation__",
+        "action": {
+          "type": "click",
+          "targetUid": "a[3]",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 510,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "navigationUrl": "https://www.iana.org/numbers"
+      },
+      {
+        "id": "60ec5a925fbc9f2d->nav:click:a[4]",
+        "from": "60ec5a925fbc9f2d",
+        "to": "__external_navigation__",
+        "action": {
+          "type": "click",
+          "targetUid": "a[4]",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 504,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "navigationUrl": "https://www.iana.org/about"
+      }
+    ]
+  },
+  "summary": {
+    "statesDiscovered": 1,
+    "transitions": 5,
+    "maxDepthReached": 0,
+    "cycles": 0,
+    "deadEnds": 0,
+    "totalDuration": 4561,
+    "failedActions": 0
+  },
+  "actions": [
+    {
+      "type": "click",
+      "targetUid": "a[0]",
+      "priority": 5
+    },
+    {
+      "type": "click",
+      "targetUid": "a[1]",
+      "priority": 5
+    },
+    {
+      "type": "click",
+      "targetUid": "a[2]",
+      "priority": 5
+    },
+    {
+      "type": "click",
+      "targetUid": "a[3]",
+      "priority": 5
+    },
+    {
+      "type": "click",
+      "targetUid": "a[4]",
+      "priority": 5
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "click_a[0]",
+      "steps": [
+        {
+          "type": "click",
+          "targetUid": "a[0]",
+          "priority": 5
+        }
+      ],
+      "selectors": [
+        "a[0]"
+      ]
+    },
+    {
+      "name": "click_a[1]",
+      "steps": [
+        {
+          "type": "click",
+          "targetUid": "a[1]",
+          "priority": 5
+        }
+      ],
+      "selectors": [
+        "a[1]"
+      ]
+    },
+    {
+      "name": "click_a[2]",
+      "steps": [
+        {
+          "type": "click",
+          "targetUid": "a[2]",
+          "priority": 5
+        }
+      ],
+      "selectors": [
+        "a[2]"
+      ]
+    },
+    {
+      "name": "click_a[3]",
+      "steps": [
+        {
+          "type": "click",
+          "targetUid": "a[3]",
+          "priority": 5
+        }
+      ],
+      "selectors": [
+        "a[3]"
+      ]
+    },
+    {
+      "name": "click_a[4]",
+      "steps": [
+        {
+          "type": "click",
+          "targetUid": "a[4]",
+          "priority": 5
+        }
+      ],
+      "selectors": [
+        "a[4]"
+      ]
+    }
+  ],
+  "mermaid": "stateDiagram-v2\n  state \"60ec5a92 (d=0)\" as s_60ec5a92\n  s_60ec5a92 --> s___extern : click\n  s_60ec5a92 --> s___extern : click\n  s_60ec5a92 --> s___extern : click\n  s_60ec5a92 --> s___extern : click\n  s_60ec5a92 --> s___extern : click",
+  "dot": "digraph {\n  \"60ec5a925fbc9f2d\" [label=\"60ec5a92\\nd=0 f=5\"];\n  \"60ec5a925fbc9f2d\" -> \"__external_navigation__\" [label=\"click\"];\n  \"60ec5a925fbc9f2d\" -> \"__external_navigation__\" [label=\"click\"];\n  \"60ec5a925fbc9f2d\" -> \"__external_navigation__\" [label=\"click\"];\n  \"60ec5a925fbc9f2d\" -> \"__external_navigation__\" [label=\"click\"];\n  \"60ec5a925fbc9f2d\" -> \"__external_navigation__\" [label=\"click\"];\n}",
+  "generatedAt": "2026-04-14T13:28:19.064Z"
+}

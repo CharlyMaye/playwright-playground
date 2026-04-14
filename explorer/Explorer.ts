@@ -172,7 +172,25 @@ export class ConcreteExplorer extends Explorer {
           // Rollback: reload page and replay path to current state
           await this.#rollbackToState(currentState, stateUrls);
         } else {
-          this.#failedActions++;
+          // Check if the "failure" was actually a navigation
+          const currentUrl = this.#page.url();
+          const originalUrl = stateUrls.get(currentState.id)!;
+          if (new URL(currentUrl).pathname !== new URL(originalUrl).pathname) {
+            const navTransition: Transition = {
+              id: `${currentState.id}->nav:${action.type}:${(action as { targetUid: string }).targetUid}`,
+              from: currentState.id,
+              to: '__external_navigation__',
+              action,
+              success: true,
+              duration: result.duration,
+              domChanges: { appeared: [], disappeared: [], modified: [] },
+              navigationUrl: currentUrl,
+            };
+            this.#graph.addTransition(navTransition);
+            await this.#rollbackToState(currentState, stateUrls);
+          } else {
+            this.#failedActions++;
+          }
         }
       }
     }

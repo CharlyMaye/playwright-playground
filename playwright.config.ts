@@ -92,6 +92,13 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['setup injector'],
     },
+    {
+      name: 'exploration',
+      testDir: './tests/exploration',
+      testMatch: /\.generate\.ts$/,
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['setup injector'],
+    },
 
     // {
     //   name: "firefox",
