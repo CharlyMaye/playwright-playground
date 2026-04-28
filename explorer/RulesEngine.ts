@@ -79,6 +79,8 @@ export class ConcreteRulesEngine extends RulesEngine {
         return { type: 'focus', targetUid, targetSelector, priority };
       case 'clear':
         return { type: 'clear', targetUid, targetSelector, priority };
+      case 'mousedown':
+        return { type: 'mousedown', targetUid, targetSelector, priority };
       case 'sequence': {
         const steps = (event.params?.steps as UnitaryAction[]) ?? [];
         return {

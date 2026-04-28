@@ -73,8 +73,9 @@ export type FillAction = { type: 'fill'; targetUid: string; targetSelector?: str
 export type SelectAction = { type: 'select'; targetUid: string; targetSelector?: string; option: string; priority: number };
 export type FocusAction = { type: 'focus'; targetUid: string; targetSelector?: string; priority: number };
 export type ClearAction = { type: 'clear'; targetUid: string; targetSelector?: string; priority: number };
+export type MousedownAction = { type: 'mousedown'; targetUid: string; targetSelector?: string; priority: number };
 
-export type UnitaryAction = ClickAction | HoverAction | FillAction | SelectAction | FocusAction | ClearAction;
+export type UnitaryAction = ClickAction | HoverAction | FillAction | SelectAction | FocusAction | ClearAction | MousedownAction;
 
 export type SequenceAction = {
   type: 'sequence';
@@ -135,6 +136,8 @@ export type Transition = {
   duration: number;
   domChanges: DomChanges;
   navigationUrl?: string;
+  /** When true, from === to — the action did not change the DOM state hash. */
+  selfLoop?: boolean;
 };
 
 // ============================================================

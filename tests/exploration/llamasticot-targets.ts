@@ -5,9 +5,88 @@
  * application-agnostic; all app-specific presets live next to their consumers.
  */
 import type { Page } from '@playwright/test';
+import type { RuleProperties } from 'json-rules-engine';
 import * as path from 'path';
 import type { PartialExplorationConfig } from '../../explorer/ExplorationConfig';
 import type { ExplorationTarget } from '../../explorer/types';
+
+// ============================================================
+// Visual regression rules — hover / focus / mousedown on buttons & links
+// ============================================================
+
+/**
+ * Additional rules that trigger hover, focus, and mousedown actions on
+ * interactive elements. These capture CSS pseudo-states (:hover, :focus,
+ * :active) for visual regression screenshots.
+ *
+ * Not in `default-rules.ts` because they serve visual testing, not
+ * functional exploration.
+ */
+export const VISUAL_STATE_RULES: RuleProperties[] = [
+  // hover on buttons
+  {
+    conditions: {
+      all: [
+        { fact: 'tag', operator: 'equal', value: 'button' },
+        { fact: 'visible', operator: 'equal', value: true },
+        { fact: 'enabled', operator: 'equal', value: true },
+      ],
+    },
+    event: { type: 'hover', params: { priority: 9 } },
+  },
+  // focus on buttons
+  {
+    conditions: {
+      all: [
+        { fact: 'tag', operator: 'equal', value: 'button' },
+        { fact: 'visible', operator: 'equal', value: true },
+        { fact: 'enabled', operator: 'equal', value: true },
+      ],
+    },
+    event: { type: 'focus', params: { priority: 8 } },
+  },
+  // mousedown on buttons (:active)
+  {
+    conditions: {
+      all: [
+        { fact: 'tag', operator: 'equal', value: 'button' },
+        { fact: 'visible', operator: 'equal', value: true },
+        { fact: 'enabled', operator: 'equal', value: true },
+      ],
+    },
+    event: { type: 'mousedown', params: { priority: 7 } },
+  },
+  // hover on links
+  {
+    conditions: {
+      all: [
+        { fact: 'tag', operator: 'equal', value: 'a' },
+        { fact: 'visible', operator: 'equal', value: true },
+      ],
+    },
+    event: { type: 'hover', params: { priority: 4 } },
+  },
+  // focus on links
+  {
+    conditions: {
+      all: [
+        { fact: 'tag', operator: 'equal', value: 'a' },
+        { fact: 'visible', operator: 'equal', value: true },
+      ],
+    },
+    event: { type: 'focus', params: { priority: 3 } },
+  },
+  // mousedown on links (:active)
+  {
+    conditions: {
+      all: [
+        { fact: 'tag', operator: 'equal', value: 'a' },
+        { fact: 'visible', operator: 'equal', value: true },
+      ],
+    },
+    event: { type: 'mousedown', params: { priority: 2 } },
+  },
+];
 
 // ============================================================
 // LlamaSticot presets
@@ -104,9 +183,10 @@ export function createLlamasticotTarget(storyPath: string, options: LlamasticotT
     strategy: 'bfs',
     maxDepth: 2,
     maxStates: 30,
-    maxActionsPerState: 10,
-    timeout: 30_000,
+    maxActionsPerState: 50,
+    timeout: 1_000_000,
     domHashStrategy: 'interactive-only',
+    additionalRules: VISUAL_STATE_RULES,
     captureStateScreenshots: options.captureScreenshots ?? false,
     captureTransitionScreenshots: options.captureScreenshots ?? false,
     screenshotsDir: options.captureScreenshots ? LLAMASTICOT_SCREENSHOTS_DIR : undefined,

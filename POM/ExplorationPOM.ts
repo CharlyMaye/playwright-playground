@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import { ExpectContext, TestContext } from '../engine';
-import type { CandidateAction, SerializedGraph, UnitaryAction } from '../explorer/types';
+import type { CandidateAction, SerializedGraph, Transition, UnitaryAction } from '../explorer/types';
 import { BuilderPOM, ConcreteBuilderPOM } from './BuilderPOM';
 
 type Scenario = {
@@ -81,18 +81,37 @@ export class ConcreteExplorationPOM extends ConcreteBuilderPOM<ExplorationSelect
 
   public replayAll(): this {
     this.#ensureLoaded();
-    for (const scenario of this.#data!.scenarios) {
-      this._addAction(async () => {
-        await this._page.goto(this.#data!.url, { waitUntil: 'load' });
-      }, `${scenario.name}--goto`);
-      for (let i = 0; i < scenario.steps.length; i++) {
-        const step = scenario.steps[i];
-        const label = this.#actionLabel(step, i);
+
+    // If there are named scenarios (from non-self-loop transitions), replay them
+    if (this.#data!.scenarios.length > 0) {
+      for (const scenario of this.#data!.scenarios) {
         this._addAction(async () => {
-          await this.#executeAction(step);
-        }, `${scenario.name}--step-${i}--${label}`);
+          await this._page.goto(this.#data!.url, { waitUntil: 'load' });
+        }, `${scenario.name}--goto`);
+        for (let i = 0; i < scenario.steps.length; i++) {
+          const step = scenario.steps[i];
+          const label = this.#actionLabel(step, i);
+          this._addAction(async () => {
+            await this.#executeAction(step);
+          }, `${scenario.name}--step-${i}--${label}`);
+        }
       }
     }
+
+    // Also replay self-loop transitions (hover, focus, mousedown, click that
+    // didn't change DOM state). Each gets its own goto to reset visual state.
+    const selfLoops = this.#data!.graph.transitions.filter((t: Transition) => t.selfLoop);
+    for (let i = 0; i < selfLoops.length; i++) {
+      const t = selfLoops[i];
+      const label = this.#actionLabel(t.action, i);
+      this._addAction(async () => {
+        await this._page.goto(this.#data!.url, { waitUntil: 'load' });
+      }, `self-loop-${i}--goto`);
+      this._addAction(async () => {
+        await this.#executeAction(t.action);
+      }, `self-loop-${i}--${label}`);
+    }
+
     return this;
   }
 
@@ -217,6 +236,9 @@ export class ConcreteExplorationPOM extends ConcreteBuilderPOM<ExplorationSelect
         break;
       case 'clear':
         await locator.clear();
+        break;
+      case 'mousedown':
+        await locator.dispatchEvent('mousedown');
         break;
     }
   }

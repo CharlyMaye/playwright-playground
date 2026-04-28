@@ -159,8 +159,20 @@ export class ConcreteExplorer extends Explorer {
             domChanges,
           };
 
-          // Skip self-loops (action didn't change DOM state)
+          // Skip self-loops (action didn't change DOM state) but record them
+          // so visual regression tests can replay hover/focus/mousedown actions.
           if (newState.id === currentState.id) {
+            const selfTransition: Transition = {
+              id: `${currentState.id}->${currentState.id}:${action.type}:${(action as { targetUid: string }).targetUid}`,
+              from: currentState.id,
+              to: currentState.id,
+              action,
+              success: true,
+              duration: result.duration,
+              domChanges,
+              selfLoop: true,
+            };
+            this.#graph.addTransition(selfTransition);
             await this.#rollbackToState(currentState, stateUrls);
             continue;
           }

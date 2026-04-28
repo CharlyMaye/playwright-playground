@@ -87,7 +87,7 @@ export class ConcreteExplorationGraph extends ExplorationGraph {
   }
 
   getRoots(): StateNode[] {
-    return this.getAllStates().filter((s) => this.getTransitionsTo(s.id).length === 0);
+    return this.getAllStates().filter((s) => this.getTransitionsTo(s.id).filter((t) => t.from !== t.to).length === 0);
   }
 
   getLeaves(): StateNode[] {
@@ -119,6 +119,8 @@ export class ConcreteExplorationGraph extends ExplorationGraph {
       inStack.add(nodeId);
 
       for (const t of this.getTransitionsFrom(nodeId)) {
+        // Skip self-loops — they are visual-state transitions, not real cycles
+        if (t.from === t.to) continue;
         if (inStack.has(t.to)) {
           // Found a cycle — collect the back-edge path
           const cycleStart = path.findIndex((p) => p.from === t.to || p.to === t.to);
@@ -213,13 +215,7 @@ export class ConcreteExplorationGraph extends ExplorationGraph {
     return `s_${id.substring(0, 8)}`;
   }
 
-  #dfsCollectPaths(
-    nodeId: string,
-    currentPath: Transition[],
-    visited: Set<string>,
-    maxDepth: number,
-    result: Transition[][]
-  ): void {
+  #dfsCollectPaths(nodeId: string, currentPath: Transition[], visited: Set<string>, maxDepth: number, result: Transition[][]): void {
     const transitions = this.getTransitionsFrom(nodeId);
 
     if (transitions.length === 0 && currentPath.length > 0) {
@@ -235,11 +231,30 @@ export class ConcreteExplorationGraph extends ExplorationGraph {
     visited.add(nodeId);
 
     for (const t of transitions) {
+      // Self-loop: include in path without recursing (no new node to visit)
+      if (t.from === t.to) {
+        currentPath.push(t);
+        continue;
+      }
       if (!visited.has(t.to)) {
         currentPath.push(t);
         this.#dfsCollectPaths(t.to, currentPath, visited, maxDepth, result);
         currentPath.pop();
       }
+    }
+
+    // If we accumulated self-loops but no outgoing edges led deeper,
+    // emit the current path (self-loops form a leaf scenario).
+    if (currentPath.length > 0) {
+      const hasNonSelfLoop = transitions.some((t) => t.from !== t.to && !visited.has(t.to));
+      if (!hasNonSelfLoop) {
+        result.push([...currentPath]);
+      }
+    }
+
+    // Remove self-loops from the path before backtracking
+    while (currentPath.length > 0 && currentPath[currentPath.length - 1].from === currentPath[currentPath.length - 1].to) {
+      currentPath.pop();
     }
 
     visited.delete(nodeId);

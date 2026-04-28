@@ -72,6 +72,9 @@ export class ConcreteActionExecutor extends ActionExecutor {
       case 'clear':
         await locator.clear({ timeout });
         break;
+      case 'mousedown':
+        await locator.dispatchEvent('mousedown', { timeout });
+        break;
     }
 
     // Wait for DOM stabilization
