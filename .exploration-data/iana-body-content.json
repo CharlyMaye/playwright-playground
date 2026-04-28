@@ -89,29 +89,11 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1776179268024,
+        "timestamp": 1777359733811,
         "scopeSelector": "#body"
       }
     ],
     "transitions": [
-      {
-        "id": "6d860f3cb18b884a->nav:click:a[0]",
-        "from": "6d860f3cb18b884a",
-        "to": "__external_navigation__",
-        "action": {
-          "type": "click",
-          "targetUid": "a[0]",
-          "priority": 5
-        },
-        "success": true,
-        "duration": 593,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "navigationUrl": "https://datatracker.ietf.org/doc/html/rfc2606"
-      },
       {
         "id": "6d860f3cb18b884a->nav:click:a[1]",
         "from": "6d860f3cb18b884a",
@@ -122,13 +104,13 @@
           "priority": 5
         },
         "success": true,
-        "duration": 569,
+        "duration": 354,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
           "modified": []
         },
-        "navigationUrl": "https://datatracker.ietf.org/doc/html/rfc6761"
+        "navigationUrl": "https://datatracker.ietf.org/doc/html/rfc2606"
       },
       {
         "id": "6d860f3cb18b884a->nav:click:a[2]",
@@ -140,7 +122,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 500,
+        "duration": 516,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -152,12 +134,12 @@
   },
   "summary": {
     "statesDiscovered": 1,
-    "transitions": 3,
+    "transitions": 2,
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 3167,
-    "failedActions": 0
+    "totalDuration": 2223,
+    "failedActions": 1
   },
   "actions": [
     {
@@ -177,19 +159,6 @@
     }
   ],
   "scenarios": [
-    {
-      "name": "click_a[0]",
-      "steps": [
-        {
-          "type": "click",
-          "targetUid": "a[0]",
-          "priority": 5
-        }
-      ],
-      "selectors": [
-        "a[0]"
-      ]
-    },
     {
       "name": "click_a[1]",
       "steps": [
@@ -217,7 +186,7 @@
       ]
     }
   ],
-  "mermaid": "stateDiagram-v2\n  state \"6d860f3c (d=0)\" as s_6d860f3c\n  s_6d860f3c --> s___extern : click\n  s_6d860f3c --> s___extern : click\n  s_6d860f3c --> s___extern : click",
-  "dot": "digraph {\n  \"6d860f3cb18b884a\" [label=\"6d860f3c\\nd=0 f=3\"];\n  \"6d860f3cb18b884a\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6d860f3cb18b884a\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6d860f3cb18b884a\" -> \"__external_navigation__\" [label=\"click\"];\n}",
-  "generatedAt": "2026-04-14T15:07:51.063Z"
+  "mermaid": "stateDiagram-v2\n  state \"6d860f3c (d=0)\" as s_6d860f3c\n  s_6d860f3c --> s___extern : click\n  s_6d860f3c --> s___extern : click",
+  "dot": "digraph {\n  \"6d860f3cb18b884a\" [label=\"6d860f3c\\nd=0 f=3\"];\n  \"6d860f3cb18b884a\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6d860f3cb18b884a\" -> \"__external_navigation__\" [label=\"click\"];\n}",
+  "generatedAt": "2026-04-28T07:02:15.862Z"
 }

@@ -1,4 +1,5 @@
 export { ActionExecutor, computeDomChanges, ConcreteActionExecutor } from './ActionExecutor';
+export { DEFAULT_HTML_RULES } from './default-rules';
 export { ConcreteDOMExtractor, DOMExtractor } from './DOMExtractor';
 export { ConcreteExplorationConfig, ExplorationConfig } from './ExplorationConfig';
 export type { ExplorationConfigData, PartialExplorationConfig } from './ExplorationConfig';
@@ -7,6 +8,7 @@ export { ConcreteExplorationScope, ExplorationScope } from './ExplorationScope';
 export { ConcreteExplorer, Explorer } from './Explorer';
 export type { ExplorationSummary } from './Explorer';
 export { expect as explorerExpect, explorerTest, withExplorationScope } from './fixture';
+export { ConcreteReadinessChecker, ReadinessChecker } from './ReadinessChecker';
 export { ConcreteRulesEngine, RulesEngine } from './RulesEngine';
 export { ConcreteScenarioExporter, ScenarioExporter } from './ScenarioExporter';
 export type { Scenario } from './ScenarioExporter';
@@ -19,6 +21,7 @@ import { ConcreteExplorationConfig, ExplorationConfig } from './ExplorationConfi
 import { ConcreteExplorationGraph, ExplorationGraph } from './ExplorationGraph';
 import { ConcreteExplorationScope, ExplorationScope } from './ExplorationScope';
 import { ConcreteExplorer, Explorer } from './Explorer';
+import { ConcreteReadinessChecker, ReadinessChecker } from './ReadinessChecker';
 import { ConcreteRulesEngine, RulesEngine } from './RulesEngine';
 import { ConcreteStateManager, StateManager } from './StateManager';
 
@@ -27,23 +30,11 @@ export function registerExplorerDependencies(): void {
   registerScoped(ExplorationScope, ConcreteExplorationScope);
   registerScoped(DOMExtractor, ConcreteDOMExtractor);
   registerSingleton(RulesEngine, ConcreteRulesEngine);
+  registerScoped(ReadinessChecker, ConcreteReadinessChecker);
   registerScoped(ActionExecutor, ConcreteActionExecutor);
   registerScoped(StateManager, ConcreteStateManager);
   registerScoped(ExplorationGraph, ConcreteExplorationGraph);
   registerScoped(Explorer, ConcreteExplorer);
 }
 
-export type {
-  ActionResult,
-  BoundingBox,
-  CandidateAction,
-  DomChanges,
-  ElementFact,
-  SequenceAction,
-  SequenceStep,
-  SerializedGraph,
-  StateNode,
-  Transition,
-  UnitaryAction,
-  WaitCondition,
-} from './types';
+export type { ActionResult, BoundingBox, CandidateAction, DomChanges, ElementFact, ExplorationTarget, SequenceAction, SequenceStep, SerializedGraph, StateNode, Transition, UnitaryAction, WaitCondition } from './types';

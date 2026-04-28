@@ -44,12 +44,10 @@ export class ConcreteExplorationPOM extends ConcreteBuilderPOM<ExplorationSelect
   }
 
   public load(jsonPath: string): this {
-    return this._addAction(() => {
-      const content = fs.readFileSync(jsonPath, 'utf-8');
-      this.#data = JSON.parse(content) as ExplorationOutput;
-      this._selectors.rootSelector = (this.#data.config['rootSelector'] as string) ?? 'body';
-      return Promise.resolve();
-    });
+    const content = fs.readFileSync(jsonPath, 'utf-8');
+    this.#data = JSON.parse(content) as ExplorationOutput;
+    this._selectors.rootSelector = (this.#data.config['rootSelector'] as string) ?? 'body';
+    return this;
   }
 
   public goto(): this {
@@ -62,56 +60,70 @@ export class ConcreteExplorationPOM extends ConcreteBuilderPOM<ExplorationSelect
       } catch {
         // No cookie banner to dismiss
       }
-    });
+    }, 'goto');
   }
 
   public replayScenario(name: string): this {
-    return this._addAction(async () => {
-      this.#ensureLoaded();
-      const scenario = this.#data!.scenarios.find((s) => s.name === name);
-      if (!scenario) {
-        throw new Error(
-          `Scenario "${name}" not found. Available: ${this.#data!.scenarios.map((s) => s.name).join(', ')}`
-        );
-      }
-      for (const step of scenario.steps) {
+    this.#ensureLoaded();
+    const scenario = this.#data!.scenarios.find((s) => s.name === name);
+    if (!scenario) {
+      throw new Error(`Scenario "${name}" not found. Available: ${this.#data!.scenarios.map((s) => s.name).join(', ')}`);
+    }
+    for (let i = 0; i < scenario.steps.length; i++) {
+      const step = scenario.steps[i];
+      const label = this.#actionLabel(step, i);
+      this._addAction(async () => {
         await this.#executeAction(step);
-      }
-    });
+      }, `${name}--step-${i}--${label}`);
+    }
+    return this;
   }
 
   public replayAll(): this {
-    return this._addAction(async () => {
-      this.#ensureLoaded();
-      for (const scenario of this.#data!.scenarios) {
-        for (const step of scenario.steps) {
-          await this.#executeAction(step);
-        }
-        // Navigate back for the next scenario
+    this.#ensureLoaded();
+    for (const scenario of this.#data!.scenarios) {
+      this._addAction(async () => {
         await this._page.goto(this.#data!.url, { waitUntil: 'load' });
+      }, `${scenario.name}--goto`);
+      for (let i = 0; i < scenario.steps.length; i++) {
+        const step = scenario.steps[i];
+        const label = this.#actionLabel(step, i);
+        this._addAction(async () => {
+          await this.#executeAction(step);
+        }, `${scenario.name}--step-${i}--${label}`);
       }
-    });
+    }
+    return this;
   }
 
   public clickElement(uid: string): this {
-    return this._addAction(async () => {
-      const locator = this.#resolveByUid(uid);
-      await locator.click();
-    });
+    return this._addAction(
+      async () => {
+        const locator = this.#resolveByUid(uid);
+        await locator.click();
+      },
+      `click-${this.#sanitizeUid(uid)}`
+    );
   }
 
   public hoverElement(uid: string): this {
-    return this._addAction(async () => {
-      const locator = this.#resolveByUid(uid);
-      await locator.hover();
-    });
+    return this._addAction(
+      async () => {
+        const locator = this.#resolveByUid(uid);
+        await locator.hover();
+      },
+      `hover-${this.#sanitizeUid(uid)}`
+    );
   }
 
   public fillElement(uid: string, value: string): this {
-    return this._addAction(async () => {
-      const locator = this.#resolveByUid(uid);
-      await locator.fill(value);
-    });
+    return this._addAction(
+      async () => {
+        const locator = this.#resolveByUid(uid);
+        await locator.fill(value);
+      },
+      `fill-${this.#sanitizeUid(uid)}`
+    );
   }
 
   #ensureLoaded(): void {
@@ -120,9 +132,25 @@ export class ConcreteExplorationPOM extends ConcreteBuilderPOM<ExplorationSelect
     }
   }
 
-  #resolveByUid(uid: string) {
+  #sanitizeUid(uid: string): string {
+    return uid.replace(/[^a-zA-Z0-9_-]/g, '_').slice(0, 40);
+  }
+
+  #actionLabel(action: CandidateAction, index: number): string {
+    if (action.type === 'sequence') {
+      const types = action.steps.map((s) => s.action.type).join('+');
+      return `${index}-sequence-${types}`;
+    }
+    return `${index}-${action.type}-${this.#sanitizeUid(action.targetUid)}`;
+  }
+
+  #resolveByUid(uid: string, cssSelector?: string) {
     this.#ensureLoaded();
-    // Priority: find the fact's cssSelector from the graph
+    // Priority 1: explicit page-level selector carried by the action
+    if (cssSelector) {
+      return this._page.locator(cssSelector);
+    }
+    // Priority 2: find the fact's cssSelector from the graph
     for (const state of this.#data!.graph.states) {
       const fact = state.facts.find((f) => f.uid === uid);
       if (fact?.cssSelector) {
@@ -169,7 +197,7 @@ export class ConcreteExplorationPOM extends ConcreteBuilderPOM<ExplorationSelect
   }
 
   async #executeUnitary(action: UnitaryAction): Promise<void> {
-    const locator = this.#resolveByUid(action.targetUid);
+    const locator = this.#resolveByUid(action.targetUid, action.targetSelector);
 
     switch (action.type) {
       case 'click':

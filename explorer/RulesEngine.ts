@@ -1,5 +1,6 @@
 import { Engine, RuleProperties } from 'json-rules-engine';
 import { Injector } from '../engine';
+import { DEFAULT_HTML_RULES } from './default-rules';
 import { ExplorationConfig } from './ExplorationConfig';
 import { CandidateAction, ElementFact, UnitaryAction } from './types';
 
@@ -17,7 +18,15 @@ export class ConcreteRulesEngine extends RulesEngine {
     super();
     this.#engine = new Engine();
     this.#config = explorationConfig;
-    this.#loadDefaultRules();
+
+    // Load rules from config — custom rules replace defaults entirely.
+    const baseRules = (this.#config.rules as RuleProperties[] | undefined) ?? DEFAULT_HTML_RULES;
+    this.loadRules(baseRules);
+
+    const extra = this.#config.additionalRules as RuleProperties[] | undefined;
+    if (extra) {
+      this.loadRules(extra);
+    }
   }
 
   loadRules(rules: RuleProperties[]): void {
@@ -52,23 +61,24 @@ export class ConcreteRulesEngine extends RulesEngine {
   #eventToAction(event: { type: string; params?: Record<string, unknown> }, fact: ElementFact): CandidateAction | null {
     const priority = (event.params?.priority as number) ?? 5;
     const targetUid = fact.uid;
+    const targetSelector = fact.cssSelector;
 
     switch (event.type) {
       case 'click':
-        return { type: 'click', targetUid, priority };
+        return { type: 'click', targetUid, targetSelector, priority };
       case 'hover':
-        return { type: 'hover', targetUid, priority };
+        return { type: 'hover', targetUid, targetSelector, priority };
       case 'fill': {
         const inputType = fact.inputType ?? 'text';
         const value = this.#config.fillValues[inputType] ?? this.#config.fillValues['text'] ?? 'test';
-        return { type: 'fill', targetUid, value, priority };
+        return { type: 'fill', targetUid, targetSelector, value, priority };
       }
       case 'select':
-        return { type: 'select', targetUid, option: '', priority };
+        return { type: 'select', targetUid, targetSelector, option: '', priority };
       case 'focus':
-        return { type: 'focus', targetUid, priority };
+        return { type: 'focus', targetUid, targetSelector, priority };
       case 'clear':
-        return { type: 'clear', targetUid, priority };
+        return { type: 'clear', targetUid, targetSelector, priority };
       case 'sequence': {
         const steps = (event.params?.steps as UnitaryAction[]) ?? [];
         return {
@@ -80,154 +90,5 @@ export class ConcreteRulesEngine extends RulesEngine {
       default:
         return null;
     }
-  }
-
-  #loadDefaultRules(): void {
-    // Button rules
-    this.#engine.addRule({
-      conditions: {
-        all: [
-          { fact: 'tag', operator: 'equal', value: 'button' },
-          { fact: 'visible', operator: 'equal', value: true },
-          { fact: 'enabled', operator: 'equal', value: true },
-        ],
-      },
-      event: { type: 'click', params: { priority: 10 } },
-    });
-
-    // Button with aria-expanded=false (opens something) — higher priority
-    this.#engine.addRule({
-      conditions: {
-        all: [
-          { fact: 'tag', operator: 'equal', value: 'button' },
-          { fact: 'visible', operator: 'equal', value: true },
-          { fact: 'enabled', operator: 'equal', value: true },
-          { fact: 'ariaExpanded', operator: 'equal', value: false },
-        ],
-      },
-      event: { type: 'click', params: { priority: 15 } },
-    });
-
-    // Link rules
-    this.#engine.addRule({
-      conditions: {
-        all: [
-          { fact: 'tag', operator: 'equal', value: 'a' },
-          { fact: 'visible', operator: 'equal', value: true },
-        ],
-      },
-      event: { type: 'click', params: { priority: 5 } },
-    });
-
-    // Input text/email/password — fill
-    this.#engine.addRule({
-      conditions: {
-        all: [
-          { fact: 'tag', operator: 'equal', value: 'input' },
-          { fact: 'visible', operator: 'equal', value: true },
-          { fact: 'enabled', operator: 'equal', value: true },
-          {
-            fact: 'inputType',
-            operator: 'in',
-            value: ['text', 'email', 'password', 'search', 'tel', 'url'],
-          },
-        ],
-      },
-      event: { type: 'fill', params: { priority: 8 } },
-    });
-
-    // Input checkbox/radio — click
-    this.#engine.addRule({
-      conditions: {
-        all: [
-          { fact: 'tag', operator: 'equal', value: 'input' },
-          { fact: 'visible', operator: 'equal', value: true },
-          { fact: 'enabled', operator: 'equal', value: true },
-          { fact: 'inputType', operator: 'in', value: ['checkbox', 'radio'] },
-        ],
-      },
-      event: { type: 'click', params: { priority: 7 } },
-    });
-
-    // Textarea — fill
-    this.#engine.addRule({
-      conditions: {
-        all: [
-          { fact: 'tag', operator: 'equal', value: 'textarea' },
-          { fact: 'visible', operator: 'equal', value: true },
-          { fact: 'enabled', operator: 'equal', value: true },
-        ],
-      },
-      event: { type: 'fill', params: { priority: 8 } },
-    });
-
-    // Native select
-    this.#engine.addRule({
-      conditions: {
-        all: [
-          { fact: 'tag', operator: 'equal', value: 'select' },
-          { fact: 'visible', operator: 'equal', value: true },
-          { fact: 'enabled', operator: 'equal', value: true },
-        ],
-      },
-      event: { type: 'select', params: { priority: 8 } },
-    });
-
-    // Role=combobox — sequence
-    this.#engine.addRule({
-      conditions: {
-        all: [
-          { fact: 'role', operator: 'equal', value: 'combobox' },
-          { fact: 'visible', operator: 'equal', value: true },
-          { fact: 'enabled', operator: 'equal', value: true },
-        ],
-      },
-      event: { type: 'click', params: { priority: 12 } },
-    });
-
-    // Role=tab
-    this.#engine.addRule({
-      conditions: {
-        all: [
-          { fact: 'role', operator: 'equal', value: 'tab' },
-          { fact: 'visible', operator: 'equal', value: true },
-        ],
-      },
-      event: { type: 'click', params: { priority: 7 } },
-    });
-
-    // Role=menuitem
-    this.#engine.addRule({
-      conditions: {
-        all: [
-          { fact: 'role', operator: 'equal', value: 'menuitem' },
-          { fact: 'visible', operator: 'equal', value: true },
-        ],
-      },
-      event: { type: 'click', params: { priority: 9 } },
-    });
-
-    // aria-haspopup — hover (ouvre un sous-menu)
-    this.#engine.addRule({
-      conditions: {
-        all: [
-          { fact: 'visible', operator: 'equal', value: true },
-          { fact: 'enabled', operator: 'equal', value: true },
-          { fact: 'ariaExpanded', operator: 'equal', value: false },
-        ],
-      },
-      event: { type: 'click', params: { priority: 13 } },
-    });
-
-    // Summary / accordion
-    this.#engine.addRule({
-      conditions: {
-        all: [
-          { fact: 'tag', operator: 'equal', value: 'summary' },
-          { fact: 'visible', operator: 'equal', value: true },
-        ],
-      },
-      event: { type: 'click', params: { priority: 12 } },
-    });
   }
 }

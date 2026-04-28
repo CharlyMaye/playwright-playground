@@ -7,6 +7,7 @@ import { ConcreteExplorationConfig } from '../ExplorationConfig';
 import { ConcreteExplorationGraph } from '../ExplorationGraph';
 import { ConcreteExplorationScope } from '../ExplorationScope';
 import { ConcreteExplorer } from '../Explorer';
+import { ConcreteReadinessChecker } from '../ReadinessChecker';
 import { ConcreteRulesEngine } from '../RulesEngine';
 import { ConcreteScenarioExporter } from '../ScenarioExporter';
 import { ConcreteStateManager } from '../StateManager';
@@ -147,20 +148,12 @@ test.describe('Explorer — Integration with local HTML page', () => {
     const scope = new ConcreteExplorationScope(testContext, config);
     const extractor = new ConcreteDOMExtractor(scope, config);
     const rulesEngine = new ConcreteRulesEngine(config);
-    const actionExecutor = new ConcreteActionExecutor(testContext, scope, config);
+    const readiness = new ConcreteReadinessChecker(testContext, config);
+    const actionExecutor = new ConcreteActionExecutor(testContext, scope, config, readiness);
     const stateManager = new ConcreteStateManager(config);
     const graph = new ConcreteExplorationGraph();
 
-    const explorer = new ConcreteExplorer(
-      testContext,
-      scope,
-      extractor,
-      rulesEngine,
-      actionExecutor,
-      stateManager,
-      graph,
-      config
-    );
+    const explorer = new ConcreteExplorer(testContext, scope, extractor, rulesEngine, actionExecutor, stateManager, graph, config, readiness);
 
     const resultGraph = await explorer.explore();
 
@@ -207,20 +200,12 @@ test.describe('Explorer — Integration with local HTML page', () => {
     const scope = new ConcreteExplorationScope(testContext, config);
     const extractor = new ConcreteDOMExtractor(scope, config);
     const rulesEngine = new ConcreteRulesEngine(config);
-    const actionExecutor = new ConcreteActionExecutor(testContext, scope, config);
+    const readiness = new ConcreteReadinessChecker(testContext, config);
+    const actionExecutor = new ConcreteActionExecutor(testContext, scope, config, readiness);
     const stateManager = new ConcreteStateManager(config);
     const graph = new ConcreteExplorationGraph();
 
-    const explorer = new ConcreteExplorer(
-      testContext,
-      scope,
-      extractor,
-      rulesEngine,
-      actionExecutor,
-      stateManager,
-      graph,
-      config
-    );
+    const explorer = new ConcreteExplorer(testContext, scope, extractor, rulesEngine, actionExecutor, stateManager, graph, config, readiness);
 
     await explorer.explore();
 

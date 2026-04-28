@@ -139,7 +139,7 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1776179248530,
+        "timestamp": 1777359714641,
         "scopeSelector": "header"
       }
     ],
@@ -154,7 +154,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 492,
+        "duration": 480,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -172,7 +172,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 501,
+        "duration": 505,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -190,7 +190,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 519,
+        "duration": 497,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -208,7 +208,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 521,
+        "duration": 499,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -226,7 +226,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 511,
+        "duration": 504,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -242,7 +242,7 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 4709,
+    "totalDuration": 4738,
     "failedActions": 0
   },
   "actions": [
@@ -341,5 +341,5 @@
   ],
   "mermaid": "stateDiagram-v2\n  state \"60ec5a92 (d=0)\" as s_60ec5a92\n  s_60ec5a92 --> s___extern : click\n  s_60ec5a92 --> s___extern : click\n  s_60ec5a92 --> s___extern : click\n  s_60ec5a92 --> s___extern : click\n  s_60ec5a92 --> s___extern : click",
   "dot": "digraph {\n  \"60ec5a925fbc9f2d\" [label=\"60ec5a92\\nd=0 f=5\"];\n  \"60ec5a925fbc9f2d\" -> \"__external_navigation__\" [label=\"click\"];\n  \"60ec5a925fbc9f2d\" -> \"__external_navigation__\" [label=\"click\"];\n  \"60ec5a925fbc9f2d\" -> \"__external_navigation__\" [label=\"click\"];\n  \"60ec5a925fbc9f2d\" -> \"__external_navigation__\" [label=\"click\"];\n  \"60ec5a925fbc9f2d\" -> \"__external_navigation__\" [label=\"click\"];\n}",
-  "generatedAt": "2026-04-14T15:07:32.989Z"
+  "generatedAt": "2026-04-28T07:01:59.211Z"
 }

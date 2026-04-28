@@ -57,6 +57,15 @@ export default defineConfig({
   workers: process.env.CI ? 1 : '50%',
   globalSetup: require.resolve('./setup/playwright.global-setup.ts'),
   reporter: _reporters,
+  // Visual diff defaults: tolerate sub-pixel rendering noise (Material ripples,
+  // anti-aliasing) without masking real changes. Animations are also disabled
+  // at capture time via `toHaveScreenshot({ animations: 'disabled' })` here.
+  expect: {
+    toHaveScreenshot: {
+      animations: 'disabled',
+      maxDiffPixelRatio: 0.05,
+    },
+  },
   use: {
     locale: 'en-GB',
     timezoneId: 'Europe/Paris',

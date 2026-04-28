@@ -1,3 +1,5 @@
+import * as fs from 'fs';
+import * as path from 'path';
 import { Injector } from '../engine';
 import { TestContext } from '../engine/test.context';
 import { ActionExecutor, computeDomChanges } from './ActionExecutor';
@@ -5,6 +7,7 @@ import { DOMExtractor } from './DOMExtractor';
 import { ExplorationConfig } from './ExplorationConfig';
 import { ExplorationGraph } from './ExplorationGraph';
 import { ExplorationScope } from './ExplorationScope';
+import { ReadinessChecker } from './ReadinessChecker';
 import { RulesEngine } from './RulesEngine';
 import { StateManager } from './StateManager';
 import { CandidateAction, StateNode, Transition } from './types';
@@ -26,16 +29,7 @@ export abstract class Explorer {
 }
 
 @Injector({
-  Provide: [
-    TestContext,
-    ExplorationScope,
-    DOMExtractor,
-    RulesEngine,
-    ActionExecutor,
-    StateManager,
-    ExplorationGraph,
-    ExplorationConfig,
-  ],
+  Provide: [TestContext, ExplorationScope, DOMExtractor, RulesEngine, ActionExecutor, StateManager, ExplorationGraph, ExplorationConfig, ReadinessChecker],
 })
 export class ConcreteExplorer extends Explorer {
   readonly #page;
@@ -45,8 +39,10 @@ export class ConcreteExplorer extends Explorer {
   readonly #stateManager: StateManager;
   readonly #graph: ExplorationGraph;
   readonly #config: ExplorationConfig;
+  readonly #readiness: ReadinessChecker;
   #failedActions = 0;
   #startTime = 0;
+  #transitionCounter = 0;
 
   constructor(
     protected testContext: TestContext,
@@ -56,7 +52,8 @@ export class ConcreteExplorer extends Explorer {
     protected actionExecutor: ActionExecutor,
     protected stateManager: StateManager,
     protected explorationGraph: ExplorationGraph,
-    protected explorationConfig: ExplorationConfig
+    protected explorationConfig: ExplorationConfig,
+    protected readinessChecker: ReadinessChecker
   ) {
     super();
     this.#page = testContext.page;
@@ -66,6 +63,7 @@ export class ConcreteExplorer extends Explorer {
     this.#stateManager = stateManager;
     this.#graph = explorationGraph;
     this.#config = explorationConfig;
+    this.#readiness = readinessChecker;
   }
 
   get graph(): ExplorationGraph {
@@ -75,6 +73,10 @@ export class ConcreteExplorer extends Explorer {
   async explore(): Promise<ExplorationGraph> {
     this.#startTime = Date.now();
     this.#failedActions = 0;
+    this.#transitionCounter = 0;
+
+    // Wait for SPA readiness before extracting initial state
+    await this.#readiness.waitForReady();
 
     // 1. Extract initial facts
     const initialFacts = await this.#extractor.extract();
@@ -83,6 +85,7 @@ export class ConcreteExplorer extends Explorer {
     const initialState = this.#stateManager.captureState(initialFacts, 0, this.#config.rootSelector);
     this.#stateManager.registerState(initialState);
     this.#graph.addState(initialState);
+    await this.#captureScreenshot('state', initialState.id);
 
     // 3. Initialize exploration queue/stack
     const frontier: StateNode[] = [initialState];
@@ -115,6 +118,7 @@ export class ConcreteExplorer extends Explorer {
 
         // Execute the action
         const result = await this.#executor.execute(action);
+        await this.#captureScreenshot('transition', this.#actionLabel(action));
 
         if (result.success) {
           const currentUrl = this.#page.url();
@@ -166,6 +170,7 @@ export class ConcreteExplorer extends Explorer {
             this.#stateManager.registerState(newState);
             this.#graph.addState(newState);
             stateUrls.set(newState.id, this.#page.url());
+            await this.#captureScreenshot('state', newState.id);
 
             // Add to frontier only if depth limit not reached
             if (newState.depth < this.#config.maxDepth) {
@@ -237,7 +242,40 @@ export class ConcreteExplorer extends Explorer {
     const url = stateUrls.get(targetState.id);
     if (url) {
       await this.#page.goto(url, { waitUntil: 'load' });
+      await this.#readiness.waitForReady();
       await this.#page.waitForTimeout(this.#config.stabilizationTimeout);
+    }
+  }
+
+  #actionLabel(action: CandidateAction): string {
+    if (action.type === 'sequence') {
+      const types = action.steps.map((s) => s.action.type).join('+');
+      return `sequence-${types}`;
+    }
+    const target = (action as { targetUid?: string }).targetUid ?? '';
+    return `${action.type}-${target}`;
+  }
+
+  /**
+   * Best-effort raw PNG capture used for visual debugging of the graph.
+   * Silent no-op when the matching boolean is off OR `screenshotsDir` is unset.
+   * Errors are swallowed: a missing screenshot must never break exploration.
+   */
+  async #captureScreenshot(kind: 'state' | 'transition', label: string): Promise<void> {
+    const dir = this.#config.screenshotsDir;
+    if (!dir) return;
+    const enabled = kind === 'state' ? this.#config.captureStateScreenshots : this.#config.captureTransitionScreenshots;
+    if (!enabled) return;
+
+    try {
+      fs.mkdirSync(dir, { recursive: true });
+      const prefix = this.#config.screenshotsPrefix ? `${this.#config.screenshotsPrefix}-` : '';
+      const safe = label.replace(/[^a-zA-Z0-9_-]/g, '_').slice(0, 80);
+      const counter = kind === 'transition' ? `${String(this.#transitionCounter++).padStart(4, '0')}-` : '';
+      const file = path.join(dir, `${prefix}${kind}-${counter}${safe}.png`);
+      await this.#page.screenshot({ path: file, fullPage: false });
+    } catch {
+      // best-effort
     }
   }
 }

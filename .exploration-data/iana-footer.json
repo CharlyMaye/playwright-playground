@@ -514,7 +514,7 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1776179256182,
+        "timestamp": 1777359722417,
         "scopeSelector": "footer"
       }
     ],
@@ -529,7 +529,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 483,
+        "duration": 478,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -547,7 +547,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 505,
+        "duration": 514,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -565,7 +565,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 510,
+        "duration": 516,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -583,7 +583,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 517,
+        "duration": 510,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -601,7 +601,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 512,
+        "duration": 511,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -619,7 +619,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 515,
+        "duration": 509,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -637,7 +637,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 501,
+        "duration": 513,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -655,7 +655,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 517,
+        "duration": 539,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -673,7 +673,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 421,
+        "duration": 424,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -691,7 +691,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 513,
+        "duration": 504,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -707,7 +707,7 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 9753,
+    "totalDuration": 9547,
     "failedActions": 0
   },
   "actions": [
@@ -896,5 +896,5 @@
   ],
   "mermaid": "stateDiagram-v2\n  state \"eb3084a7 (d=0)\" as s_eb3084a7\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click\n  s_eb3084a7 --> s___extern : click",
   "dot": "digraph {\n  \"eb3084a787e3b3f7\" [label=\"eb3084a7\\nd=0 f=20\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n  \"eb3084a787e3b3f7\" -> \"__external_navigation__\" [label=\"click\"];\n}",
-  "generatedAt": "2026-04-14T15:07:45.241Z"
+  "generatedAt": "2026-04-28T07:02:11.389Z"
 }

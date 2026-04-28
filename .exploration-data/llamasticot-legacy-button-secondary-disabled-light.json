@@ -1,0 +1,79 @@
+{
+  "url": "http://localhost:4206/legacy-button/secondary-disabled?standalone=true&culture=fr-FR&theme=light",
+  "target": "legacy-button-secondary-disabled-light",
+  "config": {
+    "rootSelector": "section.is-ready",
+    "boundary": "overflow",
+    "overflowSelectors": [
+      ".cdk-overlay-container",
+      ".wj-popup",
+      ".wj-listbox",
+      ".wj-flexgrid-cell-overlay"
+    ],
+    "readinessSelector": "section.is-ready",
+    "readinessTimeout": 8000,
+    "stabilizationTimeout": 400,
+    "strategy": "bfs",
+    "maxDepth": 2,
+    "maxStates": 30,
+    "maxActionsPerState": 10,
+    "timeout": 30000,
+    "domHashStrategy": "interactive-only",
+    "captureStateScreenshots": true,
+    "captureTransitionScreenshots": true,
+    "screenshotsDir": "/workspaces/isagri-ng/playwright-playground/.exploration-data/screenshots",
+    "screenshotsPrefix": "legacy-button-secondary-disabled-light"
+  },
+  "graph": {
+    "states": [
+      {
+        "id": "7a61fff4db9e0ac5",
+        "facts": [
+          {
+            "uid": "button[0]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": false,
+            "focusable": true,
+            "text": "Test",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-legacy-button > button"
+          }
+        ],
+        "depth": 0,
+        "timestamp": 1777363613836,
+        "scopeSelector": "section.is-ready"
+      }
+    ],
+    "transitions": []
+  },
+  "summary": {
+    "statesDiscovered": 1,
+    "transitions": 0,
+    "maxDepthReached": 0,
+    "cycles": 0,
+    "deadEnds": 1,
+    "totalDuration": 556,
+    "failedActions": 0
+  },
+  "actions": [],
+  "scenarios": [],
+  "mermaid": "stateDiagram-v2\n  state \"7a61fff4 (d=0)\" as s_7a61fff4",
+  "dot": "digraph {\n  \"7a61fff4db9e0ac5\" [label=\"7a61fff4\\nd=0 f=1\"];\n}",
+  "generatedAt": "2026-04-28T08:06:53.981Z"
+}

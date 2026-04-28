@@ -22,42 +22,52 @@ export abstract class ConcreteBuilderPOM<TSelector = Record<string, string>> imp
     this._page = this._testContext.page;
   }
 
-  #actionsToExecute: (() => Promise<void>)[] = [];
-  protected _addAction(action: () => Promise<void>) {
-    this.#actionsToExecute.push(action);
+  #actionsToExecute: { action: () => Promise<void>; name?: string; silent?: boolean }[] = [];
+  protected _addAction(action: () => Promise<void>, name?: string) {
+    this.#actionsToExecute.push({ action, name });
     return this;
   }
 
   public enableScreenshot(): this {
-    this._addAction(() => {
-      this.#disableScreenshot = false;
-      return Promise.resolve();
+    this.#actionsToExecute.push({
+      action: () => {
+        this.#disableScreenshot = false;
+        return Promise.resolve();
+      },
+      silent: true,
     });
     return this;
   }
 
   public disableScreenshot(): this {
-    this._addAction(() => {
-      this.#disableScreenshot = true;
-      return Promise.resolve();
+    this.#actionsToExecute.push({
+      action: () => {
+        this.#disableScreenshot = true;
+        return Promise.resolve();
+      },
+      silent: true,
     });
     return this;
   }
 
   public updateSelector<K extends keyof TSelector>(key: K, value: TSelector[K]): this {
-    return this._addAction(() => {
-      this._selectors[key] = value;
-      return Promise.resolve();
+    this.#actionsToExecute.push({
+      action: () => {
+        this._selectors[key] = value;
+        return Promise.resolve();
+      },
+      silent: true,
     });
+    return this;
   }
 
   public async execute(): Promise<void> {
     // On ajoute une action pour désactiver les screenshots à la fin
     this.disableScreenshot();
-    for (const action of this.#actionsToExecute) {
+    for (const { action, name, silent } of this.#actionsToExecute) {
       await action();
-      if (!this.#disableScreenshot) {
-        await this._expectContext.expectToHaveScreenshot();
+      if (!this.#disableScreenshot && !silent) {
+        await this._expectContext.expectToHaveScreenshot(name);
       }
     }
     this._cleanActions();

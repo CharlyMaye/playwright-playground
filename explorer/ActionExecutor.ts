@@ -2,27 +2,31 @@ import { Injector } from '../engine';
 import { TestContext } from '../engine/test.context';
 import { ExplorationConfig } from './ExplorationConfig';
 import { ExplorationScope } from './ExplorationScope';
+import { ReadinessChecker } from './ReadinessChecker';
 import { ActionResult, CandidateAction, ElementFact, SequenceAction, UnitaryAction, WaitCondition } from './types';
 
 export abstract class ActionExecutor {
   abstract execute(action: CandidateAction): Promise<ActionResult>;
 }
 
-@Injector({ Provide: [TestContext, ExplorationScope, ExplorationConfig] })
+@Injector({ Provide: [TestContext, ExplorationScope, ExplorationConfig, ReadinessChecker] })
 export class ConcreteActionExecutor extends ActionExecutor {
   readonly #page;
   readonly #scope: ExplorationScope;
   readonly #config: ExplorationConfig;
+  readonly #readiness: ReadinessChecker;
 
   constructor(
     protected testContext: TestContext,
     protected explorationScope: ExplorationScope,
-    protected explorationConfig: ExplorationConfig
+    protected explorationConfig: ExplorationConfig,
+    protected readinessChecker: ReadinessChecker
   ) {
     super();
     this.#page = testContext.page;
     this.#scope = explorationScope;
     this.#config = explorationConfig;
+    this.#readiness = readinessChecker;
   }
 
   async execute(action: CandidateAction): Promise<ActionResult> {
@@ -46,7 +50,7 @@ export class ConcreteActionExecutor extends ActionExecutor {
   }
 
   async #executeUnitary(action: UnitaryAction, start: number): Promise<ActionResult> {
-    const locator = this.#resolveLocator(action.targetUid);
+    const locator = this.#resolveLocator(action.targetUid, action.targetSelector);
     const timeout = this.#config.stabilizationTimeout;
 
     switch (action.type) {
@@ -71,6 +75,7 @@ export class ConcreteActionExecutor extends ActionExecutor {
     }
 
     // Wait for DOM stabilization
+    await this.#readiness.waitForReady();
     await this.#page.waitForTimeout(this.#config.stabilizationTimeout);
 
     return {
@@ -130,11 +135,16 @@ export class ConcreteActionExecutor extends ActionExecutor {
     }
   }
 
-  #resolveLocator(uid: string) {
+  #resolveLocator(uid: string, cssSelector?: string) {
     const page = this.#page;
     const root = this.#scope.root;
 
-    // testid:xxx
+    // Priority 1: page-level CSS selector captured by DOMExtractor (most reliable)
+    if (cssSelector) {
+      return page.locator(cssSelector);
+    }
+
+    // Priority 2: testid:xxx
     if (uid.startsWith('testid:')) {
       const testId = uid.slice('testid:'.length);
       return root.getByTestId(testId);
@@ -159,10 +169,7 @@ export class ConcreteActionExecutor extends ActionExecutor {
 }
 
 /** Utility: compute simple diff of appeared/disappeared/modified elements */
-export function computeDomChanges(
-  before: ElementFact[],
-  after: ElementFact[]
-): { appeared: string[]; disappeared: string[]; modified: string[] } {
+export function computeDomChanges(before: ElementFact[], after: ElementFact[]): { appeared: string[]; disappeared: string[]; modified: string[] } {
   const beforeUids = new Set(before.map((f) => f.uid));
   const afterUids = new Set(after.map((f) => f.uid));
   const afterMap = new Map(after.map((f) => [f.uid, f]));
