@@ -134,6 +134,8 @@ export type LlamasticotTargetOptions = {
   theme?: 'light' | 'dark';
   /** Culture code (i18n). Default: `'fr-FR'`. */
   culture?: string;
+  /** Additional query params appended to the story URL (e.g. `{ isDisabled: 'false', variant: 'ing-action-standard' }`). */
+  queryParams?: Record<string, string>;
   /** Per-target overrides applied on top of the LlamaSticot preset. */
   configOverrides?: Partial<PartialExplorationConfig>;
   /** Optional hook executed after `goto` and before `explore`. */
@@ -169,9 +171,17 @@ export function createLlamasticotTarget(storyPath: string, options: LlamasticotT
   const overrides = options.configOverrides ?? {};
 
   const slug = storyPath.replace(/^\/+|\/+$/g, '').replace(/\//g, '-');
-  const name = `${slug}-${theme}`;
+  const paramsSuffix = options.queryParams
+    ? '-' +
+      Object.entries(options.queryParams)
+        .map(([k, v]) => `${k}-${v}`)
+        .join('-')
+    : '';
+  const name = `${slug}${paramsSuffix}-${theme}`;
 
-  const url = `${LLAMASTICOT_BASE_URL}/${storyPath.replace(/^\/+/, '')}?standalone=true&culture=${culture}&theme=${theme}`;
+  const baseUrl = `${LLAMASTICOT_BASE_URL}/${storyPath.replace(/^\/+/, '')}?standalone=true&culture=${culture}&theme=${theme}`;
+  const extra = options.queryParams ? '&' + new URLSearchParams(options.queryParams).toString() : '';
+  const url = `${baseUrl}${extra}`;
 
   const config: PartialExplorationConfig = {
     rootSelector: LLAMASTICOT_READY_SELECTOR,
@@ -221,7 +231,23 @@ export function createLlamasticotThemeMatrix(storyPath: string, options: Omit<Ll
  */
 export const LLAMASTICOT_TARGETS: ExplorationTarget[] = [
   // Baseline target — captures a standard interactive page with the default ruleset.
-  createLlamasticotTarget('legacy-button/standard', { theme: 'light', captureScreenshots: false }),
+  createLlamasticotTarget('legacy-button', { theme: 'light', captureScreenshots: false }),
+  createLlamasticotTarget('legacy-button', {
+    theme: 'light',
+    queryParams: { isDisabled: 'false', variant: 'ing-discreet' },
+  }),
+  createLlamasticotTarget('legacy-button', {
+    theme: 'light',
+    queryParams: { isDisabled: 'false', variant: 'ing-secondary' },
+  }),
+  createLlamasticotTarget('legacy-button', {
+    theme: 'light',
+    queryParams: { isDisabled: 'false', variant: 'ing-action-standard' },
+  }),
+  createLlamasticotTarget('legacy-button', {
+    theme: 'light',
+    queryParams: { isDisabled: 'false', variant: 'ing-action-exceptional' },
+  }),
   // Validation target — explicitly requested for the readiness/overflow checks.
   // This page renders a single disabled secondary button: 1 state, 0 actions
   // (disabled elements are filtered by RulesEngine). Confirms readiness wiring.
