@@ -179,7 +179,7 @@ export function createLlamasticotTarget(storyPath: string, options: LlamasticotT
     overflowSelectors: LLAMASTICOT_OVERFLOW_SELECTORS,
     readinessSelector: LLAMASTICOT_READY_SELECTOR,
     readinessTimeout: 8_000,
-    stabilizationTimeout: 400,
+    stabilizationTimeout: 100,
     strategy: 'bfs',
     maxDepth: 2,
     maxStates: 30,
@@ -220,6 +220,8 @@ export function createLlamasticotThemeMatrix(storyPath: string, options: Omit<Ll
  * single-variant targets or `createLlamasticotThemeMatrix` for light + dark.
  */
 export const LLAMASTICOT_TARGETS: ExplorationTarget[] = [
+  // Baseline target — captures a standard interactive page with the default ruleset.
+  createLlamasticotTarget('legacy-button/standard', { theme: 'light', captureScreenshots: true }),
   // Validation target — explicitly requested for the readiness/overflow checks.
   // This page renders a single disabled secondary button: 1 state, 0 actions
   // (disabled elements are filtered by RulesEngine). Confirms readiness wiring.

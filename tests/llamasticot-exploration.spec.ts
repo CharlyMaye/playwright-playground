@@ -15,7 +15,8 @@ describe('LlamaSticot Exploration — Replay', () => {
 
     describe(`target: ${target.name}`, () => {
       test(`replay all scenarios (${target.name})`, {}, async ({ instance, testContext }) => {
-        test.setTimeout(120_000);
+        const explorationTimeout = target.config.timeout ?? 30_000;
+        test.setTimeout(explorationTimeout + 30_000);
 
         const data = JSON.parse(fs.readFileSync(jsonPath, 'utf-8')) as { graph: { states: unknown[] } };
         expect(data.graph.states.length).toBeGreaterThan(0);

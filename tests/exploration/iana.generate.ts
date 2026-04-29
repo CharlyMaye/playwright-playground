@@ -80,7 +80,8 @@ test.describe('IANA Exploration — Generate', () => {
       });
 
       test(`generate: ${scopeName}`, async ({ explorer, explorationGraph, scenarioExporter, rulesEngine, page }) => {
-        test.setTimeout(120_000);
+        const explorationTimeout = overrides.timeout ?? 30_000;
+        test.setTimeout(explorationTimeout + 30_000);
         await page.goto(IANA_URL, { waitUntil: 'load' });
 
         await explorer.explore();

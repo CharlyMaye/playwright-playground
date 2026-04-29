@@ -33,7 +33,8 @@ test.describe('LlamaSticot Exploration — Generate', () => {
       });
 
       test(`generate: ${target.name}`, async ({ explorer, explorationGraph, scenarioExporter, rulesEngine, page }) => {
-        test.setTimeout(120_000);
+        const explorationTimeout = target.config.timeout ?? 30_000;
+        test.setTimeout(explorationTimeout + 30_000);
 
         await page.goto(target.url, { waitUntil: 'load' });
 
