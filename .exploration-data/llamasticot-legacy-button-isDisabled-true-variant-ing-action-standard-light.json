@@ -195,7 +195,7 @@
             "boundingBox": {
               "x": 0,
               "y": 0,
-              "width": 64,
+              "width": 63.34375,
               "height": 32
             },
             "isInScope": true,
@@ -204,7 +204,7 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1777460521850,
+        "timestamp": 1777462175779,
         "scopeSelector": "section.is-ready"
       }
     ],
@@ -216,12 +216,12 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 1,
-    "totalDuration": 330,
+    "totalDuration": 418,
     "failedActions": 0
   },
   "actions": [],
   "scenarios": [],
   "mermaid": "stateDiagram-v2\n  state \"ad846ede (d=0)\" as s_ad846ede",
   "dot": "digraph {\n  \"ad846edeb335371c\" [label=\"ad846ede\\nd=0 f=1\"];\n}",
-  "generatedAt": "2026-04-29T11:02:01.850Z"
+  "generatedAt": "2026-04-29T11:29:35.780Z"
 }

@@ -1,6 +1,6 @@
 {
-  "url": "http://localhost:4206/legacy-button?standalone=true&culture=fr-FR&theme=light&isDisabled=false&variant=ing-discreet",
-  "target": "legacy-button-isDisabled-false-variant-ing-discreet-light",
+  "url": "http://localhost:4206/legacy-tile-button?standalone=true&culture=fr-FR&theme=light&isDisabled=false",
+  "target": "legacy-tile-button-isDisabled-false-light",
   "config": {
     "rootSelector": "section.is-ready",
     "boundary": "overflow",
@@ -175,10 +175,10 @@
   "graph": {
     "states": [
       {
-        "id": "e2ae40a782cda714",
+        "id": "f6ab7be3f451295b",
         "facts": [
           {
-            "uid": "testid:btn-legacy",
+            "uid": "testid:btn-tile",
             "tag": "button",
             "role": null,
             "accessibleName": null,
@@ -195,32 +195,32 @@
             "boundingBox": {
               "x": 0,
               "y": 0,
-              "width": 64,
-              "height": 32
+              "width": 62,
+              "height": 54.84375
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "[data-testid=\"btn-legacy\"]"
+            "cssSelector": "[data-testid=\"btn-tile\"]"
           }
         ],
         "depth": 0,
-        "timestamp": 1777462150338,
+        "timestamp": 1777462187638,
         "scopeSelector": "section.is-ready"
       }
     ],
     "transitions": [
       {
-        "id": "e2ae40a782cda714->e2ae40a782cda714:hover:testid:btn-legacy",
-        "from": "e2ae40a782cda714",
-        "to": "e2ae40a782cda714",
+        "id": "f6ab7be3f451295b->f6ab7be3f451295b:hover:testid:btn-tile",
+        "from": "f6ab7be3f451295b",
+        "to": "f6ab7be3f451295b",
         "action": {
           "type": "hover",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
+          "targetUid": "testid:btn-tile",
+          "targetSelector": "[data-testid=\"btn-tile\"]",
           "priority": 9
         },
         "success": true,
-        "duration": 222,
+        "duration": 242,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -229,17 +229,17 @@
         "selfLoop": true
       },
       {
-        "id": "e2ae40a782cda714->e2ae40a782cda714:focus:testid:btn-legacy",
-        "from": "e2ae40a782cda714",
-        "to": "e2ae40a782cda714",
+        "id": "f6ab7be3f451295b->f6ab7be3f451295b:focus:testid:btn-tile",
+        "from": "f6ab7be3f451295b",
+        "to": "f6ab7be3f451295b",
         "action": {
           "type": "focus",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
+          "targetUid": "testid:btn-tile",
+          "targetSelector": "[data-testid=\"btn-tile\"]",
           "priority": 8
         },
         "success": true,
-        "duration": 171,
+        "duration": 170,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -248,17 +248,17 @@
         "selfLoop": true
       },
       {
-        "id": "e2ae40a782cda714->e2ae40a782cda714:mousedown:testid:btn-legacy",
-        "from": "e2ae40a782cda714",
-        "to": "e2ae40a782cda714",
+        "id": "f6ab7be3f451295b->f6ab7be3f451295b:mousedown:testid:btn-tile",
+        "from": "f6ab7be3f451295b",
+        "to": "f6ab7be3f451295b",
         "action": {
           "type": "mousedown",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
+          "targetUid": "testid:btn-tile",
+          "targetSelector": "[data-testid=\"btn-tile\"]",
           "priority": 7
         },
         "success": true,
-        "duration": 190,
+        "duration": 192,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -274,60 +274,60 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 3681,
+    "totalDuration": 4452,
     "failedActions": 1
   },
   "actions": [
     {
       "type": "click",
-      "targetUid": "testid:btn-legacy",
+      "targetUid": "testid:btn-tile",
       "priority": 10
     },
     {
       "type": "hover",
-      "targetUid": "testid:btn-legacy",
+      "targetUid": "testid:btn-tile",
       "priority": 9
     },
     {
       "type": "focus",
-      "targetUid": "testid:btn-legacy",
+      "targetUid": "testid:btn-tile",
       "priority": 8
     },
     {
       "type": "mousedown",
-      "targetUid": "testid:btn-legacy",
+      "targetUid": "testid:btn-tile",
       "priority": 7
     }
   ],
   "scenarios": [
     {
-      "name": "hover_testid:btn-legacy → focus_testid:btn-legacy → mousedown_testid:btn-legacy",
+      "name": "hover_testid:btn-tile → focus_testid:btn-tile → mousedown_testid:btn-tile",
       "steps": [
         {
           "type": "hover",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
+          "targetUid": "testid:btn-tile",
+          "targetSelector": "[data-testid=\"btn-tile\"]",
           "priority": 9
         },
         {
           "type": "focus",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
+          "targetUid": "testid:btn-tile",
+          "targetSelector": "[data-testid=\"btn-tile\"]",
           "priority": 8
         },
         {
           "type": "mousedown",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
+          "targetUid": "testid:btn-tile",
+          "targetSelector": "[data-testid=\"btn-tile\"]",
           "priority": 7
         }
       ],
       "selectors": [
-        "testid:btn-legacy"
+        "testid:btn-tile"
       ]
     }
   ],
-  "mermaid": "stateDiagram-v2\n  state \"e2ae40a7 (d=0)\" as s_e2ae40a7\n  s_e2ae40a7 --> s_e2ae40a7 : hover\n  s_e2ae40a7 --> s_e2ae40a7 : focus\n  s_e2ae40a7 --> s_e2ae40a7 : mousedown",
-  "dot": "digraph {\n  \"e2ae40a782cda714\" [label=\"e2ae40a7\\nd=0 f=1\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"hover\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"focus\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"mousedown\"];\n}",
-  "generatedAt": "2026-04-29T11:29:13.687Z"
+  "mermaid": "stateDiagram-v2\n  state \"f6ab7be3 (d=0)\" as s_f6ab7be3\n  s_f6ab7be3 --> s_f6ab7be3 : hover\n  s_f6ab7be3 --> s_f6ab7be3 : focus\n  s_f6ab7be3 --> s_f6ab7be3 : mousedown",
+  "dot": "digraph {\n  \"f6ab7be3f451295b\" [label=\"f6ab7be3\\nd=0 f=1\"];\n  \"f6ab7be3f451295b\" -> \"f6ab7be3f451295b\" [label=\"hover\"];\n  \"f6ab7be3f451295b\" -> \"f6ab7be3f451295b\" [label=\"focus\"];\n  \"f6ab7be3f451295b\" -> \"f6ab7be3f451295b\" [label=\"mousedown\"];\n}",
+  "generatedAt": "2026-04-29T11:29:51.755Z"
 }

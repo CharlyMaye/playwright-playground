@@ -264,10 +264,33 @@ export const LLAMASTICOT_TARGETS: ExplorationTarget[] = [
     theme: 'light',
     queryParams: { isDisabled: 'true', variant: 'ing-action-exceptional' },
   }),
-  // Validation target — explicitly requested for the readiness/overflow checks.
-  // This page renders a single disabled secondary button: 1 state, 0 actions
-  // (disabled elements are filtered by RulesEngine). Confirms readiness wiring.
-  createLlamasticotTarget('legacy-button/secondary-disabled', { theme: 'light', captureScreenshots: false }),
+  //
+  createLlamasticotTarget('legacy-tile-button', {
+    theme: 'light',
+    queryParams: { isDisabled: 'false' },
+  }),
+  createLlamasticotTarget('legacy-tile-button', {
+    theme: 'light',
+    queryParams: { isDisabled: 'true' },
+  }),
+  //
+  createLlamasticotTarget('legacy-menutitle-button', {
+    theme: 'light',
+    queryParams: { isDisabled: 'false' },
+  }),
+  createLlamasticotTarget('legacy-menutitle-button', {
+    theme: 'light',
+    queryParams: { isDisabled: 'true' },
+  }),
+  //
+  createLlamasticotTarget('legacy-radio-button?', {
+    theme: 'light',
+    queryParams: { isDisabled: 'false' },
+  }),
+  createLlamasticotTarget('legacy-radio-button', {
+    theme: 'light',
+    queryParams: { isDisabled: 'true' },
+  }),
   // Interactive target — confirms full pipeline (extract → rules → execute → graph).
   createLlamasticotTarget('mat-button', { theme: 'light', captureScreenshots: false }),
 ];

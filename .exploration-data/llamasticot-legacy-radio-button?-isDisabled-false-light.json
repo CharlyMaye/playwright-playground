@@ -1,6 +1,6 @@
 {
-  "url": "http://localhost:4206/legacy-button?standalone=true&culture=fr-FR&theme=light&isDisabled=false&variant=ing-discreet",
-  "target": "legacy-button-isDisabled-false-variant-ing-discreet-light",
+  "url": "http://localhost:4206/legacy-radio-button??standalone=true&culture=fr-FR&theme=light&isDisabled=false",
+  "target": "legacy-radio-button?-isDisabled-false-light",
   "config": {
     "rootSelector": "section.is-ready",
     "boundary": "overflow",
@@ -175,159 +175,119 @@
   "graph": {
     "states": [
       {
-        "id": "e2ae40a782cda714",
+        "id": "c09bf5c85983a5f4",
         "facts": [
           {
-            "uid": "testid:btn-legacy",
-            "tag": "button",
+            "uid": "#ing-radio-button1-input-a",
+            "tag": "input",
             "role": null,
-            "accessibleName": null,
+            "accessibleName": "a",
             "visible": true,
             "enabled": true,
             "focusable": true,
-            "text": "Test",
-            "inputType": null,
+            "text": "",
+            "inputType": "radio",
             "ariaExpanded": null,
             "ariaControls": null,
             "ariaOwns": null,
             "tabindex": null,
             "contentEditable": false,
             "boundingBox": {
-              "x": 0,
-              "y": 0,
-              "width": 64,
-              "height": 32
+              "x": 285.46875,
+              "y": 53.421875,
+              "width": 20,
+              "height": 20
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "[data-testid=\"btn-legacy\"]"
+            "cssSelector": "#ing-radio-button1-input-a"
+          },
+          {
+            "uid": "#ing-radio-button1-input-b",
+            "tag": "input",
+            "role": null,
+            "accessibleName": "b",
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "",
+            "inputType": "radio",
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 296.78125,
+              "y": 86.265625,
+              "width": 20,
+              "height": 20
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#ing-radio-button1-input-b"
+          },
+          {
+            "uid": "#ing-radio-button1-input-c",
+            "tag": "input",
+            "role": null,
+            "accessibleName": "c",
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "",
+            "inputType": "radio",
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 305,
+              "y": 119.109375,
+              "width": 20,
+              "height": 20
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#ing-radio-button1-input-c"
           }
         ],
         "depth": 0,
-        "timestamp": 1777462150338,
+        "timestamp": 1777462212523,
         "scopeSelector": "section.is-ready"
       }
     ],
-    "transitions": [
-      {
-        "id": "e2ae40a782cda714->e2ae40a782cda714:hover:testid:btn-legacy",
-        "from": "e2ae40a782cda714",
-        "to": "e2ae40a782cda714",
-        "action": {
-          "type": "hover",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
-          "priority": 9
-        },
-        "success": true,
-        "duration": 222,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "e2ae40a782cda714->e2ae40a782cda714:focus:testid:btn-legacy",
-        "from": "e2ae40a782cda714",
-        "to": "e2ae40a782cda714",
-        "action": {
-          "type": "focus",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
-          "priority": 8
-        },
-        "success": true,
-        "duration": 171,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "e2ae40a782cda714->e2ae40a782cda714:mousedown:testid:btn-legacy",
-        "from": "e2ae40a782cda714",
-        "to": "e2ae40a782cda714",
-        "action": {
-          "type": "mousedown",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
-          "priority": 7
-        },
-        "success": true,
-        "duration": 190,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      }
-    ]
+    "transitions": []
   },
   "summary": {
     "statesDiscovered": 1,
-    "transitions": 3,
+    "transitions": 0,
     "maxDepthReached": 0,
     "cycles": 0,
-    "deadEnds": 0,
-    "totalDuration": 3681,
-    "failedActions": 1
+    "deadEnds": 1,
+    "totalDuration": 1654,
+    "failedActions": 3
   },
   "actions": [
     {
       "type": "click",
-      "targetUid": "testid:btn-legacy",
-      "priority": 10
+      "targetUid": "#ing-radio-button1-input-a",
+      "priority": 7
     },
     {
-      "type": "hover",
-      "targetUid": "testid:btn-legacy",
-      "priority": 9
+      "type": "click",
+      "targetUid": "#ing-radio-button1-input-b",
+      "priority": 7
     },
     {
-      "type": "focus",
-      "targetUid": "testid:btn-legacy",
-      "priority": 8
-    },
-    {
-      "type": "mousedown",
-      "targetUid": "testid:btn-legacy",
+      "type": "click",
+      "targetUid": "#ing-radio-button1-input-c",
       "priority": 7
     }
   ],
-  "scenarios": [
-    {
-      "name": "hover_testid:btn-legacy → focus_testid:btn-legacy → mousedown_testid:btn-legacy",
-      "steps": [
-        {
-          "type": "hover",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
-          "priority": 9
-        },
-        {
-          "type": "focus",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
-          "priority": 8
-        },
-        {
-          "type": "mousedown",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
-          "priority": 7
-        }
-      ],
-      "selectors": [
-        "testid:btn-legacy"
-      ]
-    }
-  ],
-  "mermaid": "stateDiagram-v2\n  state \"e2ae40a7 (d=0)\" as s_e2ae40a7\n  s_e2ae40a7 --> s_e2ae40a7 : hover\n  s_e2ae40a7 --> s_e2ae40a7 : focus\n  s_e2ae40a7 --> s_e2ae40a7 : mousedown",
-  "dot": "digraph {\n  \"e2ae40a782cda714\" [label=\"e2ae40a7\\nd=0 f=1\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"hover\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"focus\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"mousedown\"];\n}",
-  "generatedAt": "2026-04-29T11:29:13.687Z"
+  "scenarios": [],
+  "mermaid": "stateDiagram-v2\n  state \"c09bf5c8 (d=0)\" as s_c09bf5c8",
+  "dot": "digraph {\n  \"c09bf5c85983a5f4\" [label=\"c09bf5c8\\nd=0 f=3\"];\n}",
+  "generatedAt": "2026-04-29T11:30:13.006Z"
 }
