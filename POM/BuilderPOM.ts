@@ -1,9 +1,13 @@
 import { Page } from '@playwright/test';
 import { ExpectContext, TestContext } from '../engine';
+import type { ScreenshotOptions } from '../engine/expect-service';
+
+export type ClipProvider = () => Promise<ScreenshotOptions | undefined>;
 
 export abstract class BuilderPOM<TSelector = Record<string, string>> {
   public abstract enableScreenshot(): this;
   public abstract disableScreenshot(): this;
+  public abstract setClipProvider(provider: ClipProvider): this;
 
   public abstract updateSelector<K extends keyof TSelector>(key: K, value: TSelector[K]): this;
   public abstract execute(): Promise<void>;
@@ -14,6 +18,7 @@ export abstract class ConcreteBuilderPOM<TSelector = Record<string, string>> imp
   protected abstract _selectors: TSelector;
 
   #disableScreenshot = true;
+  #clipProvider: ClipProvider | null = null;
 
   constructor(
     protected _testContext: TestContext,
@@ -50,6 +55,17 @@ export abstract class ConcreteBuilderPOM<TSelector = Record<string, string>> imp
     return this;
   }
 
+  public setClipProvider(provider: ClipProvider): this {
+    this.#actionsToExecute.push({
+      action: () => {
+        this.#clipProvider = provider;
+        return Promise.resolve();
+      },
+      silent: true,
+    });
+    return this;
+  }
+
   public updateSelector<K extends keyof TSelector>(key: K, value: TSelector[K]): this {
     this.#actionsToExecute.push({
       action: () => {
@@ -67,7 +83,8 @@ export abstract class ConcreteBuilderPOM<TSelector = Record<string, string>> imp
     for (const { action, name, silent } of this.#actionsToExecute) {
       await action();
       if (!this.#disableScreenshot && !silent) {
-        await this._expectContext.expectToHaveScreenshot(name);
+        const clipOptions = this.#clipProvider ? await this.#clipProvider() : undefined;
+        await this._expectContext.expectToHaveScreenshot(name, clipOptions);
       }
     }
     this._cleanActions();

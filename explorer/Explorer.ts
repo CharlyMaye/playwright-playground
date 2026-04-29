@@ -10,6 +10,7 @@ import { ExplorationScope } from './ExplorationScope';
 import { ReadinessChecker } from './ReadinessChecker';
 import { RulesEngine } from './RulesEngine';
 import { StateManager } from './StateManager';
+import { computeClipRegion } from './screenshot-utils';
 import { CandidateAction, StateNode, Transition } from './types';
 
 export type ExplorationSummary = {
@@ -285,7 +286,10 @@ export class ConcreteExplorer extends Explorer {
       const safe = label.replace(/[^a-zA-Z0-9_-]/g, '_').slice(0, 80);
       const counter = kind === 'transition' ? `${String(this.#transitionCounter++).padStart(4, '0')}-` : '';
       const file = path.join(dir, `${prefix}${kind}-${counter}${safe}.png`);
-      await this.#page.screenshot({ path: file, fullPage: false });
+
+      const clip = this.#config.screenshotClipToScope ? await computeClipRegion(this.#page, this.#config.rootSelector, this.#config.overflowSelectors, this.#config.screenshotMargin, this.#config.screenshotIncludeOverflows) : null;
+
+      await this.#page.screenshot({ path: file, fullPage: false, ...(clip ? { clip } : {}) });
     } catch {
       // best-effort
     }
