@@ -283,11 +283,20 @@ export const LLAMASTICOT_TARGETS: ExplorationTarget[] = [
     queryParams: { isDisabled: 'true' },
   }),
   //
-  createLlamasticotTarget('legacy-radio-button?', {
+  createLlamasticotTarget('legacy-radio-button', {
     theme: 'light',
     queryParams: { isDisabled: 'false' },
   }),
   createLlamasticotTarget('legacy-radio-button', {
+    theme: 'light',
+    queryParams: { isDisabled: 'true' },
+  }),
+  //
+  createLlamasticotTarget('legacy-toggle-button', {
+    theme: 'light',
+    queryParams: { isDisabled: 'false' },
+  }),
+  createLlamasticotTarget('legacy-toggle-button', {
     theme: 'light',
     queryParams: { isDisabled: 'true' },
   }),

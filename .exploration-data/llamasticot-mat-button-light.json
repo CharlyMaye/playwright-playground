@@ -1004,7 +1004,7 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1777461859155,
+        "timestamp": 1777465556624,
         "scopeSelector": "section.is-ready"
       }
     ],
@@ -1020,7 +1020,7 @@
           "priority": 10
         },
         "success": true,
-        "duration": 208,
+        "duration": 202,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1039,7 +1039,7 @@
           "priority": 10
         },
         "success": true,
-        "duration": 215,
+        "duration": 222,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1058,7 +1058,26 @@
           "priority": 10
         },
         "success": true,
-        "duration": 239,
+        "duration": 218,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "3546bbda18d0a599->3546bbda18d0a599:click:testid:btn-fab-delete",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
+        "action": {
+          "type": "click",
+          "targetUid": "testid:btn-fab-delete",
+          "targetSelector": "[data-testid=\"btn-fab-delete\"]",
+          "priority": 10
+        },
+        "success": true,
+        "duration": 220,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1077,7 +1096,7 @@
           "priority": 10
         },
         "success": true,
-        "duration": 215,
+        "duration": 231,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1096,7 +1115,7 @@
           "priority": 9
         },
         "success": true,
-        "duration": 227,
+        "duration": 228,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1115,7 +1134,7 @@
           "priority": 9
         },
         "success": true,
-        "duration": 225,
+        "duration": 219,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1134,7 +1153,7 @@
           "priority": 9
         },
         "success": true,
-        "duration": 239,
+        "duration": 220,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1153,7 +1172,7 @@
           "priority": 9
         },
         "success": true,
-        "duration": 224,
+        "duration": 218,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1172,7 +1191,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 171,
+        "duration": 170,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1191,7 +1210,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 172,
+        "duration": 175,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1210,7 +1229,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 174,
+        "duration": 171,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1267,7 +1286,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 172,
+        "duration": 176,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1286,7 +1305,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 171,
+        "duration": 175,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1305,7 +1324,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 177,
+        "duration": 233,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1343,7 +1362,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 187,
+        "duration": 197,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1362,7 +1381,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 189,
+        "duration": 203,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1381,7 +1400,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 185,
+        "duration": 193,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1400,7 +1419,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 271,
+        "duration": 202,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1419,7 +1438,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 194,
+        "duration": 198,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1438,7 +1457,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 196,
+        "duration": 198,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1457,7 +1476,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 191,
+        "duration": 194,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1476,7 +1495,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 195,
+        "duration": 193,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1495,7 +1514,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 234,
+        "duration": 191,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1504,17 +1523,74 @@
         "selfLoop": true
       },
       {
-        "id": "3546bbda18d0a599->3546bbda18d0a599:hover:testid:link-text",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:click:testid:link-elevated",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
+        "action": {
+          "type": "click",
+          "targetUid": "testid:link-elevated",
+          "targetSelector": "[data-testid=\"link-elevated\"]",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 276,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "3546bbda18d0a599->3546bbda18d0a599:click:testid:link-filled",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
+        "action": {
+          "type": "click",
+          "targetUid": "testid:link-filled",
+          "targetSelector": "[data-testid=\"link-filled\"]",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 226,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "3546bbda18d0a599->3546bbda18d0a599:click:testid:link-exfab",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
+        "action": {
+          "type": "click",
+          "targetUid": "testid:link-exfab",
+          "targetSelector": "[data-testid=\"link-exfab\"]",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 214,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "3546bbda18d0a599->3546bbda18d0a599:hover:testid:link-elevated",
         "from": "3546bbda18d0a599",
         "to": "3546bbda18d0a599",
         "action": {
           "type": "hover",
-          "targetUid": "testid:link-text",
-          "targetSelector": "[data-testid=\"link-text\"]",
+          "targetUid": "testid:link-elevated",
+          "targetSelector": "[data-testid=\"link-elevated\"]",
           "priority": 4
         },
         "success": true,
-        "duration": 229,
+        "duration": 217,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1533,7 +1609,7 @@
           "priority": 4
         },
         "success": true,
-        "duration": 214,
+        "duration": 230,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1552,7 +1628,7 @@
           "priority": 4
         },
         "success": true,
-        "duration": 215,
+        "duration": 246,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1571,7 +1647,7 @@
           "priority": 3
         },
         "success": true,
-        "duration": 176,
+        "duration": 172,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1590,7 +1666,7 @@
           "priority": 3
         },
         "success": true,
-        "duration": 174,
+        "duration": 212,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1602,12 +1678,12 @@
   },
   "summary": {
     "statesDiscovered": 1,
-    "transitions": 31,
+    "transitions": 35,
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 83862,
-    "failedActions": 19
+    "totalDuration": 86196,
+    "failedActions": 15
   },
   "actions": [
     {
@@ -1863,7 +1939,7 @@
   ],
   "scenarios": [
     {
-      "name": "click_testid:btn-text-basic → click_testid:btn-outlined-basic → click_testid:btn-tonal-basic → click_testid:btn-exfab-basic → hover_testid:btn-elevated-basic → hover_testid:btn-filled-basic → hover_testid:btn-icon-more → hover_testid:btn-minifab-menu → focus_testid:btn-text-basic → focus_testid:btn-elevated-basic → focus_testid:btn-outlined-basic → focus_testid:btn-filled-basic → focus_testid:btn-tonal-basic → focus_testid:btn-icon-more → focus_testid:btn-fab-delete → focus_testid:btn-minifab-menu → focus_testid:btn-exfab-basic → mousedown_testid:btn-text-basic → mousedown_testid:btn-elevated-basic → mousedown_testid:btn-outlined-basic → mousedown_testid:btn-filled-basic → mousedown_testid:btn-tonal-basic → mousedown_testid:btn-icon-more → mousedown_testid:btn-fab-delete → mousedown_testid:btn-minifab-menu → mousedown_testid:btn-exfab-basic → hover_testid:link-text → hover_testid:link-filled → hover_testid:link-exfab → focus_testid:link-text → focus_testid:link-elevated",
+      "name": "click_testid:btn-text-basic → click_testid:btn-outlined-basic → click_testid:btn-tonal-basic → click_testid:btn-fab-delete → click_testid:btn-exfab-basic → hover_testid:btn-elevated-basic → hover_testid:btn-filled-basic → hover_testid:btn-icon-more → hover_testid:btn-minifab-menu → focus_testid:btn-text-basic → focus_testid:btn-elevated-basic → focus_testid:btn-outlined-basic → focus_testid:btn-filled-basic → focus_testid:btn-tonal-basic → focus_testid:btn-icon-more → focus_testid:btn-fab-delete → focus_testid:btn-minifab-menu → focus_testid:btn-exfab-basic → mousedown_testid:btn-text-basic → mousedown_testid:btn-elevated-basic → mousedown_testid:btn-outlined-basic → mousedown_testid:btn-filled-basic → mousedown_testid:btn-tonal-basic → mousedown_testid:btn-icon-more → mousedown_testid:btn-fab-delete → mousedown_testid:btn-minifab-menu → mousedown_testid:btn-exfab-basic → click_testid:link-elevated → click_testid:link-filled → click_testid:link-exfab → hover_testid:link-elevated → hover_testid:link-filled → hover_testid:link-exfab → focus_testid:link-text → focus_testid:link-elevated",
       "steps": [
         {
           "type": "click",
@@ -1885,6 +1961,12 @@
         },
         {
           "type": "click",
+          "targetUid": "testid:btn-fab-delete",
+          "targetSelector": "[data-testid=\"btn-fab-delete\"]",
+          "priority": 10
+        },
+        {
+          "type": "click",
           "targetUid": "testid:btn-exfab-basic",
           "targetSelector": "[data-testid=\"btn-exfab-basic\"]",
           "priority": 10
@@ -2022,9 +2104,27 @@
           "priority": 7
         },
         {
+          "type": "click",
+          "targetUid": "testid:link-elevated",
+          "targetSelector": "[data-testid=\"link-elevated\"]",
+          "priority": 5
+        },
+        {
+          "type": "click",
+          "targetUid": "testid:link-filled",
+          "targetSelector": "[data-testid=\"link-filled\"]",
+          "priority": 5
+        },
+        {
+          "type": "click",
+          "targetUid": "testid:link-exfab",
+          "targetSelector": "[data-testid=\"link-exfab\"]",
+          "priority": 5
+        },
+        {
           "type": "hover",
-          "targetUid": "testid:link-text",
-          "targetSelector": "[data-testid=\"link-text\"]",
+          "targetUid": "testid:link-elevated",
+          "targetSelector": "[data-testid=\"link-elevated\"]",
           "priority": 4
         },
         {
@@ -2056,20 +2156,20 @@
         "testid:btn-text-basic",
         "testid:btn-outlined-basic",
         "testid:btn-tonal-basic",
+        "testid:btn-fab-delete",
         "testid:btn-exfab-basic",
         "testid:btn-elevated-basic",
         "testid:btn-filled-basic",
         "testid:btn-icon-more",
         "testid:btn-minifab-menu",
-        "testid:btn-fab-delete",
-        "testid:link-text",
+        "testid:link-elevated",
         "testid:link-filled",
         "testid:link-exfab",
-        "testid:link-elevated"
+        "testid:link-text"
       ]
     }
   ],
-  "mermaid": "stateDiagram-v2\n  state \"3546bbda (d=0)\" as s_3546bbda\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus",
-  "dot": "digraph {\n  \"3546bbda18d0a599\" [label=\"3546bbda\\nd=0 f=33\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n}",
-  "generatedAt": "2026-04-29T11:25:41.419Z"
+  "mermaid": "stateDiagram-v2\n  state \"3546bbda (d=0)\" as s_3546bbda\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus",
+  "dot": "digraph {\n  \"3546bbda18d0a599\" [label=\"3546bbda\\nd=0 f=33\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n}",
+  "generatedAt": "2026-04-29T12:27:21.428Z"
 }

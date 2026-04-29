@@ -1,0 +1,222 @@
+{
+  "url": "http://localhost:4206/legacy-toggle-button?standalone=true&culture=fr-FR&theme=light&isDisabled=false",
+  "target": "legacy-toggle-button-isDisabled-false-light",
+  "config": {
+    "rootSelector": "section.is-ready",
+    "boundary": "overflow",
+    "overflowSelectors": [
+      ".cdk-overlay-container",
+      ".wj-popup",
+      ".wj-listbox",
+      ".wj-flexgrid-cell-overlay"
+    ],
+    "readinessSelector": "section.is-ready",
+    "readinessTimeout": 8000,
+    "stabilizationTimeout": 100,
+    "strategy": "bfs",
+    "maxDepth": 2,
+    "maxStates": 30,
+    "maxActionsPerState": 50,
+    "timeout": 1000000,
+    "domHashStrategy": "interactive-only",
+    "additionalRules": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 9
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 8
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 7
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 4
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 3
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 2
+          }
+        }
+      }
+    ],
+    "captureStateScreenshots": false,
+    "captureTransitionScreenshots": false,
+    "screenshotsPrefix": ""
+  },
+  "graph": {
+    "states": [
+      {
+        "id": "13cbb78c37153011",
+        "facts": [
+          {
+            "uid": "#ing-toggle-1-input",
+            "tag": "input",
+            "role": "switch",
+            "accessibleName": "",
+            "visible": false,
+            "enabled": true,
+            "focusable": true,
+            "text": "",
+            "inputType": "checkbox",
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#ing-toggle-1-input"
+          }
+        ],
+        "depth": 0,
+        "timestamp": 1777465549938,
+        "scopeSelector": "section.is-ready"
+      }
+    ],
+    "transitions": []
+  },
+  "summary": {
+    "statesDiscovered": 1,
+    "transitions": 0,
+    "maxDepthReached": 0,
+    "cycles": 0,
+    "deadEnds": 1,
+    "totalDuration": 390,
+    "failedActions": 0
+  },
+  "actions": [],
+  "scenarios": [],
+  "mermaid": "stateDiagram-v2\n  state \"13cbb78c (d=0)\" as s_13cbb78c",
+  "dot": "digraph {\n  \"13cbb78c37153011\" [label=\"13cbb78c\\nd=0 f=1\"];\n}",
+  "generatedAt": "2026-04-29T12:25:49.938Z"
+}

@@ -11,6 +11,7 @@ type Scenario = {
 
 type ExplorationOutput = {
   url: string;
+  target: string;
   scope: string;
   config: Record<string, unknown>;
   graph: SerializedGraph;
@@ -82,36 +83,49 @@ export class ConcreteExplorationPOM extends ConcreteBuilderPOM<ExplorationSelect
 
   public replayAll(): this {
     this.#ensureLoaded();
+    const prefix = this.#data!.target ?? 'unknown';
 
-    // If there are named scenarios (from non-self-loop transitions), replay them
+    // Initial state screenshot
+    this._addAction(async () => {
+      await this._page.goto(this.#data!.url, { waitUntil: 'load' });
+    }, `${prefix}--initial`);
+
+    // Replay named scenarios (non-self-loop transitions)
     if (this.#data!.scenarios.length > 0) {
       for (let scenarioIndex = 0; scenarioIndex < this.#data!.scenarios.length; scenarioIndex++) {
         const scenario = this.#data!.scenarios[scenarioIndex];
-        this._addAction(async () => {
-          await this._page.goto(this.#data!.url, { waitUntil: 'load' });
-        }, `scenario-${scenarioIndex}--goto`);
+        this._addAction(
+          async () => {
+            await this._page.goto(this.#data!.url, { waitUntil: 'load' });
+          },
+          undefined,
+          true
+        );
         for (let i = 0; i < scenario.steps.length; i++) {
           const step = scenario.steps[i];
-          const label = this.#actionLabel(step, i);
+          const uid = this.#sanitizeUid((step as { targetUid?: string }).targetUid ?? '');
           this._addAction(async () => {
             await this.#executeAction(step);
-          }, `scenario-${scenarioIndex}--step-${i}--${label}`);
+          }, `${prefix}--scenario-${scenarioIndex}--${step.type}-${uid}`);
         }
       }
     }
 
-    // Also replay self-loop transitions (hover, focus, mousedown, click that
+    // Replay self-loop transitions (hover, focus, mousedown, click that
     // didn't change DOM state). Each gets its own goto to reset visual state.
     const selfLoops = this.#data!.graph.transitions.filter((t: Transition) => t.selfLoop);
-    for (let i = 0; i < selfLoops.length; i++) {
-      const t = selfLoops[i];
-      const label = this.#actionLabel(t.action, i);
-      this._addAction(async () => {
-        await this._page.goto(this.#data!.url, { waitUntil: 'load' });
-      }, `self-loop-${i}--goto`);
+    for (const t of selfLoops) {
+      const uid = this.#sanitizeUid((t.action as { targetUid?: string }).targetUid ?? '');
+      this._addAction(
+        async () => {
+          await this._page.goto(this.#data!.url, { waitUntil: 'load' });
+        },
+        undefined,
+        true
+      );
       this._addAction(async () => {
         await this.#executeAction(t.action);
-      }, `self-loop-${i}--${label}`);
+      }, `${prefix}--${t.action.type}-${uid}`);
     }
 
     return this;

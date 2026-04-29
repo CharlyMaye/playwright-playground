@@ -23,8 +23,8 @@ export abstract class ConcreteBuilderPOM<TSelector = Record<string, string>> imp
   }
 
   #actionsToExecute: { action: () => Promise<void>; name?: string; silent?: boolean }[] = [];
-  protected _addAction(action: () => Promise<void>, name?: string) {
-    this.#actionsToExecute.push({ action, name });
+  protected _addAction(action: () => Promise<void>, name?: string, silent?: boolean) {
+    this.#actionsToExecute.push({ action, name, silent });
     return this;
   }
 

@@ -1,0 +1,328 @@
+{
+  "url": "http://localhost:4206/legacy-radio-button?standalone=true&culture=fr-FR&theme=light&isDisabled=false",
+  "target": "legacy-radio-button-isDisabled-false-light",
+  "config": {
+    "rootSelector": "section.is-ready",
+    "boundary": "overflow",
+    "overflowSelectors": [
+      ".cdk-overlay-container",
+      ".wj-popup",
+      ".wj-listbox",
+      ".wj-flexgrid-cell-overlay"
+    ],
+    "readinessSelector": "section.is-ready",
+    "readinessTimeout": 8000,
+    "stabilizationTimeout": 100,
+    "strategy": "bfs",
+    "maxDepth": 2,
+    "maxStates": 30,
+    "maxActionsPerState": 50,
+    "timeout": 1000000,
+    "domHashStrategy": "interactive-only",
+    "additionalRules": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 9
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 8
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 7
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 4
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 3
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 2
+          }
+        }
+      }
+    ],
+    "captureStateScreenshots": false,
+    "captureTransitionScreenshots": false,
+    "screenshotsPrefix": ""
+  },
+  "graph": {
+    "states": [
+      {
+        "id": "c09bf5c85983a5f4",
+        "facts": [
+          {
+            "uid": "#ing-radio-button1-input-a",
+            "tag": "input",
+            "role": null,
+            "accessibleName": "a",
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "",
+            "inputType": "radio",
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 1.421875,
+              "width": 20,
+              "height": 20
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#ing-radio-button1-input-a"
+          },
+          {
+            "uid": "#ing-radio-button1-input-b",
+            "tag": "input",
+            "role": null,
+            "accessibleName": "b",
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "",
+            "inputType": "radio",
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 34.265625,
+              "width": 20,
+              "height": 20
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#ing-radio-button1-input-b"
+          },
+          {
+            "uid": "#ing-radio-button1-input-c",
+            "tag": "input",
+            "role": null,
+            "accessibleName": "c",
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "",
+            "inputType": "radio",
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 67.109375,
+              "width": 20,
+              "height": 20
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#ing-radio-button1-input-c"
+          }
+        ],
+        "depth": 0,
+        "timestamp": 1777465542646,
+        "scopeSelector": "section.is-ready"
+      }
+    ],
+    "transitions": [
+      {
+        "id": "c09bf5c85983a5f4->c09bf5c85983a5f4:click:#ing-radio-button1-input-b",
+        "from": "c09bf5c85983a5f4",
+        "to": "c09bf5c85983a5f4",
+        "action": {
+          "type": "click",
+          "targetUid": "#ing-radio-button1-input-b",
+          "targetSelector": "#ing-radio-button1-input-b",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 202,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      }
+    ]
+  },
+  "summary": {
+    "statesDiscovered": 1,
+    "transitions": 1,
+    "maxDepthReached": 0,
+    "cycles": 0,
+    "deadEnds": 0,
+    "totalDuration": 2311,
+    "failedActions": 2
+  },
+  "actions": [
+    {
+      "type": "click",
+      "targetUid": "#ing-radio-button1-input-a",
+      "priority": 7
+    },
+    {
+      "type": "click",
+      "targetUid": "#ing-radio-button1-input-b",
+      "priority": 7
+    },
+    {
+      "type": "click",
+      "targetUid": "#ing-radio-button1-input-c",
+      "priority": 7
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "click_#ing-radio-button1-input-b",
+      "steps": [
+        {
+          "type": "click",
+          "targetUid": "#ing-radio-button1-input-b",
+          "targetSelector": "#ing-radio-button1-input-b",
+          "priority": 7
+        }
+      ],
+      "selectors": [
+        "#ing-radio-button1-input-b"
+      ]
+    }
+  ],
+  "mermaid": "stateDiagram-v2\n  state \"c09bf5c8 (d=0)\" as s_c09bf5c8\n  s_c09bf5c8 --> s_c09bf5c8 : click",
+  "dot": "digraph {\n  \"c09bf5c85983a5f4\" [label=\"c09bf5c8\\nd=0 f=3\"];\n  \"c09bf5c85983a5f4\" -> \"c09bf5c85983a5f4\" [label=\"click\"];\n}",
+  "generatedAt": "2026-04-29T12:25:44.424Z"
+}
