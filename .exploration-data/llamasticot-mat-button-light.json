@@ -175,10 +175,10 @@
   "graph": {
     "states": [
       {
-        "id": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599",
         "facts": [
           {
-            "uid": "button[0]",
+            "uid": "testid:btn-text-basic",
             "tag": "button",
             "role": null,
             "accessibleName": null,
@@ -200,10 +200,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(1)"
+            "cssSelector": "[data-testid=\"btn-text-basic\"]"
           },
           {
-            "uid": "button[1]",
+            "uid": "testid:btn-text-disabled",
             "tag": "button",
             "role": null,
             "accessibleName": null,
@@ -225,10 +225,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(2)"
+            "cssSelector": "[data-testid=\"btn-text-disabled\"]"
           },
           {
-            "uid": "a[2]",
+            "uid": "testid:link-text",
             "tag": "a",
             "role": null,
             "accessibleName": null,
@@ -250,10 +250,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(1)"
+            "cssSelector": "[data-testid=\"link-text\"]"
           },
           {
-            "uid": "button[3]",
+            "uid": "testid:btn-elevated-basic",
             "tag": "button",
             "role": null,
             "accessibleName": null,
@@ -275,10 +275,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(3)"
+            "cssSelector": "[data-testid=\"btn-elevated-basic\"]"
           },
           {
-            "uid": "button[4]",
+            "uid": "testid:btn-elevated-disabled",
             "tag": "button",
             "role": null,
             "accessibleName": null,
@@ -300,10 +300,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(4)"
+            "cssSelector": "[data-testid=\"btn-elevated-disabled\"]"
           },
           {
-            "uid": "a[5]",
+            "uid": "testid:link-elevated",
             "tag": "a",
             "role": null,
             "accessibleName": null,
@@ -325,10 +325,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(2)"
+            "cssSelector": "[data-testid=\"link-elevated\"]"
           },
           {
-            "uid": "button[6]",
+            "uid": "testid:btn-outlined-basic",
             "tag": "button",
             "role": null,
             "accessibleName": null,
@@ -350,10 +350,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(5)"
+            "cssSelector": "[data-testid=\"btn-outlined-basic\"]"
           },
           {
-            "uid": "button[7]",
+            "uid": "testid:btn-outlined-disabled",
             "tag": "button",
             "role": null,
             "accessibleName": null,
@@ -375,10 +375,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(6)"
+            "cssSelector": "[data-testid=\"btn-outlined-disabled\"]"
           },
           {
-            "uid": "a[8]",
+            "uid": "testid:link-outlined",
             "tag": "a",
             "role": null,
             "accessibleName": null,
@@ -400,10 +400,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(3)"
+            "cssSelector": "[data-testid=\"link-outlined\"]"
           },
           {
-            "uid": "button[9]",
+            "uid": "testid:btn-filled-basic",
             "tag": "button",
             "role": null,
             "accessibleName": null,
@@ -425,10 +425,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(7)"
+            "cssSelector": "[data-testid=\"btn-filled-basic\"]"
           },
           {
-            "uid": "button[10]",
+            "uid": "testid:btn-filled-disabled",
             "tag": "button",
             "role": null,
             "accessibleName": null,
@@ -450,10 +450,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(8)"
+            "cssSelector": "[data-testid=\"btn-filled-disabled\"]"
           },
           {
-            "uid": "a[11]",
+            "uid": "testid:link-filled",
             "tag": "a",
             "role": null,
             "accessibleName": null,
@@ -475,10 +475,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(4)"
+            "cssSelector": "[data-testid=\"link-filled\"]"
           },
           {
-            "uid": "button[12]",
+            "uid": "testid:btn-tonal-basic",
             "tag": "button",
             "role": null,
             "accessibleName": null,
@@ -500,10 +500,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(9)"
+            "cssSelector": "[data-testid=\"btn-tonal-basic\"]"
           },
           {
-            "uid": "button[13]",
+            "uid": "testid:btn-tonal-disabled",
             "tag": "button",
             "role": null,
             "accessibleName": null,
@@ -525,10 +525,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(10)"
+            "cssSelector": "[data-testid=\"btn-tonal-disabled\"]"
           },
           {
-            "uid": "a[14]",
+            "uid": "testid:link-tonal",
             "tag": "a",
             "role": null,
             "accessibleName": null,
@@ -550,10 +550,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(5)"
+            "cssSelector": "[data-testid=\"link-tonal\"]"
           },
           {
-            "uid": "button[15]",
+            "uid": "testid:btn-icon-more",
             "tag": "button",
             "role": null,
             "accessibleName": "Example icon button with a vertical three dot icon",
@@ -575,7 +575,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(11)"
+            "cssSelector": "[data-testid=\"btn-icon-more\"]"
           },
           {
             "uid": "img[16]",
@@ -600,10 +600,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(11) > mat-icon"
+            "cssSelector": "[data-testid=\"btn-icon-more\"] > mat-icon"
           },
           {
-            "uid": "button[17]",
+            "uid": "testid:btn-icon-new",
             "tag": "button",
             "role": null,
             "accessibleName": "Example icon button with a open in new tab icon",
@@ -625,7 +625,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(12)"
+            "cssSelector": "[data-testid=\"btn-icon-new\"]"
           },
           {
             "uid": "img[18]",
@@ -650,10 +650,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(12) > mat-icon"
+            "cssSelector": "[data-testid=\"btn-icon-new\"] > mat-icon"
           },
           {
-            "uid": "button[19]",
+            "uid": "testid:btn-fab-delete",
             "tag": "button",
             "role": null,
             "accessibleName": "Example icon button with a delete icon",
@@ -675,7 +675,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(13)"
+            "cssSelector": "[data-testid=\"btn-fab-delete\"]"
           },
           {
             "uid": "img[20]",
@@ -700,10 +700,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(13) > mat-icon"
+            "cssSelector": "[data-testid=\"btn-fab-delete\"] > mat-icon"
           },
           {
-            "uid": "button[21]",
+            "uid": "testid:btn-fab-favorite",
             "tag": "button",
             "role": null,
             "accessibleName": "Example icon button with a heart icon",
@@ -725,7 +725,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(14)"
+            "cssSelector": "[data-testid=\"btn-fab-favorite\"]"
           },
           {
             "uid": "img[22]",
@@ -750,10 +750,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(14) > mat-icon"
+            "cssSelector": "[data-testid=\"btn-fab-favorite\"] > mat-icon"
           },
           {
-            "uid": "button[23]",
+            "uid": "testid:btn-minifab-menu",
             "tag": "button",
             "role": null,
             "accessibleName": "Example icon button with a menu icon",
@@ -775,7 +775,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(15)"
+            "cssSelector": "[data-testid=\"btn-minifab-menu\"]"
           },
           {
             "uid": "img[24]",
@@ -800,10 +800,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(15) > mat-icon"
+            "cssSelector": "[data-testid=\"btn-minifab-menu\"] > mat-icon"
           },
           {
-            "uid": "button[25]",
+            "uid": "testid:btn-minifab-home",
             "tag": "button",
             "role": null,
             "accessibleName": "Example icon button with a home icon",
@@ -825,7 +825,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(16)"
+            "cssSelector": "[data-testid=\"btn-minifab-home\"]"
           },
           {
             "uid": "img[26]",
@@ -850,10 +850,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(16) > mat-icon"
+            "cssSelector": "[data-testid=\"btn-minifab-home\"] > mat-icon"
           },
           {
-            "uid": "button[27]",
+            "uid": "testid:btn-exfab-basic",
             "tag": "button",
             "role": null,
             "accessibleName": null,
@@ -875,7 +875,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(17)"
+            "cssSelector": "[data-testid=\"btn-exfab-basic\"]"
           },
           {
             "uid": "img[28]",
@@ -900,10 +900,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(17) > mat-icon"
+            "cssSelector": "[data-testid=\"btn-exfab-basic\"] > mat-icon"
           },
           {
-            "uid": "button[29]",
+            "uid": "testid:btn-exfab-disabled",
             "tag": "button",
             "role": null,
             "accessibleName": null,
@@ -925,7 +925,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(18)"
+            "cssSelector": "[data-testid=\"btn-exfab-disabled\"]"
           },
           {
             "uid": "img[30]",
@@ -950,10 +950,10 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(18) > mat-icon"
+            "cssSelector": "[data-testid=\"btn-exfab-disabled\"] > mat-icon"
           },
           {
-            "uid": "a[31]",
+            "uid": "testid:link-exfab",
             "tag": "a",
             "role": null,
             "accessibleName": null,
@@ -975,7 +975,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(6)"
+            "cssSelector": "[data-testid=\"link-exfab\"]"
           },
           {
             "uid": "img[32]",
@@ -1000,27 +1000,27 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(6) > mat-icon"
+            "cssSelector": "[data-testid=\"link-exfab\"] > mat-icon"
           }
         ],
         "depth": 0,
-        "timestamp": 1777449783223,
+        "timestamp": 1777451531429,
         "scopeSelector": "section.is-ready"
       }
     ],
     "transitions": [
       {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:click:button[0]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:click:testid:btn-text-basic",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
         "action": {
           "type": "click",
-          "targetUid": "button[0]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(1)",
+          "targetUid": "testid:btn-text-basic",
+          "targetSelector": "[data-testid=\"btn-text-basic\"]",
           "priority": 10
         },
         "success": true,
-        "duration": 197,
+        "duration": 193,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1029,17 +1029,17 @@
         "selfLoop": true
       },
       {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:click:button[6]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:click:testid:btn-outlined-basic",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
         "action": {
           "type": "click",
-          "targetUid": "button[6]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(5)",
+          "targetUid": "testid:btn-outlined-basic",
+          "targetSelector": "[data-testid=\"btn-outlined-basic\"]",
           "priority": 10
         },
         "success": true,
-        "duration": 216,
+        "duration": 207,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1048,17 +1048,17 @@
         "selfLoop": true
       },
       {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:click:button[12]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:click:testid:btn-tonal-basic",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
         "action": {
           "type": "click",
-          "targetUid": "button[12]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(9)",
+          "targetUid": "testid:btn-tonal-basic",
+          "targetSelector": "[data-testid=\"btn-tonal-basic\"]",
           "priority": 10
         },
         "success": true,
-        "duration": 221,
+        "duration": 220,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1067,17 +1067,17 @@
         "selfLoop": true
       },
       {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:click:button[19]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:click:testid:btn-fab-delete",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
         "action": {
           "type": "click",
-          "targetUid": "button[19]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(13)",
+          "targetUid": "testid:btn-fab-delete",
+          "targetSelector": "[data-testid=\"btn-fab-delete\"]",
           "priority": 10
         },
         "success": true,
-        "duration": 235,
+        "duration": 250,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1086,17 +1086,17 @@
         "selfLoop": true
       },
       {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:click:button[27]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:click:testid:btn-exfab-basic",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
         "action": {
           "type": "click",
-          "targetUid": "button[27]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(17)",
+          "targetUid": "testid:btn-exfab-basic",
+          "targetSelector": "[data-testid=\"btn-exfab-basic\"]",
           "priority": 10
         },
         "success": true,
-        "duration": 236,
+        "duration": 211,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1105,70 +1105,13 @@
         "selfLoop": true
       },
       {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:hover:button[3]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:hover:testid:btn-outlined-basic",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
         "action": {
           "type": "hover",
-          "targetUid": "button[3]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(3)",
-          "priority": 9
-        },
-        "success": true,
-        "duration": 215,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:hover:button[9]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
-        "action": {
-          "type": "hover",
-          "targetUid": "button[9]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(7)",
-          "priority": 9
-        },
-        "success": true,
-        "duration": 221,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:hover:button[15]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
-        "action": {
-          "type": "hover",
-          "targetUid": "button[15]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(11)",
-          "priority": 9
-        },
-        "success": true,
-        "duration": 204,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:hover:button[23]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
-        "action": {
-          "type": "hover",
-          "targetUid": "button[23]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(15)",
+          "targetUid": "testid:btn-outlined-basic",
+          "targetSelector": "[data-testid=\"btn-outlined-basic\"]",
           "priority": 9
         },
         "success": true,
@@ -1181,17 +1124,17 @@
         "selfLoop": true
       },
       {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:button[0]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:focus:testid:btn-exfab-basic",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
         "action": {
           "type": "focus",
-          "targetUid": "button[0]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(1)",
+          "targetUid": "testid:btn-exfab-basic",
+          "targetSelector": "[data-testid=\"btn-exfab-basic\"]",
           "priority": 8
         },
         "success": true,
-        "duration": 178,
+        "duration": 209,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1200,169 +1143,17 @@
         "selfLoop": true
       },
       {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:button[3]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
-        "action": {
-          "type": "focus",
-          "targetUid": "button[3]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(3)",
-          "priority": 8
-        },
-        "success": true,
-        "duration": 173,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:button[6]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
-        "action": {
-          "type": "focus",
-          "targetUid": "button[6]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(5)",
-          "priority": 8
-        },
-        "success": true,
-        "duration": 174,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:button[9]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
-        "action": {
-          "type": "focus",
-          "targetUid": "button[9]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(7)",
-          "priority": 8
-        },
-        "success": true,
-        "duration": 176,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:button[12]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
-        "action": {
-          "type": "focus",
-          "targetUid": "button[12]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(9)",
-          "priority": 8
-        },
-        "success": true,
-        "duration": 176,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:button[15]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
-        "action": {
-          "type": "focus",
-          "targetUid": "button[15]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(11)",
-          "priority": 8
-        },
-        "success": true,
-        "duration": 173,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:button[19]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
-        "action": {
-          "type": "focus",
-          "targetUid": "button[19]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(13)",
-          "priority": 8
-        },
-        "success": true,
-        "duration": 173,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:button[23]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
-        "action": {
-          "type": "focus",
-          "targetUid": "button[23]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(15)",
-          "priority": 8
-        },
-        "success": true,
-        "duration": 172,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:button[27]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
-        "action": {
-          "type": "focus",
-          "targetUid": "button[27]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(17)",
-          "priority": 8
-        },
-        "success": true,
-        "duration": 178,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:mousedown:button[0]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:mousedown:testid:btn-text-basic",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
         "action": {
           "type": "mousedown",
-          "targetUid": "button[0]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(1)",
+          "targetUid": "testid:btn-text-basic",
+          "targetSelector": "[data-testid=\"btn-text-basic\"]",
           "priority": 7
         },
         "success": true,
-        "duration": 192,
+        "duration": 245,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1371,17 +1162,17 @@
         "selfLoop": true
       },
       {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:mousedown:button[3]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:mousedown:testid:btn-elevated-basic",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
         "action": {
           "type": "mousedown",
-          "targetUid": "button[3]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(3)",
+          "targetUid": "testid:btn-elevated-basic",
+          "targetSelector": "[data-testid=\"btn-elevated-basic\"]",
           "priority": 7
         },
         "success": true,
-        "duration": 189,
+        "duration": 194,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1390,17 +1181,17 @@
         "selfLoop": true
       },
       {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:mousedown:button[6]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:mousedown:testid:btn-outlined-basic",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
         "action": {
           "type": "mousedown",
-          "targetUid": "button[6]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(5)",
+          "targetUid": "testid:btn-outlined-basic",
+          "targetSelector": "[data-testid=\"btn-outlined-basic\"]",
           "priority": 7
         },
         "success": true,
-        "duration": 196,
+        "duration": 200,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1409,17 +1200,17 @@
         "selfLoop": true
       },
       {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:mousedown:button[9]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:mousedown:testid:btn-filled-basic",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
         "action": {
           "type": "mousedown",
-          "targetUid": "button[9]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(7)",
+          "targetUid": "testid:btn-filled-basic",
+          "targetSelector": "[data-testid=\"btn-filled-basic\"]",
           "priority": 7
         },
         "success": true,
-        "duration": 202,
+        "duration": 222,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1428,13 +1219,13 @@
         "selfLoop": true
       },
       {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:mousedown:button[12]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:mousedown:testid:btn-tonal-basic",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
         "action": {
           "type": "mousedown",
-          "targetUid": "button[12]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(9)",
+          "targetUid": "testid:btn-tonal-basic",
+          "targetSelector": "[data-testid=\"btn-tonal-basic\"]",
           "priority": 7
         },
         "success": true,
@@ -1447,17 +1238,17 @@
         "selfLoop": true
       },
       {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:mousedown:button[15]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:mousedown:testid:btn-icon-more",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
         "action": {
           "type": "mousedown",
-          "targetUid": "button[15]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(11)",
+          "targetUid": "testid:btn-icon-more",
+          "targetSelector": "[data-testid=\"btn-icon-more\"]",
           "priority": 7
         },
         "success": true,
-        "duration": 195,
+        "duration": 198,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1466,17 +1257,17 @@
         "selfLoop": true
       },
       {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:mousedown:button[19]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:mousedown:testid:btn-fab-delete",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
         "action": {
           "type": "mousedown",
-          "targetUid": "button[19]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(13)",
+          "targetUid": "testid:btn-fab-delete",
+          "targetSelector": "[data-testid=\"btn-fab-delete\"]",
           "priority": 7
         },
         "success": true,
-        "duration": 192,
+        "duration": 214,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1485,32 +1276,13 @@
         "selfLoop": true
       },
       {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:mousedown:button[23]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:mousedown:testid:btn-minifab-menu",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
         "action": {
           "type": "mousedown",
-          "targetUid": "button[23]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(15)",
-          "priority": 7
-        },
-        "success": true,
-        "duration": 192,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:mousedown:button[27]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
-        "action": {
-          "type": "mousedown",
-          "targetUid": "button[27]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(17)",
+          "targetUid": "testid:btn-minifab-menu",
+          "targetSelector": "[data-testid=\"btn-minifab-menu\"]",
           "priority": 7
         },
         "success": true,
@@ -1523,17 +1295,17 @@
         "selfLoop": true
       },
       {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:click:a[5]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:mousedown:testid:btn-exfab-basic",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
         "action": {
-          "type": "click",
-          "targetUid": "a[5]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(2)",
-          "priority": 5
+          "type": "mousedown",
+          "targetUid": "testid:btn-exfab-basic",
+          "targetSelector": "[data-testid=\"btn-exfab-basic\"]",
+          "priority": 7
         },
         "success": true,
-        "duration": 227,
+        "duration": 200,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1542,14 +1314,109 @@
         "selfLoop": true
       },
       {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:click:a[11]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:click:testid:link-elevated",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
         "action": {
           "type": "click",
-          "targetUid": "a[11]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(4)",
+          "targetUid": "testid:link-elevated",
+          "targetSelector": "[data-testid=\"link-elevated\"]",
           "priority": 5
+        },
+        "success": true,
+        "duration": 207,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "3546bbda18d0a599->3546bbda18d0a599:click:testid:link-filled",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
+        "action": {
+          "type": "click",
+          "targetUid": "testid:link-filled",
+          "targetSelector": "[data-testid=\"link-filled\"]",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 226,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "3546bbda18d0a599->3546bbda18d0a599:click:testid:link-exfab",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
+        "action": {
+          "type": "click",
+          "targetUid": "testid:link-exfab",
+          "targetSelector": "[data-testid=\"link-exfab\"]",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 208,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "3546bbda18d0a599->3546bbda18d0a599:hover:testid:link-elevated",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
+        "action": {
+          "type": "hover",
+          "targetUid": "testid:link-elevated",
+          "targetSelector": "[data-testid=\"link-elevated\"]",
+          "priority": 4
+        },
+        "success": true,
+        "duration": 239,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "3546bbda18d0a599->3546bbda18d0a599:hover:testid:link-filled",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
+        "action": {
+          "type": "hover",
+          "targetUid": "testid:link-filled",
+          "targetSelector": "[data-testid=\"link-filled\"]",
+          "priority": 4
+        },
+        "success": true,
+        "duration": 240,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "3546bbda18d0a599->3546bbda18d0a599:hover:testid:link-exfab",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
+        "action": {
+          "type": "hover",
+          "targetUid": "testid:link-exfab",
+          "targetSelector": "[data-testid=\"link-exfab\"]",
+          "priority": 4
         },
         "success": true,
         "duration": 219,
@@ -1561,93 +1428,17 @@
         "selfLoop": true
       },
       {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:click:a[31]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
-        "action": {
-          "type": "click",
-          "targetUid": "a[31]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(6)",
-          "priority": 5
-        },
-        "success": true,
-        "duration": 234,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:hover:a[5]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
-        "action": {
-          "type": "hover",
-          "targetUid": "a[5]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(2)",
-          "priority": 4
-        },
-        "success": true,
-        "duration": 231,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:hover:a[11]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
-        "action": {
-          "type": "hover",
-          "targetUid": "a[11]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(4)",
-          "priority": 4
-        },
-        "success": true,
-        "duration": 215,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:hover:a[31]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
-        "action": {
-          "type": "hover",
-          "targetUid": "a[31]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(6)",
-          "priority": 4
-        },
-        "success": true,
-        "duration": 213,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:a[2]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:focus:testid:link-text",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
         "action": {
           "type": "focus",
-          "targetUid": "a[2]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(1)",
+          "targetUid": "testid:link-text",
+          "targetSelector": "[data-testid=\"link-text\"]",
           "priority": 3
         },
         "success": true,
-        "duration": 189,
+        "duration": 178,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1656,17 +1447,17 @@
         "selfLoop": true
       },
       {
-        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:a[5]",
-        "from": "bf2a119fe5100e84",
-        "to": "bf2a119fe5100e84",
+        "id": "3546bbda18d0a599->3546bbda18d0a599:focus:testid:link-elevated",
+        "from": "3546bbda18d0a599",
+        "to": "3546bbda18d0a599",
         "action": {
           "type": "focus",
-          "targetUid": "a[5]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(2)",
+          "targetUid": "testid:link-elevated",
+          "targetSelector": "[data-testid=\"link-elevated\"]",
           "priority": 3
         },
         "success": true,
-        "duration": 179,
+        "duration": 173,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1678,498 +1469,432 @@
   },
   "summary": {
     "statesDiscovered": 1,
-    "transitions": 35,
+    "transitions": 24,
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 84396,
-    "failedActions": 15
+    "totalDuration": 66037,
+    "failedActions": 26
   },
   "actions": [
     {
       "type": "click",
-      "targetUid": "button[0]",
+      "targetUid": "testid:btn-text-basic",
       "priority": 10
     },
     {
       "type": "click",
-      "targetUid": "button[3]",
+      "targetUid": "testid:btn-elevated-basic",
       "priority": 10
     },
     {
       "type": "click",
-      "targetUid": "button[6]",
+      "targetUid": "testid:btn-outlined-basic",
       "priority": 10
     },
     {
       "type": "click",
-      "targetUid": "button[9]",
+      "targetUid": "testid:btn-filled-basic",
       "priority": 10
     },
     {
       "type": "click",
-      "targetUid": "button[12]",
+      "targetUid": "testid:btn-tonal-basic",
       "priority": 10
     },
     {
       "type": "click",
-      "targetUid": "button[15]",
+      "targetUid": "testid:btn-icon-more",
       "priority": 10
     },
     {
       "type": "click",
-      "targetUid": "button[19]",
+      "targetUid": "testid:btn-fab-delete",
       "priority": 10
     },
     {
       "type": "click",
-      "targetUid": "button[23]",
+      "targetUid": "testid:btn-minifab-menu",
       "priority": 10
     },
     {
       "type": "click",
-      "targetUid": "button[27]",
+      "targetUid": "testid:btn-exfab-basic",
       "priority": 10
     },
     {
       "type": "hover",
-      "targetUid": "button[0]",
+      "targetUid": "testid:btn-text-basic",
       "priority": 9
     },
     {
       "type": "hover",
-      "targetUid": "button[3]",
+      "targetUid": "testid:btn-elevated-basic",
       "priority": 9
     },
     {
       "type": "hover",
-      "targetUid": "button[6]",
+      "targetUid": "testid:btn-outlined-basic",
       "priority": 9
     },
     {
       "type": "hover",
-      "targetUid": "button[9]",
+      "targetUid": "testid:btn-filled-basic",
       "priority": 9
     },
     {
       "type": "hover",
-      "targetUid": "button[12]",
+      "targetUid": "testid:btn-tonal-basic",
       "priority": 9
     },
     {
       "type": "hover",
-      "targetUid": "button[15]",
+      "targetUid": "testid:btn-icon-more",
       "priority": 9
     },
     {
       "type": "hover",
-      "targetUid": "button[19]",
+      "targetUid": "testid:btn-fab-delete",
       "priority": 9
     },
     {
       "type": "hover",
-      "targetUid": "button[23]",
+      "targetUid": "testid:btn-minifab-menu",
       "priority": 9
     },
     {
       "type": "hover",
-      "targetUid": "button[27]",
+      "targetUid": "testid:btn-exfab-basic",
       "priority": 9
     },
     {
       "type": "focus",
-      "targetUid": "button[0]",
+      "targetUid": "testid:btn-text-basic",
       "priority": 8
     },
     {
       "type": "focus",
-      "targetUid": "button[3]",
+      "targetUid": "testid:btn-elevated-basic",
       "priority": 8
     },
     {
       "type": "focus",
-      "targetUid": "button[6]",
+      "targetUid": "testid:btn-outlined-basic",
       "priority": 8
     },
     {
       "type": "focus",
-      "targetUid": "button[9]",
+      "targetUid": "testid:btn-filled-basic",
       "priority": 8
     },
     {
       "type": "focus",
-      "targetUid": "button[12]",
+      "targetUid": "testid:btn-tonal-basic",
       "priority": 8
     },
     {
       "type": "focus",
-      "targetUid": "button[15]",
+      "targetUid": "testid:btn-icon-more",
       "priority": 8
     },
     {
       "type": "focus",
-      "targetUid": "button[19]",
+      "targetUid": "testid:btn-fab-delete",
       "priority": 8
     },
     {
       "type": "focus",
-      "targetUid": "button[23]",
+      "targetUid": "testid:btn-minifab-menu",
       "priority": 8
     },
     {
       "type": "focus",
-      "targetUid": "button[27]",
+      "targetUid": "testid:btn-exfab-basic",
       "priority": 8
     },
     {
       "type": "mousedown",
-      "targetUid": "button[0]",
+      "targetUid": "testid:btn-text-basic",
       "priority": 7
     },
     {
       "type": "mousedown",
-      "targetUid": "button[3]",
+      "targetUid": "testid:btn-elevated-basic",
       "priority": 7
     },
     {
       "type": "mousedown",
-      "targetUid": "button[6]",
+      "targetUid": "testid:btn-outlined-basic",
       "priority": 7
     },
     {
       "type": "mousedown",
-      "targetUid": "button[9]",
+      "targetUid": "testid:btn-filled-basic",
       "priority": 7
     },
     {
       "type": "mousedown",
-      "targetUid": "button[12]",
+      "targetUid": "testid:btn-tonal-basic",
       "priority": 7
     },
     {
       "type": "mousedown",
-      "targetUid": "button[15]",
+      "targetUid": "testid:btn-icon-more",
       "priority": 7
     },
     {
       "type": "mousedown",
-      "targetUid": "button[19]",
+      "targetUid": "testid:btn-fab-delete",
       "priority": 7
     },
     {
       "type": "mousedown",
-      "targetUid": "button[23]",
+      "targetUid": "testid:btn-minifab-menu",
       "priority": 7
     },
     {
       "type": "mousedown",
-      "targetUid": "button[27]",
+      "targetUid": "testid:btn-exfab-basic",
       "priority": 7
     },
     {
       "type": "click",
-      "targetUid": "a[2]",
+      "targetUid": "testid:link-text",
       "priority": 5
     },
     {
       "type": "click",
-      "targetUid": "a[5]",
+      "targetUid": "testid:link-elevated",
       "priority": 5
     },
     {
       "type": "click",
-      "targetUid": "a[8]",
+      "targetUid": "testid:link-outlined",
       "priority": 5
     },
     {
       "type": "click",
-      "targetUid": "a[11]",
+      "targetUid": "testid:link-filled",
       "priority": 5
     },
     {
       "type": "click",
-      "targetUid": "a[14]",
+      "targetUid": "testid:link-tonal",
       "priority": 5
     },
     {
       "type": "click",
-      "targetUid": "a[31]",
+      "targetUid": "testid:link-exfab",
       "priority": 5
     },
     {
       "type": "hover",
-      "targetUid": "a[2]",
+      "targetUid": "testid:link-text",
       "priority": 4
     },
     {
       "type": "hover",
-      "targetUid": "a[5]",
+      "targetUid": "testid:link-elevated",
       "priority": 4
     },
     {
       "type": "hover",
-      "targetUid": "a[8]",
+      "targetUid": "testid:link-outlined",
       "priority": 4
     },
     {
       "type": "hover",
-      "targetUid": "a[11]",
+      "targetUid": "testid:link-filled",
       "priority": 4
     },
     {
       "type": "hover",
-      "targetUid": "a[14]",
+      "targetUid": "testid:link-tonal",
       "priority": 4
     },
     {
       "type": "hover",
-      "targetUid": "a[31]",
+      "targetUid": "testid:link-exfab",
       "priority": 4
     },
     {
       "type": "focus",
-      "targetUid": "a[2]",
+      "targetUid": "testid:link-text",
       "priority": 3
     },
     {
       "type": "focus",
-      "targetUid": "a[5]",
+      "targetUid": "testid:link-elevated",
       "priority": 3
     }
   ],
   "scenarios": [
     {
-      "name": "click_button[0] → click_button[6] → click_button[12] → click_button[19] → click_button[27] → hover_button[3] → hover_button[9] → hover_button[15] → hover_button[23] → focus_button[0] → focus_button[3] → focus_button[6] → focus_button[9] → focus_button[12] → focus_button[15] → focus_button[19] → focus_button[23] → focus_button[27] → mousedown_button[0] → mousedown_button[3] → mousedown_button[6] → mousedown_button[9] → mousedown_button[12] → mousedown_button[15] → mousedown_button[19] → mousedown_button[23] → mousedown_button[27] → click_a[5] → click_a[11] → click_a[31] → hover_a[5] → hover_a[11] → hover_a[31] → focus_a[2] → focus_a[5]",
+      "name": "click_testid:btn-text-basic → click_testid:btn-outlined-basic → click_testid:btn-tonal-basic → click_testid:btn-fab-delete → click_testid:btn-exfab-basic → hover_testid:btn-outlined-basic → focus_testid:btn-exfab-basic → mousedown_testid:btn-text-basic → mousedown_testid:btn-elevated-basic → mousedown_testid:btn-outlined-basic → mousedown_testid:btn-filled-basic → mousedown_testid:btn-tonal-basic → mousedown_testid:btn-icon-more → mousedown_testid:btn-fab-delete → mousedown_testid:btn-minifab-menu → mousedown_testid:btn-exfab-basic → click_testid:link-elevated → click_testid:link-filled → click_testid:link-exfab → hover_testid:link-elevated → hover_testid:link-filled → hover_testid:link-exfab → focus_testid:link-text → focus_testid:link-elevated",
       "steps": [
         {
           "type": "click",
-          "targetUid": "button[0]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(1)",
+          "targetUid": "testid:btn-text-basic",
+          "targetSelector": "[data-testid=\"btn-text-basic\"]",
           "priority": 10
         },
         {
           "type": "click",
-          "targetUid": "button[6]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(5)",
+          "targetUid": "testid:btn-outlined-basic",
+          "targetSelector": "[data-testid=\"btn-outlined-basic\"]",
           "priority": 10
         },
         {
           "type": "click",
-          "targetUid": "button[12]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(9)",
+          "targetUid": "testid:btn-tonal-basic",
+          "targetSelector": "[data-testid=\"btn-tonal-basic\"]",
           "priority": 10
         },
         {
           "type": "click",
-          "targetUid": "button[19]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(13)",
+          "targetUid": "testid:btn-fab-delete",
+          "targetSelector": "[data-testid=\"btn-fab-delete\"]",
           "priority": 10
         },
         {
           "type": "click",
-          "targetUid": "button[27]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(17)",
+          "targetUid": "testid:btn-exfab-basic",
+          "targetSelector": "[data-testid=\"btn-exfab-basic\"]",
           "priority": 10
         },
         {
           "type": "hover",
-          "targetUid": "button[3]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(3)",
-          "priority": 9
-        },
-        {
-          "type": "hover",
-          "targetUid": "button[9]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(7)",
-          "priority": 9
-        },
-        {
-          "type": "hover",
-          "targetUid": "button[15]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(11)",
-          "priority": 9
-        },
-        {
-          "type": "hover",
-          "targetUid": "button[23]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(15)",
+          "targetUid": "testid:btn-outlined-basic",
+          "targetSelector": "[data-testid=\"btn-outlined-basic\"]",
           "priority": 9
         },
         {
           "type": "focus",
-          "targetUid": "button[0]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(1)",
-          "priority": 8
-        },
-        {
-          "type": "focus",
-          "targetUid": "button[3]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(3)",
-          "priority": 8
-        },
-        {
-          "type": "focus",
-          "targetUid": "button[6]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(5)",
-          "priority": 8
-        },
-        {
-          "type": "focus",
-          "targetUid": "button[9]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(7)",
-          "priority": 8
-        },
-        {
-          "type": "focus",
-          "targetUid": "button[12]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(9)",
-          "priority": 8
-        },
-        {
-          "type": "focus",
-          "targetUid": "button[15]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(11)",
-          "priority": 8
-        },
-        {
-          "type": "focus",
-          "targetUid": "button[19]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(13)",
-          "priority": 8
-        },
-        {
-          "type": "focus",
-          "targetUid": "button[23]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(15)",
-          "priority": 8
-        },
-        {
-          "type": "focus",
-          "targetUid": "button[27]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(17)",
+          "targetUid": "testid:btn-exfab-basic",
+          "targetSelector": "[data-testid=\"btn-exfab-basic\"]",
           "priority": 8
         },
         {
           "type": "mousedown",
-          "targetUid": "button[0]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(1)",
+          "targetUid": "testid:btn-text-basic",
+          "targetSelector": "[data-testid=\"btn-text-basic\"]",
           "priority": 7
         },
         {
           "type": "mousedown",
-          "targetUid": "button[3]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(3)",
+          "targetUid": "testid:btn-elevated-basic",
+          "targetSelector": "[data-testid=\"btn-elevated-basic\"]",
           "priority": 7
         },
         {
           "type": "mousedown",
-          "targetUid": "button[6]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(5)",
+          "targetUid": "testid:btn-outlined-basic",
+          "targetSelector": "[data-testid=\"btn-outlined-basic\"]",
           "priority": 7
         },
         {
           "type": "mousedown",
-          "targetUid": "button[9]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(7)",
+          "targetUid": "testid:btn-filled-basic",
+          "targetSelector": "[data-testid=\"btn-filled-basic\"]",
           "priority": 7
         },
         {
           "type": "mousedown",
-          "targetUid": "button[12]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(9)",
+          "targetUid": "testid:btn-tonal-basic",
+          "targetSelector": "[data-testid=\"btn-tonal-basic\"]",
           "priority": 7
         },
         {
           "type": "mousedown",
-          "targetUid": "button[15]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(11)",
+          "targetUid": "testid:btn-icon-more",
+          "targetSelector": "[data-testid=\"btn-icon-more\"]",
           "priority": 7
         },
         {
           "type": "mousedown",
-          "targetUid": "button[19]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(13)",
+          "targetUid": "testid:btn-fab-delete",
+          "targetSelector": "[data-testid=\"btn-fab-delete\"]",
           "priority": 7
         },
         {
           "type": "mousedown",
-          "targetUid": "button[23]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(15)",
+          "targetUid": "testid:btn-minifab-menu",
+          "targetSelector": "[data-testid=\"btn-minifab-menu\"]",
           "priority": 7
         },
         {
           "type": "mousedown",
-          "targetUid": "button[27]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(17)",
+          "targetUid": "testid:btn-exfab-basic",
+          "targetSelector": "[data-testid=\"btn-exfab-basic\"]",
           "priority": 7
         },
         {
           "type": "click",
-          "targetUid": "a[5]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(2)",
+          "targetUid": "testid:link-elevated",
+          "targetSelector": "[data-testid=\"link-elevated\"]",
           "priority": 5
         },
         {
           "type": "click",
-          "targetUid": "a[11]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(4)",
+          "targetUid": "testid:link-filled",
+          "targetSelector": "[data-testid=\"link-filled\"]",
           "priority": 5
         },
         {
           "type": "click",
-          "targetUid": "a[31]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(6)",
+          "targetUid": "testid:link-exfab",
+          "targetSelector": "[data-testid=\"link-exfab\"]",
           "priority": 5
         },
         {
           "type": "hover",
-          "targetUid": "a[5]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(2)",
+          "targetUid": "testid:link-elevated",
+          "targetSelector": "[data-testid=\"link-elevated\"]",
           "priority": 4
         },
         {
           "type": "hover",
-          "targetUid": "a[11]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(4)",
+          "targetUid": "testid:link-filled",
+          "targetSelector": "[data-testid=\"link-filled\"]",
           "priority": 4
         },
         {
           "type": "hover",
-          "targetUid": "a[31]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(6)",
+          "targetUid": "testid:link-exfab",
+          "targetSelector": "[data-testid=\"link-exfab\"]",
           "priority": 4
         },
         {
           "type": "focus",
-          "targetUid": "a[2]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(1)",
+          "targetUid": "testid:link-text",
+          "targetSelector": "[data-testid=\"link-text\"]",
           "priority": 3
         },
         {
           "type": "focus",
-          "targetUid": "a[5]",
-          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(2)",
+          "targetUid": "testid:link-elevated",
+          "targetSelector": "[data-testid=\"link-elevated\"]",
           "priority": 3
         }
       ],
       "selectors": [
-        "button[0]",
-        "button[6]",
-        "button[12]",
-        "button[19]",
-        "button[27]",
-        "button[3]",
-        "button[9]",
-        "button[15]",
-        "button[23]",
-        "a[5]",
-        "a[11]",
-        "a[31]",
-        "a[2]"
+        "testid:btn-text-basic",
+        "testid:btn-outlined-basic",
+        "testid:btn-tonal-basic",
+        "testid:btn-fab-delete",
+        "testid:btn-exfab-basic",
+        "testid:btn-elevated-basic",
+        "testid:btn-filled-basic",
+        "testid:btn-icon-more",
+        "testid:btn-minifab-menu",
+        "testid:link-elevated",
+        "testid:link-filled",
+        "testid:link-exfab",
+        "testid:link-text"
       ]
     }
   ],
-  "mermaid": "stateDiagram-v2\n  state \"bf2a119f (d=0)\" as s_bf2a119f\n  s_bf2a119f --> s_bf2a119f : click\n  s_bf2a119f --> s_bf2a119f : click\n  s_bf2a119f --> s_bf2a119f : click\n  s_bf2a119f --> s_bf2a119f : click\n  s_bf2a119f --> s_bf2a119f : click\n  s_bf2a119f --> s_bf2a119f : hover\n  s_bf2a119f --> s_bf2a119f : hover\n  s_bf2a119f --> s_bf2a119f : hover\n  s_bf2a119f --> s_bf2a119f : hover\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : mousedown\n  s_bf2a119f --> s_bf2a119f : mousedown\n  s_bf2a119f --> s_bf2a119f : mousedown\n  s_bf2a119f --> s_bf2a119f : mousedown\n  s_bf2a119f --> s_bf2a119f : mousedown\n  s_bf2a119f --> s_bf2a119f : mousedown\n  s_bf2a119f --> s_bf2a119f : mousedown\n  s_bf2a119f --> s_bf2a119f : mousedown\n  s_bf2a119f --> s_bf2a119f : mousedown\n  s_bf2a119f --> s_bf2a119f : click\n  s_bf2a119f --> s_bf2a119f : click\n  s_bf2a119f --> s_bf2a119f : click\n  s_bf2a119f --> s_bf2a119f : hover\n  s_bf2a119f --> s_bf2a119f : hover\n  s_bf2a119f --> s_bf2a119f : hover\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : focus",
-  "dot": "digraph {\n  \"bf2a119fe5100e84\" [label=\"bf2a119f\\nd=0 f=33\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"click\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"click\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"click\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"click\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"click\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"hover\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"hover\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"hover\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"hover\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"mousedown\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"mousedown\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"mousedown\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"mousedown\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"mousedown\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"mousedown\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"mousedown\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"mousedown\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"mousedown\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"click\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"click\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"click\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"hover\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"hover\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"hover\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n}",
-  "generatedAt": "2026-04-29T08:04:26.173Z"
+  "mermaid": "stateDiagram-v2\n  state \"3546bbda (d=0)\" as s_3546bbda\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus",
+  "dot": "digraph {\n  \"3546bbda18d0a599\" [label=\"3546bbda\\nd=0 f=33\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n}",
+  "generatedAt": "2026-04-29T08:33:16.070Z"
 }

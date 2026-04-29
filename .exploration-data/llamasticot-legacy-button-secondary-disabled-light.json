@@ -175,10 +175,10 @@
   "graph": {
     "states": [
       {
-        "id": "7a61fff4db9e0ac5",
+        "id": "ad846edeb335371c",
         "facts": [
           {
-            "uid": "button[0]",
+            "uid": "testid:btn-legacy",
             "tag": "button",
             "role": null,
             "accessibleName": null,
@@ -200,11 +200,11 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-legacy-button > button"
+            "cssSelector": "[data-testid=\"btn-legacy\"]"
           }
         ],
         "depth": 0,
-        "timestamp": 1777449779529,
+        "timestamp": 1777451527307,
         "scopeSelector": "section.is-ready"
       }
     ],
@@ -216,12 +216,12 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 1,
-    "totalDuration": 368,
+    "totalDuration": 393,
     "failedActions": 0
   },
   "actions": [],
   "scenarios": [],
-  "mermaid": "stateDiagram-v2\n  state \"7a61fff4 (d=0)\" as s_7a61fff4",
-  "dot": "digraph {\n  \"7a61fff4db9e0ac5\" [label=\"7a61fff4\\nd=0 f=1\"];\n}",
-  "generatedAt": "2026-04-29T08:02:59.530Z"
+  "mermaid": "stateDiagram-v2\n  state \"ad846ede (d=0)\" as s_ad846ede",
+  "dot": "digraph {\n  \"ad846edeb335371c\" [label=\"ad846ede\\nd=0 f=1\"];\n}",
+  "generatedAt": "2026-04-29T08:32:07.307Z"
 }
