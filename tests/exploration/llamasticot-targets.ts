@@ -221,11 +221,11 @@ export function createLlamasticotThemeMatrix(storyPath: string, options: Omit<Ll
  */
 export const LLAMASTICOT_TARGETS: ExplorationTarget[] = [
   // Baseline target — captures a standard interactive page with the default ruleset.
-  createLlamasticotTarget('legacy-button/standard', { theme: 'light', captureScreenshots: true }),
+  createLlamasticotTarget('legacy-button/standard', { theme: 'light', captureScreenshots: false }),
   // Validation target — explicitly requested for the readiness/overflow checks.
   // This page renders a single disabled secondary button: 1 state, 0 actions
   // (disabled elements are filtered by RulesEngine). Confirms readiness wiring.
-  createLlamasticotTarget('legacy-button/secondary-disabled', { theme: 'light', captureScreenshots: true }),
+  createLlamasticotTarget('legacy-button/secondary-disabled', { theme: 'light', captureScreenshots: false }),
   // Interactive target — confirms full pipeline (extract → rules → execute → graph).
-  createLlamasticotTarget('mat-button', { theme: 'light', captureScreenshots: true }),
+  createLlamasticotTarget('mat-button', { theme: 'light', captureScreenshots: false }),
 ];

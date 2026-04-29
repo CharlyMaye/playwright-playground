@@ -4,21 +4,7 @@ import { ExplorationConfig } from './ExplorationConfig';
 import { ExplorationScope } from './ExplorationScope';
 import { ElementFact } from './types';
 
-const INTERACTIVE_SELECTOR = [
-  'a',
-  'button',
-  'input',
-  'select',
-  'textarea',
-  '[role]',
-  '[tabindex]',
-  '[contenteditable]',
-  'details',
-  'summary',
-  '[aria-expanded]',
-  '[aria-controls]',
-  '[aria-haspopup]',
-].join(', ');
+const INTERACTIVE_SELECTOR = ['a', 'button', 'input', 'select', 'textarea', '[role]', '[tabindex]', '[contenteditable]', 'details', 'summary', '[aria-expanded]', '[aria-controls]', '[aria-haspopup]'].join(', ');
 
 export abstract class DOMExtractor {
   abstract extract(): Promise<ElementFact[]>;
@@ -86,6 +72,10 @@ export class ConcreteDOMExtractor extends DOMExtractor {
           let current: HTMLElement | null = target;
           while (current && current !== document.documentElement) {
             let selector = current.tagName.toLowerCase();
+            if (current.dataset.testid) {
+              parts.unshift(`[data-testid="${CSS.escape(current.dataset.testid)}"]`);
+              break;
+            }
             if (current.id) {
               parts.unshift(`#${CSS.escape(current.id)}`);
               break;
@@ -116,12 +106,7 @@ export class ConcreteDOMExtractor extends DOMExtractor {
           contentEditable: htmlEl.isContentEditable,
           dataTestId: htmlEl.getAttribute('data-testid'),
           id: htmlEl.id,
-          accessibleName:
-            htmlEl.getAttribute('aria-label') ??
-            htmlEl.getAttribute('aria-labelledby') ??
-            (htmlEl as HTMLInputElement).labels?.[0]?.textContent?.trim() ??
-            htmlEl.getAttribute('title') ??
-            null,
+          accessibleName: htmlEl.getAttribute('aria-label') ?? htmlEl.getAttribute('aria-labelledby') ?? (htmlEl as HTMLInputElement).labels?.[0]?.textContent?.trim() ?? htmlEl.getAttribute('title') ?? null,
           disabled: (htmlEl as HTMLButtonElement).disabled ?? false,
           focusable: htmlEl.tabIndex >= 0,
           cssSelector: computeCssSelector(htmlEl),
@@ -156,14 +141,7 @@ export class ConcreteDOMExtractor extends DOMExtractor {
     }
   }
 
-  #generateUid(
-    dataTestId: string | null,
-    id: string | null,
-    role: string | null,
-    accessibleName: string | null,
-    tag: string,
-    index: number
-  ): string {
+  #generateUid(dataTestId: string | null, id: string | null, role: string | null, accessibleName: string | null, tag: string, index: number): string {
     // Priority 1: data-testid
     if (dataTestId) return `testid:${dataTestId}`;
     // Priority 2: id if present

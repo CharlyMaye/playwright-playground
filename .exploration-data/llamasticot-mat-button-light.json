@@ -1,0 +1,2175 @@
+{
+  "url": "http://localhost:4206/mat-button?standalone=true&culture=fr-FR&theme=light",
+  "target": "mat-button-light",
+  "config": {
+    "rootSelector": "section.is-ready",
+    "boundary": "overflow",
+    "overflowSelectors": [
+      ".cdk-overlay-container",
+      ".wj-popup",
+      ".wj-listbox",
+      ".wj-flexgrid-cell-overlay"
+    ],
+    "readinessSelector": "section.is-ready",
+    "readinessTimeout": 8000,
+    "stabilizationTimeout": 100,
+    "strategy": "bfs",
+    "maxDepth": 2,
+    "maxStates": 30,
+    "maxActionsPerState": 50,
+    "timeout": 1000000,
+    "domHashStrategy": "interactive-only",
+    "additionalRules": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 9
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 8
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 7
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 4
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 3
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 2
+          }
+        }
+      }
+    ],
+    "captureStateScreenshots": false,
+    "captureTransitionScreenshots": false,
+    "screenshotsPrefix": ""
+  },
+  "graph": {
+    "states": [
+      {
+        "id": "bf2a119fe5100e84",
+        "facts": [
+          {
+            "uid": "button[0]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Basic",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 206,
+              "y": 25.765625,
+              "width": 67,
+              "height": 36
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(1)"
+          },
+          {
+            "uid": "button[1]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": false,
+            "focusable": true,
+            "text": "Disabled",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 344.78125,
+              "y": 25.765625,
+              "width": 88,
+              "height": 36
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(2)"
+          },
+          {
+            "uid": "a[2]",
+            "tag": "a",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Link",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 483.5625,
+              "y": 25.765625,
+              "width": 64,
+              "height": 36
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(1)"
+          },
+          {
+            "uid": "button[3]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Basic",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 206,
+              "y": 99.3125,
+              "width": 67,
+              "height": 36
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(3)"
+          },
+          {
+            "uid": "button[4]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": false,
+            "focusable": true,
+            "text": "Disabled",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 344.78125,
+              "y": 99.3125,
+              "width": 88,
+              "height": 36
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(4)"
+          },
+          {
+            "uid": "a[5]",
+            "tag": "a",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Link",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 483.5625,
+              "y": 99.3125,
+              "width": 64,
+              "height": 36
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(2)"
+          },
+          {
+            "uid": "button[6]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Basic",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 206,
+              "y": 172.859375,
+              "width": 69,
+              "height": 36
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(5)"
+          },
+          {
+            "uid": "button[7]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": false,
+            "focusable": true,
+            "text": "Disabled",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 344.78125,
+              "y": 172.859375,
+              "width": 90,
+              "height": 36
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(6)"
+          },
+          {
+            "uid": "a[8]",
+            "tag": "a",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Link",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 483.5625,
+              "y": 172.859375,
+              "width": 64,
+              "height": 36
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(3)"
+          },
+          {
+            "uid": "button[9]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Basic",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 206,
+              "y": 246.40625,
+              "width": 67,
+              "height": 36
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(7)"
+          },
+          {
+            "uid": "button[10]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": false,
+            "focusable": true,
+            "text": "Disabled",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 344.78125,
+              "y": 246.40625,
+              "width": 88,
+              "height": 36
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(8)"
+          },
+          {
+            "uid": "a[11]",
+            "tag": "a",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Link",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 483.5625,
+              "y": 246.40625,
+              "width": 64,
+              "height": 36
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(4)"
+          },
+          {
+            "uid": "button[12]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Basic",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 206,
+              "y": 319.96875,
+              "width": 67,
+              "height": 36
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(9)"
+          },
+          {
+            "uid": "button[13]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": false,
+            "focusable": true,
+            "text": "Disabled",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 344.78125,
+              "y": 319.96875,
+              "width": 88,
+              "height": 36
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(10)"
+          },
+          {
+            "uid": "a[14]",
+            "tag": "a",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Link",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 483.5625,
+              "y": 319.96875,
+              "width": 64,
+              "height": 36
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(5)"
+          },
+          {
+            "uid": "button[15]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": "Example icon button with a vertical three dot icon",
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "more_vert",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 206,
+              "y": 393.53125,
+              "width": 36,
+              "height": 36
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(11)"
+          },
+          {
+            "uid": "img[16]",
+            "tag": "mat-icon",
+            "role": "img",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "more_vert",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 212.296875,
+              "y": 399.828125,
+              "width": 24,
+              "height": 24
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(11) > mat-icon"
+          },
+          {
+            "uid": "button[17]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": "Example icon button with a open in new tab icon",
+            "visible": true,
+            "enabled": false,
+            "focusable": true,
+            "text": "open_in_new",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 344.78125,
+              "y": 393.53125,
+              "width": 36,
+              "height": 36
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(12)"
+          },
+          {
+            "uid": "img[18]",
+            "tag": "mat-icon",
+            "role": "img",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "open_in_new",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 351.078125,
+              "y": 399.828125,
+              "width": 24,
+              "height": 24
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(12) > mat-icon"
+          },
+          {
+            "uid": "button[19]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": "Example icon button with a delete icon",
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "delete",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 206,
+              "y": 467.09375,
+              "width": 56,
+              "height": 56
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(13)"
+          },
+          {
+            "uid": "img[20]",
+            "tag": "mat-icon",
+            "role": "img",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "delete",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 222,
+              "y": 483.09375,
+              "width": 24,
+              "height": 24
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(13) > mat-icon"
+          },
+          {
+            "uid": "button[21]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": "Example icon button with a heart icon",
+            "visible": true,
+            "enabled": false,
+            "focusable": true,
+            "text": "favorite",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 344.78125,
+              "y": 467.09375,
+              "width": 56,
+              "height": 56
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(14)"
+          },
+          {
+            "uid": "img[22]",
+            "tag": "mat-icon",
+            "role": "img",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "favorite",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 360.78125,
+              "y": 483.09375,
+              "width": 24,
+              "height": 24
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(14) > mat-icon"
+          },
+          {
+            "uid": "button[23]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": "Example icon button with a menu icon",
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "menu",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 206,
+              "y": 560.65625,
+              "width": 40,
+              "height": 40
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(15)"
+          },
+          {
+            "uid": "img[24]",
+            "tag": "mat-icon",
+            "role": "img",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "menu",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 214,
+              "y": 568.65625,
+              "width": 24,
+              "height": 24
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(15) > mat-icon"
+          },
+          {
+            "uid": "button[25]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": "Example icon button with a home icon",
+            "visible": true,
+            "enabled": false,
+            "focusable": true,
+            "text": "home",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 344.78125,
+              "y": 560.65625,
+              "width": 40,
+              "height": 40
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(16)"
+          },
+          {
+            "uid": "img[26]",
+            "tag": "mat-icon",
+            "role": "img",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "home",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 352.78125,
+              "y": 568.65625,
+              "width": 24,
+              "height": 24
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(16) > mat-icon"
+          },
+          {
+            "uid": "button[27]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "favorite Basic",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 206,
+              "y": 638.21875,
+              "width": 103.484375,
+              "height": 56
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(17)"
+          },
+          {
+            "uid": "img[28]",
+            "tag": "mat-icon",
+            "role": "img",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "favorite",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 218,
+              "y": 654.21875,
+              "width": 24,
+              "height": 24
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(17) > mat-icon"
+          },
+          {
+            "uid": "button[29]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": false,
+            "focusable": true,
+            "text": "favorite Disabled",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 344.78125,
+              "y": 638.21875,
+              "width": 124.78125,
+              "height": 56
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(18)"
+          },
+          {
+            "uid": "img[30]",
+            "tag": "mat-icon",
+            "role": "img",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "favorite",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 356.78125,
+              "y": 654.21875,
+              "width": 24,
+              "height": 24
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(18) > mat-icon"
+          },
+          {
+            "uid": "a[31]",
+            "tag": "a",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "favorite Link",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 483.5625,
+              "y": 638.21875,
+              "width": 95.390625,
+              "height": 56
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(6)"
+          },
+          {
+            "uid": "img[32]",
+            "tag": "mat-icon",
+            "role": "img",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "favorite",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 495.5625,
+              "y": 654.21875,
+              "width": 24,
+              "height": 24
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(6) > mat-icon"
+          }
+        ],
+        "depth": 0,
+        "timestamp": 1777449783223,
+        "scopeSelector": "section.is-ready"
+      }
+    ],
+    "transitions": [
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:click:button[0]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "click",
+          "targetUid": "button[0]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(1)",
+          "priority": 10
+        },
+        "success": true,
+        "duration": 197,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:click:button[6]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "click",
+          "targetUid": "button[6]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(5)",
+          "priority": 10
+        },
+        "success": true,
+        "duration": 216,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:click:button[12]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "click",
+          "targetUid": "button[12]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(9)",
+          "priority": 10
+        },
+        "success": true,
+        "duration": 221,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:click:button[19]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "click",
+          "targetUid": "button[19]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(13)",
+          "priority": 10
+        },
+        "success": true,
+        "duration": 235,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:click:button[27]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "click",
+          "targetUid": "button[27]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(17)",
+          "priority": 10
+        },
+        "success": true,
+        "duration": 236,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:hover:button[3]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "hover",
+          "targetUid": "button[3]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(3)",
+          "priority": 9
+        },
+        "success": true,
+        "duration": 215,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:hover:button[9]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "hover",
+          "targetUid": "button[9]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(7)",
+          "priority": 9
+        },
+        "success": true,
+        "duration": 221,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:hover:button[15]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "hover",
+          "targetUid": "button[15]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(11)",
+          "priority": 9
+        },
+        "success": true,
+        "duration": 204,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:hover:button[23]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "hover",
+          "targetUid": "button[23]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(15)",
+          "priority": 9
+        },
+        "success": true,
+        "duration": 227,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:button[0]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "focus",
+          "targetUid": "button[0]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(1)",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 178,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:button[3]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "focus",
+          "targetUid": "button[3]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(3)",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 173,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:button[6]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "focus",
+          "targetUid": "button[6]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(5)",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 174,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:button[9]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "focus",
+          "targetUid": "button[9]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(7)",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 176,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:button[12]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "focus",
+          "targetUid": "button[12]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(9)",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 176,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:button[15]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "focus",
+          "targetUid": "button[15]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(11)",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 173,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:button[19]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "focus",
+          "targetUid": "button[19]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(13)",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 173,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:button[23]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "focus",
+          "targetUid": "button[23]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(15)",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 172,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:button[27]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "focus",
+          "targetUid": "button[27]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(17)",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 178,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:mousedown:button[0]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "button[0]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(1)",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 192,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:mousedown:button[3]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "button[3]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(3)",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 189,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:mousedown:button[6]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "button[6]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(5)",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 196,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:mousedown:button[9]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "button[9]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(7)",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 202,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:mousedown:button[12]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "button[12]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(9)",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 191,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:mousedown:button[15]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "button[15]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(11)",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 195,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:mousedown:button[19]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "button[19]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(13)",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 192,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:mousedown:button[23]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "button[23]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(15)",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 192,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:mousedown:button[27]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "button[27]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(17)",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 189,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:click:a[5]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "click",
+          "targetUid": "a[5]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(2)",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 227,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:click:a[11]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "click",
+          "targetUid": "a[11]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(4)",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 219,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:click:a[31]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "click",
+          "targetUid": "a[31]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(6)",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 234,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:hover:a[5]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "hover",
+          "targetUid": "a[5]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(2)",
+          "priority": 4
+        },
+        "success": true,
+        "duration": 231,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:hover:a[11]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "hover",
+          "targetUid": "a[11]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(4)",
+          "priority": 4
+        },
+        "success": true,
+        "duration": 215,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:hover:a[31]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "hover",
+          "targetUid": "a[31]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(6)",
+          "priority": 4
+        },
+        "success": true,
+        "duration": 213,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:a[2]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "focus",
+          "targetUid": "a[2]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(1)",
+          "priority": 3
+        },
+        "success": true,
+        "duration": 189,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "bf2a119fe5100e84->bf2a119fe5100e84:focus:a[5]",
+        "from": "bf2a119fe5100e84",
+        "to": "bf2a119fe5100e84",
+        "action": {
+          "type": "focus",
+          "targetUid": "a[5]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(2)",
+          "priority": 3
+        },
+        "success": true,
+        "duration": 179,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      }
+    ]
+  },
+  "summary": {
+    "statesDiscovered": 1,
+    "transitions": 35,
+    "maxDepthReached": 0,
+    "cycles": 0,
+    "deadEnds": 0,
+    "totalDuration": 84396,
+    "failedActions": 15
+  },
+  "actions": [
+    {
+      "type": "click",
+      "targetUid": "button[0]",
+      "priority": 10
+    },
+    {
+      "type": "click",
+      "targetUid": "button[3]",
+      "priority": 10
+    },
+    {
+      "type": "click",
+      "targetUid": "button[6]",
+      "priority": 10
+    },
+    {
+      "type": "click",
+      "targetUid": "button[9]",
+      "priority": 10
+    },
+    {
+      "type": "click",
+      "targetUid": "button[12]",
+      "priority": 10
+    },
+    {
+      "type": "click",
+      "targetUid": "button[15]",
+      "priority": 10
+    },
+    {
+      "type": "click",
+      "targetUid": "button[19]",
+      "priority": 10
+    },
+    {
+      "type": "click",
+      "targetUid": "button[23]",
+      "priority": 10
+    },
+    {
+      "type": "click",
+      "targetUid": "button[27]",
+      "priority": 10
+    },
+    {
+      "type": "hover",
+      "targetUid": "button[0]",
+      "priority": 9
+    },
+    {
+      "type": "hover",
+      "targetUid": "button[3]",
+      "priority": 9
+    },
+    {
+      "type": "hover",
+      "targetUid": "button[6]",
+      "priority": 9
+    },
+    {
+      "type": "hover",
+      "targetUid": "button[9]",
+      "priority": 9
+    },
+    {
+      "type": "hover",
+      "targetUid": "button[12]",
+      "priority": 9
+    },
+    {
+      "type": "hover",
+      "targetUid": "button[15]",
+      "priority": 9
+    },
+    {
+      "type": "hover",
+      "targetUid": "button[19]",
+      "priority": 9
+    },
+    {
+      "type": "hover",
+      "targetUid": "button[23]",
+      "priority": 9
+    },
+    {
+      "type": "hover",
+      "targetUid": "button[27]",
+      "priority": 9
+    },
+    {
+      "type": "focus",
+      "targetUid": "button[0]",
+      "priority": 8
+    },
+    {
+      "type": "focus",
+      "targetUid": "button[3]",
+      "priority": 8
+    },
+    {
+      "type": "focus",
+      "targetUid": "button[6]",
+      "priority": 8
+    },
+    {
+      "type": "focus",
+      "targetUid": "button[9]",
+      "priority": 8
+    },
+    {
+      "type": "focus",
+      "targetUid": "button[12]",
+      "priority": 8
+    },
+    {
+      "type": "focus",
+      "targetUid": "button[15]",
+      "priority": 8
+    },
+    {
+      "type": "focus",
+      "targetUid": "button[19]",
+      "priority": 8
+    },
+    {
+      "type": "focus",
+      "targetUid": "button[23]",
+      "priority": 8
+    },
+    {
+      "type": "focus",
+      "targetUid": "button[27]",
+      "priority": 8
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "button[0]",
+      "priority": 7
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "button[3]",
+      "priority": 7
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "button[6]",
+      "priority": 7
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "button[9]",
+      "priority": 7
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "button[12]",
+      "priority": 7
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "button[15]",
+      "priority": 7
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "button[19]",
+      "priority": 7
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "button[23]",
+      "priority": 7
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "button[27]",
+      "priority": 7
+    },
+    {
+      "type": "click",
+      "targetUid": "a[2]",
+      "priority": 5
+    },
+    {
+      "type": "click",
+      "targetUid": "a[5]",
+      "priority": 5
+    },
+    {
+      "type": "click",
+      "targetUid": "a[8]",
+      "priority": 5
+    },
+    {
+      "type": "click",
+      "targetUid": "a[11]",
+      "priority": 5
+    },
+    {
+      "type": "click",
+      "targetUid": "a[14]",
+      "priority": 5
+    },
+    {
+      "type": "click",
+      "targetUid": "a[31]",
+      "priority": 5
+    },
+    {
+      "type": "hover",
+      "targetUid": "a[2]",
+      "priority": 4
+    },
+    {
+      "type": "hover",
+      "targetUid": "a[5]",
+      "priority": 4
+    },
+    {
+      "type": "hover",
+      "targetUid": "a[8]",
+      "priority": 4
+    },
+    {
+      "type": "hover",
+      "targetUid": "a[11]",
+      "priority": 4
+    },
+    {
+      "type": "hover",
+      "targetUid": "a[14]",
+      "priority": 4
+    },
+    {
+      "type": "hover",
+      "targetUid": "a[31]",
+      "priority": 4
+    },
+    {
+      "type": "focus",
+      "targetUid": "a[2]",
+      "priority": 3
+    },
+    {
+      "type": "focus",
+      "targetUid": "a[5]",
+      "priority": 3
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "click_button[0] → click_button[6] → click_button[12] → click_button[19] → click_button[27] → hover_button[3] → hover_button[9] → hover_button[15] → hover_button[23] → focus_button[0] → focus_button[3] → focus_button[6] → focus_button[9] → focus_button[12] → focus_button[15] → focus_button[19] → focus_button[23] → focus_button[27] → mousedown_button[0] → mousedown_button[3] → mousedown_button[6] → mousedown_button[9] → mousedown_button[12] → mousedown_button[15] → mousedown_button[19] → mousedown_button[23] → mousedown_button[27] → click_a[5] → click_a[11] → click_a[31] → hover_a[5] → hover_a[11] → hover_a[31] → focus_a[2] → focus_a[5]",
+      "steps": [
+        {
+          "type": "click",
+          "targetUid": "button[0]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(1)",
+          "priority": 10
+        },
+        {
+          "type": "click",
+          "targetUid": "button[6]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(5)",
+          "priority": 10
+        },
+        {
+          "type": "click",
+          "targetUid": "button[12]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(9)",
+          "priority": 10
+        },
+        {
+          "type": "click",
+          "targetUid": "button[19]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(13)",
+          "priority": 10
+        },
+        {
+          "type": "click",
+          "targetUid": "button[27]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(17)",
+          "priority": 10
+        },
+        {
+          "type": "hover",
+          "targetUid": "button[3]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(3)",
+          "priority": 9
+        },
+        {
+          "type": "hover",
+          "targetUid": "button[9]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(7)",
+          "priority": 9
+        },
+        {
+          "type": "hover",
+          "targetUid": "button[15]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(11)",
+          "priority": 9
+        },
+        {
+          "type": "hover",
+          "targetUid": "button[23]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(15)",
+          "priority": 9
+        },
+        {
+          "type": "focus",
+          "targetUid": "button[0]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(1)",
+          "priority": 8
+        },
+        {
+          "type": "focus",
+          "targetUid": "button[3]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(3)",
+          "priority": 8
+        },
+        {
+          "type": "focus",
+          "targetUid": "button[6]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(5)",
+          "priority": 8
+        },
+        {
+          "type": "focus",
+          "targetUid": "button[9]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(7)",
+          "priority": 8
+        },
+        {
+          "type": "focus",
+          "targetUid": "button[12]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(9)",
+          "priority": 8
+        },
+        {
+          "type": "focus",
+          "targetUid": "button[15]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(11)",
+          "priority": 8
+        },
+        {
+          "type": "focus",
+          "targetUid": "button[19]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(13)",
+          "priority": 8
+        },
+        {
+          "type": "focus",
+          "targetUid": "button[23]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(15)",
+          "priority": 8
+        },
+        {
+          "type": "focus",
+          "targetUid": "button[27]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(17)",
+          "priority": 8
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "button[0]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(1)",
+          "priority": 7
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "button[3]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(3)",
+          "priority": 7
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "button[6]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(5)",
+          "priority": 7
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "button[9]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(7)",
+          "priority": 7
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "button[12]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(9)",
+          "priority": 7
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "button[15]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(11)",
+          "priority": 7
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "button[19]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(13)",
+          "priority": 7
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "button[23]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(15)",
+          "priority": 7
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "button[27]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > button:nth-of-type(17)",
+          "priority": 7
+        },
+        {
+          "type": "click",
+          "targetUid": "a[5]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(2)",
+          "priority": 5
+        },
+        {
+          "type": "click",
+          "targetUid": "a[11]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(4)",
+          "priority": 5
+        },
+        {
+          "type": "click",
+          "targetUid": "a[31]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(6)",
+          "priority": 5
+        },
+        {
+          "type": "hover",
+          "targetUid": "a[5]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(2)",
+          "priority": 4
+        },
+        {
+          "type": "hover",
+          "targetUid": "a[11]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(4)",
+          "priority": 4
+        },
+        {
+          "type": "hover",
+          "targetUid": "a[31]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(6)",
+          "priority": 4
+        },
+        {
+          "type": "focus",
+          "targetUid": "a[2]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(1)",
+          "priority": 3
+        },
+        {
+          "type": "focus",
+          "targetUid": "a[5]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-mat-button > section > a:nth-of-type(2)",
+          "priority": 3
+        }
+      ],
+      "selectors": [
+        "button[0]",
+        "button[6]",
+        "button[12]",
+        "button[19]",
+        "button[27]",
+        "button[3]",
+        "button[9]",
+        "button[15]",
+        "button[23]",
+        "a[5]",
+        "a[11]",
+        "a[31]",
+        "a[2]"
+      ]
+    }
+  ],
+  "mermaid": "stateDiagram-v2\n  state \"bf2a119f (d=0)\" as s_bf2a119f\n  s_bf2a119f --> s_bf2a119f : click\n  s_bf2a119f --> s_bf2a119f : click\n  s_bf2a119f --> s_bf2a119f : click\n  s_bf2a119f --> s_bf2a119f : click\n  s_bf2a119f --> s_bf2a119f : click\n  s_bf2a119f --> s_bf2a119f : hover\n  s_bf2a119f --> s_bf2a119f : hover\n  s_bf2a119f --> s_bf2a119f : hover\n  s_bf2a119f --> s_bf2a119f : hover\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : mousedown\n  s_bf2a119f --> s_bf2a119f : mousedown\n  s_bf2a119f --> s_bf2a119f : mousedown\n  s_bf2a119f --> s_bf2a119f : mousedown\n  s_bf2a119f --> s_bf2a119f : mousedown\n  s_bf2a119f --> s_bf2a119f : mousedown\n  s_bf2a119f --> s_bf2a119f : mousedown\n  s_bf2a119f --> s_bf2a119f : mousedown\n  s_bf2a119f --> s_bf2a119f : mousedown\n  s_bf2a119f --> s_bf2a119f : click\n  s_bf2a119f --> s_bf2a119f : click\n  s_bf2a119f --> s_bf2a119f : click\n  s_bf2a119f --> s_bf2a119f : hover\n  s_bf2a119f --> s_bf2a119f : hover\n  s_bf2a119f --> s_bf2a119f : hover\n  s_bf2a119f --> s_bf2a119f : focus\n  s_bf2a119f --> s_bf2a119f : focus",
+  "dot": "digraph {\n  \"bf2a119fe5100e84\" [label=\"bf2a119f\\nd=0 f=33\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"click\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"click\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"click\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"click\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"click\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"hover\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"hover\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"hover\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"hover\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"mousedown\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"mousedown\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"mousedown\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"mousedown\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"mousedown\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"mousedown\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"mousedown\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"mousedown\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"mousedown\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"click\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"click\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"click\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"hover\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"hover\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"hover\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n  \"bf2a119fe5100e84\" -> \"bf2a119fe5100e84\" [label=\"focus\"];\n}",
+  "generatedAt": "2026-04-29T08:04:26.173Z"
+}

@@ -1,0 +1,333 @@
+{
+  "url": "http://localhost:4206/legacy-button/standard?standalone=true&culture=fr-FR&theme=light",
+  "target": "legacy-button-standard-light",
+  "config": {
+    "rootSelector": "section.is-ready",
+    "boundary": "overflow",
+    "overflowSelectors": [
+      ".cdk-overlay-container",
+      ".wj-popup",
+      ".wj-listbox",
+      ".wj-flexgrid-cell-overlay"
+    ],
+    "readinessSelector": "section.is-ready",
+    "readinessTimeout": 8000,
+    "stabilizationTimeout": 100,
+    "strategy": "bfs",
+    "maxDepth": 2,
+    "maxStates": 30,
+    "maxActionsPerState": 50,
+    "timeout": 1000000,
+    "domHashStrategy": "interactive-only",
+    "additionalRules": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 9
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 8
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 7
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 4
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 3
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 2
+          }
+        }
+      }
+    ],
+    "captureStateScreenshots": false,
+    "captureTransitionScreenshots": false,
+    "screenshotsPrefix": ""
+  },
+  "graph": {
+    "states": [
+      {
+        "id": "31d7ada20cdb6c0e",
+        "facts": [
+          {
+            "uid": "button[0]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Test",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-legacy-button > button"
+          }
+        ],
+        "depth": 0,
+        "timestamp": 1777449772691,
+        "scopeSelector": "section.is-ready"
+      }
+    ],
+    "transitions": [
+      {
+        "id": "31d7ada20cdb6c0e->31d7ada20cdb6c0e:hover:button[0]",
+        "from": "31d7ada20cdb6c0e",
+        "to": "31d7ada20cdb6c0e",
+        "action": {
+          "type": "hover",
+          "targetUid": "button[0]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-legacy-button > button",
+          "priority": 9
+        },
+        "success": true,
+        "duration": 218,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "31d7ada20cdb6c0e->31d7ada20cdb6c0e:focus:button[0]",
+        "from": "31d7ada20cdb6c0e",
+        "to": "31d7ada20cdb6c0e",
+        "action": {
+          "type": "focus",
+          "targetUid": "button[0]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-legacy-button > button",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 170,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "31d7ada20cdb6c0e->31d7ada20cdb6c0e:mousedown:button[0]",
+        "from": "31d7ada20cdb6c0e",
+        "to": "31d7ada20cdb6c0e",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "button[0]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-legacy-button > button",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 186,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      }
+    ]
+  },
+  "summary": {
+    "statesDiscovered": 1,
+    "transitions": 3,
+    "maxDepthReached": 0,
+    "cycles": 0,
+    "deadEnds": 0,
+    "totalDuration": 3489,
+    "failedActions": 1
+  },
+  "actions": [
+    {
+      "type": "click",
+      "targetUid": "button[0]",
+      "priority": 10
+    },
+    {
+      "type": "hover",
+      "targetUid": "button[0]",
+      "priority": 9
+    },
+    {
+      "type": "focus",
+      "targetUid": "button[0]",
+      "priority": 8
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "button[0]",
+      "priority": 7
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "hover_button[0] → focus_button[0] → mousedown_button[0]",
+      "steps": [
+        {
+          "type": "hover",
+          "targetUid": "button[0]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-legacy-button > button",
+          "priority": 9
+        },
+        {
+          "type": "focus",
+          "targetUid": "button[0]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-legacy-button > button",
+          "priority": 8
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "button[0]",
+          "targetSelector": "body > demo-app-root > dsl-full-layout > dsl-story-shower-layout > section > dsl-story-shower > html > body > dsl-legacy-button > button",
+          "priority": 7
+        }
+      ],
+      "selectors": [
+        "button[0]"
+      ]
+    }
+  ],
+  "mermaid": "stateDiagram-v2\n  state \"31d7ada2 (d=0)\" as s_31d7ada2\n  s_31d7ada2 --> s_31d7ada2 : hover\n  s_31d7ada2 --> s_31d7ada2 : focus\n  s_31d7ada2 --> s_31d7ada2 : mousedown",
+  "dot": "digraph {\n  \"31d7ada20cdb6c0e\" [label=\"31d7ada2\\nd=0 f=1\"];\n  \"31d7ada20cdb6c0e\" -> \"31d7ada20cdb6c0e\" [label=\"hover\"];\n  \"31d7ada20cdb6c0e\" -> \"31d7ada20cdb6c0e\" [label=\"focus\"];\n  \"31d7ada20cdb6c0e\" -> \"31d7ada20cdb6c0e\" [label=\"mousedown\"];\n}",
+  "generatedAt": "2026-04-29T08:02:55.799Z"
+}
