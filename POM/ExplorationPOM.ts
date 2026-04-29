@@ -69,12 +69,13 @@ export class ConcreteExplorationPOM extends ConcreteBuilderPOM<ExplorationSelect
     if (!scenario) {
       throw new Error(`Scenario "${name}" not found. Available: ${this.#data!.scenarios.map((s) => s.name).join(', ')}`);
     }
+    const scenarioIndex = this.#data!.scenarios.indexOf(scenario);
     for (let i = 0; i < scenario.steps.length; i++) {
       const step = scenario.steps[i];
       const label = this.#actionLabel(step, i);
       this._addAction(async () => {
         await this.#executeAction(step);
-      }, `${name}--step-${i}--${label}`);
+      }, `scenario-${scenarioIndex}--step-${i}--${label}`);
     }
     return this;
   }
@@ -84,16 +85,17 @@ export class ConcreteExplorationPOM extends ConcreteBuilderPOM<ExplorationSelect
 
     // If there are named scenarios (from non-self-loop transitions), replay them
     if (this.#data!.scenarios.length > 0) {
-      for (const scenario of this.#data!.scenarios) {
+      for (let scenarioIndex = 0; scenarioIndex < this.#data!.scenarios.length; scenarioIndex++) {
+        const scenario = this.#data!.scenarios[scenarioIndex];
         this._addAction(async () => {
           await this._page.goto(this.#data!.url, { waitUntil: 'load' });
-        }, `${scenario.name}--goto`);
+        }, `scenario-${scenarioIndex}--goto`);
         for (let i = 0; i < scenario.steps.length; i++) {
           const step = scenario.steps[i];
           const label = this.#actionLabel(step, i);
           this._addAction(async () => {
             await this.#executeAction(step);
-          }, `${scenario.name}--step-${i}--${label}`);
+          }, `scenario-${scenarioIndex}--step-${i}--${label}`);
         }
       }
     }
