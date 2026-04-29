@@ -1,6 +1,6 @@
 {
-  "url": "http://localhost:4206/legacy-button?standalone=true&culture=fr-FR&theme=light&isDisabled=false&variant=ing-action-exceptional",
-  "target": "legacy-button-isDisabled-false-variant-ing-action-exceptional-light",
+  "url": "http://localhost:4206/legacy-button?standalone=true&culture=fr-FR&theme=light&isDisabled=true&variant=ing-action-standard",
+  "target": "legacy-button-isDisabled-true-variant-ing-action-standard-light",
   "config": {
     "rootSelector": "section.is-ready",
     "boundary": "overflow",
@@ -175,7 +175,7 @@
   "graph": {
     "states": [
       {
-        "id": "e2ae40a782cda714",
+        "id": "ad846edeb335371c",
         "facts": [
           {
             "uid": "testid:btn-legacy",
@@ -183,7 +183,7 @@
             "role": null,
             "accessibleName": null,
             "visible": true,
-            "enabled": true,
+            "enabled": false,
             "focusable": true,
             "text": "Test",
             "inputType": null,
@@ -204,130 +204,24 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1777460524246,
+        "timestamp": 1777460521850,
         "scopeSelector": "section.is-ready"
       }
     ],
-    "transitions": [
-      {
-        "id": "e2ae40a782cda714->e2ae40a782cda714:hover:testid:btn-legacy",
-        "from": "e2ae40a782cda714",
-        "to": "e2ae40a782cda714",
-        "action": {
-          "type": "hover",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
-          "priority": 9
-        },
-        "success": true,
-        "duration": 223,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "e2ae40a782cda714->e2ae40a782cda714:focus:testid:btn-legacy",
-        "from": "e2ae40a782cda714",
-        "to": "e2ae40a782cda714",
-        "action": {
-          "type": "focus",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
-          "priority": 8
-        },
-        "success": true,
-        "duration": 168,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
-      {
-        "id": "e2ae40a782cda714->e2ae40a782cda714:mousedown:testid:btn-legacy",
-        "from": "e2ae40a782cda714",
-        "to": "e2ae40a782cda714",
-        "action": {
-          "type": "mousedown",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
-          "priority": 7
-        },
-        "success": true,
-        "duration": 184,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      }
-    ]
+    "transitions": []
   },
   "summary": {
     "statesDiscovered": 1,
-    "transitions": 3,
+    "transitions": 0,
     "maxDepthReached": 0,
     "cycles": 0,
-    "deadEnds": 0,
-    "totalDuration": 3364,
-    "failedActions": 1
+    "deadEnds": 1,
+    "totalDuration": 330,
+    "failedActions": 0
   },
-  "actions": [
-    {
-      "type": "click",
-      "targetUid": "testid:btn-legacy",
-      "priority": 10
-    },
-    {
-      "type": "hover",
-      "targetUid": "testid:btn-legacy",
-      "priority": 9
-    },
-    {
-      "type": "focus",
-      "targetUid": "testid:btn-legacy",
-      "priority": 8
-    },
-    {
-      "type": "mousedown",
-      "targetUid": "testid:btn-legacy",
-      "priority": 7
-    }
-  ],
-  "scenarios": [
-    {
-      "name": "hover_testid:btn-legacy → focus_testid:btn-legacy → mousedown_testid:btn-legacy",
-      "steps": [
-        {
-          "type": "hover",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
-          "priority": 9
-        },
-        {
-          "type": "focus",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
-          "priority": 8
-        },
-        {
-          "type": "mousedown",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
-          "priority": 7
-        }
-      ],
-      "selectors": [
-        "testid:btn-legacy"
-      ]
-    }
-  ],
-  "mermaid": "stateDiagram-v2\n  state \"e2ae40a7 (d=0)\" as s_e2ae40a7\n  s_e2ae40a7 --> s_e2ae40a7 : hover\n  s_e2ae40a7 --> s_e2ae40a7 : focus\n  s_e2ae40a7 --> s_e2ae40a7 : mousedown",
-  "dot": "digraph {\n  \"e2ae40a782cda714\" [label=\"e2ae40a7\\nd=0 f=1\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"hover\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"focus\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"mousedown\"];\n}",
-  "generatedAt": "2026-04-29T11:02:07.293Z"
+  "actions": [],
+  "scenarios": [],
+  "mermaid": "stateDiagram-v2\n  state \"ad846ede (d=0)\" as s_ad846ede",
+  "dot": "digraph {\n  \"ad846edeb335371c\" [label=\"ad846ede\\nd=0 f=1\"];\n}",
+  "generatedAt": "2026-04-29T11:02:01.850Z"
 }

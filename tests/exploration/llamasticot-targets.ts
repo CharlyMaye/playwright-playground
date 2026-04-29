@@ -238,7 +238,15 @@ export const LLAMASTICOT_TARGETS: ExplorationTarget[] = [
   }),
   createLlamasticotTarget('legacy-button', {
     theme: 'light',
+    queryParams: { isDisabled: 'true', variant: 'ing-discreet' },
+  }),
+  createLlamasticotTarget('legacy-button', {
+    theme: 'light',
     queryParams: { isDisabled: 'false', variant: 'ing-secondary' },
+  }),
+  createLlamasticotTarget('legacy-button', {
+    theme: 'light',
+    queryParams: { isDisabled: 'true', variant: 'ing-secondary' },
   }),
   createLlamasticotTarget('legacy-button', {
     theme: 'light',
@@ -246,7 +254,15 @@ export const LLAMASTICOT_TARGETS: ExplorationTarget[] = [
   }),
   createLlamasticotTarget('legacy-button', {
     theme: 'light',
+    queryParams: { isDisabled: 'true', variant: 'ing-action-standard' },
+  }),
+  createLlamasticotTarget('legacy-button', {
+    theme: 'light',
     queryParams: { isDisabled: 'false', variant: 'ing-action-exceptional' },
+  }),
+  createLlamasticotTarget('legacy-button', {
+    theme: 'light',
+    queryParams: { isDisabled: 'true', variant: 'ing-action-exceptional' },
   }),
   // Validation target — explicitly requested for the readiness/overflow checks.
   // This page renders a single disabled secondary button: 1 state, 0 actions
