@@ -254,23 +254,23 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1777465542646,
+        "timestamp": 1777881823032,
         "scopeSelector": "section.is-ready"
       }
     ],
     "transitions": [
       {
-        "id": "c09bf5c85983a5f4->c09bf5c85983a5f4:click:#ing-radio-button1-input-b",
+        "id": "c09bf5c85983a5f4->c09bf5c85983a5f4:click:#ing-radio-button1-input-a",
         "from": "c09bf5c85983a5f4",
         "to": "c09bf5c85983a5f4",
         "action": {
           "type": "click",
-          "targetUid": "#ing-radio-button1-input-b",
-          "targetSelector": "#ing-radio-button1-input-b",
+          "targetUid": "#ing-radio-button1-input-a",
+          "targetSelector": "#ing-radio-button1-input-a",
           "priority": 7
         },
         "success": true,
-        "duration": 202,
+        "duration": 220,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -286,7 +286,7 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 2311,
+    "totalDuration": 2095,
     "failedActions": 2
   },
   "actions": [
@@ -308,21 +308,21 @@
   ],
   "scenarios": [
     {
-      "name": "click_#ing-radio-button1-input-b",
+      "name": "click_#ing-radio-button1-input-a",
       "steps": [
         {
           "type": "click",
-          "targetUid": "#ing-radio-button1-input-b",
-          "targetSelector": "#ing-radio-button1-input-b",
+          "targetUid": "#ing-radio-button1-input-a",
+          "targetSelector": "#ing-radio-button1-input-a",
           "priority": 7
         }
       ],
       "selectors": [
-        "#ing-radio-button1-input-b"
+        "#ing-radio-button1-input-a"
       ]
     }
   ],
   "mermaid": "stateDiagram-v2\n  state \"c09bf5c8 (d=0)\" as s_c09bf5c8\n  s_c09bf5c8 --> s_c09bf5c8 : click",
   "dot": "digraph {\n  \"c09bf5c85983a5f4\" [label=\"c09bf5c8\\nd=0 f=3\"];\n  \"c09bf5c85983a5f4\" -> \"c09bf5c85983a5f4\" [label=\"click\"];\n}",
-  "generatedAt": "2026-04-29T12:25:44.424Z"
+  "generatedAt": "2026-05-04T08:03:44.549Z"
 }

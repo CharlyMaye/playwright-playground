@@ -1,6 +1,5 @@
 import * as fs from 'fs';
 import { ExpectContext, TestContext } from '../engine';
-import { computeClipRegion } from '../explorer/screenshot-utils';
 import type { CandidateAction, SerializedGraph, Transition, UnitaryAction } from '../explorer/types';
 import { BuilderPOM, ConcreteBuilderPOM } from './BuilderPOM';
 
@@ -49,20 +48,6 @@ export class ConcreteExplorationPOM extends ConcreteBuilderPOM<ExplorationSelect
     const content = fs.readFileSync(jsonPath, 'utf-8');
     this.#data = JSON.parse(content) as ExplorationOutput;
     this._selectors.rootSelector = (this.#data.config['rootSelector'] as string) ?? 'body';
-
-    // Set up clip provider when clipping is enabled in the exploration config
-    const clipToScope = this.#data.config['screenshotClipToScope'] as boolean | undefined;
-    if (clipToScope) {
-      const rootSelector = this._selectors.rootSelector;
-      const overflowSelectors = (this.#data.config['overflowSelectors'] as string[] | undefined) ?? [];
-      const margin = (this.#data.config['screenshotMargin'] as number | undefined) ?? 8;
-      const includeOverflows = (this.#data.config['screenshotIncludeOverflows'] as boolean | undefined) ?? true;
-
-      this.setClipProvider(async () => {
-        const clip = await computeClipRegion(this._page, rootSelector, overflowSelectors, margin, includeOverflows);
-        return clip ? { clip } : undefined;
-      });
-    }
 
     return this;
   }

@@ -204,23 +204,23 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1777465483801,
+        "timestamp": 1777881786673,
         "scopeSelector": "section.is-ready"
       }
     ],
     "transitions": [
       {
-        "id": "e2ae40a782cda714->e2ae40a782cda714:click:testid:btn-legacy",
+        "id": "e2ae40a782cda714->e2ae40a782cda714:hover:testid:btn-legacy",
         "from": "e2ae40a782cda714",
         "to": "e2ae40a782cda714",
         "action": {
-          "type": "click",
+          "type": "hover",
           "targetUid": "testid:btn-legacy",
           "targetSelector": "[data-testid=\"btn-legacy\"]",
-          "priority": 10
+          "priority": 9
         },
         "success": true,
-        "duration": 212,
+        "duration": 233,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -258,7 +258,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 190,
+        "duration": 189,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -274,7 +274,7 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 4849,
+    "totalDuration": 2733,
     "failedActions": 1
   },
   "actions": [
@@ -301,13 +301,13 @@
   ],
   "scenarios": [
     {
-      "name": "click_testid:btn-legacy → focus_testid:btn-legacy → mousedown_testid:btn-legacy",
+      "name": "hover_testid:btn-legacy → focus_testid:btn-legacy → mousedown_testid:btn-legacy",
       "steps": [
         {
-          "type": "click",
+          "type": "hover",
           "targetUid": "testid:btn-legacy",
           "targetSelector": "[data-testid=\"btn-legacy\"]",
-          "priority": 10
+          "priority": 9
         },
         {
           "type": "focus",
@@ -327,7 +327,7 @@
       ]
     }
   ],
-  "mermaid": "stateDiagram-v2\n  state \"e2ae40a7 (d=0)\" as s_e2ae40a7\n  s_e2ae40a7 --> s_e2ae40a7 : click\n  s_e2ae40a7 --> s_e2ae40a7 : focus\n  s_e2ae40a7 --> s_e2ae40a7 : mousedown",
-  "dot": "digraph {\n  \"e2ae40a782cda714\" [label=\"e2ae40a7\\nd=0 f=1\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"click\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"focus\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"mousedown\"];\n}",
-  "generatedAt": "2026-04-29T12:24:47.603Z"
+  "mermaid": "stateDiagram-v2\n  state \"e2ae40a7 (d=0)\" as s_e2ae40a7\n  s_e2ae40a7 --> s_e2ae40a7 : hover\n  s_e2ae40a7 --> s_e2ae40a7 : focus\n  s_e2ae40a7 --> s_e2ae40a7 : mousedown",
+  "dot": "digraph {\n  \"e2ae40a782cda714\" [label=\"e2ae40a7\\nd=0 f=1\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"hover\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"focus\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"mousedown\"];\n}",
+  "generatedAt": "2026-05-04T08:03:09.102Z"
 }

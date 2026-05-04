@@ -64,15 +64,6 @@ export const ExplorationConfigSchema = z.object({
   screenshotsDir: z.string().optional(),
   screenshotsPrefix: z.string().default(''),
 
-  // Screenshot clipping — when `screenshotClipToScope` is true, screenshots
-  // are clipped to the bounding box of `rootSelector` instead of capturing
-  // the full viewport. `screenshotMargin` adds padding (px) around the scope.
-  // `screenshotIncludeOverflows` merges visible overflow containers (dropdowns,
-  // popups) into the clip region so they are not cut off.
-  screenshotClipToScope: z.boolean().default(false),
-  screenshotMargin: z.number().int().min(0).default(8),
-  screenshotIncludeOverflows: z.boolean().default(true),
-
   // Rules — when `rules` is set, ONLY those rules are loaded (no defaults).
   // When absent, the built-in DEFAULT_HTML_RULES are loaded automatically.
   // `additionalRules` are appended on top of the active set (defaults or custom).
@@ -124,10 +115,6 @@ export abstract class ExplorationConfig {
   abstract get captureTransitionScreenshots(): boolean;
   abstract get screenshotsDir(): string | undefined;
   abstract get screenshotsPrefix(): string;
-
-  abstract get screenshotClipToScope(): boolean;
-  abstract get screenshotMargin(): number;
-  abstract get screenshotIncludeOverflows(): boolean;
 
   abstract get rules(): unknown[] | undefined;
   abstract get additionalRules(): unknown[] | undefined;
@@ -209,16 +196,6 @@ export class ConcreteExplorationConfig extends ExplorationConfig {
   }
   get screenshotsPrefix() {
     return this.#data.screenshotsPrefix;
-  }
-
-  get screenshotClipToScope() {
-    return this.#data.screenshotClipToScope;
-  }
-  get screenshotMargin() {
-    return this.#data.screenshotMargin;
-  }
-  get screenshotIncludeOverflows() {
-    return this.#data.screenshotIncludeOverflows;
   }
 
   get rules() {

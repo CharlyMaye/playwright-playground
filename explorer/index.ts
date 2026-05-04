@@ -12,8 +12,6 @@ export { ConcreteReadinessChecker, ReadinessChecker } from './ReadinessChecker';
 export { ConcreteRulesEngine, RulesEngine } from './RulesEngine';
 export { ConcreteScenarioExporter, ScenarioExporter } from './ScenarioExporter';
 export type { Scenario } from './ScenarioExporter';
-export { computeClipRegion } from './screenshot-utils';
-export type { ClipRegion } from './screenshot-utils';
 export { ConcreteStateManager, StateManager } from './StateManager';
 
 import { registerScoped, registerSingleton } from '../engine';
