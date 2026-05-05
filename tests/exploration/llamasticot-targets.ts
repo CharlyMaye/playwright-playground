@@ -300,6 +300,59 @@ export const LLAMASTICOT_TARGETS: ExplorationTarget[] = [
     theme: 'light',
     queryParams: { isDisabled: 'true' },
   }),
+  //
+  createLlamasticotTarget('legacy-input', {
+    theme: 'light',
+    queryParams: { type: 'text', isDisabled: 'false', isReadOnly: 'false' },
+  }),
+  createLlamasticotTarget('legacy-input', {
+    theme: 'light',
+    queryParams: { type: 'text', isDisabled: 'true', isReadOnly: 'false' },
+  }),
+  createLlamasticotTarget('legacy-input', {
+    theme: 'light',
+    queryParams: { type: 'text', isDisabled: 'false', isReadOnly: 'true' },
+  }),
+  //
+  createLlamasticotTarget('legacy-input', {
+    theme: 'light',
+    queryParams: { type: 'checkbox', isDisabled: 'false', isReadOnly: 'false' },
+  }),
+  createLlamasticotTarget('legacy-input', {
+    theme: 'light',
+    queryParams: { type: 'checkbox', isDisabled: 'true', isReadOnly: 'false' },
+  }),
+  createLlamasticotTarget('legacy-input', {
+    theme: 'light',
+    queryParams: { type: 'checkbox', isDisabled: 'false', isReadOnly: 'true' },
+  }),
+
+  createLlamasticotTarget('legacy-input', {
+    theme: 'light',
+    queryParams: { type: 'checkbox', value: false, isDisabled: 'false', isReadOnly: 'false' },
+  }),
+  createLlamasticotTarget('legacy-input', {
+    theme: 'light',
+    queryParams: { type: 'checkbox', value: false, isDisabled: 'true', isReadOnly: 'false' },
+  }),
+  createLlamasticotTarget('legacy-input', {
+    theme: 'light',
+    queryParams: { type: 'checkbox', value: false, isDisabled: 'false', isReadOnly: 'true' },
+  }),
+
+  createLlamasticotTarget('legacy-input', {
+    theme: 'light',
+    queryParams: { type: 'checkbox', isDisabled: 'false', isReadOnly: 'false', isIndeterminate: 'true' },
+  }),
+  createLlamasticotTarget('legacy-input', {
+    theme: 'light',
+    queryParams: { type: 'checkbox', isDisabled: 'true', isReadOnly: 'false', isIndeterminate: 'true' },
+  }),
+  createLlamasticotTarget('legacy-input', {
+    theme: 'light',
+    queryParams: { type: 'checkbox', isDisabled: 'false', isReadOnly: 'true', isIndeterminate: 'true' },
+  }),
+
   // Interactive target — confirms full pipeline (extract → rules → execute → graph).
   createLlamasticotTarget('mat-button', { theme: 'light', captureScreenshots: false }),
 ];

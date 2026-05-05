@@ -204,30 +204,11 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1777881809613,
+        "timestamp": 1777884501624,
         "scopeSelector": "section.is-ready"
       }
     ],
     "transitions": [
-      {
-        "id": "f6ab7be3f451295b->f6ab7be3f451295b:hover:testid:btn-tile",
-        "from": "f6ab7be3f451295b",
-        "to": "f6ab7be3f451295b",
-        "action": {
-          "type": "hover",
-          "targetUid": "testid:btn-tile",
-          "targetSelector": "[data-testid=\"btn-tile\"]",
-          "priority": 9
-        },
-        "success": true,
-        "duration": 249,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
       {
         "id": "f6ab7be3f451295b->f6ab7be3f451295b:focus:testid:btn-tile",
         "from": "f6ab7be3f451295b",
@@ -239,7 +220,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 174,
+        "duration": 176,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -270,12 +251,12 @@
   },
   "summary": {
     "statesDiscovered": 1,
-    "transitions": 3,
+    "transitions": 2,
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 2820,
-    "failedActions": 1
+    "totalDuration": 3559,
+    "failedActions": 2
   },
   "actions": [
     {
@@ -301,14 +282,8 @@
   ],
   "scenarios": [
     {
-      "name": "hover_testid:btn-tile → focus_testid:btn-tile → mousedown_testid:btn-tile",
+      "name": "focus_testid:btn-tile → mousedown_testid:btn-tile",
       "steps": [
-        {
-          "type": "hover",
-          "targetUid": "testid:btn-tile",
-          "targetSelector": "[data-testid=\"btn-tile\"]",
-          "priority": 9
-        },
         {
           "type": "focus",
           "targetUid": "testid:btn-tile",
@@ -327,7 +302,7 @@
       ]
     }
   ],
-  "mermaid": "stateDiagram-v2\n  state \"f6ab7be3 (d=0)\" as s_f6ab7be3\n  s_f6ab7be3 --> s_f6ab7be3 : hover\n  s_f6ab7be3 --> s_f6ab7be3 : focus\n  s_f6ab7be3 --> s_f6ab7be3 : mousedown",
-  "dot": "digraph {\n  \"f6ab7be3f451295b\" [label=\"f6ab7be3\\nd=0 f=1\"];\n  \"f6ab7be3f451295b\" -> \"f6ab7be3f451295b\" [label=\"hover\"];\n  \"f6ab7be3f451295b\" -> \"f6ab7be3f451295b\" [label=\"focus\"];\n  \"f6ab7be3f451295b\" -> \"f6ab7be3f451295b\" [label=\"mousedown\"];\n}",
-  "generatedAt": "2026-05-04T08:03:32.132Z"
+  "mermaid": "stateDiagram-v2\n  state \"f6ab7be3 (d=0)\" as s_f6ab7be3\n  s_f6ab7be3 --> s_f6ab7be3 : focus\n  s_f6ab7be3 --> s_f6ab7be3 : mousedown",
+  "dot": "digraph {\n  \"f6ab7be3f451295b\" [label=\"f6ab7be3\\nd=0 f=1\"];\n  \"f6ab7be3f451295b\" -> \"f6ab7be3f451295b\" [label=\"focus\"];\n  \"f6ab7be3f451295b\" -> \"f6ab7be3f451295b\" [label=\"mousedown\"];\n}",
+  "generatedAt": "2026-05-04T08:48:24.692Z"
 }

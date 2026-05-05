@@ -1,6 +1,6 @@
 {
-  "url": "http://localhost:4206/legacy-button?standalone=true&culture=fr-FR&theme=light&isDisabled=true&variant=ing-action-standard",
-  "target": "legacy-button-isDisabled-true-variant-ing-action-standard-light",
+  "url": "http://localhost:4206/legacy-input?standalone=true&culture=fr-FR&theme=light&type=text&isDisabled=true&isReadOnly=false",
+  "target": "legacy-input-type-text-isDisabled-true-isReadOnly-false-light",
   "config": {
     "rootSelector": "section.is-ready",
     "boundary": "overflow",
@@ -175,36 +175,36 @@
   "graph": {
     "states": [
       {
-        "id": "ad846edeb335371c",
+        "id": "9de2487630fd4645",
         "facts": [
           {
-            "uid": "testid:btn-legacy",
-            "tag": "button",
+            "uid": "testid:input-legacy",
+            "tag": "input",
             "role": null,
-            "accessibleName": null,
+            "accessibleName": "",
             "visible": true,
             "enabled": false,
             "focusable": true,
-            "text": "Test",
-            "inputType": null,
+            "text": "",
+            "inputType": "text",
             "ariaExpanded": null,
             "ariaControls": null,
             "ariaOwns": null,
             "tabindex": null,
             "contentEditable": false,
             "boundingBox": {
-              "x": 0,
+              "x": 8,
               "y": 0,
-              "width": 64,
+              "width": 201,
               "height": 32
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "[data-testid=\"btn-legacy\"]"
+            "cssSelector": "[data-testid=\"input-legacy\"]"
           }
         ],
         "depth": 0,
-        "timestamp": 1777884487789,
+        "timestamp": 1777884542876,
         "scopeSelector": "section.is-ready"
       }
     ],
@@ -216,12 +216,12 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 1,
-    "totalDuration": 495,
+    "totalDuration": 574,
     "failedActions": 0
   },
   "actions": [],
   "scenarios": [],
-  "mermaid": "stateDiagram-v2\n  state \"ad846ede (d=0)\" as s_ad846ede",
-  "dot": "digraph {\n  \"ad846edeb335371c\" [label=\"ad846ede\\nd=0 f=1\"];\n}",
-  "generatedAt": "2026-05-04T08:48:07.790Z"
+  "mermaid": "stateDiagram-v2\n  state \"9de24876 (d=0)\" as s_9de24876",
+  "dot": "digraph {\n  \"9de2487630fd4645\" [label=\"9de24876\\nd=0 f=1\"];\n}",
+  "generatedAt": "2026-05-04T08:49:02.876Z"
 }

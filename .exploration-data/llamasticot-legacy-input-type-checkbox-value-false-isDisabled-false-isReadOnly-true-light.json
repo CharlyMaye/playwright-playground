@@ -1,6 +1,6 @@
 {
-  "url": "http://localhost:4206/legacy-button?standalone=true&culture=fr-FR&theme=light&isDisabled=true&variant=ing-action-standard",
-  "target": "legacy-button-isDisabled-true-variant-ing-action-standard-light",
+  "url": "http://localhost:4206/legacy-input?standalone=true&culture=fr-FR&theme=light&type=checkbox&value=false&isDisabled=false&isReadOnly=true",
+  "target": "legacy-input-type-checkbox-value-false-isDisabled-false-isReadOnly-true-light",
   "config": {
     "rootSelector": "section.is-ready",
     "boundary": "overflow",
@@ -175,36 +175,36 @@
   "graph": {
     "states": [
       {
-        "id": "ad846edeb335371c",
+        "id": "19dc7ff70d063740",
         "facts": [
           {
-            "uid": "testid:btn-legacy",
-            "tag": "button",
+            "uid": "testid:input-legacy",
+            "tag": "input",
             "role": null,
-            "accessibleName": null,
+            "accessibleName": "",
             "visible": true,
-            "enabled": false,
+            "enabled": true,
             "focusable": true,
-            "text": "Test",
-            "inputType": null,
+            "text": "",
+            "inputType": "checkbox",
             "ariaExpanded": null,
             "ariaControls": null,
             "ariaOwns": null,
             "tabindex": null,
             "contentEditable": false,
             "boundingBox": {
-              "x": 0,
+              "x": 8,
               "y": 0,
-              "width": 64,
-              "height": 32
+              "width": 20,
+              "height": 20
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "[data-testid=\"btn-legacy\"]"
+            "cssSelector": "[data-testid=\"input-legacy\"]"
           }
         ],
         "depth": 0,
-        "timestamp": 1777884487789,
+        "timestamp": 1777884566984,
         "scopeSelector": "section.is-ready"
       }
     ],
@@ -216,12 +216,18 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 1,
-    "totalDuration": 495,
-    "failedActions": 0
+    "totalDuration": 639,
+    "failedActions": 1
   },
-  "actions": [],
+  "actions": [
+    {
+      "type": "click",
+      "targetUid": "testid:input-legacy",
+      "priority": 7
+    }
+  ],
   "scenarios": [],
-  "mermaid": "stateDiagram-v2\n  state \"ad846ede (d=0)\" as s_ad846ede",
-  "dot": "digraph {\n  \"ad846edeb335371c\" [label=\"ad846ede\\nd=0 f=1\"];\n}",
-  "generatedAt": "2026-05-04T08:48:07.790Z"
+  "mermaid": "stateDiagram-v2\n  state \"19dc7ff7 (d=0)\" as s_19dc7ff7",
+  "dot": "digraph {\n  \"19dc7ff70d063740\" [label=\"19dc7ff7\\nd=0 f=1\"];\n}",
+  "generatedAt": "2026-05-04T08:49:27.138Z"
 }

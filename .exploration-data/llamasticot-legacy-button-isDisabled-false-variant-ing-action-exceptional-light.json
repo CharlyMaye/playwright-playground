@@ -204,30 +204,11 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1777881803337,
+        "timestamp": 1777884491199,
         "scopeSelector": "section.is-ready"
       }
     ],
     "transitions": [
-      {
-        "id": "e2ae40a782cda714->e2ae40a782cda714:hover:testid:btn-legacy",
-        "from": "e2ae40a782cda714",
-        "to": "e2ae40a782cda714",
-        "action": {
-          "type": "hover",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
-          "priority": 9
-        },
-        "success": true,
-        "duration": 223,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "selfLoop": true
-      },
       {
         "id": "e2ae40a782cda714->e2ae40a782cda714:focus:testid:btn-legacy",
         "from": "e2ae40a782cda714",
@@ -239,7 +220,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 175,
+        "duration": 174,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -258,7 +239,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 200,
+        "duration": 195,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -270,12 +251,12 @@
   },
   "summary": {
     "statesDiscovered": 1,
-    "transitions": 3,
+    "transitions": 2,
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 3045,
-    "failedActions": 1
+    "totalDuration": 4128,
+    "failedActions": 2
   },
   "actions": [
     {
@@ -301,14 +282,8 @@
   ],
   "scenarios": [
     {
-      "name": "hover_testid:btn-legacy → focus_testid:btn-legacy → mousedown_testid:btn-legacy",
+      "name": "focus_testid:btn-legacy → mousedown_testid:btn-legacy",
       "steps": [
-        {
-          "type": "hover",
-          "targetUid": "testid:btn-legacy",
-          "targetSelector": "[data-testid=\"btn-legacy\"]",
-          "priority": 9
-        },
         {
           "type": "focus",
           "targetUid": "testid:btn-legacy",
@@ -327,7 +302,7 @@
       ]
     }
   ],
-  "mermaid": "stateDiagram-v2\n  state \"e2ae40a7 (d=0)\" as s_e2ae40a7\n  s_e2ae40a7 --> s_e2ae40a7 : hover\n  s_e2ae40a7 --> s_e2ae40a7 : focus\n  s_e2ae40a7 --> s_e2ae40a7 : mousedown",
-  "dot": "digraph {\n  \"e2ae40a782cda714\" [label=\"e2ae40a7\\nd=0 f=1\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"hover\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"focus\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"mousedown\"];\n}",
-  "generatedAt": "2026-05-04T08:03:26.080Z"
+  "mermaid": "stateDiagram-v2\n  state \"e2ae40a7 (d=0)\" as s_e2ae40a7\n  s_e2ae40a7 --> s_e2ae40a7 : focus\n  s_e2ae40a7 --> s_e2ae40a7 : mousedown",
+  "dot": "digraph {\n  \"e2ae40a782cda714\" [label=\"e2ae40a7\\nd=0 f=1\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"focus\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"mousedown\"];\n}",
+  "generatedAt": "2026-05-04T08:48:14.807Z"
 }
