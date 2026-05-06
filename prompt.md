@@ -54,7 +54,7 @@ a, button, input, select, textarea, [role], [tabindex], [contenteditable], detai
 | `aria-expanded=false` (any)                     | enabled visible | click  | 13       |
 | `summary`                                       | visible         | click  | 12       |
 
-### Rules visuelles additionnelles (VISUAL_STATE_RULES dans llamasticot-targets.ts)
+### Rules visuelles additionnelles (VISUAL_STATE_RULES dans llamasticot-rules.ts)
 
 Appliquées automatiquement à tous les targets LlamaSticot :
 
@@ -106,7 +106,7 @@ L'explorateur identifie chaque élément par ordre de priorité :
 
 ## Structure d'un target d'exploration (côté Playwright)
 
-Dans llamasticot-targets.ts :
+Dans `llamasticot-factory.ts` (builders) / `llamasticot-targets.ts` (liste) :
 
 ```ts
 createLlamasticotTarget(storyPath, {
@@ -169,7 +169,7 @@ Ajouter dans `LLAMASTICOT_TARGETS` les entrées couvrant les combinaisons pertin
 
 ## Fichiers à modifier
 
-1. llamasticot-targets.ts — ajouter les targets
+1. `llamasticot-targets.ts` — ajouter les targets dans `LLAMASTICOT_TARGETS` (utiliser `createLlamasticotTarget` / `createLlamasticotThemeMatrix` depuis `llamasticot-factory.ts`)
 2. `isagri-ng/apps/demo-app/src/stories/<nom>.component.ts` — **si nécessaire** : ajouter `role`, `aria-*`, `data-testid` pour que les éléments soient détectés et identifiés
 
 ## Fichiers en lecture seule (contexte)
@@ -177,6 +177,9 @@ Ajouter dans `LLAMASTICOT_TARGETS` les entrées couvrant les combinaisons pertin
 - `isagri-ng/apps/demo-app/src/stories/<nom>.story.ts`
 - index.ts
 - default-rules.ts
+- llamasticot-rules.ts (règles visuelles appliquées automatiquement)
+- llamasticot-config.ts (constantes et type `LlamasticotTargetOptions`)
+- llamasticot-factory.ts (builders `createLlamasticotTarget`, `createLlamasticotThemeMatrix`)
 - DOMExtractor.ts (sélecteur d'extraction)
 
 ## Contraintes
