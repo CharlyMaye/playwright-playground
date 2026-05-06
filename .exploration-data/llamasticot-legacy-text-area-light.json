@@ -1,6 +1,6 @@
 {
-  "url": "http://localhost:4206/legacy-button?standalone=true&culture=fr-FR&theme=light&isDisabled=true&variant=ing-secondary",
-  "target": "legacy-button-isDisabled-true-variant-ing-secondary-light",
+  "url": "http://localhost:4206/legacy-text-area?standalone=true&culture=fr-FR&theme=light",
+  "target": "legacy-text-area-light",
   "config": {
     "rootSelector": "section.is-ready",
     "boundary": "overflow",
@@ -175,17 +175,17 @@
   "graph": {
     "states": [
       {
-        "id": "ad846edeb335371c",
+        "id": "5881005d00f79460",
         "facts": [
           {
-            "uid": "testid:btn-legacy",
-            "tag": "button",
+            "uid": "testid:textarea-legacy",
+            "tag": "textarea",
             "role": null,
             "accessibleName": null,
             "visible": true,
-            "enabled": false,
+            "enabled": true,
             "focusable": true,
-            "text": "Test",
+            "text": "",
             "inputType": null,
             "ariaExpanded": null,
             "ariaControls": null,
@@ -195,33 +195,76 @@
             "boundingBox": {
               "x": 0,
               "y": 0,
-              "width": 64,
+              "width": 201,
               "height": 32
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "[data-testid=\"btn-legacy\"]"
+            "cssSelector": "[data-testid=\"textarea-legacy\"]"
           }
         ],
         "depth": 0,
-        "timestamp": 1778050217525,
+        "timestamp": 1778050452599,
         "scopeSelector": "section.is-ready"
       }
     ],
-    "transitions": []
+    "transitions": [
+      {
+        "id": "5881005d00f79460->5881005d00f79460:fill:testid:textarea-legacy",
+        "from": "5881005d00f79460",
+        "to": "5881005d00f79460",
+        "action": {
+          "type": "fill",
+          "targetUid": "testid:textarea-legacy",
+          "targetSelector": "[data-testid=\"textarea-legacy\"]",
+          "value": "test value",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 175,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      }
+    ]
   },
   "summary": {
     "statesDiscovered": 1,
-    "transitions": 0,
+    "transitions": 1,
     "maxDepthReached": 0,
     "cycles": 0,
-    "deadEnds": 1,
-    "totalDuration": 461,
+    "deadEnds": 0,
+    "totalDuration": 2007,
     "failedActions": 0
   },
-  "actions": [],
-  "scenarios": [],
-  "mermaid": "stateDiagram-v2\n  state \"ad846ede (d=0)\" as s_ad846ede",
-  "dot": "digraph {\n  \"ad846edeb335371c\" [label=\"ad846ede\\nd=0 f=1\"];\n}",
-  "generatedAt": "2026-05-06T06:50:17.525Z"
+  "actions": [
+    {
+      "type": "fill",
+      "targetUid": "testid:textarea-legacy",
+      "priority": 8
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "fill_testid:textarea-legacy",
+      "steps": [
+        {
+          "type": "fill",
+          "targetUid": "testid:textarea-legacy",
+          "targetSelector": "[data-testid=\"textarea-legacy\"]",
+          "value": "test value",
+          "priority": 8
+        }
+      ],
+      "selectors": [
+        "testid:textarea-legacy"
+      ]
+    }
+  ],
+  "mermaid": "stateDiagram-v2\n  state \"5881005d (d=0)\" as s_5881005d\n  s_5881005d --> s_5881005d : fill",
+  "dot": "digraph {\n  \"5881005d00f79460\" [label=\"5881005d\\nd=0 f=1\"];\n  \"5881005d00f79460\" -> \"5881005d00f79460\" [label=\"fill\"];\n}",
+  "generatedAt": "2026-05-06T06:54:14.078Z"
 }

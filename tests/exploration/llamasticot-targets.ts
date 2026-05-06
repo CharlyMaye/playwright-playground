@@ -373,4 +373,7 @@ export const LLAMASTICOT_TARGETS: ExplorationTarget[] = [
 
   // Interactive target — confirms full pipeline (extract → rules → execute → graph).
   createLlamasticotTarget('mat-button', { theme: 'light', captureScreenshots: false }),
+
+  // legacy-text-area — single state (no inputs, always enabled)
+  createLlamasticotTarget('legacy-text-area', { theme: 'light' }),
 ];
