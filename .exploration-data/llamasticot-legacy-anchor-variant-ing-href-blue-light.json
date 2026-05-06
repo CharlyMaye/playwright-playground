@@ -1,0 +1,333 @@
+{
+  "url": "http://localhost:4206/legacy-anchor?standalone=true&culture=fr-FR&theme=light&variant=ing-href-blue",
+  "target": "legacy-anchor-variant-ing-href-blue-light",
+  "config": {
+    "rootSelector": "section.is-ready",
+    "boundary": "overflow",
+    "overflowSelectors": [
+      ".cdk-overlay-container",
+      ".wj-popup",
+      ".wj-listbox",
+      ".wj-flexgrid-cell-overlay"
+    ],
+    "readinessSelector": "section.is-ready",
+    "readinessTimeout": 8000,
+    "stabilizationTimeout": 100,
+    "strategy": "bfs",
+    "maxDepth": 2,
+    "maxStates": 30,
+    "maxActionsPerState": 50,
+    "timeout": 1000000,
+    "domHashStrategy": "interactive-only",
+    "additionalRules": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 9
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 8
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 7
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 4
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 3
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 2
+          }
+        }
+      }
+    ],
+    "captureStateScreenshots": false,
+    "captureTransitionScreenshots": false,
+    "screenshotsPrefix": ""
+  },
+  "graph": {
+    "states": [
+      {
+        "id": "13031f64ee22cbc3",
+        "facts": [
+          {
+            "uid": "testid:link-anchor",
+            "tag": "a",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Link",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 1265,
+              "height": 22.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"link-anchor\"]"
+          }
+        ],
+        "depth": 0,
+        "timestamp": 1777985992614,
+        "scopeSelector": "section.is-ready"
+      }
+    ],
+    "transitions": [
+      {
+        "id": "13031f64ee22cbc3->13031f64ee22cbc3:hover:testid:link-anchor",
+        "from": "13031f64ee22cbc3",
+        "to": "13031f64ee22cbc3",
+        "action": {
+          "type": "hover",
+          "targetUid": "testid:link-anchor",
+          "targetSelector": "[data-testid=\"link-anchor\"]",
+          "priority": 4
+        },
+        "success": true,
+        "duration": 214,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "13031f64ee22cbc3->13031f64ee22cbc3:focus:testid:link-anchor",
+        "from": "13031f64ee22cbc3",
+        "to": "13031f64ee22cbc3",
+        "action": {
+          "type": "focus",
+          "targetUid": "testid:link-anchor",
+          "targetSelector": "[data-testid=\"link-anchor\"]",
+          "priority": 3
+        },
+        "success": true,
+        "duration": 170,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "13031f64ee22cbc3->13031f64ee22cbc3:mousedown:testid:link-anchor",
+        "from": "13031f64ee22cbc3",
+        "to": "13031f64ee22cbc3",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "testid:link-anchor",
+          "targetSelector": "[data-testid=\"link-anchor\"]",
+          "priority": 2
+        },
+        "success": true,
+        "duration": 193,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      }
+    ]
+  },
+  "summary": {
+    "statesDiscovered": 1,
+    "transitions": 3,
+    "maxDepthReached": 0,
+    "cycles": 0,
+    "deadEnds": 0,
+    "totalDuration": 5315,
+    "failedActions": 1
+  },
+  "actions": [
+    {
+      "type": "click",
+      "targetUid": "testid:link-anchor",
+      "priority": 5
+    },
+    {
+      "type": "hover",
+      "targetUid": "testid:link-anchor",
+      "priority": 4
+    },
+    {
+      "type": "focus",
+      "targetUid": "testid:link-anchor",
+      "priority": 3
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "testid:link-anchor",
+      "priority": 2
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "hover_testid:link-anchor → focus_testid:link-anchor → mousedown_testid:link-anchor",
+      "steps": [
+        {
+          "type": "hover",
+          "targetUid": "testid:link-anchor",
+          "targetSelector": "[data-testid=\"link-anchor\"]",
+          "priority": 4
+        },
+        {
+          "type": "focus",
+          "targetUid": "testid:link-anchor",
+          "targetSelector": "[data-testid=\"link-anchor\"]",
+          "priority": 3
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "testid:link-anchor",
+          "targetSelector": "[data-testid=\"link-anchor\"]",
+          "priority": 2
+        }
+      ],
+      "selectors": [
+        "testid:link-anchor"
+      ]
+    }
+  ],
+  "mermaid": "stateDiagram-v2\n  state \"13031f64 (d=0)\" as s_13031f64\n  s_13031f64 --> s_13031f64 : hover\n  s_13031f64 --> s_13031f64 : focus\n  s_13031f64 --> s_13031f64 : mousedown",
+  "dot": "digraph {\n  \"13031f64ee22cbc3\" [label=\"13031f64\\nd=0 f=1\"];\n  \"13031f64ee22cbc3\" -> \"13031f64ee22cbc3\" [label=\"hover\"];\n  \"13031f64ee22cbc3\" -> \"13031f64ee22cbc3\" [label=\"focus\"];\n  \"13031f64ee22cbc3\" -> \"13031f64ee22cbc3\" [label=\"mousedown\"];\n}",
+  "generatedAt": "2026-05-05T12:59:57.243Z"
+}

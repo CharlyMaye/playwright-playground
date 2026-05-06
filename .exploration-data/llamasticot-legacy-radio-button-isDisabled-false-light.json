@@ -254,23 +254,42 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1777884523795,
+        "timestamp": 1777985932415,
         "scopeSelector": "section.is-ready"
       }
     ],
     "transitions": [
       {
-        "id": "c09bf5c85983a5f4->c09bf5c85983a5f4:click:#ing-radio-button1-input-b",
+        "id": "c09bf5c85983a5f4->c09bf5c85983a5f4:click:#ing-radio-button1-input-a",
         "from": "c09bf5c85983a5f4",
         "to": "c09bf5c85983a5f4",
         "action": {
           "type": "click",
-          "targetUid": "#ing-radio-button1-input-b",
-          "targetSelector": "#ing-radio-button1-input-b",
+          "targetUid": "#ing-radio-button1-input-a",
+          "targetSelector": "#ing-radio-button1-input-a",
           "priority": 7
         },
         "success": true,
-        "duration": 212,
+        "duration": 235,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "c09bf5c85983a5f4->c09bf5c85983a5f4:click:#ing-radio-button1-input-c",
+        "from": "c09bf5c85983a5f4",
+        "to": "c09bf5c85983a5f4",
+        "action": {
+          "type": "click",
+          "targetUid": "#ing-radio-button1-input-c",
+          "targetSelector": "#ing-radio-button1-input-c",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 218,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -282,12 +301,12 @@
   },
   "summary": {
     "statesDiscovered": 1,
-    "transitions": 1,
+    "transitions": 2,
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 2499,
-    "failedActions": 2
+    "totalDuration": 4105,
+    "failedActions": 1
   },
   "actions": [
     {
@@ -308,21 +327,28 @@
   ],
   "scenarios": [
     {
-      "name": "click_#ing-radio-button1-input-b",
+      "name": "click_#ing-radio-button1-input-a → click_#ing-radio-button1-input-c",
       "steps": [
         {
           "type": "click",
-          "targetUid": "#ing-radio-button1-input-b",
-          "targetSelector": "#ing-radio-button1-input-b",
+          "targetUid": "#ing-radio-button1-input-a",
+          "targetSelector": "#ing-radio-button1-input-a",
+          "priority": 7
+        },
+        {
+          "type": "click",
+          "targetUid": "#ing-radio-button1-input-c",
+          "targetSelector": "#ing-radio-button1-input-c",
           "priority": 7
         }
       ],
       "selectors": [
-        "#ing-radio-button1-input-b"
+        "#ing-radio-button1-input-a",
+        "#ing-radio-button1-input-c"
       ]
     }
   ],
-  "mermaid": "stateDiagram-v2\n  state \"c09bf5c8 (d=0)\" as s_c09bf5c8\n  s_c09bf5c8 --> s_c09bf5c8 : click",
-  "dot": "digraph {\n  \"c09bf5c85983a5f4\" [label=\"c09bf5c8\\nd=0 f=3\"];\n  \"c09bf5c85983a5f4\" -> \"c09bf5c85983a5f4\" [label=\"click\"];\n}",
-  "generatedAt": "2026-05-04T08:48:45.718Z"
+  "mermaid": "stateDiagram-v2\n  state \"c09bf5c8 (d=0)\" as s_c09bf5c8\n  s_c09bf5c8 --> s_c09bf5c8 : click\n  s_c09bf5c8 --> s_c09bf5c8 : click",
+  "dot": "digraph {\n  \"c09bf5c85983a5f4\" [label=\"c09bf5c8\\nd=0 f=3\"];\n  \"c09bf5c85983a5f4\" -> \"c09bf5c85983a5f4\" [label=\"click\"];\n  \"c09bf5c85983a5f4\" -> \"c09bf5c85983a5f4\" [label=\"click\"];\n}",
+  "generatedAt": "2026-05-05T12:58:55.818Z"
 }

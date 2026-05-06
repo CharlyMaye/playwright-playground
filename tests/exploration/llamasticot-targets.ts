@@ -353,6 +353,24 @@ export const LLAMASTICOT_TARGETS: ExplorationTarget[] = [
     queryParams: { type: 'checkbox', isDisabled: 'false', isReadOnly: 'true', isIndeterminate: 'true' },
   }),
 
+  // Legacy anchor — 4 visual variants (no disabled state for <a>)
+  createLlamasticotTarget('legacy-anchor', {
+    theme: 'light',
+    queryParams: { variant: 'ing-href-blue' },
+  }),
+  createLlamasticotTarget('legacy-anchor', {
+    theme: 'light',
+    queryParams: { variant: 'ing-href-white' },
+  }),
+  createLlamasticotTarget('legacy-anchor', {
+    theme: 'light',
+    queryParams: { variant: 'ing-href-grey' },
+  }),
+  createLlamasticotTarget('legacy-anchor', {
+    theme: 'light',
+    queryParams: { variant: '' },
+  }),
+
   // Interactive target — confirms full pipeline (extract → rules → execute → graph).
   createLlamasticotTarget('mat-button', { theme: 'light', captureScreenshots: false }),
 ];
