@@ -1,6 +1,6 @@
 {
-  "url": "http://localhost:4206/legacy-button?standalone=true&culture=fr-FR&theme=light&isDisabled=true&variant=ing-action-standard",
-  "target": "legacy-button-isDisabled-true-variant-ing-action-standard-light",
+  "url": "http://localhost:4206/legacy-menu-contextual?standalone=true&culture=fr-FR&theme=light&disabled=true&showCustomLabel=true",
+  "target": "legacy-menu-contextual-disabled-true-showCustomLabel-true-light",
   "config": {
     "rootSelector": "section.is-ready",
     "boundary": "overflow",
@@ -8,7 +8,8 @@
       ".cdk-overlay-container",
       ".wj-popup",
       ".wj-listbox",
-      ".wj-flexgrid-cell-overlay"
+      ".wj-flexgrid-cell-overlay",
+      "ing-menu-base-content"
     ],
     "readinessSelector": "section.is-ready",
     "readinessTimeout": 8000,
@@ -175,17 +176,67 @@
   "graph": {
     "states": [
       {
-        "id": "ad846edeb335371c",
+        "id": "b38c67d1749995ed",
         "facts": [
           {
-            "uid": "testid:btn-legacy",
+            "uid": "nav[0]",
+            "tag": "nav",
+            "role": null,
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "Actions Filtres ...",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 150,
+              "height": 32
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"menu-contextual\"] > ing-menu-base > nav"
+          },
+          {
+            "uid": "a[1]",
+            "tag": "a",
+            "role": null,
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": true,
+            "text": "Actions Filtres ...",
+            "inputType": null,
+            "ariaExpanded": false,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 150,
+              "height": 32
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"menu-contextual\"] > ing-menu-base > nav > a"
+          },
+          {
+            "uid": "testid:btn-menu-filter",
             "tag": "button",
             "role": null,
             "accessibleName": null,
-            "visible": true,
+            "visible": false,
             "enabled": false,
             "focusable": true,
-            "text": "Test",
+            "text": "Actions Filtres ...",
             "inputType": null,
             "ariaExpanded": null,
             "ariaControls": null,
@@ -195,16 +246,16 @@
             "boundingBox": {
               "x": 0,
               "y": 0,
-              "width": 64,
+              "width": 150,
               "height": 32
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "[data-testid=\"btn-legacy\"]"
+            "cssSelector": "[data-testid=\"btn-menu-filter\"]"
           }
         ],
         "depth": 0,
-        "timestamp": 1778057550139,
+        "timestamp": 1778057792375,
         "scopeSelector": "section.is-ready"
       }
     ],
@@ -216,12 +267,12 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 1,
-    "totalDuration": 462,
+    "totalDuration": 542,
     "failedActions": 0
   },
   "actions": [],
   "scenarios": [],
-  "mermaid": "stateDiagram-v2\n  state \"ad846ede (d=0)\" as s_ad846ede",
-  "dot": "digraph {\n  \"ad846edeb335371c\" [label=\"ad846ede\\nd=0 f=1\"];\n}",
-  "generatedAt": "2026-05-06T08:52:30.139Z"
+  "mermaid": "stateDiagram-v2\n  state \"b38c67d1 (d=0)\" as s_b38c67d1",
+  "dot": "digraph {\n  \"b38c67d1749995ed\" [label=\"b38c67d1\\nd=0 f=3\"];\n}",
+  "generatedAt": "2026-05-06T08:56:32.375Z"
 }

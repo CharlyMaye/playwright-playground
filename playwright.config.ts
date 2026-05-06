@@ -54,7 +54,7 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: _isRunningOnCI,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : '50%',
+  workers: process.env.CI ? 1 : 1, //'50%',
   globalSetup: require.resolve('./setup/playwright.global-setup.ts'),
   reporter: _reporters,
   // Visual diff defaults: tolerate sub-pixel rendering noise (Material ripples,

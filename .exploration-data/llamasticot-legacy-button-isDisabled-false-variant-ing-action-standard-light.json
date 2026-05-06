@@ -204,7 +204,7 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1778052014893,
+        "timestamp": 1778057542965,
         "scopeSelector": "section.is-ready"
       }
     ],
@@ -220,7 +220,7 @@
           "priority": 9
         },
         "success": true,
-        "duration": 248,
+        "duration": 225,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -239,7 +239,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 189,
+        "duration": 169,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -274,7 +274,7 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 5320,
+    "totalDuration": 4424,
     "failedActions": 1
   },
   "actions": [
@@ -329,5 +329,5 @@
   ],
   "mermaid": "stateDiagram-v2\n  state \"e2ae40a7 (d=0)\" as s_e2ae40a7\n  s_e2ae40a7 --> s_e2ae40a7 : hover\n  s_e2ae40a7 --> s_e2ae40a7 : focus\n  s_e2ae40a7 --> s_e2ae40a7 : mousedown",
   "dot": "digraph {\n  \"e2ae40a782cda714\" [label=\"e2ae40a7\\nd=0 f=1\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"hover\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"focus\"];\n  \"e2ae40a782cda714\" -> \"e2ae40a782cda714\" [label=\"mousedown\"];\n}",
-  "generatedAt": "2026-05-06T07:20:19.672Z"
+  "generatedAt": "2026-05-06T08:52:26.958Z"
 }

@@ -199,7 +199,7 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1778052087669,
+        "timestamp": 1778057594179,
         "scopeSelector": "section.is-ready"
       }
     ],
@@ -211,12 +211,12 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 1,
-    "totalDuration": 615,
+    "totalDuration": 480,
     "failedActions": 0
   },
   "actions": [],
   "scenarios": [],
   "mermaid": "stateDiagram-v2\n  state \"22a34c1a (d=0)\" as s_22a34c1a",
   "dot": "digraph {\n  \"22a34c1ab419e863\" [label=\"22a34c1a\\nd=0 f=1\"];\n}",
-  "generatedAt": "2026-05-06T07:21:27.669Z"
+  "generatedAt": "2026-05-06T08:53:14.179Z"
 }
