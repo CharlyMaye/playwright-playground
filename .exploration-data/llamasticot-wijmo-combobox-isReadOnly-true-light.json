@@ -1,0 +1,548 @@
+{
+  "url": "http://localhost:4206/wijmo-combobox?standalone=true&culture=fr-FR&theme=light&isReadOnly=true",
+  "target": "wijmo-combobox-isReadOnly-true-light",
+  "config": {
+    "rootSelector": "section.is-ready",
+    "boundary": "overflow",
+    "overflowSelectors": [
+      ".cdk-overlay-container",
+      ".wj-popup",
+      ".wj-listbox",
+      ".wj-flexgrid-cell-overlay"
+    ],
+    "readinessSelector": "section.is-ready",
+    "readinessTimeout": 8000,
+    "stabilizationTimeout": 100,
+    "strategy": "bfs",
+    "maxDepth": 2,
+    "maxStates": 30,
+    "maxActionsPerState": 50,
+    "timeout": 1000000,
+    "domHashStrategy": "interactive-only",
+    "additionalRules": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 9
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 8
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 7
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 4
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 3
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 2
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
+      }
+    ],
+    "captureStateScreenshots": false,
+    "captureTransitionScreenshots": false,
+    "screenshotsPrefix": ""
+  },
+  "graph": {
+    "states": [
+      {
+        "id": "81b66d7cb7a6b627",
+        "facts": [
+          {
+            "uid": "testid:combobox-wijmo",
+            "tag": "wj-combo-box",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 233,
+              "height": 32
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"combobox-wijmo\"]"
+          },
+          {
+            "uid": "combobox:\"ComboBox Input\"",
+            "tag": "input",
+            "role": "combobox",
+            "accessibleName": "ComboBox Input",
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "",
+            "inputType": "text",
+            "ariaExpanded": false,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 201,
+              "height": 32
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"combobox-wijmo\"] > div:nth-of-type(1) > div > div > input"
+          },
+          {
+            "uid": "button[2]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": "Toggle Dropdown",
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "",
+            "inputType": "button",
+            "ariaExpanded": false,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 201,
+              "y": 1,
+              "width": 31,
+              "height": 30
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"combobox-wijmo\"] > div:nth-of-type(1) > div > div > span > button"
+          }
+        ],
+        "depth": 0,
+        "timestamp": 1778066292547,
+        "scopeSelector": "section.is-ready"
+      }
+    ],
+    "transitions": [
+      {
+        "id": "81b66d7cb7a6b627->81b66d7cb7a6b627:click:combobox:\"ComboBox Input\"",
+        "from": "81b66d7cb7a6b627",
+        "to": "81b66d7cb7a6b627",
+        "action": {
+          "type": "click",
+          "targetUid": "combobox:\"ComboBox Input\"",
+          "targetSelector": "[data-testid=\"combobox-wijmo\"] > div:nth-of-type(1) > div > div > input",
+          "priority": 13
+        },
+        "success": true,
+        "duration": 196,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "81b66d7cb7a6b627->81b66d7cb7a6b627:click:combobox:\"ComboBox Input\"",
+        "from": "81b66d7cb7a6b627",
+        "to": "81b66d7cb7a6b627",
+        "action": {
+          "type": "click",
+          "targetUid": "combobox:\"ComboBox Input\"",
+          "targetSelector": "[data-testid=\"combobox-wijmo\"] > div:nth-of-type(1) > div > div > input",
+          "priority": 12
+        },
+        "success": true,
+        "duration": 216,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "81b66d7cb7a6b627->81b66d7cb7a6b627:hover:button[2]",
+        "from": "81b66d7cb7a6b627",
+        "to": "81b66d7cb7a6b627",
+        "action": {
+          "type": "hover",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"combobox-wijmo\"] > div:nth-of-type(1) > div > div > span > button",
+          "priority": 9
+        },
+        "success": true,
+        "duration": 216,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "81b66d7cb7a6b627->81b66d7cb7a6b627:focus:button[2]",
+        "from": "81b66d7cb7a6b627",
+        "to": "81b66d7cb7a6b627",
+        "action": {
+          "type": "focus",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"combobox-wijmo\"] > div:nth-of-type(1) > div > div > span > button",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 170,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "81b66d7cb7a6b627->81b66d7cb7a6b627:mousedown:button[2]",
+        "from": "81b66d7cb7a6b627",
+        "to": "81b66d7cb7a6b627",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"combobox-wijmo\"] > div:nth-of-type(1) > div > div > span > button",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 197,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "81b66d7cb7a6b627->81b66d7cb7a6b627:focus:combobox:\"ComboBox Input\"",
+        "from": "81b66d7cb7a6b627",
+        "to": "81b66d7cb7a6b627",
+        "action": {
+          "type": "focus",
+          "targetUid": "combobox:\"ComboBox Input\"",
+          "targetSelector": "[data-testid=\"combobox-wijmo\"] > div:nth-of-type(1) > div > div > input",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 169,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      }
+    ]
+  },
+  "summary": {
+    "statesDiscovered": 1,
+    "transitions": 6,
+    "maxDepthReached": 0,
+    "cycles": 0,
+    "deadEnds": 0,
+    "totalDuration": 11493,
+    "failedActions": 5
+  },
+  "actions": [
+    {
+      "type": "click",
+      "targetUid": "button[2]",
+      "priority": 15
+    },
+    {
+      "type": "click",
+      "targetUid": "combobox:\"ComboBox Input\"",
+      "priority": 13
+    },
+    {
+      "type": "click",
+      "targetUid": "button[2]",
+      "priority": 13
+    },
+    {
+      "type": "click",
+      "targetUid": "combobox:\"ComboBox Input\"",
+      "priority": 12
+    },
+    {
+      "type": "click",
+      "targetUid": "button[2]",
+      "priority": 10
+    },
+    {
+      "type": "hover",
+      "targetUid": "button[2]",
+      "priority": 9
+    },
+    {
+      "type": "fill",
+      "targetUid": "combobox:\"ComboBox Input\"",
+      "priority": 8
+    },
+    {
+      "type": "focus",
+      "targetUid": "button[2]",
+      "priority": 8
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "button[2]",
+      "priority": 7
+    },
+    {
+      "type": "hover",
+      "targetUid": "combobox:\"ComboBox Input\"",
+      "priority": 6
+    },
+    {
+      "type": "focus",
+      "targetUid": "combobox:\"ComboBox Input\"",
+      "priority": 5
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "click_combobox:\"ComboBox Input\" → click_combobox:\"ComboBox Input\" → hover_button[2] → focus_button[2] → mousedown_button[2] → focus_combobox:\"ComboBox Input\"",
+      "steps": [
+        {
+          "type": "click",
+          "targetUid": "combobox:\"ComboBox Input\"",
+          "targetSelector": "[data-testid=\"combobox-wijmo\"] > div:nth-of-type(1) > div > div > input",
+          "priority": 13
+        },
+        {
+          "type": "click",
+          "targetUid": "combobox:\"ComboBox Input\"",
+          "targetSelector": "[data-testid=\"combobox-wijmo\"] > div:nth-of-type(1) > div > div > input",
+          "priority": 12
+        },
+        {
+          "type": "hover",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"combobox-wijmo\"] > div:nth-of-type(1) > div > div > span > button",
+          "priority": 9
+        },
+        {
+          "type": "focus",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"combobox-wijmo\"] > div:nth-of-type(1) > div > div > span > button",
+          "priority": 8
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"combobox-wijmo\"] > div:nth-of-type(1) > div > div > span > button",
+          "priority": 7
+        },
+        {
+          "type": "focus",
+          "targetUid": "combobox:\"ComboBox Input\"",
+          "targetSelector": "[data-testid=\"combobox-wijmo\"] > div:nth-of-type(1) > div > div > input",
+          "priority": 5
+        }
+      ],
+      "selectors": [
+        "combobox:\"ComboBox Input\"",
+        "button[2]"
+      ]
+    }
+  ],
+  "mermaid": "stateDiagram-v2\n  state \"81b66d7c (d=0)\" as s_81b66d7c\n  s_81b66d7c --> s_81b66d7c : click\n  s_81b66d7c --> s_81b66d7c : click\n  s_81b66d7c --> s_81b66d7c : hover\n  s_81b66d7c --> s_81b66d7c : focus\n  s_81b66d7c --> s_81b66d7c : mousedown\n  s_81b66d7c --> s_81b66d7c : focus",
+  "dot": "digraph {\n  \"81b66d7cb7a6b627\" [label=\"81b66d7c\\nd=0 f=3\"];\n  \"81b66d7cb7a6b627\" -> \"81b66d7cb7a6b627\" [label=\"click\"];\n  \"81b66d7cb7a6b627\" -> \"81b66d7cb7a6b627\" [label=\"click\"];\n  \"81b66d7cb7a6b627\" -> \"81b66d7cb7a6b627\" [label=\"hover\"];\n  \"81b66d7cb7a6b627\" -> \"81b66d7cb7a6b627\" [label=\"focus\"];\n  \"81b66d7cb7a6b627\" -> \"81b66d7cb7a6b627\" [label=\"mousedown\"];\n  \"81b66d7cb7a6b627\" -> \"81b66d7cb7a6b627\" [label=\"focus\"];\n}",
+  "generatedAt": "2026-05-06T11:18:23.190Z"
+}

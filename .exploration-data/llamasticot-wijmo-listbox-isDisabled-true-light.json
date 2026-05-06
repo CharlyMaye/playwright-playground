@@ -1,0 +1,882 @@
+{
+  "url": "http://localhost:4206/wijmo-listbox?standalone=true&culture=fr-FR&theme=light&isDisabled=true",
+  "target": "wijmo-listbox-isDisabled-true-light",
+  "config": {
+    "rootSelector": "section.is-ready",
+    "boundary": "overflow",
+    "overflowSelectors": [
+      ".cdk-overlay-container",
+      ".wj-popup",
+      ".wj-listbox",
+      ".wj-flexgrid-cell-overlay"
+    ],
+    "readinessSelector": "section.is-ready",
+    "readinessTimeout": 8000,
+    "stabilizationTimeout": 100,
+    "strategy": "bfs",
+    "maxDepth": 2,
+    "maxStates": 30,
+    "maxActionsPerState": 50,
+    "timeout": 1000000,
+    "domHashStrategy": "interactive-only",
+    "additionalRules": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 9
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 8
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 7
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 4
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 3
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 2
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
+      }
+    ],
+    "captureStateScreenshots": false,
+    "captureTransitionScreenshots": false,
+    "screenshotsPrefix": ""
+  },
+  "graph": {
+    "states": [
+      {
+        "id": "17c0770e1f19ba22",
+        "facts": [
+          {
+            "uid": "testid:listbox-wijmo",
+            "tag": "wj-list-box",
+            "role": "listbox",
+            "accessibleName": "list box",
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Exotic LiquidsGrandma Kellys HomesteadNew Orleans Cajun DelightsSpecialty Biscuits, Ltd.Tokyo TradersBigfoot BreweriesMayumisNew England Seafood CanneryPavlova LtdCooperativa de Quesos Las Cabras",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 265,
+              "height": 310.4375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"listbox-wijmo\"]"
+          },
+          {
+            "uid": "#listitem-0",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Exotic Liquids",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 1,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#listitem-0"
+          },
+          {
+            "uid": "#listitem-1",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Grandma Kellys Homestead",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 31.84375,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#listitem-1"
+          },
+          {
+            "uid": "#listitem-2",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "New Orleans Cajun Delights",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 62.6875,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#listitem-2"
+          },
+          {
+            "uid": "#listitem-3",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Specialty Biscuits, Ltd.",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 93.53125,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#listitem-3"
+          },
+          {
+            "uid": "#listitem-4",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Tokyo Traders",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 124.375,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#listitem-4"
+          },
+          {
+            "uid": "#listitem-5",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Bigfoot Breweries",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 155.21875,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#listitem-5"
+          },
+          {
+            "uid": "#listitem-6",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Mayumis",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 186.0625,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#listitem-6"
+          },
+          {
+            "uid": "#listitem-7",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "New England Seafood Cannery",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 216.90625,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#listitem-7"
+          },
+          {
+            "uid": "#listitem-8",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Pavlova Ltd",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 247.75,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#listitem-8"
+          },
+          {
+            "uid": "#listitem-9",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Cooperativa de Quesos Las Cabras",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 278.59375,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#listitem-9"
+          },
+          {
+            "uid": "#listitem-0",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Exotic Liquids",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 1,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": false,
+            "parentUid": null,
+            "cssSelector": "#listitem-0"
+          },
+          {
+            "uid": "#listitem-1",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Grandma Kellys Homestead",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 31.84375,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": false,
+            "parentUid": null,
+            "cssSelector": "#listitem-1"
+          },
+          {
+            "uid": "#listitem-2",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "New Orleans Cajun Delights",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 62.6875,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": false,
+            "parentUid": null,
+            "cssSelector": "#listitem-2"
+          },
+          {
+            "uid": "#listitem-3",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Specialty Biscuits, Ltd.",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 93.53125,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": false,
+            "parentUid": null,
+            "cssSelector": "#listitem-3"
+          },
+          {
+            "uid": "#listitem-4",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Tokyo Traders",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 124.375,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": false,
+            "parentUid": null,
+            "cssSelector": "#listitem-4"
+          },
+          {
+            "uid": "#listitem-5",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Bigfoot Breweries",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 155.21875,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": false,
+            "parentUid": null,
+            "cssSelector": "#listitem-5"
+          },
+          {
+            "uid": "#listitem-6",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Mayumis",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 186.0625,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": false,
+            "parentUid": null,
+            "cssSelector": "#listitem-6"
+          },
+          {
+            "uid": "#listitem-7",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "New England Seafood Cannery",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 216.90625,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": false,
+            "parentUid": null,
+            "cssSelector": "#listitem-7"
+          },
+          {
+            "uid": "#listitem-8",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Pavlova Ltd",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 247.75,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": false,
+            "parentUid": null,
+            "cssSelector": "#listitem-8"
+          },
+          {
+            "uid": "#listitem-9",
+            "tag": "div",
+            "role": "option",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Cooperativa de Quesos Las Cabras",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1,
+              "y": 278.59375,
+              "width": 263,
+              "height": 30.84375
+            },
+            "isInScope": false,
+            "parentUid": null,
+            "cssSelector": "#listitem-9"
+          }
+        ],
+        "depth": 0,
+        "timestamp": 1778066597370,
+        "scopeSelector": "section.is-ready"
+      }
+    ],
+    "transitions": []
+  },
+  "summary": {
+    "statesDiscovered": 1,
+    "transitions": 0,
+    "maxDepthReached": 0,
+    "cycles": 0,
+    "deadEnds": 1,
+    "totalDuration": 4589,
+    "failedActions": 20
+  },
+  "actions": [
+    {
+      "type": "click",
+      "targetUid": "#listitem-0",
+      "priority": 8
+    },
+    {
+      "type": "click",
+      "targetUid": "#listitem-1",
+      "priority": 8
+    },
+    {
+      "type": "click",
+      "targetUid": "#listitem-2",
+      "priority": 8
+    },
+    {
+      "type": "click",
+      "targetUid": "#listitem-3",
+      "priority": 8
+    },
+    {
+      "type": "click",
+      "targetUid": "#listitem-4",
+      "priority": 8
+    },
+    {
+      "type": "click",
+      "targetUid": "#listitem-5",
+      "priority": 8
+    },
+    {
+      "type": "click",
+      "targetUid": "#listitem-6",
+      "priority": 8
+    },
+    {
+      "type": "click",
+      "targetUid": "#listitem-7",
+      "priority": 8
+    },
+    {
+      "type": "click",
+      "targetUid": "#listitem-8",
+      "priority": 8
+    },
+    {
+      "type": "click",
+      "targetUid": "#listitem-9",
+      "priority": 8
+    },
+    {
+      "type": "click",
+      "targetUid": "#listitem-0",
+      "priority": 8
+    },
+    {
+      "type": "click",
+      "targetUid": "#listitem-1",
+      "priority": 8
+    },
+    {
+      "type": "click",
+      "targetUid": "#listitem-2",
+      "priority": 8
+    },
+    {
+      "type": "click",
+      "targetUid": "#listitem-3",
+      "priority": 8
+    },
+    {
+      "type": "click",
+      "targetUid": "#listitem-4",
+      "priority": 8
+    },
+    {
+      "type": "click",
+      "targetUid": "#listitem-5",
+      "priority": 8
+    },
+    {
+      "type": "click",
+      "targetUid": "#listitem-6",
+      "priority": 8
+    },
+    {
+      "type": "click",
+      "targetUid": "#listitem-7",
+      "priority": 8
+    },
+    {
+      "type": "click",
+      "targetUid": "#listitem-8",
+      "priority": 8
+    },
+    {
+      "type": "click",
+      "targetUid": "#listitem-9",
+      "priority": 8
+    }
+  ],
+  "scenarios": [],
+  "mermaid": "stateDiagram-v2\n  state \"17c0770e (d=0)\" as s_17c0770e",
+  "dot": "digraph {\n  \"17c0770e1f19ba22\" [label=\"17c0770e\\nd=0 f=21\"];\n}",
+  "generatedAt": "2026-05-06T11:23:20.422Z"
+}

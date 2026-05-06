@@ -166,6 +166,60 @@
             "priority": 2
           }
         }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
       }
     ],
     "captureStateScreenshots": false,
@@ -204,7 +258,7 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1778057602089,
+        "timestamp": 1778065905831,
         "scopeSelector": "section.is-ready"
       }
     ],
@@ -216,12 +270,12 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 1,
-    "totalDuration": 439,
+    "totalDuration": 801,
     "failedActions": 0
   },
   "actions": [],
   "scenarios": [],
   "mermaid": "stateDiagram-v2\n  state \"9de24876 (d=0)\" as s_9de24876",
   "dot": "digraph {\n  \"9de2487630fd4645\" [label=\"9de24876\\nd=0 f=1\"];\n}",
-  "generatedAt": "2026-05-06T08:53:22.089Z"
+  "generatedAt": "2026-05-06T11:11:45.831Z"
 }

@@ -166,6 +166,60 @@
             "priority": 2
           }
         }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
       }
     ],
     "captureStateScreenshots": false,
@@ -1004,7 +1058,7 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1778057664563,
+        "timestamp": 1778065999447,
         "scopeSelector": "section.is-ready"
       }
     ],
@@ -1020,7 +1074,7 @@
           "priority": 10
         },
         "success": true,
-        "duration": 193,
+        "duration": 199,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1039,7 +1093,7 @@
           "priority": 10
         },
         "success": true,
-        "duration": 220,
+        "duration": 223,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1058,7 +1112,7 @@
           "priority": 10
         },
         "success": true,
-        "duration": 198,
+        "duration": 239,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1077,7 +1131,7 @@
           "priority": 10
         },
         "success": true,
-        "duration": 208,
+        "duration": 251,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1096,7 +1150,7 @@
           "priority": 10
         },
         "success": true,
-        "duration": 216,
+        "duration": 211,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1115,7 +1169,7 @@
           "priority": 9
         },
         "success": true,
-        "duration": 237,
+        "duration": 249,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1134,7 +1188,7 @@
           "priority": 9
         },
         "success": true,
-        "duration": 218,
+        "duration": 209,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1153,7 +1207,7 @@
           "priority": 9
         },
         "success": true,
-        "duration": 229,
+        "duration": 224,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1172,7 +1226,7 @@
           "priority": 9
         },
         "success": true,
-        "duration": 238,
+        "duration": 207,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1191,7 +1245,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 176,
+        "duration": 174,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1210,7 +1264,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 173,
+        "duration": 175,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1229,7 +1283,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 178,
+        "duration": 176,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1248,7 +1302,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 172,
+        "duration": 176,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1267,7 +1321,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 173,
+        "duration": 174,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1286,7 +1340,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 171,
+        "duration": 176,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1305,7 +1359,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 171,
+        "duration": 247,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1324,7 +1378,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 176,
+        "duration": 178,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1343,7 +1397,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 172,
+        "duration": 176,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1362,7 +1416,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 292,
+        "duration": 211,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1381,7 +1435,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 187,
+        "duration": 200,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1400,7 +1454,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 207,
+        "duration": 296,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1419,7 +1473,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 192,
+        "duration": 194,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1438,7 +1492,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 188,
+        "duration": 193,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1457,7 +1511,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 246,
+        "duration": 218,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1476,7 +1530,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 191,
+        "duration": 199,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1495,7 +1549,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 190,
+        "duration": 621,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1533,7 +1587,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 221,
+        "duration": 246,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1552,7 +1606,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 259,
+        "duration": 257,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1571,7 +1625,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 227,
+        "duration": 217,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1590,7 +1644,7 @@
           "priority": 4
         },
         "success": true,
-        "duration": 209,
+        "duration": 232,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1609,7 +1663,7 @@
           "priority": 4
         },
         "success": true,
-        "duration": 217,
+        "duration": 254,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1628,7 +1682,7 @@
           "priority": 3
         },
         "success": true,
-        "duration": 172,
+        "duration": 177,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1647,7 +1701,7 @@
           "priority": 3
         },
         "success": true,
-        "duration": 294,
+        "duration": 188,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1663,7 +1717,7 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 89600,
+    "totalDuration": 105182,
     "failedActions": 16
   },
   "actions": [
@@ -2148,5 +2202,5 @@
   ],
   "mermaid": "stateDiagram-v2\n  state \"3546bbda (d=0)\" as s_3546bbda\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : mousedown\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : click\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : hover\n  s_3546bbda --> s_3546bbda : focus\n  s_3546bbda --> s_3546bbda : focus",
   "dot": "digraph {\n  \"3546bbda18d0a599\" [label=\"3546bbda\\nd=0 f=33\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"mousedown\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"click\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"hover\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n  \"3546bbda18d0a599\" -> \"3546bbda18d0a599\" [label=\"focus\"];\n}",
-  "generatedAt": "2026-05-06T08:55:52.785Z"
+  "generatedAt": "2026-05-06T11:15:02.723Z"
 }

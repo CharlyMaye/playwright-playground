@@ -1,0 +1,255 @@
+{
+  "url": "http://localhost:4206/legacy-layout-header-body-footer?standalone=true&culture=fr-FR&theme=light",
+  "target": "legacy-layout-header-body-footer-light",
+  "config": {
+    "rootSelector": "section.is-ready",
+    "boundary": "overflow",
+    "overflowSelectors": [
+      ".cdk-overlay-container",
+      ".wj-popup",
+      ".wj-listbox",
+      ".wj-flexgrid-cell-overlay"
+    ],
+    "readinessSelector": "section.is-ready",
+    "readinessTimeout": 8000,
+    "stabilizationTimeout": 100,
+    "strategy": "bfs",
+    "maxDepth": 0,
+    "maxStates": 30,
+    "maxActionsPerState": 50,
+    "timeout": 1000000,
+    "domHashStrategy": "interactive-only",
+    "additionalRules": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 9
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 8
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 7
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 4
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 3
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 2
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
+      }
+    ],
+    "captureStateScreenshots": false,
+    "captureTransitionScreenshots": false,
+    "screenshotsPrefix": ""
+  },
+  "graph": {
+    "states": [
+      {
+        "id": "e3b0c44298fc1c14",
+        "facts": [],
+        "depth": 0,
+        "timestamp": 1778066863686,
+        "scopeSelector": "section.is-ready"
+      }
+    ],
+    "transitions": []
+  },
+  "summary": {
+    "statesDiscovered": 1,
+    "transitions": 0,
+    "maxDepthReached": 0,
+    "cycles": 0,
+    "deadEnds": 1,
+    "totalDuration": 396,
+    "failedActions": 0
+  },
+  "actions": [],
+  "scenarios": [],
+  "mermaid": "stateDiagram-v2\n  state \"e3b0c442 (d=0)\" as s_e3b0c442",
+  "dot": "digraph {\n  \"e3b0c44298fc1c14\" [label=\"e3b0c442\\nd=0 f=0\"];\n}",
+  "generatedAt": "2026-05-06T11:27:43.686Z"
+}

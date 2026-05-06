@@ -1,0 +1,572 @@
+{
+  "url": "http://localhost:4206/legacy-layout-header-body-footer-with-nav?standalone=true&culture=fr-FR&theme=light",
+  "target": "legacy-layout-header-body-footer-with-nav-light",
+  "config": {
+    "rootSelector": "section.is-ready",
+    "boundary": "overflow",
+    "overflowSelectors": [
+      ".cdk-overlay-container",
+      ".wj-popup",
+      ".wj-listbox",
+      ".wj-flexgrid-cell-overlay"
+    ],
+    "readinessSelector": "section.is-ready",
+    "readinessTimeout": 8000,
+    "stabilizationTimeout": 100,
+    "strategy": "bfs",
+    "maxDepth": 0,
+    "maxStates": 30,
+    "maxActionsPerState": 50,
+    "timeout": 1000000,
+    "domHashStrategy": "interactive-only",
+    "additionalRules": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 9
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 8
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 7
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 4
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 3
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 2
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
+      }
+    ],
+    "captureStateScreenshots": false,
+    "captureTransitionScreenshots": false,
+    "screenshotsPrefix": ""
+  },
+  "graph": {
+    "states": [
+      {
+        "id": "ab764228e9772c19",
+        "facts": [
+          {
+            "uid": "wj-tab-panel[0]",
+            "tag": "wj-tab-panel",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Onglet 1Onglet 2Onglet 3Corps de la saisie : Onglet 1Corps de la saisie : Onglet 2Corps de la saisie : Onglet 3Onglet 1",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 24,
+              "y": 156.4375,
+              "width": 1187,
+              "height": 492.71875
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#section-ing-sticky-content-1 > wj-tab-panel"
+          },
+          {
+            "uid": "div[1]",
+            "tag": "div",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Onglet 1Onglet 2Onglet 3Corps de la saisie : Onglet 1Corps de la saisie : Onglet 2Corps de la saisie : Onglet 3Onglet 1",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 24,
+              "y": 156.4375,
+              "width": 1187,
+              "height": 492.71875
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#section-ing-sticky-content-1 > wj-tab-panel > div:nth-of-type(1)"
+          },
+          {
+            "uid": "tablist[2]",
+            "tag": "div",
+            "role": "tablist",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Onglet 1Onglet 2Onglet 3",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 24,
+              "y": 156.4375,
+              "width": 1187,
+              "height": 38.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#section-ing-sticky-content-1 > wj-tab-panel > div:nth-of-type(1) > div:nth-of-type(1)"
+          },
+          {
+            "uid": "tab[3]",
+            "tag": "a",
+            "role": "tab",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Onglet 1",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": 0,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 24,
+              "y": 156.4375,
+              "width": 98,
+              "height": 38.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#section-ing-sticky-content-1 > wj-tab-panel > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)"
+          },
+          {
+            "uid": "tab[4]",
+            "tag": "a",
+            "role": "tab",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Onglet 2",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 122,
+              "y": 156.4375,
+              "width": 98,
+              "height": 38.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#section-ing-sticky-content-1 > wj-tab-panel > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(2)"
+          },
+          {
+            "uid": "tab[5]",
+            "tag": "a",
+            "role": "tab",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Onglet 3",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 220,
+              "y": 156.4375,
+              "width": 98,
+              "height": 38.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#section-ing-sticky-content-1 > wj-tab-panel > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(3)"
+          },
+          {
+            "uid": "div[6]",
+            "tag": "div",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Corps de la saisie : Onglet 1Corps de la saisie : Onglet 2Corps de la saisie : Onglet 3",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 24,
+              "y": 195.28125,
+              "width": 1187,
+              "height": 453.875
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#section-ing-sticky-content-1 > wj-tab-panel > div:nth-of-type(1) > div:nth-of-type(2)"
+          },
+          {
+            "uid": "tabpanel[7]",
+            "tag": "div",
+            "role": "tabpanel",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Corps de la saisie : Onglet 1",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 24,
+              "y": 196.28125,
+              "width": 1187,
+              "height": 452.875
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#section-ing-sticky-content-1 > wj-tab-panel > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)"
+          },
+          {
+            "uid": "tabpanel[8]",
+            "tag": "div",
+            "role": "tabpanel",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "Corps de la saisie : Onglet 2",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#section-ing-sticky-content-1 > wj-tab-panel > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)"
+          },
+          {
+            "uid": "tabpanel[9]",
+            "tag": "div",
+            "role": "tabpanel",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "Corps de la saisie : Onglet 3",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "#section-ing-sticky-content-1 > wj-tab-panel > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)"
+          }
+        ],
+        "depth": 0,
+        "timestamp": 1778066868597,
+        "scopeSelector": "section.is-ready"
+      }
+    ],
+    "transitions": []
+  },
+  "summary": {
+    "statesDiscovered": 1,
+    "transitions": 0,
+    "maxDepthReached": 0,
+    "cycles": 0,
+    "deadEnds": 1,
+    "totalDuration": 1489,
+    "failedActions": 0
+  },
+  "actions": [
+    {
+      "type": "click",
+      "targetUid": "tab[3]",
+      "priority": 7
+    },
+    {
+      "type": "click",
+      "targetUid": "tab[4]",
+      "priority": 7
+    },
+    {
+      "type": "click",
+      "targetUid": "tab[5]",
+      "priority": 7
+    },
+    {
+      "type": "click",
+      "targetUid": "tab[3]",
+      "priority": 5
+    },
+    {
+      "type": "click",
+      "targetUid": "tab[4]",
+      "priority": 5
+    },
+    {
+      "type": "click",
+      "targetUid": "tab[5]",
+      "priority": 5
+    },
+    {
+      "type": "hover",
+      "targetUid": "tab[3]",
+      "priority": 4
+    },
+    {
+      "type": "hover",
+      "targetUid": "tab[4]",
+      "priority": 4
+    },
+    {
+      "type": "hover",
+      "targetUid": "tab[5]",
+      "priority": 4
+    },
+    {
+      "type": "focus",
+      "targetUid": "tab[3]",
+      "priority": 3
+    },
+    {
+      "type": "focus",
+      "targetUid": "tab[4]",
+      "priority": 3
+    },
+    {
+      "type": "focus",
+      "targetUid": "tab[5]",
+      "priority": 3
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "tab[3]",
+      "priority": 2
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "tab[4]",
+      "priority": 2
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "tab[5]",
+      "priority": 2
+    }
+  ],
+  "scenarios": [],
+  "mermaid": "stateDiagram-v2\n  state \"ab764228 (d=0)\" as s_ab764228",
+  "dot": "digraph {\n  \"ab764228e9772c19\" [label=\"ab764228\\nd=0 f=10\"];\n}",
+  "generatedAt": "2026-05-06T11:27:48.600Z"
+}

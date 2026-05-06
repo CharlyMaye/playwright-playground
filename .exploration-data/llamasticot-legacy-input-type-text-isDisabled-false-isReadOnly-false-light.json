@@ -166,6 +166,60 @@
             "priority": 2
           }
         }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
       }
     ],
     "captureStateScreenshots": false,
@@ -204,7 +258,7 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1778057597352,
+        "timestamp": 1778065893144,
         "scopeSelector": "section.is-ready"
       }
     ],
@@ -221,7 +275,26 @@
           "priority": 8
         },
         "success": true,
-        "duration": 179,
+        "duration": 276,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "19dc7ff70d063740->19dc7ff70d063740:focus:testid:input-legacy",
+        "from": "19dc7ff70d063740",
+        "to": "19dc7ff70d063740",
+        "action": {
+          "type": "focus",
+          "targetUid": "testid:input-legacy",
+          "targetSelector": "[data-testid=\"input-legacy\"]",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 177,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -233,23 +306,33 @@
   },
   "summary": {
     "statesDiscovered": 1,
-    "transitions": 1,
+    "transitions": 2,
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 2090,
-    "failedActions": 0
+    "totalDuration": 8210,
+    "failedActions": 1
   },
   "actions": [
     {
       "type": "fill",
       "targetUid": "testid:input-legacy",
       "priority": 8
+    },
+    {
+      "type": "hover",
+      "targetUid": "testid:input-legacy",
+      "priority": 6
+    },
+    {
+      "type": "focus",
+      "targetUid": "testid:input-legacy",
+      "priority": 5
     }
   ],
   "scenarios": [
     {
-      "name": "fill_testid:input-legacy",
+      "name": "fill_testid:input-legacy → focus_testid:input-legacy",
       "steps": [
         {
           "type": "fill",
@@ -257,6 +340,12 @@
           "targetSelector": "[data-testid=\"input-legacy\"]",
           "value": "test value",
           "priority": 8
+        },
+        {
+          "type": "focus",
+          "targetUid": "testid:input-legacy",
+          "targetSelector": "[data-testid=\"input-legacy\"]",
+          "priority": 5
         }
       ],
       "selectors": [
@@ -264,7 +353,7 @@
       ]
     }
   ],
-  "mermaid": "stateDiagram-v2\n  state \"19dc7ff7 (d=0)\" as s_19dc7ff7\n  s_19dc7ff7 --> s_19dc7ff7 : fill",
-  "dot": "digraph {\n  \"19dc7ff70d063740\" [label=\"19dc7ff7\\nd=0 f=1\"];\n  \"19dc7ff70d063740\" -> \"19dc7ff70d063740\" [label=\"fill\"];\n}",
-  "generatedAt": "2026-05-06T08:53:18.990Z"
+  "mermaid": "stateDiagram-v2\n  state \"19dc7ff7 (d=0)\" as s_19dc7ff7\n  s_19dc7ff7 --> s_19dc7ff7 : fill\n  s_19dc7ff7 --> s_19dc7ff7 : focus",
+  "dot": "digraph {\n  \"19dc7ff70d063740\" [label=\"19dc7ff7\\nd=0 f=1\"];\n  \"19dc7ff70d063740\" -> \"19dc7ff70d063740\" [label=\"fill\"];\n  \"19dc7ff70d063740\" -> \"19dc7ff70d063740\" [label=\"focus\"];\n}",
+  "generatedAt": "2026-05-06T11:11:39.964Z"
 }

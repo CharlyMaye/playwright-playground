@@ -166,6 +166,60 @@
             "priority": 2
           }
         }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
       }
     ],
     "captureStateScreenshots": false,
@@ -204,7 +258,7 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1778057573278,
+        "timestamp": 1778065848476,
         "scopeSelector": "section.is-ready"
       }
     ],
@@ -220,7 +274,7 @@
           "priority": 9
         },
         "success": true,
-        "duration": 214,
+        "duration": 228,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -239,7 +293,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 168,
+        "duration": 189,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -258,7 +312,7 @@
           "priority": 7
         },
         "success": true,
-        "duration": 187,
+        "duration": 220,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -274,7 +328,7 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 4373,
+    "totalDuration": 7860,
     "failedActions": 1
   },
   "actions": [
@@ -329,5 +383,5 @@
   ],
   "mermaid": "stateDiagram-v2\n  state \"c593921a (d=0)\" as s_c593921a\n  s_c593921a --> s_c593921a : hover\n  s_c593921a --> s_c593921a : focus\n  s_c593921a --> s_c593921a : mousedown",
   "dot": "digraph {\n  \"c593921a6af0c056\" [label=\"c593921a\\nd=0 f=1\"];\n  \"c593921a6af0c056\" -> \"c593921a6af0c056\" [label=\"hover\"];\n  \"c593921a6af0c056\" -> \"c593921a6af0c056\" [label=\"focus\"];\n  \"c593921a6af0c056\" -> \"c593921a6af0c056\" [label=\"mousedown\"];\n}",
-  "generatedAt": "2026-05-06T08:52:57.226Z"
+  "generatedAt": "2026-05-06T11:10:55.750Z"
 }

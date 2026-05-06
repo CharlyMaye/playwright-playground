@@ -1,0 +1,387 @@
+{
+  "url": "http://localhost:4206/wijmo-modal?standalone=true&culture=fr-FR&theme=light",
+  "target": "wijmo-modal-light",
+  "config": {
+    "rootSelector": "section.is-ready",
+    "boundary": "overflow",
+    "overflowSelectors": [
+      ".cdk-overlay-container",
+      ".wj-popup",
+      ".wj-listbox",
+      ".wj-flexgrid-cell-overlay"
+    ],
+    "readinessSelector": "section.is-ready",
+    "readinessTimeout": 8000,
+    "stabilizationTimeout": 100,
+    "strategy": "bfs",
+    "maxDepth": 2,
+    "maxStates": 30,
+    "maxActionsPerState": 50,
+    "timeout": 1000000,
+    "domHashStrategy": "interactive-only",
+    "additionalRules": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 9
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 8
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 7
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 4
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 3
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 2
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
+      }
+    ],
+    "captureStateScreenshots": false,
+    "captureTransitionScreenshots": false,
+    "screenshotsPrefix": ""
+  },
+  "graph": {
+    "states": [
+      {
+        "id": "519c7adbb622408a",
+        "facts": [
+          {
+            "uid": "testid:btn-open-modal",
+            "tag": "button",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Open",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 1265,
+              "height": 32
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"btn-open-modal\"]"
+          }
+        ],
+        "depth": 0,
+        "timestamp": 1778066850347,
+        "scopeSelector": "section.is-ready"
+      }
+    ],
+    "transitions": [
+      {
+        "id": "519c7adbb622408a->519c7adbb622408a:hover:testid:btn-open-modal",
+        "from": "519c7adbb622408a",
+        "to": "519c7adbb622408a",
+        "action": {
+          "type": "hover",
+          "targetUid": "testid:btn-open-modal",
+          "targetSelector": "[data-testid=\"btn-open-modal\"]",
+          "priority": 9
+        },
+        "success": true,
+        "duration": 240,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "519c7adbb622408a->519c7adbb622408a:focus:testid:btn-open-modal",
+        "from": "519c7adbb622408a",
+        "to": "519c7adbb622408a",
+        "action": {
+          "type": "focus",
+          "targetUid": "testid:btn-open-modal",
+          "targetSelector": "[data-testid=\"btn-open-modal\"]",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 170,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "519c7adbb622408a->519c7adbb622408a:mousedown:testid:btn-open-modal",
+        "from": "519c7adbb622408a",
+        "to": "519c7adbb622408a",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "testid:btn-open-modal",
+          "targetSelector": "[data-testid=\"btn-open-modal\"]",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 188,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      }
+    ]
+  },
+  "summary": {
+    "statesDiscovered": 1,
+    "transitions": 3,
+    "maxDepthReached": 0,
+    "cycles": 0,
+    "deadEnds": 0,
+    "totalDuration": 6909,
+    "failedActions": 1
+  },
+  "actions": [
+    {
+      "type": "click",
+      "targetUid": "testid:btn-open-modal",
+      "priority": 10
+    },
+    {
+      "type": "hover",
+      "targetUid": "testid:btn-open-modal",
+      "priority": 9
+    },
+    {
+      "type": "focus",
+      "targetUid": "testid:btn-open-modal",
+      "priority": 8
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "testid:btn-open-modal",
+      "priority": 7
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "hover_testid:btn-open-modal → focus_testid:btn-open-modal → mousedown_testid:btn-open-modal",
+      "steps": [
+        {
+          "type": "hover",
+          "targetUid": "testid:btn-open-modal",
+          "targetSelector": "[data-testid=\"btn-open-modal\"]",
+          "priority": 9
+        },
+        {
+          "type": "focus",
+          "targetUid": "testid:btn-open-modal",
+          "targetSelector": "[data-testid=\"btn-open-modal\"]",
+          "priority": 8
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "testid:btn-open-modal",
+          "targetSelector": "[data-testid=\"btn-open-modal\"]",
+          "priority": 7
+        }
+      ],
+      "selectors": [
+        "testid:btn-open-modal"
+      ]
+    }
+  ],
+  "mermaid": "stateDiagram-v2\n  state \"519c7adb (d=0)\" as s_519c7adb\n  s_519c7adb --> s_519c7adb : hover\n  s_519c7adb --> s_519c7adb : focus\n  s_519c7adb --> s_519c7adb : mousedown",
+  "dot": "digraph {\n  \"519c7adbb622408a\" [label=\"519c7adb\\nd=0 f=1\"];\n  \"519c7adbb622408a\" -> \"519c7adbb622408a\" [label=\"hover\"];\n  \"519c7adbb622408a\" -> \"519c7adbb622408a\" [label=\"focus\"];\n  \"519c7adbb622408a\" -> \"519c7adbb622408a\" [label=\"mousedown\"];\n}",
+  "generatedAt": "2026-05-06T11:27:36.057Z"
+}

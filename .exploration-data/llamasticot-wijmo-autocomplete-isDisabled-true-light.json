@@ -1,0 +1,331 @@
+{
+  "url": "http://localhost:4206/wijmo-autocomplete?standalone=true&culture=fr-FR&theme=light&isDisabled=true",
+  "target": "wijmo-autocomplete-isDisabled-true-light",
+  "config": {
+    "rootSelector": "section.is-ready",
+    "boundary": "overflow",
+    "overflowSelectors": [
+      ".cdk-overlay-container",
+      ".wj-popup",
+      ".wj-listbox",
+      ".wj-flexgrid-cell-overlay"
+    ],
+    "readinessSelector": "section.is-ready",
+    "readinessTimeout": 8000,
+    "stabilizationTimeout": 100,
+    "strategy": "bfs",
+    "maxDepth": 2,
+    "maxStates": 30,
+    "maxActionsPerState": 50,
+    "timeout": 1000000,
+    "domHashStrategy": "interactive-only",
+    "additionalRules": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 9
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 8
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 7
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 4
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 3
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 2
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
+      }
+    ],
+    "captureStateScreenshots": false,
+    "captureTransitionScreenshots": false,
+    "screenshotsPrefix": ""
+  },
+  "graph": {
+    "states": [
+      {
+        "id": "42856cb9c9c509d4",
+        "facts": [
+          {
+            "uid": "testid:autocomplete-wijmo",
+            "tag": "wj-auto-complete",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 233,
+              "height": 32
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"autocomplete-wijmo\"]"
+          },
+          {
+            "uid": "combobox:\"AutoComplete Input\"",
+            "tag": "input",
+            "role": "combobox",
+            "accessibleName": "AutoComplete Input",
+            "visible": true,
+            "enabled": false,
+            "focusable": true,
+            "text": "",
+            "inputType": "text",
+            "ariaExpanded": false,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 201,
+              "height": 32
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"autocomplete-wijmo\"] > div > div > div > input"
+          },
+          {
+            "uid": "button[2]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": "Toggle Dropdown",
+            "visible": true,
+            "enabled": false,
+            "focusable": false,
+            "text": "",
+            "inputType": "button",
+            "ariaExpanded": false,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 201,
+              "y": 1,
+              "width": 31,
+              "height": 30
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"autocomplete-wijmo\"] > div > div > div > span > button"
+          }
+        ],
+        "depth": 0,
+        "timestamp": 1778066366862,
+        "scopeSelector": "section.is-ready"
+      }
+    ],
+    "transitions": []
+  },
+  "summary": {
+    "statesDiscovered": 1,
+    "transitions": 0,
+    "maxDepthReached": 0,
+    "cycles": 0,
+    "deadEnds": 1,
+    "totalDuration": 3891,
+    "failedActions": 0
+  },
+  "actions": [],
+  "scenarios": [],
+  "mermaid": "stateDiagram-v2\n  state \"42856cb9 (d=0)\" as s_42856cb9",
+  "dot": "digraph {\n  \"42856cb9c9c509d4\" [label=\"42856cb9\\nd=0 f=3\"];\n}",
+  "generatedAt": "2026-05-06T11:19:26.864Z"
+}

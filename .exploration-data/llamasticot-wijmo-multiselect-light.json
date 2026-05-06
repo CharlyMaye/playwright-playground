@@ -1,0 +1,449 @@
+{
+  "url": "http://localhost:4206/wijmo-multiselect?standalone=true&culture=fr-FR&theme=light",
+  "target": "wijmo-multiselect-light",
+  "config": {
+    "rootSelector": "section.is-ready",
+    "boundary": "overflow",
+    "overflowSelectors": [
+      ".cdk-overlay-container",
+      ".wj-popup",
+      ".wj-listbox",
+      ".wj-flexgrid-cell-overlay",
+      ".wj-dropdown-panel"
+    ],
+    "readinessSelector": "section.is-ready",
+    "readinessTimeout": 8000,
+    "stabilizationTimeout": 100,
+    "strategy": "bfs",
+    "maxDepth": 2,
+    "maxStates": 30,
+    "maxActionsPerState": 50,
+    "timeout": 1000000,
+    "domHashStrategy": "interactive-only",
+    "additionalRules": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 9
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 8
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 7
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 4
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 3
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 2
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
+      }
+    ],
+    "captureStateScreenshots": false,
+    "captureTransitionScreenshots": false,
+    "screenshotsPrefix": ""
+  },
+  "graph": {
+    "states": [
+      {
+        "id": "a2a67bc986299afa",
+        "facts": [
+          {
+            "uid": "testid:multiselect-wijmo",
+            "tag": "wj-multi-select",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 233,
+              "height": 32
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"multiselect-wijmo\"]"
+          },
+          {
+            "uid": "combobox:\"MultiSelect Input\"",
+            "tag": "input",
+            "role": "combobox",
+            "accessibleName": "MultiSelect Input",
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "",
+            "inputType": "text",
+            "ariaExpanded": false,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 201,
+              "height": 32
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"multiselect-wijmo\"] > div:nth-of-type(1) > div > div > input"
+          },
+          {
+            "uid": "button[2]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": "Toggle Dropdown",
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "",
+            "inputType": "button",
+            "ariaExpanded": false,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 201,
+              "y": 1,
+              "width": 31,
+              "height": 30
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"multiselect-wijmo\"] > div:nth-of-type(1) > div > div > span > button"
+          }
+        ],
+        "depth": 0,
+        "timestamp": 1778066457631,
+        "scopeSelector": "section.is-ready"
+      }
+    ],
+    "transitions": [
+      {
+        "id": "a2a67bc986299afa->a2a67bc986299afa:mousedown:button[2]",
+        "from": "a2a67bc986299afa",
+        "to": "a2a67bc986299afa",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"multiselect-wijmo\"] > div:nth-of-type(1) > div > div > span > button",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 343,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "a2a67bc986299afa->a2a67bc986299afa:focus:combobox:\"MultiSelect Input\"",
+        "from": "a2a67bc986299afa",
+        "to": "a2a67bc986299afa",
+        "action": {
+          "type": "focus",
+          "targetUid": "combobox:\"MultiSelect Input\"",
+          "targetSelector": "[data-testid=\"multiselect-wijmo\"] > div:nth-of-type(1) > div > div > input",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 185,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      }
+    ]
+  },
+  "summary": {
+    "statesDiscovered": 1,
+    "transitions": 2,
+    "maxDepthReached": 0,
+    "cycles": 0,
+    "deadEnds": 0,
+    "totalDuration": 15003,
+    "failedActions": 9
+  },
+  "actions": [
+    {
+      "type": "click",
+      "targetUid": "button[2]",
+      "priority": 15
+    },
+    {
+      "type": "click",
+      "targetUid": "combobox:\"MultiSelect Input\"",
+      "priority": 13
+    },
+    {
+      "type": "click",
+      "targetUid": "button[2]",
+      "priority": 13
+    },
+    {
+      "type": "click",
+      "targetUid": "combobox:\"MultiSelect Input\"",
+      "priority": 12
+    },
+    {
+      "type": "click",
+      "targetUid": "button[2]",
+      "priority": 10
+    },
+    {
+      "type": "hover",
+      "targetUid": "button[2]",
+      "priority": 9
+    },
+    {
+      "type": "fill",
+      "targetUid": "combobox:\"MultiSelect Input\"",
+      "priority": 8
+    },
+    {
+      "type": "focus",
+      "targetUid": "button[2]",
+      "priority": 8
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "button[2]",
+      "priority": 7
+    },
+    {
+      "type": "hover",
+      "targetUid": "combobox:\"MultiSelect Input\"",
+      "priority": 6
+    },
+    {
+      "type": "focus",
+      "targetUid": "combobox:\"MultiSelect Input\"",
+      "priority": 5
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "mousedown_button[2] → focus_combobox:\"MultiSelect Input\"",
+      "steps": [
+        {
+          "type": "mousedown",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"multiselect-wijmo\"] > div:nth-of-type(1) > div > div > span > button",
+          "priority": 7
+        },
+        {
+          "type": "focus",
+          "targetUid": "combobox:\"MultiSelect Input\"",
+          "targetSelector": "[data-testid=\"multiselect-wijmo\"] > div:nth-of-type(1) > div > div > input",
+          "priority": 5
+        }
+      ],
+      "selectors": [
+        "button[2]",
+        "combobox:\"MultiSelect Input\""
+      ]
+    }
+  ],
+  "mermaid": "stateDiagram-v2\n  state \"a2a67bc9 (d=0)\" as s_a2a67bc9\n  s_a2a67bc9 --> s_a2a67bc9 : mousedown\n  s_a2a67bc9 --> s_a2a67bc9 : focus",
+  "dot": "digraph {\n  \"a2a67bc986299afa\" [label=\"a2a67bc9\\nd=0 f=3\"];\n  \"a2a67bc986299afa\" -> \"a2a67bc986299afa\" [label=\"mousedown\"];\n  \"a2a67bc986299afa\" -> \"a2a67bc986299afa\" [label=\"focus\"];\n}",
+  "generatedAt": "2026-05-06T11:21:07.807Z"
+}

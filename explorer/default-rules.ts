@@ -138,6 +138,28 @@ export const DEFAULT_HTML_RULES: RuleProperties[] = [
     event: { type: 'click', params: { priority: 9 } },
   },
 
+  // Role=option — click (select item in listbox)
+  {
+    conditions: {
+      all: [
+        { fact: 'role', operator: 'equal', value: 'option' },
+        { fact: 'visible', operator: 'equal', value: true },
+      ],
+    },
+    event: { type: 'click', params: { priority: 8 } },
+  },
+
+  // Role=treeitem — click (select/expand tree node)
+  {
+    conditions: {
+      all: [
+        { fact: 'role', operator: 'equal', value: 'treeitem' },
+        { fact: 'visible', operator: 'equal', value: true },
+      ],
+    },
+    event: { type: 'click', params: { priority: 8 } },
+  },
+
   // aria-expanded=false (expandable elements) — click
   {
     conditions: {

@@ -72,4 +72,26 @@ export const VISUAL_STATE_RULES: RuleProperties[] = [
     },
     event: { type: 'mousedown', params: { priority: 2 } },
   },
+  // hover on inputs
+  {
+    conditions: {
+      all: [
+        { fact: 'tag', operator: 'equal', value: 'input' },
+        { fact: 'visible', operator: 'equal', value: true },
+        { fact: 'enabled', operator: 'equal', value: true },
+      ],
+    },
+    event: { type: 'hover', params: { priority: 6 } },
+  },
+  // focus on inputs
+  {
+    conditions: {
+      all: [
+        { fact: 'tag', operator: 'equal', value: 'input' },
+        { fact: 'visible', operator: 'equal', value: true },
+        { fact: 'enabled', operator: 'equal', value: true },
+      ],
+    },
+    event: { type: 'focus', params: { priority: 5 } },
+  },
 ];

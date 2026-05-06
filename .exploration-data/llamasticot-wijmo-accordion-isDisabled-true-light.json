@@ -1,0 +1,482 @@
+{
+  "url": "http://localhost:4206/wijmo-accordion?standalone=true&culture=fr-FR&theme=light&isDisabled=true",
+  "target": "wijmo-accordion-isDisabled-true-light",
+  "config": {
+    "rootSelector": "section.is-ready",
+    "boundary": "overflow",
+    "overflowSelectors": [
+      ".cdk-overlay-container",
+      ".wj-popup",
+      ".wj-listbox",
+      ".wj-flexgrid-cell-overlay"
+    ],
+    "readinessSelector": "section.is-ready",
+    "readinessTimeout": 8000,
+    "stabilizationTimeout": 100,
+    "strategy": "bfs",
+    "maxDepth": 2,
+    "maxStates": 30,
+    "maxActionsPerState": 50,
+    "timeout": 1000000,
+    "domHashStrategy": "interactive-only",
+    "additionalRules": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 9
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 8
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 7
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 4
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 3
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 2
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
+      }
+    ],
+    "captureStateScreenshots": false,
+    "captureTransitionScreenshots": false,
+    "screenshotsPrefix": ""
+  },
+  "graph": {
+    "states": [
+      {
+        "id": "57f889eae0aaecdc",
+        "facts": [
+          {
+            "uid": "testid:accordion-wijmo",
+            "tag": "wj-accordion",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar porta dolor id iaculis. Nam finibus, nunc et tincidunt mattis, magna erat pharetra turpis, in dictum ",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 1265,
+              "height": 520.703125
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"accordion-wijmo\"]"
+          },
+          {
+            "uid": "button[1]",
+            "tag": "div",
+            "role": "button",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Lorem ipsum dolor sit amet",
+            "inputType": null,
+            "ariaExpanded": true,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": 0,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 1265,
+              "height": 61.421875
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"accordion-wijmo\"] > div:nth-of-type(2)"
+          },
+          {
+            "uid": "region[2]",
+            "tag": "p",
+            "role": "region",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar porta dolor id iaculis. Nam finibus, nunc et tincidunt mattis, magna erat pharetra turpis, in dictum nisl massa id metus. Morbi ",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 61.421875,
+              "width": 1265,
+              "height": 182.75
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"accordion-wijmo\"] > p:nth-of-type(1)"
+          },
+          {
+            "uid": "button[3]",
+            "tag": "div",
+            "role": "button",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Lorem ipsum dolor sit ametLorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "inputType": null,
+            "ariaExpanded": false,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 254.171875,
+              "width": 1265,
+              "height": 88.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"accordion-wijmo\"] > div:nth-of-type(3)"
+          },
+          {
+            "uid": "region[4]",
+            "tag": "p",
+            "role": "region",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar porta dolor id iaculis. Nam finibus, nunc et tincidunt mattis, magna erat pharetra turpis, in dictum nisl massa id metus. Morbi ",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"accordion-wijmo\"] > p:nth-of-type(2)"
+          },
+          {
+            "uid": "button[5]",
+            "tag": "div",
+            "role": "button",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Lorem ipsum dolor sit ametLorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "inputType": null,
+            "ariaExpanded": false,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 343.015625,
+              "width": 1265,
+              "height": 88.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"accordion-wijmo\"] > div:nth-of-type(4)"
+          },
+          {
+            "uid": "region[6]",
+            "tag": "p",
+            "role": "region",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar porta dolor id iaculis. Nam finibus, nunc et tincidunt mattis, magna erat pharetra turpis, in dictum nisl massa id metus. Morbi ",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"accordion-wijmo\"] > p:nth-of-type(3)"
+          },
+          {
+            "uid": "button[7]",
+            "tag": "div",
+            "role": "button",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Lorem ipsum dolor sit ametLorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            "inputType": null,
+            "ariaExpanded": false,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 431.859375,
+              "width": 1265,
+              "height": 88.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"accordion-wijmo\"] > div:nth-of-type(5)"
+          },
+          {
+            "uid": "region[8]",
+            "tag": "p",
+            "role": "region",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar porta dolor id iaculis. Nam finibus, nunc et tincidunt mattis, magna erat pharetra turpis, in dictum nisl massa id metus. Morbi ",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"accordion-wijmo\"] > p:nth-of-type(4)"
+          }
+        ],
+        "depth": 0,
+        "timestamp": 1778066615122,
+        "scopeSelector": "section.is-ready"
+      }
+    ],
+    "transitions": []
+  },
+  "summary": {
+    "statesDiscovered": 1,
+    "transitions": 0,
+    "maxDepthReached": 0,
+    "cycles": 0,
+    "deadEnds": 1,
+    "totalDuration": 1741,
+    "failedActions": 3
+  },
+  "actions": [
+    {
+      "type": "click",
+      "targetUid": "button[3]",
+      "priority": 13
+    },
+    {
+      "type": "click",
+      "targetUid": "button[5]",
+      "priority": 13
+    },
+    {
+      "type": "click",
+      "targetUid": "button[7]",
+      "priority": 13
+    }
+  ],
+  "scenarios": [],
+  "mermaid": "stateDiagram-v2\n  state \"57f889ea (d=0)\" as s_57f889ea",
+  "dot": "digraph {\n  \"57f889eae0aaecdc\" [label=\"57f889ea\\nd=0 f=9\"];\n}",
+  "generatedAt": "2026-05-06T11:23:35.582Z"
+}

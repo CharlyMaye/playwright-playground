@@ -127,7 +127,7 @@ createLlamasticotTarget(storyPath, {
 http://localhost:4206/<path>?standalone=true&culture=fr-FR&theme=<light|dark>&<input>=<value>
 ```
 
-## Ce que tu dois faire pour le composant : **[LegacyMenuContextualComponent]**
+## Ce que tu dois faire pour le composant : **[COMPONENT NAME]**
 
 ### Étape 1 — Analyser le composant
 

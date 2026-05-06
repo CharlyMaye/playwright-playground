@@ -204,4 +204,75 @@ export const LLAMASTICOT_TARGETS: ExplorationTarget[] = [
     queryParams: { disabled: 'true', showCustomLabel: 'true' },
     configOverrides: { overflowSelectors: [...LLAMASTICOT_OVERFLOW_SELECTORS, 'ing-menu-base-content'] },
   }),
+
+  // ═══ WIJMO INPUT ═══
+
+  // wijmo-inputnumber
+  createLlamasticotTarget('wijmo-inputnumber', { theme: 'light' }),
+  createLlamasticotTarget('wijmo-inputnumber', { theme: 'light', queryParams: { isDisabled: 'true' } }),
+  createLlamasticotTarget('wijmo-inputnumber', { theme: 'light', queryParams: { isReadOnly: 'true' } }),
+
+  // wijmo-combobox
+  createLlamasticotTarget('wijmo-combobox', {
+    theme: 'light',
+    configOverrides: { overflowSelectors: [...LLAMASTICOT_OVERFLOW_SELECTORS, '.wj-dropdown-panel'] },
+  }),
+  createLlamasticotTarget('wijmo-combobox', { theme: 'light', queryParams: { isDisabled: 'true' } }),
+  createLlamasticotTarget('wijmo-combobox', { theme: 'light', queryParams: { isReadOnly: 'true' } }),
+
+  // wijmo-autocomplete
+  createLlamasticotTarget('wijmo-autocomplete', {
+    theme: 'light',
+    configOverrides: { overflowSelectors: [...LLAMASTICOT_OVERFLOW_SELECTORS, '.wj-dropdown-panel'] },
+  }),
+  createLlamasticotTarget('wijmo-autocomplete', { theme: 'light', queryParams: { isDisabled: 'true' } }),
+
+  // wijmo-datepicker
+  createLlamasticotTarget('wijmo-datepicker', {
+    theme: 'light',
+    configOverrides: { overflowSelectors: [...LLAMASTICOT_OVERFLOW_SELECTORS, '.wj-dropdown-panel'] },
+  }),
+  createLlamasticotTarget('wijmo-datepicker', { theme: 'light', queryParams: { isDisabled: 'true' } }),
+  createLlamasticotTarget('wijmo-datepicker', { theme: 'light', queryParams: { isReadOnly: 'true' } }),
+
+  // wijmo-multiselect
+  createLlamasticotTarget('wijmo-multiselect', {
+    theme: 'light',
+    configOverrides: { overflowSelectors: [...LLAMASTICOT_OVERFLOW_SELECTORS, '.wj-dropdown-panel'] },
+  }),
+  createLlamasticotTarget('wijmo-multiselect', { theme: 'light', queryParams: { isDisabled: 'true' } }),
+
+  // wijmo-listbox
+  createLlamasticotTarget('wijmo-listbox', { theme: 'light' }),
+  createLlamasticotTarget('wijmo-listbox', { theme: 'light', queryParams: { isDisabled: 'true' } }),
+
+  // ═══ WIJMO NAV ═══
+
+  // wijmo-accordion
+  createLlamasticotTarget('wijmo-accordion', { theme: 'light' }),
+  createLlamasticotTarget('wijmo-accordion', { theme: 'light', queryParams: { isDisabled: 'true' } }),
+
+  // wijmo-tabpanel
+  createLlamasticotTarget('wijmo-tabpanel', { theme: 'light' }),
+
+  // wijmo-treeview
+  createLlamasticotTarget('wijmo-treeview', { theme: 'light' }),
+  createLlamasticotTarget('wijmo-treeview', { theme: 'light', queryParams: { isDisabled: 'true' } }),
+
+  // ═══ WIJMO CHART (visual only) ═══
+
+  createLlamasticotTarget('wijmo-chart', { theme: 'light', configOverrides: { maxDepth: 0 } }),
+
+  // ═══ MODALS / POPUPS ═══
+
+  createLlamasticotTarget('tools-modal-manager', { theme: 'light' }),
+  createLlamasticotTarget('tools-modal-manager/mat', { theme: 'light' }),
+  createLlamasticotTarget('wijmo-modal', { theme: 'light' }),
+
+  // ═══ LAYOUTS (visual only, maxDepth: 0) ═══
+
+  createLlamasticotTarget('legacy-layout-master-details', { theme: 'light', configOverrides: { maxDepth: 0 } }),
+  createLlamasticotTarget('legacy-layout-header-body-footer', { theme: 'light', configOverrides: { maxDepth: 0 } }),
+  createLlamasticotTarget('legacy-layout-header-body-footer-with-nav', { theme: 'light', configOverrides: { maxDepth: 0 } }),
+  createLlamasticotTarget('legacy-layout-header-body-footer-groupbox-grid', { theme: 'light', configOverrides: { maxDepth: 0 } }),
 ];

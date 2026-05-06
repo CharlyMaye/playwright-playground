@@ -1,0 +1,548 @@
+{
+  "url": "http://localhost:4206/wijmo-datepicker?standalone=true&culture=fr-FR&theme=light&isReadOnly=true",
+  "target": "wijmo-datepicker-isReadOnly-true-light",
+  "config": {
+    "rootSelector": "section.is-ready",
+    "boundary": "overflow",
+    "overflowSelectors": [
+      ".cdk-overlay-container",
+      ".wj-popup",
+      ".wj-listbox",
+      ".wj-flexgrid-cell-overlay"
+    ],
+    "readinessSelector": "section.is-ready",
+    "readinessTimeout": 8000,
+    "stabilizationTimeout": 100,
+    "strategy": "bfs",
+    "maxDepth": 2,
+    "maxStates": 30,
+    "maxActionsPerState": 50,
+    "timeout": 1000000,
+    "domHashStrategy": "interactive-only",
+    "additionalRules": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 9
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 8
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 7
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 4
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 3
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 2
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
+      }
+    ],
+    "captureStateScreenshots": false,
+    "captureTransitionScreenshots": false,
+    "screenshotsPrefix": ""
+  },
+  "graph": {
+    "states": [
+      {
+        "id": "4910d58982e9e984",
+        "facts": [
+          {
+            "uid": "testid:datepicker-wijmo",
+            "tag": "wj-input-date",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 233,
+              "height": 32
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"datepicker-wijmo\"]"
+          },
+          {
+            "uid": "combobox:\"InputDate Input\"",
+            "tag": "input",
+            "role": "combobox",
+            "accessibleName": "InputDate Input",
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "",
+            "inputType": "tel",
+            "ariaExpanded": false,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 201,
+              "height": 32
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"datepicker-wijmo\"] > div > div > div > input"
+          },
+          {
+            "uid": "button[2]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": "Choose Date",
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "",
+            "inputType": "button",
+            "ariaExpanded": false,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 207.40625,
+              "y": 6.40625,
+              "width": 19.1875,
+              "height": 19.1875
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"datepicker-wijmo\"] > div > div > div > span > button"
+          }
+        ],
+        "depth": 0,
+        "timestamp": 1778066431526,
+        "scopeSelector": "section.is-ready"
+      }
+    ],
+    "transitions": [
+      {
+        "id": "4910d58982e9e984->4910d58982e9e984:click:combobox:\"InputDate Input\"",
+        "from": "4910d58982e9e984",
+        "to": "4910d58982e9e984",
+        "action": {
+          "type": "click",
+          "targetUid": "combobox:\"InputDate Input\"",
+          "targetSelector": "[data-testid=\"datepicker-wijmo\"] > div > div > div > input",
+          "priority": 13
+        },
+        "success": true,
+        "duration": 213,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "4910d58982e9e984->4910d58982e9e984:click:combobox:\"InputDate Input\"",
+        "from": "4910d58982e9e984",
+        "to": "4910d58982e9e984",
+        "action": {
+          "type": "click",
+          "targetUid": "combobox:\"InputDate Input\"",
+          "targetSelector": "[data-testid=\"datepicker-wijmo\"] > div > div > div > input",
+          "priority": 12
+        },
+        "success": true,
+        "duration": 222,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "4910d58982e9e984->4910d58982e9e984:hover:button[2]",
+        "from": "4910d58982e9e984",
+        "to": "4910d58982e9e984",
+        "action": {
+          "type": "hover",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"datepicker-wijmo\"] > div > div > div > span > button",
+          "priority": 9
+        },
+        "success": true,
+        "duration": 248,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "4910d58982e9e984->4910d58982e9e984:focus:button[2]",
+        "from": "4910d58982e9e984",
+        "to": "4910d58982e9e984",
+        "action": {
+          "type": "focus",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"datepicker-wijmo\"] > div > div > div > span > button",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 177,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "4910d58982e9e984->4910d58982e9e984:mousedown:button[2]",
+        "from": "4910d58982e9e984",
+        "to": "4910d58982e9e984",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"datepicker-wijmo\"] > div > div > div > span > button",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 204,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "4910d58982e9e984->4910d58982e9e984:focus:combobox:\"InputDate Input\"",
+        "from": "4910d58982e9e984",
+        "to": "4910d58982e9e984",
+        "action": {
+          "type": "focus",
+          "targetUid": "combobox:\"InputDate Input\"",
+          "targetSelector": "[data-testid=\"datepicker-wijmo\"] > div > div > div > input",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 173,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      }
+    ]
+  },
+  "summary": {
+    "statesDiscovered": 1,
+    "transitions": 6,
+    "maxDepthReached": 0,
+    "cycles": 0,
+    "deadEnds": 0,
+    "totalDuration": 13326,
+    "failedActions": 5
+  },
+  "actions": [
+    {
+      "type": "click",
+      "targetUid": "button[2]",
+      "priority": 15
+    },
+    {
+      "type": "click",
+      "targetUid": "combobox:\"InputDate Input\"",
+      "priority": 13
+    },
+    {
+      "type": "click",
+      "targetUid": "button[2]",
+      "priority": 13
+    },
+    {
+      "type": "click",
+      "targetUid": "combobox:\"InputDate Input\"",
+      "priority": 12
+    },
+    {
+      "type": "click",
+      "targetUid": "button[2]",
+      "priority": 10
+    },
+    {
+      "type": "hover",
+      "targetUid": "button[2]",
+      "priority": 9
+    },
+    {
+      "type": "fill",
+      "targetUid": "combobox:\"InputDate Input\"",
+      "priority": 8
+    },
+    {
+      "type": "focus",
+      "targetUid": "button[2]",
+      "priority": 8
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "button[2]",
+      "priority": 7
+    },
+    {
+      "type": "hover",
+      "targetUid": "combobox:\"InputDate Input\"",
+      "priority": 6
+    },
+    {
+      "type": "focus",
+      "targetUid": "combobox:\"InputDate Input\"",
+      "priority": 5
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "click_combobox:\"InputDate Input\" → click_combobox:\"InputDate Input\" → hover_button[2] → focus_button[2] → mousedown_button[2] → focus_combobox:\"InputDate Input\"",
+      "steps": [
+        {
+          "type": "click",
+          "targetUid": "combobox:\"InputDate Input\"",
+          "targetSelector": "[data-testid=\"datepicker-wijmo\"] > div > div > div > input",
+          "priority": 13
+        },
+        {
+          "type": "click",
+          "targetUid": "combobox:\"InputDate Input\"",
+          "targetSelector": "[data-testid=\"datepicker-wijmo\"] > div > div > div > input",
+          "priority": 12
+        },
+        {
+          "type": "hover",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"datepicker-wijmo\"] > div > div > div > span > button",
+          "priority": 9
+        },
+        {
+          "type": "focus",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"datepicker-wijmo\"] > div > div > div > span > button",
+          "priority": 8
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"datepicker-wijmo\"] > div > div > div > span > button",
+          "priority": 7
+        },
+        {
+          "type": "focus",
+          "targetUid": "combobox:\"InputDate Input\"",
+          "targetSelector": "[data-testid=\"datepicker-wijmo\"] > div > div > div > input",
+          "priority": 5
+        }
+      ],
+      "selectors": [
+        "combobox:\"InputDate Input\"",
+        "button[2]"
+      ]
+    }
+  ],
+  "mermaid": "stateDiagram-v2\n  state \"4910d589 (d=0)\" as s_4910d589\n  s_4910d589 --> s_4910d589 : click\n  s_4910d589 --> s_4910d589 : click\n  s_4910d589 --> s_4910d589 : hover\n  s_4910d589 --> s_4910d589 : focus\n  s_4910d589 --> s_4910d589 : mousedown\n  s_4910d589 --> s_4910d589 : focus",
+  "dot": "digraph {\n  \"4910d58982e9e984\" [label=\"4910d589\\nd=0 f=3\"];\n  \"4910d58982e9e984\" -> \"4910d58982e9e984\" [label=\"click\"];\n  \"4910d58982e9e984\" -> \"4910d58982e9e984\" [label=\"click\"];\n  \"4910d58982e9e984\" -> \"4910d58982e9e984\" [label=\"hover\"];\n  \"4910d58982e9e984\" -> \"4910d58982e9e984\" [label=\"focus\"];\n  \"4910d58982e9e984\" -> \"4910d58982e9e984\" [label=\"mousedown\"];\n  \"4910d58982e9e984\" -> \"4910d58982e9e984\" [label=\"focus\"];\n}",
+  "generatedAt": "2026-05-06T11:20:43.640Z"
+}

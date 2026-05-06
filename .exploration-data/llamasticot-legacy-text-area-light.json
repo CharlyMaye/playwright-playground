@@ -166,6 +166,60 @@
             "priority": 2
           }
         }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
       }
     ],
     "captureStateScreenshots": false,
@@ -204,7 +258,7 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1778057759579,
+        "timestamp": 1778066112604,
         "scopeSelector": "section.is-ready"
       }
     ],
@@ -221,7 +275,7 @@
           "priority": 8
         },
         "success": true,
-        "duration": 171,
+        "duration": 174,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -237,7 +291,7 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 2084,
+    "totalDuration": 2024,
     "failedActions": 0
   },
   "actions": [
@@ -266,5 +320,5 @@
   ],
   "mermaid": "stateDiagram-v2\n  state \"5881005d (d=0)\" as s_5881005d\n  s_5881005d --> s_5881005d : fill",
   "dot": "digraph {\n  \"5881005d00f79460\" [label=\"5881005d\\nd=0 f=1\"];\n  \"5881005d00f79460\" -> \"5881005d00f79460\" [label=\"fill\"];\n}",
-  "generatedAt": "2026-05-06T08:56:01.162Z"
+  "generatedAt": "2026-05-06T11:15:14.157Z"
 }

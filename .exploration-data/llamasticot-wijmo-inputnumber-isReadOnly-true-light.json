@@ -1,0 +1,624 @@
+{
+  "url": "http://localhost:4206/wijmo-inputnumber?standalone=true&culture=fr-FR&theme=light&isReadOnly=true",
+  "target": "wijmo-inputnumber-isReadOnly-true-light",
+  "config": {
+    "rootSelector": "section.is-ready",
+    "boundary": "overflow",
+    "overflowSelectors": [
+      ".cdk-overlay-container",
+      ".wj-popup",
+      ".wj-listbox",
+      ".wj-flexgrid-cell-overlay"
+    ],
+    "readinessSelector": "section.is-ready",
+    "readinessTimeout": 8000,
+    "stabilizationTimeout": 100,
+    "strategy": "bfs",
+    "maxDepth": 2,
+    "maxStates": 30,
+    "maxActionsPerState": 50,
+    "timeout": 1000000,
+    "domHashStrategy": "interactive-only",
+    "additionalRules": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 9
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 8
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 7
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 4
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 3
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 2
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
+      }
+    ],
+    "captureStateScreenshots": false,
+    "captureTransitionScreenshots": false,
+    "screenshotsPrefix": ""
+  },
+  "graph": {
+    "states": [
+      {
+        "id": "cc37d79d6d8549b6",
+        "facts": [
+          {
+            "uid": "testid:inputnumber-wijmo",
+            "tag": "wj-input-number",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "-+",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 265,
+              "height": 32
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"inputnumber-wijmo\"]"
+          },
+          {
+            "uid": "span[1]",
+            "tag": "span",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "-",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"inputnumber-wijmo\"] > div > div > div > span:nth-of-type(1)"
+          },
+          {
+            "uid": "button[2]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": "Decrease Value",
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "-",
+            "inputType": "button",
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 9.5,
+              "y": 9.5,
+              "width": 13,
+              "height": 13
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"inputnumber-wijmo\"] > div > div > div > span:nth-of-type(1) > button"
+          },
+          {
+            "uid": "spinbutton:\"InputNumber Input\"",
+            "tag": "input",
+            "role": "spinbutton",
+            "accessibleName": "InputNumber Input",
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "",
+            "inputType": "tel",
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 32,
+              "y": 0,
+              "width": 201,
+              "height": 32
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"inputnumber-wijmo\"] > div > div > div > input"
+          },
+          {
+            "uid": "span[4]",
+            "tag": "span",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "+",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 233,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"inputnumber-wijmo\"] > div > div > div > span:nth-of-type(2)"
+          },
+          {
+            "uid": "button[5]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": "Increase Value",
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "+",
+            "inputType": "button",
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 242.5,
+              "y": 9.5,
+              "width": 13,
+              "height": 13
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"inputnumber-wijmo\"] > div > div > div > span:nth-of-type(2) > button"
+          }
+        ],
+        "depth": 0,
+        "timestamp": 1778066191978,
+        "scopeSelector": "section.is-ready"
+      }
+    ],
+    "transitions": [
+      {
+        "id": "cc37d79d6d8549b6->cc37d79d6d8549b6:click:button[2]",
+        "from": "cc37d79d6d8549b6",
+        "to": "cc37d79d6d8549b6",
+        "action": {
+          "type": "click",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"inputnumber-wijmo\"] > div > div > div > span:nth-of-type(1) > button",
+          "priority": 10
+        },
+        "success": true,
+        "duration": 220,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "cc37d79d6d8549b6->cc37d79d6d8549b6:focus:button[2]",
+        "from": "cc37d79d6d8549b6",
+        "to": "cc37d79d6d8549b6",
+        "action": {
+          "type": "focus",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"inputnumber-wijmo\"] > div > div > div > span:nth-of-type(1) > button",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 176,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "cc37d79d6d8549b6->cc37d79d6d8549b6:focus:button[5]",
+        "from": "cc37d79d6d8549b6",
+        "to": "cc37d79d6d8549b6",
+        "action": {
+          "type": "focus",
+          "targetUid": "button[5]",
+          "targetSelector": "[data-testid=\"inputnumber-wijmo\"] > div > div > div > span:nth-of-type(2) > button",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 171,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "cc37d79d6d8549b6->cc37d79d6d8549b6:mousedown:button[2]",
+        "from": "cc37d79d6d8549b6",
+        "to": "cc37d79d6d8549b6",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"inputnumber-wijmo\"] > div > div > div > span:nth-of-type(1) > button",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 190,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "cc37d79d6d8549b6->cc37d79d6d8549b6:mousedown:button[5]",
+        "from": "cc37d79d6d8549b6",
+        "to": "cc37d79d6d8549b6",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "button[5]",
+          "targetSelector": "[data-testid=\"inputnumber-wijmo\"] > div > div > div > span:nth-of-type(2) > button",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 209,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "cc37d79d6d8549b6->cc37d79d6d8549b6:focus:spinbutton:\"InputNumber Input\"",
+        "from": "cc37d79d6d8549b6",
+        "to": "cc37d79d6d8549b6",
+        "action": {
+          "type": "focus",
+          "targetUid": "spinbutton:\"InputNumber Input\"",
+          "targetSelector": "[data-testid=\"inputnumber-wijmo\"] > div > div > div > input",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 170,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      }
+    ]
+  },
+  "summary": {
+    "statesDiscovered": 1,
+    "transitions": 6,
+    "maxDepthReached": 0,
+    "cycles": 0,
+    "deadEnds": 0,
+    "totalDuration": 13961,
+    "failedActions": 5
+  },
+  "actions": [
+    {
+      "type": "click",
+      "targetUid": "button[2]",
+      "priority": 10
+    },
+    {
+      "type": "click",
+      "targetUid": "button[5]",
+      "priority": 10
+    },
+    {
+      "type": "hover",
+      "targetUid": "button[2]",
+      "priority": 9
+    },
+    {
+      "type": "hover",
+      "targetUid": "button[5]",
+      "priority": 9
+    },
+    {
+      "type": "focus",
+      "targetUid": "button[2]",
+      "priority": 8
+    },
+    {
+      "type": "fill",
+      "targetUid": "spinbutton:\"InputNumber Input\"",
+      "priority": 8
+    },
+    {
+      "type": "focus",
+      "targetUid": "button[5]",
+      "priority": 8
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "button[2]",
+      "priority": 7
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "button[5]",
+      "priority": 7
+    },
+    {
+      "type": "hover",
+      "targetUid": "spinbutton:\"InputNumber Input\"",
+      "priority": 6
+    },
+    {
+      "type": "focus",
+      "targetUid": "spinbutton:\"InputNumber Input\"",
+      "priority": 5
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "click_button[2] → focus_button[2] → focus_button[5] → mousedown_button[2] → mousedown_button[5] → focus_spinbutton:\"InputNumber Input\"",
+      "steps": [
+        {
+          "type": "click",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"inputnumber-wijmo\"] > div > div > div > span:nth-of-type(1) > button",
+          "priority": 10
+        },
+        {
+          "type": "focus",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"inputnumber-wijmo\"] > div > div > div > span:nth-of-type(1) > button",
+          "priority": 8
+        },
+        {
+          "type": "focus",
+          "targetUid": "button[5]",
+          "targetSelector": "[data-testid=\"inputnumber-wijmo\"] > div > div > div > span:nth-of-type(2) > button",
+          "priority": 8
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "button[2]",
+          "targetSelector": "[data-testid=\"inputnumber-wijmo\"] > div > div > div > span:nth-of-type(1) > button",
+          "priority": 7
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "button[5]",
+          "targetSelector": "[data-testid=\"inputnumber-wijmo\"] > div > div > div > span:nth-of-type(2) > button",
+          "priority": 7
+        },
+        {
+          "type": "focus",
+          "targetUid": "spinbutton:\"InputNumber Input\"",
+          "targetSelector": "[data-testid=\"inputnumber-wijmo\"] > div > div > div > input",
+          "priority": 5
+        }
+      ],
+      "selectors": [
+        "button[2]",
+        "button[5]",
+        "spinbutton:\"InputNumber Input\""
+      ]
+    }
+  ],
+  "mermaid": "stateDiagram-v2\n  state \"cc37d79d (d=0)\" as s_cc37d79d\n  s_cc37d79d --> s_cc37d79d : click\n  s_cc37d79d --> s_cc37d79d : focus\n  s_cc37d79d --> s_cc37d79d : focus\n  s_cc37d79d --> s_cc37d79d : mousedown\n  s_cc37d79d --> s_cc37d79d : mousedown\n  s_cc37d79d --> s_cc37d79d : focus",
+  "dot": "digraph {\n  \"cc37d79d6d8549b6\" [label=\"cc37d79d\\nd=0 f=6\"];\n  \"cc37d79d6d8549b6\" -> \"cc37d79d6d8549b6\" [label=\"click\"];\n  \"cc37d79d6d8549b6\" -> \"cc37d79d6d8549b6\" [label=\"focus\"];\n  \"cc37d79d6d8549b6\" -> \"cc37d79d6d8549b6\" [label=\"focus\"];\n  \"cc37d79d6d8549b6\" -> \"cc37d79d6d8549b6\" [label=\"mousedown\"];\n  \"cc37d79d6d8549b6\" -> \"cc37d79d6d8549b6\" [label=\"mousedown\"];\n  \"cc37d79d6d8549b6\" -> \"cc37d79d6d8549b6\" [label=\"focus\"];\n}",
+  "generatedAt": "2026-05-06T11:16:44.620Z"
+}

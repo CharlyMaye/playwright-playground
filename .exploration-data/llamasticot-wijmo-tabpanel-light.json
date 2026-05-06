@@ -1,0 +1,2085 @@
+{
+  "url": "http://localhost:4206/wijmo-tabpanel?standalone=true&culture=fr-FR&theme=light",
+  "target": "wijmo-tabpanel-light",
+  "config": {
+    "rootSelector": "section.is-ready",
+    "boundary": "overflow",
+    "overflowSelectors": [
+      ".cdk-overlay-container",
+      ".wj-popup",
+      ".wj-listbox",
+      ".wj-flexgrid-cell-overlay"
+    ],
+    "readinessSelector": "section.is-ready",
+    "readinessTimeout": 8000,
+    "stabilizationTimeout": 100,
+    "strategy": "bfs",
+    "maxDepth": 2,
+    "maxStates": 30,
+    "maxActionsPerState": 50,
+    "timeout": 1000000,
+    "domHashStrategy": "interactive-only",
+    "additionalRules": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 9
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 8
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 7
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 4
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 3
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 2
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
+      }
+    ],
+    "captureStateScreenshots": false,
+    "captureTransitionScreenshots": false,
+    "screenshotsPrefix": ""
+  },
+  "graph": {
+    "states": [
+      {
+        "id": "7223e5ff4ee165b7",
+        "facts": [
+          {
+            "uid": "testid:tabpanel-wijmo",
+            "tag": "wj-tab-panel",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "AfricaAmericaAsiaEuropeOceaniaAlgeriaAngolaBeninBotswanaBurkina FasoBurundiCanadaChileMexicoUnited StatesChinaKoreaIndiaJapanAustriaEnglandFranceGermanyNetherlandsSwitzerlandAustraliaFijiNew ZealandSa",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 1265,
+              "height": 141.21875
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"]"
+          },
+          {
+            "uid": "div[1]",
+            "tag": "div",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "AfricaAmericaAsiaEuropeOceaniaAlgeriaAngolaBeninBotswanaBurkina FasoBurundiCanadaChileMexicoUnited StatesChinaKoreaIndiaJapanAustriaEnglandFranceGermanyNetherlandsSwitzerlandAustraliaFijiNew ZealandSa",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 1265,
+              "height": 141.21875
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1)"
+          },
+          {
+            "uid": "tablist[2]",
+            "tag": "div",
+            "role": "tablist",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "AfricaAmericaAsiaEuropeOceania",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 1265,
+              "height": 38.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1)"
+          },
+          {
+            "uid": "tab[3]",
+            "tag": "a",
+            "role": "tab",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Africa",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 80,
+              "height": 38.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)"
+          },
+          {
+            "uid": "tab[4]",
+            "tag": "a",
+            "role": "tab",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "America",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": 0,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 80,
+              "y": 0,
+              "width": 94,
+              "height": 38.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(2)"
+          },
+          {
+            "uid": "tab[5]",
+            "tag": "a",
+            "role": "tab",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Asia",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 174,
+              "y": 0,
+              "width": 61,
+              "height": 38.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(3)"
+          },
+          {
+            "uid": "tab[6]",
+            "tag": "a",
+            "role": "tab",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Europe",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 235,
+              "y": 0,
+              "width": 83,
+              "height": 38.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(4)"
+          },
+          {
+            "uid": "tab[7]",
+            "tag": "a",
+            "role": "tab",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "Oceania",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(5)"
+          },
+          {
+            "uid": "div[8]",
+            "tag": "div",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "AlgeriaAngolaBeninBotswanaBurkina FasoBurundiCanadaChileMexicoUnited StatesChinaKoreaIndiaJapanAustriaEnglandFranceGermanyNetherlandsSwitzerlandAustraliaFijiNew ZealandSamoa",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 38.84375,
+              "width": 1265,
+              "height": 102.375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(2)"
+          },
+          {
+            "uid": "tabpanel[9]",
+            "tag": "div",
+            "role": "tabpanel",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "AlgeriaAngolaBeninBotswanaBurkina FasoBurundi",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)"
+          },
+          {
+            "uid": "tabpanel[10]",
+            "tag": "div",
+            "role": "tabpanel",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "CanadaChileMexicoUnited States",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 39.84375,
+              "width": 1265,
+              "height": 91.375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)"
+          },
+          {
+            "uid": "tabpanel[11]",
+            "tag": "div",
+            "role": "tabpanel",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "ChinaKoreaIndiaJapan",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)"
+          },
+          {
+            "uid": "tabpanel[12]",
+            "tag": "div",
+            "role": "tabpanel",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "AustriaEnglandFranceGermanyNetherlandsSwitzerland",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4)"
+          },
+          {
+            "uid": "tabpanel[13]",
+            "tag": "div",
+            "role": "tabpanel",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "AustraliaFijiNew ZealandSamoa",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(5)"
+          }
+        ],
+        "depth": 0,
+        "timestamp": 1778066619872,
+        "scopeSelector": "section.is-ready"
+      },
+      {
+        "id": "8498f6ec44e281fc",
+        "facts": [
+          {
+            "uid": "testid:tabpanel-wijmo",
+            "tag": "wj-tab-panel",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "AfricaAmericaAsiaEuropeOceaniaAlgeriaAngolaBeninBotswanaBurkina FasoBurundiCanadaChileMexicoUnited StatesChinaKoreaIndiaJapanAustriaEnglandFranceGermanyNetherlandsSwitzerlandAustraliaFijiNew ZealandSa",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 1265,
+              "height": 186.90625
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"]"
+          },
+          {
+            "uid": "div[1]",
+            "tag": "div",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "AfricaAmericaAsiaEuropeOceaniaAlgeriaAngolaBeninBotswanaBurkina FasoBurundiCanadaChileMexicoUnited StatesChinaKoreaIndiaJapanAustriaEnglandFranceGermanyNetherlandsSwitzerlandAustraliaFijiNew ZealandSa",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 1265,
+              "height": 186.90625
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1)"
+          },
+          {
+            "uid": "tablist[2]",
+            "tag": "div",
+            "role": "tablist",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "AfricaAmericaAsiaEuropeOceania",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 1265,
+              "height": 38.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1)"
+          },
+          {
+            "uid": "tab[3]",
+            "tag": "a",
+            "role": "tab",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Africa",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": 0,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 80,
+              "height": 38.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)"
+          },
+          {
+            "uid": "tab[4]",
+            "tag": "a",
+            "role": "tab",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "America",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 80,
+              "y": 0,
+              "width": 94,
+              "height": 38.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(2)"
+          },
+          {
+            "uid": "tab[5]",
+            "tag": "a",
+            "role": "tab",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Asia",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 174,
+              "y": 0,
+              "width": 61,
+              "height": 38.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(3)"
+          },
+          {
+            "uid": "tab[6]",
+            "tag": "a",
+            "role": "tab",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Europe",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 235,
+              "y": 0,
+              "width": 83,
+              "height": 38.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(4)"
+          },
+          {
+            "uid": "tab[7]",
+            "tag": "a",
+            "role": "tab",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "Oceania",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(5)"
+          },
+          {
+            "uid": "div[8]",
+            "tag": "div",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "AlgeriaAngolaBeninBotswanaBurkina FasoBurundiCanadaChileMexicoUnited StatesChinaKoreaIndiaJapanAustriaEnglandFranceGermanyNetherlandsSwitzerlandAustraliaFijiNew ZealandSamoa",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 38.84375,
+              "width": 1265,
+              "height": 148.0625
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(2)"
+          },
+          {
+            "uid": "tabpanel[9]",
+            "tag": "div",
+            "role": "tabpanel",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "AlgeriaAngolaBeninBotswanaBurkina FasoBurundi",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 39.84375,
+              "width": 1265,
+              "height": 137.0625
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)"
+          },
+          {
+            "uid": "tabpanel[10]",
+            "tag": "div",
+            "role": "tabpanel",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "CanadaChileMexicoUnited States",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)"
+          },
+          {
+            "uid": "tabpanel[11]",
+            "tag": "div",
+            "role": "tabpanel",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "ChinaKoreaIndiaJapan",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)"
+          },
+          {
+            "uid": "tabpanel[12]",
+            "tag": "div",
+            "role": "tabpanel",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "AustriaEnglandFranceGermanyNetherlandsSwitzerland",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4)"
+          },
+          {
+            "uid": "tabpanel[13]",
+            "tag": "div",
+            "role": "tabpanel",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "AustraliaFijiNew ZealandSamoa",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(5)"
+          }
+        ],
+        "depth": 1,
+        "timestamp": 1778066620537,
+        "scopeSelector": "section.is-ready"
+      },
+      {
+        "id": "2c97f569680a8047",
+        "facts": [
+          {
+            "uid": "testid:tabpanel-wijmo",
+            "tag": "wj-tab-panel",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "AfricaAmericaAsiaEuropeOceaniaAlgeriaAngolaBeninBotswanaBurkina FasoBurundiCanadaChileMexicoUnited StatesChinaKoreaIndiaJapanAustriaEnglandFranceGermanyNetherlandsSwitzerlandAustraliaFijiNew ZealandSa",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 1265,
+              "height": 186.90625
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"]"
+          },
+          {
+            "uid": "div[1]",
+            "tag": "div",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "AfricaAmericaAsiaEuropeOceaniaAlgeriaAngolaBeninBotswanaBurkina FasoBurundiCanadaChileMexicoUnited StatesChinaKoreaIndiaJapanAustriaEnglandFranceGermanyNetherlandsSwitzerlandAustraliaFijiNew ZealandSa",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 1265,
+              "height": 186.90625
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1)"
+          },
+          {
+            "uid": "tablist[2]",
+            "tag": "div",
+            "role": "tablist",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "AfricaAmericaAsiaEuropeOceania",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 1265,
+              "height": 38.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1)"
+          },
+          {
+            "uid": "tab[3]",
+            "tag": "a",
+            "role": "tab",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Africa",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 0,
+              "width": 80,
+              "height": 38.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)"
+          },
+          {
+            "uid": "tab[4]",
+            "tag": "a",
+            "role": "tab",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "America",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 80,
+              "y": 0,
+              "width": 94,
+              "height": 38.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(2)"
+          },
+          {
+            "uid": "tab[5]",
+            "tag": "a",
+            "role": "tab",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "Asia",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 174,
+              "y": 0,
+              "width": 61,
+              "height": 38.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(3)"
+          },
+          {
+            "uid": "tab[6]",
+            "tag": "a",
+            "role": "tab",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Europe",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": 0,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 235,
+              "y": 0,
+              "width": 83,
+              "height": 38.84375
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(4)"
+          },
+          {
+            "uid": "tab[7]",
+            "tag": "a",
+            "role": "tab",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "Oceania",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(5)"
+          },
+          {
+            "uid": "div[8]",
+            "tag": "div",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "AlgeriaAngolaBeninBotswanaBurkina FasoBurundiCanadaChileMexicoUnited StatesChinaKoreaIndiaJapanAustriaEnglandFranceGermanyNetherlandsSwitzerlandAustraliaFijiNew ZealandSamoa",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 38.84375,
+              "width": 1265,
+              "height": 148.0625
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(2)"
+          },
+          {
+            "uid": "tabpanel[9]",
+            "tag": "div",
+            "role": "tabpanel",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "AlgeriaAngolaBeninBotswanaBurkina FasoBurundi",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1)"
+          },
+          {
+            "uid": "tabpanel[10]",
+            "tag": "div",
+            "role": "tabpanel",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "CanadaChileMexicoUnited States",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2)"
+          },
+          {
+            "uid": "tabpanel[11]",
+            "tag": "div",
+            "role": "tabpanel",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "ChinaKoreaIndiaJapan",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3)"
+          },
+          {
+            "uid": "tabpanel[12]",
+            "tag": "div",
+            "role": "tabpanel",
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "AustriaEnglandFranceGermanyNetherlandsSwitzerland",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 0,
+              "y": 39.84375,
+              "width": 1265,
+              "height": 137.0625
+            },
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4)"
+          },
+          {
+            "uid": "tabpanel[13]",
+            "tag": "div",
+            "role": "tabpanel",
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
+            "focusable": false,
+            "text": "AustraliaFijiNew ZealandSamoa",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": null,
+            "isInScope": true,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(5)"
+          }
+        ],
+        "depth": 1,
+        "timestamp": 1778066623024,
+        "scopeSelector": "section.is-ready"
+      }
+    ],
+    "transitions": [
+      {
+        "id": "7223e5ff4ee165b7->8498f6ec44e281fc:click",
+        "from": "7223e5ff4ee165b7",
+        "to": "8498f6ec44e281fc",
+        "action": {
+          "type": "click",
+          "targetUid": "tab[3]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 209,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[9]",
+            "tabpanel[10]"
+          ]
+        }
+      },
+      {
+        "id": "7223e5ff4ee165b7->2c97f569680a8047:click",
+        "from": "7223e5ff4ee165b7",
+        "to": "2c97f569680a8047",
+        "action": {
+          "type": "click",
+          "targetUid": "tab[6]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(4)",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 212,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[10]",
+            "tabpanel[12]"
+          ]
+        }
+      },
+      {
+        "id": "7223e5ff4ee165b7->7223e5ff4ee165b7:click:tab[4]",
+        "from": "7223e5ff4ee165b7",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "click",
+          "targetUid": "tab[4]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(2)",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 214,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "7223e5ff4ee165b7->2c97f569680a8047:click",
+        "from": "7223e5ff4ee165b7",
+        "to": "2c97f569680a8047",
+        "action": {
+          "type": "click",
+          "targetUid": "tab[6]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(4)",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 225,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[10]",
+            "tabpanel[12]"
+          ]
+        }
+      },
+      {
+        "id": "7223e5ff4ee165b7->7223e5ff4ee165b7:hover:tab[4]",
+        "from": "7223e5ff4ee165b7",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "hover",
+          "targetUid": "tab[4]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(2)",
+          "priority": 4
+        },
+        "success": true,
+        "duration": 205,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "7223e5ff4ee165b7->7223e5ff4ee165b7:hover:tab[6]",
+        "from": "7223e5ff4ee165b7",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "hover",
+          "targetUid": "tab[6]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(4)",
+          "priority": 4
+        },
+        "success": true,
+        "duration": 236,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "7223e5ff4ee165b7->7223e5ff4ee165b7:focus:tab[3]",
+        "from": "7223e5ff4ee165b7",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "focus",
+          "targetUid": "tab[3]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+          "priority": 3
+        },
+        "success": true,
+        "duration": 174,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "7223e5ff4ee165b7->7223e5ff4ee165b7:focus:tab[4]",
+        "from": "7223e5ff4ee165b7",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "focus",
+          "targetUid": "tab[4]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(2)",
+          "priority": 3
+        },
+        "success": true,
+        "duration": 167,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "7223e5ff4ee165b7->7223e5ff4ee165b7:focus:tab[5]",
+        "from": "7223e5ff4ee165b7",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "focus",
+          "targetUid": "tab[5]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(3)",
+          "priority": 3
+        },
+        "success": true,
+        "duration": 170,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "7223e5ff4ee165b7->7223e5ff4ee165b7:focus:tab[6]",
+        "from": "7223e5ff4ee165b7",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "focus",
+          "targetUid": "tab[6]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(4)",
+          "priority": 3
+        },
+        "success": true,
+        "duration": 172,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "7223e5ff4ee165b7->7223e5ff4ee165b7:mousedown:tab[3]",
+        "from": "7223e5ff4ee165b7",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "tab[3]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+          "priority": 2
+        },
+        "success": true,
+        "duration": 191,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "7223e5ff4ee165b7->7223e5ff4ee165b7:mousedown:tab[4]",
+        "from": "7223e5ff4ee165b7",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "tab[4]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(2)",
+          "priority": 2
+        },
+        "success": true,
+        "duration": 189,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "7223e5ff4ee165b7->7223e5ff4ee165b7:mousedown:tab[5]",
+        "from": "7223e5ff4ee165b7",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "tab[5]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(3)",
+          "priority": 2
+        },
+        "success": true,
+        "duration": 203,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "7223e5ff4ee165b7->7223e5ff4ee165b7:mousedown:tab[6]",
+        "from": "7223e5ff4ee165b7",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "tab[6]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(4)",
+          "priority": 2
+        },
+        "success": true,
+        "duration": 194,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "8498f6ec44e281fc->7223e5ff4ee165b7:click",
+        "from": "8498f6ec44e281fc",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "click",
+          "targetUid": "tab[4]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(2)",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 218,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[9]",
+            "tabpanel[10]"
+          ]
+        }
+      },
+      {
+        "id": "8498f6ec44e281fc->2c97f569680a8047:click",
+        "from": "8498f6ec44e281fc",
+        "to": "2c97f569680a8047",
+        "action": {
+          "type": "click",
+          "targetUid": "tab[6]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(4)",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 195,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[9]",
+            "tabpanel[12]"
+          ]
+        }
+      },
+      {
+        "id": "8498f6ec44e281fc->7223e5ff4ee165b7:click",
+        "from": "8498f6ec44e281fc",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "click",
+          "targetUid": "tab[4]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(2)",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 248,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[9]",
+            "tabpanel[10]"
+          ]
+        }
+      },
+      {
+        "id": "8498f6ec44e281fc->2c97f569680a8047:click",
+        "from": "8498f6ec44e281fc",
+        "to": "2c97f569680a8047",
+        "action": {
+          "type": "click",
+          "targetUid": "tab[6]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(4)",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 220,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[9]",
+            "tabpanel[12]"
+          ]
+        }
+      },
+      {
+        "id": "8498f6ec44e281fc->7223e5ff4ee165b7:hover",
+        "from": "8498f6ec44e281fc",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "hover",
+          "targetUid": "tab[4]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(2)",
+          "priority": 4
+        },
+        "success": true,
+        "duration": 232,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[9]",
+            "tabpanel[10]"
+          ]
+        }
+      },
+      {
+        "id": "8498f6ec44e281fc->7223e5ff4ee165b7:hover",
+        "from": "8498f6ec44e281fc",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "hover",
+          "targetUid": "tab[6]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(4)",
+          "priority": 4
+        },
+        "success": true,
+        "duration": 229,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[9]",
+            "tabpanel[10]"
+          ]
+        }
+      },
+      {
+        "id": "8498f6ec44e281fc->7223e5ff4ee165b7:focus",
+        "from": "8498f6ec44e281fc",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "focus",
+          "targetUid": "tab[3]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+          "priority": 3
+        },
+        "success": true,
+        "duration": 176,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[9]",
+            "tabpanel[10]"
+          ]
+        }
+      },
+      {
+        "id": "8498f6ec44e281fc->7223e5ff4ee165b7:focus",
+        "from": "8498f6ec44e281fc",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "focus",
+          "targetUid": "tab[4]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(2)",
+          "priority": 3
+        },
+        "success": true,
+        "duration": 170,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[9]",
+            "tabpanel[10]"
+          ]
+        }
+      },
+      {
+        "id": "8498f6ec44e281fc->7223e5ff4ee165b7:focus",
+        "from": "8498f6ec44e281fc",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "focus",
+          "targetUid": "tab[5]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(3)",
+          "priority": 3
+        },
+        "success": true,
+        "duration": 175,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[9]",
+            "tabpanel[10]"
+          ]
+        }
+      },
+      {
+        "id": "8498f6ec44e281fc->7223e5ff4ee165b7:focus",
+        "from": "8498f6ec44e281fc",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "focus",
+          "targetUid": "tab[6]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(4)",
+          "priority": 3
+        },
+        "success": true,
+        "duration": 171,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[9]",
+            "tabpanel[10]"
+          ]
+        }
+      },
+      {
+        "id": "8498f6ec44e281fc->7223e5ff4ee165b7:mousedown",
+        "from": "8498f6ec44e281fc",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "tab[3]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+          "priority": 2
+        },
+        "success": true,
+        "duration": 205,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[9]",
+            "tabpanel[10]"
+          ]
+        }
+      },
+      {
+        "id": "8498f6ec44e281fc->7223e5ff4ee165b7:mousedown",
+        "from": "8498f6ec44e281fc",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "tab[4]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(2)",
+          "priority": 2
+        },
+        "success": true,
+        "duration": 187,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[9]",
+            "tabpanel[10]"
+          ]
+        }
+      },
+      {
+        "id": "8498f6ec44e281fc->7223e5ff4ee165b7:mousedown",
+        "from": "8498f6ec44e281fc",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "tab[5]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(3)",
+          "priority": 2
+        },
+        "success": true,
+        "duration": 209,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[9]",
+            "tabpanel[10]"
+          ]
+        }
+      },
+      {
+        "id": "8498f6ec44e281fc->7223e5ff4ee165b7:mousedown",
+        "from": "8498f6ec44e281fc",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "tab[6]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(4)",
+          "priority": 2
+        },
+        "success": true,
+        "duration": 194,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[9]",
+            "tabpanel[10]"
+          ]
+        }
+      },
+      {
+        "id": "2c97f569680a8047->7223e5ff4ee165b7:click",
+        "from": "2c97f569680a8047",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "click",
+          "targetUid": "tab[4]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(2)",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 249,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[10]",
+            "tabpanel[12]"
+          ]
+        }
+      },
+      {
+        "id": "2c97f569680a8047->2c97f569680a8047:click:tab[6]",
+        "from": "2c97f569680a8047",
+        "to": "2c97f569680a8047",
+        "action": {
+          "type": "click",
+          "targetUid": "tab[6]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(4)",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 208,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "2c97f569680a8047->7223e5ff4ee165b7:click",
+        "from": "2c97f569680a8047",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "click",
+          "targetUid": "tab[4]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(2)",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 198,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[10]",
+            "tabpanel[12]"
+          ]
+        }
+      },
+      {
+        "id": "2c97f569680a8047->7223e5ff4ee165b7:hover",
+        "from": "2c97f569680a8047",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "hover",
+          "targetUid": "tab[3]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+          "priority": 4
+        },
+        "success": true,
+        "duration": 204,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[10]",
+            "tabpanel[12]"
+          ]
+        }
+      },
+      {
+        "id": "2c97f569680a8047->7223e5ff4ee165b7:hover",
+        "from": "2c97f569680a8047",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "hover",
+          "targetUid": "tab[6]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(4)",
+          "priority": 4
+        },
+        "success": true,
+        "duration": 220,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[10]",
+            "tabpanel[12]"
+          ]
+        }
+      },
+      {
+        "id": "2c97f569680a8047->7223e5ff4ee165b7:focus",
+        "from": "2c97f569680a8047",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "focus",
+          "targetUid": "tab[3]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+          "priority": 3
+        },
+        "success": true,
+        "duration": 169,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[10]",
+            "tabpanel[12]"
+          ]
+        }
+      },
+      {
+        "id": "2c97f569680a8047->7223e5ff4ee165b7:focus",
+        "from": "2c97f569680a8047",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "focus",
+          "targetUid": "tab[4]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(2)",
+          "priority": 3
+        },
+        "success": true,
+        "duration": 173,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[10]",
+            "tabpanel[12]"
+          ]
+        }
+      },
+      {
+        "id": "2c97f569680a8047->7223e5ff4ee165b7:focus",
+        "from": "2c97f569680a8047",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "focus",
+          "targetUid": "tab[5]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(3)",
+          "priority": 3
+        },
+        "success": true,
+        "duration": 170,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[10]",
+            "tabpanel[12]"
+          ]
+        }
+      },
+      {
+        "id": "2c97f569680a8047->7223e5ff4ee165b7:focus",
+        "from": "2c97f569680a8047",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "focus",
+          "targetUid": "tab[6]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(4)",
+          "priority": 3
+        },
+        "success": true,
+        "duration": 171,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[10]",
+            "tabpanel[12]"
+          ]
+        }
+      },
+      {
+        "id": "2c97f569680a8047->7223e5ff4ee165b7:mousedown",
+        "from": "2c97f569680a8047",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "tab[3]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(1)",
+          "priority": 2
+        },
+        "success": true,
+        "duration": 196,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[10]",
+            "tabpanel[12]"
+          ]
+        }
+      },
+      {
+        "id": "2c97f569680a8047->7223e5ff4ee165b7:mousedown",
+        "from": "2c97f569680a8047",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "tab[4]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(2)",
+          "priority": 2
+        },
+        "success": true,
+        "duration": 198,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[10]",
+            "tabpanel[12]"
+          ]
+        }
+      },
+      {
+        "id": "2c97f569680a8047->7223e5ff4ee165b7:mousedown",
+        "from": "2c97f569680a8047",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "tab[5]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(3)",
+          "priority": 2
+        },
+        "success": true,
+        "duration": 194,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[10]",
+            "tabpanel[12]"
+          ]
+        }
+      },
+      {
+        "id": "2c97f569680a8047->7223e5ff4ee165b7:mousedown",
+        "from": "2c97f569680a8047",
+        "to": "7223e5ff4ee165b7",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "tab[6]",
+          "targetSelector": "[data-testid=\"tabpanel-wijmo\"] > div:nth-of-type(1) > div:nth-of-type(1) > a:nth-of-type(4)",
+          "priority": 2
+        },
+        "success": true,
+        "duration": 205,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "tabpanel[10]",
+            "tabpanel[12]"
+          ]
+        }
+      }
+    ]
+  },
+  "summary": {
+    "statesDiscovered": 3,
+    "transitions": 41,
+    "maxDepthReached": 1,
+    "cycles": 24,
+    "deadEnds": 0,
+    "totalDuration": 93674,
+    "failedActions": 19
+  },
+  "actions": [],
+  "scenarios": [],
+  "mermaid": "stateDiagram-v2\n  state \"7223e5ff (d=0)\" as s_7223e5ff\n  state \"8498f6ec (d=1)\" as s_8498f6ec\n  state \"2c97f569 (d=1)\" as s_2c97f569\n  s_7223e5ff --> s_8498f6ec : click\n  s_7223e5ff --> s_2c97f569 : click\n  s_7223e5ff --> s_7223e5ff : click\n  s_7223e5ff --> s_2c97f569 : click\n  s_7223e5ff --> s_7223e5ff : hover\n  s_7223e5ff --> s_7223e5ff : hover\n  s_7223e5ff --> s_7223e5ff : focus\n  s_7223e5ff --> s_7223e5ff : focus\n  s_7223e5ff --> s_7223e5ff : focus\n  s_7223e5ff --> s_7223e5ff : focus\n  s_7223e5ff --> s_7223e5ff : mousedown\n  s_7223e5ff --> s_7223e5ff : mousedown\n  s_7223e5ff --> s_7223e5ff : mousedown\n  s_7223e5ff --> s_7223e5ff : mousedown\n  s_8498f6ec --> s_7223e5ff : click\n  s_8498f6ec --> s_2c97f569 : click\n  s_8498f6ec --> s_7223e5ff : click\n  s_8498f6ec --> s_2c97f569 : click\n  s_8498f6ec --> s_7223e5ff : hover\n  s_8498f6ec --> s_7223e5ff : hover\n  s_8498f6ec --> s_7223e5ff : focus\n  s_8498f6ec --> s_7223e5ff : focus\n  s_8498f6ec --> s_7223e5ff : focus\n  s_8498f6ec --> s_7223e5ff : focus\n  s_8498f6ec --> s_7223e5ff : mousedown\n  s_8498f6ec --> s_7223e5ff : mousedown\n  s_8498f6ec --> s_7223e5ff : mousedown\n  s_8498f6ec --> s_7223e5ff : mousedown\n  s_2c97f569 --> s_7223e5ff : click\n  s_2c97f569 --> s_2c97f569 : click\n  s_2c97f569 --> s_7223e5ff : click\n  s_2c97f569 --> s_7223e5ff : hover\n  s_2c97f569 --> s_7223e5ff : hover\n  s_2c97f569 --> s_7223e5ff : focus\n  s_2c97f569 --> s_7223e5ff : focus\n  s_2c97f569 --> s_7223e5ff : focus\n  s_2c97f569 --> s_7223e5ff : focus\n  s_2c97f569 --> s_7223e5ff : mousedown\n  s_2c97f569 --> s_7223e5ff : mousedown\n  s_2c97f569 --> s_7223e5ff : mousedown\n  s_2c97f569 --> s_7223e5ff : mousedown",
+  "dot": "digraph {\n  \"7223e5ff4ee165b7\" [label=\"7223e5ff\\nd=0 f=14\"];\n  \"8498f6ec44e281fc\" [label=\"8498f6ec\\nd=1 f=14\"];\n  \"2c97f569680a8047\" [label=\"2c97f569\\nd=1 f=14\"];\n  \"7223e5ff4ee165b7\" -> \"8498f6ec44e281fc\" [label=\"click\"];\n  \"7223e5ff4ee165b7\" -> \"2c97f569680a8047\" [label=\"click\"];\n  \"7223e5ff4ee165b7\" -> \"7223e5ff4ee165b7\" [label=\"click\"];\n  \"7223e5ff4ee165b7\" -> \"2c97f569680a8047\" [label=\"click\"];\n  \"7223e5ff4ee165b7\" -> \"7223e5ff4ee165b7\" [label=\"hover\"];\n  \"7223e5ff4ee165b7\" -> \"7223e5ff4ee165b7\" [label=\"hover\"];\n  \"7223e5ff4ee165b7\" -> \"7223e5ff4ee165b7\" [label=\"focus\"];\n  \"7223e5ff4ee165b7\" -> \"7223e5ff4ee165b7\" [label=\"focus\"];\n  \"7223e5ff4ee165b7\" -> \"7223e5ff4ee165b7\" [label=\"focus\"];\n  \"7223e5ff4ee165b7\" -> \"7223e5ff4ee165b7\" [label=\"focus\"];\n  \"7223e5ff4ee165b7\" -> \"7223e5ff4ee165b7\" [label=\"mousedown\"];\n  \"7223e5ff4ee165b7\" -> \"7223e5ff4ee165b7\" [label=\"mousedown\"];\n  \"7223e5ff4ee165b7\" -> \"7223e5ff4ee165b7\" [label=\"mousedown\"];\n  \"7223e5ff4ee165b7\" -> \"7223e5ff4ee165b7\" [label=\"mousedown\"];\n  \"8498f6ec44e281fc\" -> \"7223e5ff4ee165b7\" [label=\"click\"];\n  \"8498f6ec44e281fc\" -> \"2c97f569680a8047\" [label=\"click\"];\n  \"8498f6ec44e281fc\" -> \"7223e5ff4ee165b7\" [label=\"click\"];\n  \"8498f6ec44e281fc\" -> \"2c97f569680a8047\" [label=\"click\"];\n  \"8498f6ec44e281fc\" -> \"7223e5ff4ee165b7\" [label=\"hover\"];\n  \"8498f6ec44e281fc\" -> \"7223e5ff4ee165b7\" [label=\"hover\"];\n  \"8498f6ec44e281fc\" -> \"7223e5ff4ee165b7\" [label=\"focus\"];\n  \"8498f6ec44e281fc\" -> \"7223e5ff4ee165b7\" [label=\"focus\"];\n  \"8498f6ec44e281fc\" -> \"7223e5ff4ee165b7\" [label=\"focus\"];\n  \"8498f6ec44e281fc\" -> \"7223e5ff4ee165b7\" [label=\"focus\"];\n  \"8498f6ec44e281fc\" -> \"7223e5ff4ee165b7\" [label=\"mousedown\"];\n  \"8498f6ec44e281fc\" -> \"7223e5ff4ee165b7\" [label=\"mousedown\"];\n  \"8498f6ec44e281fc\" -> \"7223e5ff4ee165b7\" [label=\"mousedown\"];\n  \"8498f6ec44e281fc\" -> \"7223e5ff4ee165b7\" [label=\"mousedown\"];\n  \"2c97f569680a8047\" -> \"7223e5ff4ee165b7\" [label=\"click\"];\n  \"2c97f569680a8047\" -> \"2c97f569680a8047\" [label=\"click\"];\n  \"2c97f569680a8047\" -> \"7223e5ff4ee165b7\" [label=\"click\"];\n  \"2c97f569680a8047\" -> \"7223e5ff4ee165b7\" [label=\"hover\"];\n  \"2c97f569680a8047\" -> \"7223e5ff4ee165b7\" [label=\"hover\"];\n  \"2c97f569680a8047\" -> \"7223e5ff4ee165b7\" [label=\"focus\"];\n  \"2c97f569680a8047\" -> \"7223e5ff4ee165b7\" [label=\"focus\"];\n  \"2c97f569680a8047\" -> \"7223e5ff4ee165b7\" [label=\"focus\"];\n  \"2c97f569680a8047\" -> \"7223e5ff4ee165b7\" [label=\"focus\"];\n  \"2c97f569680a8047\" -> \"7223e5ff4ee165b7\" [label=\"mousedown\"];\n  \"2c97f569680a8047\" -> \"7223e5ff4ee165b7\" [label=\"mousedown\"];\n  \"2c97f569680a8047\" -> \"7223e5ff4ee165b7\" [label=\"mousedown\"];\n  \"2c97f569680a8047\" -> \"7223e5ff4ee165b7\" [label=\"mousedown\"];\n}",
+  "generatedAt": "2026-05-06T11:25:12.277Z"
+}

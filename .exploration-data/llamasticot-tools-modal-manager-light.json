@@ -1,0 +1,1571 @@
+{
+  "url": "http://localhost:4206/tools-modal-manager?standalone=true&culture=fr-FR&theme=light",
+  "target": "tools-modal-manager-light",
+  "config": {
+    "rootSelector": "section.is-ready",
+    "boundary": "overflow",
+    "overflowSelectors": [
+      ".cdk-overlay-container",
+      ".wj-popup",
+      ".wj-listbox",
+      ".wj-flexgrid-cell-overlay"
+    ],
+    "readinessSelector": "section.is-ready",
+    "readinessTimeout": 8000,
+    "stabilizationTimeout": 100,
+    "strategy": "bfs",
+    "maxDepth": 2,
+    "maxStates": 30,
+    "maxActionsPerState": 50,
+    "timeout": 1000000,
+    "domHashStrategy": "interactive-only",
+    "additionalRules": [
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 9
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 8
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "button"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 7
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 4
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 3
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "a"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "mousedown",
+          "params": {
+            "priority": 2
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
+      }
+    ],
+    "captureStateScreenshots": false,
+    "captureTransitionScreenshots": false,
+    "screenshotsPrefix": ""
+  },
+  "graph": {
+    "states": [
+      {
+        "id": "e3b0c44298fc1c14",
+        "facts": [
+          {
+            "uid": "testid:btn-modal-close",
+            "tag": "button",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1017.5,
+              "y": 232,
+              "width": 16,
+              "height": 16
+            },
+            "isInScope": false,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"btn-modal-close\"]"
+          },
+          {
+            "uid": "testid:combobox-modal-pays",
+            "tag": "wj-combo-box",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 583.5,
+              "y": 272,
+              "width": 233,
+              "height": 32
+            },
+            "isInScope": false,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"combobox-modal-pays\"]"
+          },
+          {
+            "uid": "#pays_input",
+            "tag": "input",
+            "role": "combobox",
+            "accessibleName": "Pays",
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "",
+            "inputType": "text",
+            "ariaExpanded": false,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 583.5,
+              "y": 272,
+              "width": 201,
+              "height": 32
+            },
+            "isInScope": false,
+            "parentUid": null,
+            "cssSelector": "#pays_input"
+          },
+          {
+            "uid": "button[3]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": "Toggle Dropdown",
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "",
+            "inputType": "button",
+            "ariaExpanded": false,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 784.5,
+              "y": 273,
+              "width": 31,
+              "height": 30
+            },
+            "isInScope": false,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"combobox-modal-pays\"] > div:nth-of-type(1) > div > div > span > button"
+          },
+          {
+            "uid": "testid:datepicker-modal",
+            "tag": "wj-input-date",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 816.5,
+              "y": 272,
+              "width": 233,
+              "height": 32
+            },
+            "isInScope": false,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"datepicker-modal\"]"
+          },
+          {
+            "uid": "combobox:\"InputDate Input\"",
+            "tag": "input",
+            "role": "combobox",
+            "accessibleName": "InputDate Input",
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "",
+            "inputType": "tel",
+            "ariaExpanded": false,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 816.5,
+              "y": 272,
+              "width": 201,
+              "height": 32
+            },
+            "isInScope": false,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"datepicker-modal\"] > div > div > div > input"
+          },
+          {
+            "uid": "button[6]",
+            "tag": "button",
+            "role": null,
+            "accessibleName": "Choose Date",
+            "visible": true,
+            "enabled": true,
+            "focusable": false,
+            "text": "",
+            "inputType": "button",
+            "ariaExpanded": false,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": -1,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 1023.90625,
+              "y": 278.40625,
+              "width": 19.1875,
+              "height": 19.1875
+            },
+            "isInScope": false,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"datepicker-modal\"] > div > div > div > span > button"
+          },
+          {
+            "uid": "testid:btn-modal-validate",
+            "tag": "button",
+            "role": null,
+            "accessibleName": null,
+            "visible": true,
+            "enabled": true,
+            "focusable": true,
+            "text": "Valider",
+            "inputType": null,
+            "ariaExpanded": null,
+            "ariaControls": null,
+            "ariaOwns": null,
+            "tabindex": null,
+            "contentEditable": false,
+            "boundingBox": {
+              "x": 731,
+              "y": 316,
+              "width": 128,
+              "height": 32
+            },
+            "isInScope": false,
+            "parentUid": null,
+            "cssSelector": "[data-testid=\"btn-modal-validate\"]"
+          }
+        ],
+        "depth": 0,
+        "timestamp": 1778066774121,
+        "scopeSelector": "section.is-ready"
+      }
+    ],
+    "transitions": [
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:click:button[6]",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "click",
+          "targetUid": "button[6]",
+          "targetSelector": "[data-testid=\"datepicker-modal\"] > div > div > div > span > button",
+          "priority": 15
+        },
+        "success": true,
+        "duration": 254,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "combobox:\"InputDate Input\"",
+            "button[6]"
+          ]
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:click:combobox:\"InputDate Input\"",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "click",
+          "targetUid": "combobox:\"InputDate Input\"",
+          "targetSelector": "[data-testid=\"datepicker-modal\"] > div > div > div > input",
+          "priority": 13
+        },
+        "success": true,
+        "duration": 209,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:click:#pays_input",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "click",
+          "targetUid": "#pays_input",
+          "targetSelector": "#pays_input",
+          "priority": 12
+        },
+        "success": true,
+        "duration": 217,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:click:testid:btn-modal-close",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "click",
+          "targetUid": "testid:btn-modal-close",
+          "targetSelector": "[data-testid=\"btn-modal-close\"]",
+          "priority": 10
+        },
+        "success": true,
+        "duration": 212,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "testid:btn-modal-validate"
+          ]
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:click:button[6]",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "click",
+          "targetUid": "button[6]",
+          "targetSelector": "[data-testid=\"datepicker-modal\"] > div > div > div > span > button",
+          "priority": 10
+        },
+        "success": true,
+        "duration": 250,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "combobox:\"InputDate Input\"",
+            "button[6]"
+          ]
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:hover:testid:btn-modal-close",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "hover",
+          "targetUid": "testid:btn-modal-close",
+          "targetSelector": "[data-testid=\"btn-modal-close\"]",
+          "priority": 9
+        },
+        "success": true,
+        "duration": 249,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:hover:testid:btn-modal-validate",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "hover",
+          "targetUid": "testid:btn-modal-validate",
+          "targetSelector": "[data-testid=\"btn-modal-validate\"]",
+          "priority": 9
+        },
+        "success": true,
+        "duration": 215,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:focus:testid:btn-modal-close",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "focus",
+          "targetUid": "testid:btn-modal-close",
+          "targetSelector": "[data-testid=\"btn-modal-close\"]",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 171,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:fill:#pays_input",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "fill",
+          "targetUid": "#pays_input",
+          "targetSelector": "#pays_input",
+          "value": "test value",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 218,
+        "domChanges": {
+          "appeared": [
+            "#listitem-0",
+            "#listitem-1",
+            "#listitem-2",
+            "#listitem-3",
+            "#listitem-4",
+            "#listitem-5",
+            "#listitem-6",
+            "#listitem-7",
+            "#listitem-8",
+            "#listitem-9",
+            "#listitem-10",
+            "#listitem-11",
+            "#listitem-12",
+            "#listitem-13",
+            "#listitem-14",
+            "#listitem-15",
+            "#listitem-16",
+            "#listitem-17",
+            "#listitem-18",
+            "#listitem-19",
+            "#listitem-20",
+            "#listitem-21",
+            "#listitem-22",
+            "#listitem-23",
+            "#listitem-24",
+            "#listitem-25",
+            "#listitem-26",
+            "#listitem-27",
+            "#listitem-28",
+            "#listitem-29",
+            "#listitem-30",
+            "#listitem-31",
+            "#listitem-32",
+            "#listitem-33",
+            "#listitem-34",
+            "#listitem-35",
+            "#listitem-36",
+            "#listitem-37",
+            "#listitem-38",
+            "#listitem-39",
+            "#listitem-40",
+            "#listitem-41",
+            "#listitem-42",
+            "#listitem-43",
+            "#listitem-44",
+            "#listitem-45",
+            "#listitem-46",
+            "#listitem-47",
+            "#listitem-48",
+            "#listitem-49",
+            "#listitem-50",
+            "#listitem-51",
+            "#listitem-52",
+            "#listitem-53",
+            "#listitem-54",
+            "#listitem-55",
+            "#listitem-56",
+            "#listitem-57",
+            "#listitem-58",
+            "#listitem-59",
+            "#listitem-60",
+            "#listitem-61",
+            "#listitem-62",
+            "#listitem-63",
+            "#listitem-64",
+            "#listitem-65",
+            "#listitem-66",
+            "#listitem-67",
+            "#listitem-68",
+            "#listitem-69",
+            "#listitem-70",
+            "#listitem-71",
+            "#listitem-72",
+            "#listitem-73",
+            "#listitem-74",
+            "#listitem-75",
+            "#listitem-76",
+            "#listitem-77",
+            "#listitem-78",
+            "#listitem-79",
+            "#listitem-80",
+            "#listitem-81",
+            "#listitem-82",
+            "#listitem-83",
+            "#listitem-84",
+            "#listitem-85",
+            "#listitem-86",
+            "#listitem-87",
+            "#listitem-88",
+            "#listitem-89",
+            "#listitem-90",
+            "#listitem-91",
+            "#listitem-92",
+            "#listitem-93",
+            "#listitem-94",
+            "#listitem-95",
+            "#listitem-96",
+            "#listitem-97",
+            "#listitem-98",
+            "#listitem-99",
+            "#listitem-100",
+            "#listitem-101",
+            "#listitem-102",
+            "#listitem-103",
+            "#listitem-104",
+            "#listitem-105",
+            "#listitem-106",
+            "#listitem-107",
+            "#listitem-108",
+            "#listitem-109",
+            "#listitem-110",
+            "#listitem-111",
+            "#listitem-112",
+            "#listitem-113",
+            "#listitem-114",
+            "#listitem-115",
+            "#listitem-116",
+            "#listitem-117",
+            "#listitem-118",
+            "#listitem-119",
+            "#listitem-120",
+            "#listitem-121",
+            "#listitem-122",
+            "#listitem-123",
+            "#listitem-124",
+            "#listitem-125",
+            "#listitem-126",
+            "#listitem-127",
+            "#listitem-128",
+            "#listitem-129",
+            "#listitem-130",
+            "#listitem-131",
+            "#listitem-132",
+            "#listitem-133",
+            "#listitem-134",
+            "#listitem-135",
+            "#listitem-136",
+            "#listitem-137",
+            "#listitem-138",
+            "#listitem-139",
+            "#listitem-140",
+            "#listitem-141",
+            "#listitem-142",
+            "#listitem-143",
+            "#listitem-144",
+            "#listitem-145",
+            "#listitem-146",
+            "#listitem-147",
+            "#listitem-148",
+            "#listitem-149",
+            "#listitem-150",
+            "#listitem-151",
+            "#listitem-152",
+            "#listitem-153",
+            "#listitem-154",
+            "#listitem-155",
+            "#listitem-156",
+            "#listitem-157",
+            "#listitem-158",
+            "#listitem-159",
+            "#listitem-160",
+            "#listitem-161",
+            "#listitem-162",
+            "#listitem-163",
+            "#listitem-164",
+            "#listitem-165",
+            "#listitem-166",
+            "#listitem-167",
+            "#listitem-168",
+            "#listitem-169",
+            "#listitem-170",
+            "#listitem-171",
+            "#listitem-172",
+            "#listitem-173",
+            "#listitem-174",
+            "#listitem-175",
+            "#listitem-176",
+            "#listitem-177",
+            "#listitem-178",
+            "#listitem-179",
+            "#listitem-180",
+            "#listitem-181",
+            "#listitem-182",
+            "#listitem-183",
+            "#listitem-184",
+            "#listitem-185",
+            "#listitem-186",
+            "#listitem-187",
+            "#listitem-188",
+            "#listitem-189",
+            "#listitem-190",
+            "#listitem-191",
+            "#listitem-192",
+            "#listitem-193",
+            "#listitem-194",
+            "#listitem-195",
+            "#listitem-196",
+            "#listitem-197",
+            "#listitem-198",
+            "#listitem-199",
+            "#listitem-200",
+            "#listitem-201",
+            "#listitem-202",
+            "#listitem-203",
+            "#listitem-204",
+            "#listitem-205",
+            "#listitem-206",
+            "#listitem-207",
+            "#listitem-208",
+            "#listitem-209",
+            "#listitem-210",
+            "#listitem-211",
+            "#listitem-212"
+          ],
+          "disappeared": [],
+          "modified": [
+            "#pays_input",
+            "button[3]"
+          ]
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:focus:button[3]",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "focus",
+          "targetUid": "button[3]",
+          "targetSelector": "[data-testid=\"combobox-modal-pays\"] > div:nth-of-type(1) > div > div > span > button",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 172,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:fill:combobox:\"InputDate Input\"",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "fill",
+          "targetUid": "combobox:\"InputDate Input\"",
+          "targetSelector": "[data-testid=\"datepicker-modal\"] > div > div > div > input",
+          "value": "+33600000000",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 176,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:focus:button[6]",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "focus",
+          "targetUid": "button[6]",
+          "targetSelector": "[data-testid=\"datepicker-modal\"] > div > div > div > span > button",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 173,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:focus:testid:btn-modal-validate",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "focus",
+          "targetUid": "testid:btn-modal-validate",
+          "targetSelector": "[data-testid=\"btn-modal-validate\"]",
+          "priority": 8
+        },
+        "success": true,
+        "duration": 174,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:mousedown:testid:btn-modal-close",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "testid:btn-modal-close",
+          "targetSelector": "[data-testid=\"btn-modal-close\"]",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 191,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:mousedown:button[3]",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "button[3]",
+          "targetSelector": "[data-testid=\"combobox-modal-pays\"] > div:nth-of-type(1) > div > div > span > button",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 211,
+        "domChanges": {
+          "appeared": [
+            "#listitem-0",
+            "#listitem-1",
+            "#listitem-2",
+            "#listitem-3",
+            "#listitem-4",
+            "#listitem-5",
+            "#listitem-6",
+            "#listitem-7",
+            "#listitem-8",
+            "#listitem-9",
+            "#listitem-10",
+            "#listitem-11",
+            "#listitem-12",
+            "#listitem-13",
+            "#listitem-14",
+            "#listitem-15",
+            "#listitem-16",
+            "#listitem-17",
+            "#listitem-18",
+            "#listitem-19",
+            "#listitem-20",
+            "#listitem-21",
+            "#listitem-22",
+            "#listitem-23",
+            "#listitem-24",
+            "#listitem-25",
+            "#listitem-26",
+            "#listitem-27",
+            "#listitem-28",
+            "#listitem-29",
+            "#listitem-30",
+            "#listitem-31",
+            "#listitem-32",
+            "#listitem-33",
+            "#listitem-34",
+            "#listitem-35",
+            "#listitem-36",
+            "#listitem-37",
+            "#listitem-38",
+            "#listitem-39",
+            "#listitem-40",
+            "#listitem-41",
+            "#listitem-42",
+            "#listitem-43",
+            "#listitem-44",
+            "#listitem-45",
+            "#listitem-46",
+            "#listitem-47",
+            "#listitem-48",
+            "#listitem-49",
+            "#listitem-50",
+            "#listitem-51",
+            "#listitem-52",
+            "#listitem-53",
+            "#listitem-54",
+            "#listitem-55",
+            "#listitem-56",
+            "#listitem-57",
+            "#listitem-58",
+            "#listitem-59",
+            "#listitem-60",
+            "#listitem-61",
+            "#listitem-62",
+            "#listitem-63",
+            "#listitem-64",
+            "#listitem-65",
+            "#listitem-66",
+            "#listitem-67",
+            "#listitem-68",
+            "#listitem-69",
+            "#listitem-70",
+            "#listitem-71",
+            "#listitem-72",
+            "#listitem-73",
+            "#listitem-74",
+            "#listitem-75",
+            "#listitem-76",
+            "#listitem-77",
+            "#listitem-78",
+            "#listitem-79",
+            "#listitem-80",
+            "#listitem-81",
+            "#listitem-82",
+            "#listitem-83",
+            "#listitem-84",
+            "#listitem-85",
+            "#listitem-86",
+            "#listitem-87",
+            "#listitem-88",
+            "#listitem-89",
+            "#listitem-90",
+            "#listitem-91",
+            "#listitem-92",
+            "#listitem-93",
+            "#listitem-94",
+            "#listitem-95",
+            "#listitem-96",
+            "#listitem-97",
+            "#listitem-98",
+            "#listitem-99",
+            "#listitem-100",
+            "#listitem-101",
+            "#listitem-102",
+            "#listitem-103",
+            "#listitem-104",
+            "#listitem-105",
+            "#listitem-106",
+            "#listitem-107",
+            "#listitem-108",
+            "#listitem-109",
+            "#listitem-110",
+            "#listitem-111",
+            "#listitem-112",
+            "#listitem-113",
+            "#listitem-114",
+            "#listitem-115",
+            "#listitem-116",
+            "#listitem-117",
+            "#listitem-118",
+            "#listitem-119",
+            "#listitem-120",
+            "#listitem-121",
+            "#listitem-122",
+            "#listitem-123",
+            "#listitem-124",
+            "#listitem-125",
+            "#listitem-126",
+            "#listitem-127",
+            "#listitem-128",
+            "#listitem-129",
+            "#listitem-130",
+            "#listitem-131",
+            "#listitem-132",
+            "#listitem-133",
+            "#listitem-134",
+            "#listitem-135",
+            "#listitem-136",
+            "#listitem-137",
+            "#listitem-138",
+            "#listitem-139",
+            "#listitem-140",
+            "#listitem-141",
+            "#listitem-142",
+            "#listitem-143",
+            "#listitem-144",
+            "#listitem-145",
+            "#listitem-146",
+            "#listitem-147",
+            "#listitem-148",
+            "#listitem-149",
+            "#listitem-150",
+            "#listitem-151",
+            "#listitem-152",
+            "#listitem-153",
+            "#listitem-154",
+            "#listitem-155",
+            "#listitem-156",
+            "#listitem-157",
+            "#listitem-158",
+            "#listitem-159",
+            "#listitem-160",
+            "#listitem-161",
+            "#listitem-162",
+            "#listitem-163",
+            "#listitem-164",
+            "#listitem-165",
+            "#listitem-166",
+            "#listitem-167",
+            "#listitem-168",
+            "#listitem-169",
+            "#listitem-170",
+            "#listitem-171",
+            "#listitem-172",
+            "#listitem-173",
+            "#listitem-174",
+            "#listitem-175",
+            "#listitem-176",
+            "#listitem-177",
+            "#listitem-178",
+            "#listitem-179",
+            "#listitem-180",
+            "#listitem-181",
+            "#listitem-182",
+            "#listitem-183",
+            "#listitem-184",
+            "#listitem-185",
+            "#listitem-186",
+            "#listitem-187",
+            "#listitem-188",
+            "#listitem-189",
+            "#listitem-190",
+            "#listitem-191",
+            "#listitem-192",
+            "#listitem-193",
+            "#listitem-194",
+            "#listitem-195",
+            "#listitem-196",
+            "#listitem-197",
+            "#listitem-198",
+            "#listitem-199",
+            "#listitem-200",
+            "#listitem-201",
+            "#listitem-202",
+            "#listitem-203",
+            "#listitem-204",
+            "#listitem-205",
+            "#listitem-206",
+            "#listitem-207",
+            "#listitem-208",
+            "#listitem-209",
+            "#listitem-210",
+            "#listitem-211",
+            "#listitem-212"
+          ],
+          "disappeared": [],
+          "modified": [
+            "#pays_input",
+            "button[3]"
+          ]
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:mousedown:button[6]",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "button[6]",
+          "targetSelector": "[data-testid=\"datepicker-modal\"] > div > div > div > span > button",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 237,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": [
+            "combobox:\"InputDate Input\"",
+            "button[6]"
+          ]
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:mousedown:testid:btn-modal-validate",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "mousedown",
+          "targetUid": "testid:btn-modal-validate",
+          "targetSelector": "[data-testid=\"btn-modal-validate\"]",
+          "priority": 7
+        },
+        "success": true,
+        "duration": 202,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:hover:combobox:\"InputDate Input\"",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "hover",
+          "targetUid": "combobox:\"InputDate Input\"",
+          "targetSelector": "[data-testid=\"datepicker-modal\"] > div > div > div > input",
+          "priority": 6
+        },
+        "success": true,
+        "duration": 221,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:focus:#pays_input",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "focus",
+          "targetUid": "#pays_input",
+          "targetSelector": "#pays_input",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 172,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "e3b0c44298fc1c14->e3b0c44298fc1c14:focus:combobox:\"InputDate Input\"",
+        "from": "e3b0c44298fc1c14",
+        "to": "e3b0c44298fc1c14",
+        "action": {
+          "type": "focus",
+          "targetUid": "combobox:\"InputDate Input\"",
+          "targetSelector": "[data-testid=\"datepicker-modal\"] > div > div > div > input",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 176,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      }
+    ]
+  },
+  "summary": {
+    "statesDiscovered": 1,
+    "transitions": 20,
+    "maxDepthReached": 0,
+    "cycles": 0,
+    "deadEnds": 0,
+    "totalDuration": 57306,
+    "failedActions": 10
+  },
+  "actions": [
+    {
+      "type": "click",
+      "targetUid": "button[3]",
+      "priority": 15
+    },
+    {
+      "type": "click",
+      "targetUid": "button[6]",
+      "priority": 15
+    },
+    {
+      "type": "click",
+      "targetUid": "#pays_input",
+      "priority": 13
+    },
+    {
+      "type": "click",
+      "targetUid": "button[3]",
+      "priority": 13
+    },
+    {
+      "type": "click",
+      "targetUid": "combobox:\"InputDate Input\"",
+      "priority": 13
+    },
+    {
+      "type": "click",
+      "targetUid": "button[6]",
+      "priority": 13
+    },
+    {
+      "type": "click",
+      "targetUid": "#pays_input",
+      "priority": 12
+    },
+    {
+      "type": "click",
+      "targetUid": "combobox:\"InputDate Input\"",
+      "priority": 12
+    },
+    {
+      "type": "click",
+      "targetUid": "testid:btn-modal-close",
+      "priority": 10
+    },
+    {
+      "type": "click",
+      "targetUid": "button[3]",
+      "priority": 10
+    },
+    {
+      "type": "click",
+      "targetUid": "button[6]",
+      "priority": 10
+    },
+    {
+      "type": "click",
+      "targetUid": "testid:btn-modal-validate",
+      "priority": 10
+    },
+    {
+      "type": "hover",
+      "targetUid": "testid:btn-modal-close",
+      "priority": 9
+    },
+    {
+      "type": "hover",
+      "targetUid": "button[3]",
+      "priority": 9
+    },
+    {
+      "type": "hover",
+      "targetUid": "button[6]",
+      "priority": 9
+    },
+    {
+      "type": "hover",
+      "targetUid": "testid:btn-modal-validate",
+      "priority": 9
+    },
+    {
+      "type": "focus",
+      "targetUid": "testid:btn-modal-close",
+      "priority": 8
+    },
+    {
+      "type": "fill",
+      "targetUid": "#pays_input",
+      "priority": 8
+    },
+    {
+      "type": "focus",
+      "targetUid": "button[3]",
+      "priority": 8
+    },
+    {
+      "type": "fill",
+      "targetUid": "combobox:\"InputDate Input\"",
+      "priority": 8
+    },
+    {
+      "type": "focus",
+      "targetUid": "button[6]",
+      "priority": 8
+    },
+    {
+      "type": "focus",
+      "targetUid": "testid:btn-modal-validate",
+      "priority": 8
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "testid:btn-modal-close",
+      "priority": 7
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "button[3]",
+      "priority": 7
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "button[6]",
+      "priority": 7
+    },
+    {
+      "type": "mousedown",
+      "targetUid": "testid:btn-modal-validate",
+      "priority": 7
+    },
+    {
+      "type": "hover",
+      "targetUid": "#pays_input",
+      "priority": 6
+    },
+    {
+      "type": "hover",
+      "targetUid": "combobox:\"InputDate Input\"",
+      "priority": 6
+    },
+    {
+      "type": "focus",
+      "targetUid": "#pays_input",
+      "priority": 5
+    },
+    {
+      "type": "focus",
+      "targetUid": "combobox:\"InputDate Input\"",
+      "priority": 5
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "click_button[6] → click_combobox:\"InputDate Input\" → click_#pays_input → click_testid:btn-modal-close → click_button[6] → hover_testid:btn-modal-close → hover_testid:btn-modal-validate → focus_testid:btn-modal-close → fill_#pays_input → focus_button[3] → fill_combobox:\"InputDate Input\" → focus_button[6] → focus_testid:btn-modal-validate → mousedown_testid:btn-modal-close → mousedown_button[3] → mousedown_button[6] → mousedown_testid:btn-modal-validate → hover_combobox:\"InputDate Input\" → focus_#pays_input → focus_combobox:\"InputDate Input\"",
+      "steps": [
+        {
+          "type": "click",
+          "targetUid": "button[6]",
+          "targetSelector": "[data-testid=\"datepicker-modal\"] > div > div > div > span > button",
+          "priority": 15
+        },
+        {
+          "type": "click",
+          "targetUid": "combobox:\"InputDate Input\"",
+          "targetSelector": "[data-testid=\"datepicker-modal\"] > div > div > div > input",
+          "priority": 13
+        },
+        {
+          "type": "click",
+          "targetUid": "#pays_input",
+          "targetSelector": "#pays_input",
+          "priority": 12
+        },
+        {
+          "type": "click",
+          "targetUid": "testid:btn-modal-close",
+          "targetSelector": "[data-testid=\"btn-modal-close\"]",
+          "priority": 10
+        },
+        {
+          "type": "click",
+          "targetUid": "button[6]",
+          "targetSelector": "[data-testid=\"datepicker-modal\"] > div > div > div > span > button",
+          "priority": 10
+        },
+        {
+          "type": "hover",
+          "targetUid": "testid:btn-modal-close",
+          "targetSelector": "[data-testid=\"btn-modal-close\"]",
+          "priority": 9
+        },
+        {
+          "type": "hover",
+          "targetUid": "testid:btn-modal-validate",
+          "targetSelector": "[data-testid=\"btn-modal-validate\"]",
+          "priority": 9
+        },
+        {
+          "type": "focus",
+          "targetUid": "testid:btn-modal-close",
+          "targetSelector": "[data-testid=\"btn-modal-close\"]",
+          "priority": 8
+        },
+        {
+          "type": "fill",
+          "targetUid": "#pays_input",
+          "targetSelector": "#pays_input",
+          "value": "test value",
+          "priority": 8
+        },
+        {
+          "type": "focus",
+          "targetUid": "button[3]",
+          "targetSelector": "[data-testid=\"combobox-modal-pays\"] > div:nth-of-type(1) > div > div > span > button",
+          "priority": 8
+        },
+        {
+          "type": "fill",
+          "targetUid": "combobox:\"InputDate Input\"",
+          "targetSelector": "[data-testid=\"datepicker-modal\"] > div > div > div > input",
+          "value": "+33600000000",
+          "priority": 8
+        },
+        {
+          "type": "focus",
+          "targetUid": "button[6]",
+          "targetSelector": "[data-testid=\"datepicker-modal\"] > div > div > div > span > button",
+          "priority": 8
+        },
+        {
+          "type": "focus",
+          "targetUid": "testid:btn-modal-validate",
+          "targetSelector": "[data-testid=\"btn-modal-validate\"]",
+          "priority": 8
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "testid:btn-modal-close",
+          "targetSelector": "[data-testid=\"btn-modal-close\"]",
+          "priority": 7
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "button[3]",
+          "targetSelector": "[data-testid=\"combobox-modal-pays\"] > div:nth-of-type(1) > div > div > span > button",
+          "priority": 7
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "button[6]",
+          "targetSelector": "[data-testid=\"datepicker-modal\"] > div > div > div > span > button",
+          "priority": 7
+        },
+        {
+          "type": "mousedown",
+          "targetUid": "testid:btn-modal-validate",
+          "targetSelector": "[data-testid=\"btn-modal-validate\"]",
+          "priority": 7
+        },
+        {
+          "type": "hover",
+          "targetUid": "combobox:\"InputDate Input\"",
+          "targetSelector": "[data-testid=\"datepicker-modal\"] > div > div > div > input",
+          "priority": 6
+        },
+        {
+          "type": "focus",
+          "targetUid": "#pays_input",
+          "targetSelector": "#pays_input",
+          "priority": 5
+        },
+        {
+          "type": "focus",
+          "targetUid": "combobox:\"InputDate Input\"",
+          "targetSelector": "[data-testid=\"datepicker-modal\"] > div > div > div > input",
+          "priority": 5
+        }
+      ],
+      "selectors": [
+        "button[6]",
+        "combobox:\"InputDate Input\"",
+        "#pays_input",
+        "testid:btn-modal-close",
+        "testid:btn-modal-validate",
+        "button[3]"
+      ]
+    }
+  ],
+  "mermaid": "stateDiagram-v2\n  state \"e3b0c442 (d=0)\" as s_e3b0c442\n  s_e3b0c442 --> s_e3b0c442 : click\n  s_e3b0c442 --> s_e3b0c442 : click\n  s_e3b0c442 --> s_e3b0c442 : click\n  s_e3b0c442 --> s_e3b0c442 : click\n  s_e3b0c442 --> s_e3b0c442 : click\n  s_e3b0c442 --> s_e3b0c442 : hover\n  s_e3b0c442 --> s_e3b0c442 : hover\n  s_e3b0c442 --> s_e3b0c442 : focus\n  s_e3b0c442 --> s_e3b0c442 : fill\n  s_e3b0c442 --> s_e3b0c442 : focus\n  s_e3b0c442 --> s_e3b0c442 : fill\n  s_e3b0c442 --> s_e3b0c442 : focus\n  s_e3b0c442 --> s_e3b0c442 : focus\n  s_e3b0c442 --> s_e3b0c442 : mousedown\n  s_e3b0c442 --> s_e3b0c442 : mousedown\n  s_e3b0c442 --> s_e3b0c442 : mousedown\n  s_e3b0c442 --> s_e3b0c442 : mousedown\n  s_e3b0c442 --> s_e3b0c442 : hover\n  s_e3b0c442 --> s_e3b0c442 : focus\n  s_e3b0c442 --> s_e3b0c442 : focus",
+  "dot": "digraph {\n  \"e3b0c44298fc1c14\" [label=\"e3b0c442\\nd=0 f=8\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"click\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"click\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"click\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"click\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"click\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"hover\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"hover\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"focus\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"fill\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"focus\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"fill\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"focus\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"focus\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"mousedown\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"mousedown\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"mousedown\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"mousedown\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"hover\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"focus\"];\n  \"e3b0c44298fc1c14\" -> \"e3b0c44298fc1c14\" [label=\"focus\"];\n}",
+  "generatedAt": "2026-05-06T11:27:10.224Z"
+}

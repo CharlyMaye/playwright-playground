@@ -166,6 +166,60 @@
             "priority": 2
           }
         }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
       }
     ],
     "captureStateScreenshots": false,
@@ -254,7 +308,7 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1778057583316,
+        "timestamp": 1778065865437,
         "scopeSelector": "section.is-ready"
       }
     ],
@@ -270,7 +324,83 @@
           "priority": 7
         },
         "success": true,
-        "duration": 229,
+        "duration": 247,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "c09bf5c85983a5f4->c09bf5c85983a5f4:hover:#ing-radio-button1-input-b",
+        "from": "c09bf5c85983a5f4",
+        "to": "c09bf5c85983a5f4",
+        "action": {
+          "type": "hover",
+          "targetUid": "#ing-radio-button1-input-b",
+          "targetSelector": "#ing-radio-button1-input-b",
+          "priority": 6
+        },
+        "success": true,
+        "duration": 217,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "c09bf5c85983a5f4->c09bf5c85983a5f4:focus:#ing-radio-button1-input-a",
+        "from": "c09bf5c85983a5f4",
+        "to": "c09bf5c85983a5f4",
+        "action": {
+          "type": "focus",
+          "targetUid": "#ing-radio-button1-input-a",
+          "targetSelector": "#ing-radio-button1-input-a",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 199,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "c09bf5c85983a5f4->c09bf5c85983a5f4:focus:#ing-radio-button1-input-b",
+        "from": "c09bf5c85983a5f4",
+        "to": "c09bf5c85983a5f4",
+        "action": {
+          "type": "focus",
+          "targetUid": "#ing-radio-button1-input-b",
+          "targetSelector": "#ing-radio-button1-input-b",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 177,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "c09bf5c85983a5f4->c09bf5c85983a5f4:focus:#ing-radio-button1-input-c",
+        "from": "c09bf5c85983a5f4",
+        "to": "c09bf5c85983a5f4",
+        "action": {
+          "type": "focus",
+          "targetUid": "#ing-radio-button1-input-c",
+          "targetSelector": "#ing-radio-button1-input-c",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 173,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -282,12 +412,12 @@
   },
   "summary": {
     "statesDiscovered": 1,
-    "transitions": 1,
+    "transitions": 5,
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 2327,
-    "failedActions": 2
+    "totalDuration": 12711,
+    "failedActions": 4
   },
   "actions": [
     {
@@ -304,25 +434,81 @@
       "type": "click",
       "targetUid": "#ing-radio-button1-input-c",
       "priority": 7
+    },
+    {
+      "type": "hover",
+      "targetUid": "#ing-radio-button1-input-a",
+      "priority": 6
+    },
+    {
+      "type": "hover",
+      "targetUid": "#ing-radio-button1-input-b",
+      "priority": 6
+    },
+    {
+      "type": "hover",
+      "targetUid": "#ing-radio-button1-input-c",
+      "priority": 6
+    },
+    {
+      "type": "focus",
+      "targetUid": "#ing-radio-button1-input-a",
+      "priority": 5
+    },
+    {
+      "type": "focus",
+      "targetUid": "#ing-radio-button1-input-b",
+      "priority": 5
+    },
+    {
+      "type": "focus",
+      "targetUid": "#ing-radio-button1-input-c",
+      "priority": 5
     }
   ],
   "scenarios": [
     {
-      "name": "click_#ing-radio-button1-input-b",
+      "name": "click_#ing-radio-button1-input-b → hover_#ing-radio-button1-input-b → focus_#ing-radio-button1-input-a → focus_#ing-radio-button1-input-b → focus_#ing-radio-button1-input-c",
       "steps": [
         {
           "type": "click",
           "targetUid": "#ing-radio-button1-input-b",
           "targetSelector": "#ing-radio-button1-input-b",
           "priority": 7
+        },
+        {
+          "type": "hover",
+          "targetUid": "#ing-radio-button1-input-b",
+          "targetSelector": "#ing-radio-button1-input-b",
+          "priority": 6
+        },
+        {
+          "type": "focus",
+          "targetUid": "#ing-radio-button1-input-a",
+          "targetSelector": "#ing-radio-button1-input-a",
+          "priority": 5
+        },
+        {
+          "type": "focus",
+          "targetUid": "#ing-radio-button1-input-b",
+          "targetSelector": "#ing-radio-button1-input-b",
+          "priority": 5
+        },
+        {
+          "type": "focus",
+          "targetUid": "#ing-radio-button1-input-c",
+          "targetSelector": "#ing-radio-button1-input-c",
+          "priority": 5
         }
       ],
       "selectors": [
-        "#ing-radio-button1-input-b"
+        "#ing-radio-button1-input-b",
+        "#ing-radio-button1-input-a",
+        "#ing-radio-button1-input-c"
       ]
     }
   ],
-  "mermaid": "stateDiagram-v2\n  state \"c09bf5c8 (d=0)\" as s_c09bf5c8\n  s_c09bf5c8 --> s_c09bf5c8 : click",
-  "dot": "digraph {\n  \"c09bf5c85983a5f4\" [label=\"c09bf5c8\\nd=0 f=3\"];\n  \"c09bf5c85983a5f4\" -> \"c09bf5c85983a5f4\" [label=\"click\"];\n}",
-  "generatedAt": "2026-05-06T08:53:05.173Z"
+  "mermaid": "stateDiagram-v2\n  state \"c09bf5c8 (d=0)\" as s_c09bf5c8\n  s_c09bf5c8 --> s_c09bf5c8 : click\n  s_c09bf5c8 --> s_c09bf5c8 : hover\n  s_c09bf5c8 --> s_c09bf5c8 : focus\n  s_c09bf5c8 --> s_c09bf5c8 : focus\n  s_c09bf5c8 --> s_c09bf5c8 : focus",
+  "dot": "digraph {\n  \"c09bf5c85983a5f4\" [label=\"c09bf5c8\\nd=0 f=3\"];\n  \"c09bf5c85983a5f4\" -> \"c09bf5c85983a5f4\" [label=\"click\"];\n  \"c09bf5c85983a5f4\" -> \"c09bf5c85983a5f4\" [label=\"hover\"];\n  \"c09bf5c85983a5f4\" -> \"c09bf5c85983a5f4\" [label=\"focus\"];\n  \"c09bf5c85983a5f4\" -> \"c09bf5c85983a5f4\" [label=\"focus\"];\n  \"c09bf5c85983a5f4\" -> \"c09bf5c85983a5f4\" [label=\"focus\"];\n}",
+  "generatedAt": "2026-05-06T11:11:16.704Z"
 }

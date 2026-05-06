@@ -166,6 +166,60 @@
             "priority": 2
           }
         }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
       }
     ],
     "captureStateScreenshots": false,
@@ -204,19 +258,58 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1778057617181,
+        "timestamp": 1778065935023,
         "scopeSelector": "section.is-ready"
       }
     ],
-    "transitions": []
+    "transitions": [
+      {
+        "id": "19dc7ff70d063740->19dc7ff70d063740:hover:testid:input-legacy",
+        "from": "19dc7ff70d063740",
+        "to": "19dc7ff70d063740",
+        "action": {
+          "type": "hover",
+          "targetUid": "testid:input-legacy",
+          "targetSelector": "[data-testid=\"input-legacy\"]",
+          "priority": 6
+        },
+        "success": true,
+        "duration": 250,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      },
+      {
+        "id": "19dc7ff70d063740->19dc7ff70d063740:focus:testid:input-legacy",
+        "from": "19dc7ff70d063740",
+        "to": "19dc7ff70d063740",
+        "action": {
+          "type": "focus",
+          "targetUid": "testid:input-legacy",
+          "targetSelector": "[data-testid=\"input-legacy\"]",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 169,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "selfLoop": true
+      }
+    ]
   },
   "summary": {
     "statesDiscovered": 1,
-    "transitions": 0,
+    "transitions": 2,
     "maxDepthReached": 0,
     "cycles": 0,
-    "deadEnds": 1,
-    "totalDuration": 677,
+    "deadEnds": 0,
+    "totalDuration": 3447,
     "failedActions": 1
   },
   "actions": [
@@ -224,10 +317,41 @@
       "type": "click",
       "targetUid": "testid:input-legacy",
       "priority": 7
+    },
+    {
+      "type": "hover",
+      "targetUid": "testid:input-legacy",
+      "priority": 6
+    },
+    {
+      "type": "focus",
+      "targetUid": "testid:input-legacy",
+      "priority": 5
     }
   ],
-  "scenarios": [],
-  "mermaid": "stateDiagram-v2\n  state \"19dc7ff7 (d=0)\" as s_19dc7ff7",
-  "dot": "digraph {\n  \"19dc7ff70d063740\" [label=\"19dc7ff7\\nd=0 f=1\"];\n}",
-  "generatedAt": "2026-05-06T08:53:37.336Z"
+  "scenarios": [
+    {
+      "name": "hover_testid:input-legacy → focus_testid:input-legacy",
+      "steps": [
+        {
+          "type": "hover",
+          "targetUid": "testid:input-legacy",
+          "targetSelector": "[data-testid=\"input-legacy\"]",
+          "priority": 6
+        },
+        {
+          "type": "focus",
+          "targetUid": "testid:input-legacy",
+          "targetSelector": "[data-testid=\"input-legacy\"]",
+          "priority": 5
+        }
+      ],
+      "selectors": [
+        "testid:input-legacy"
+      ]
+    }
+  ],
+  "mermaid": "stateDiagram-v2\n  state \"19dc7ff7 (d=0)\" as s_19dc7ff7\n  s_19dc7ff7 --> s_19dc7ff7 : hover\n  s_19dc7ff7 --> s_19dc7ff7 : focus",
+  "dot": "digraph {\n  \"19dc7ff70d063740\" [label=\"19dc7ff7\\nd=0 f=1\"];\n  \"19dc7ff70d063740\" -> \"19dc7ff70d063740\" [label=\"hover\"];\n  \"19dc7ff70d063740\" -> \"19dc7ff70d063740\" [label=\"focus\"];\n}",
+  "generatedAt": "2026-05-06T11:12:17.993Z"
 }

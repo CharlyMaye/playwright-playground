@@ -167,6 +167,60 @@
             "priority": 2
           }
         }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "hover",
+          "params": {
+            "priority": 6
+          }
+        }
+      },
+      {
+        "conditions": {
+          "all": [
+            {
+              "fact": "tag",
+              "operator": "equal",
+              "value": "input"
+            },
+            {
+              "fact": "visible",
+              "operator": "equal",
+              "value": true
+            },
+            {
+              "fact": "enabled",
+              "operator": "equal",
+              "value": true
+            }
+          ]
+        },
+        "event": {
+          "type": "focus",
+          "params": {
+            "priority": 5
+          }
+        }
       }
     ],
     "captureStateScreenshots": false,
@@ -255,7 +309,7 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1778057792375,
+        "timestamp": 1778066145962,
         "scopeSelector": "section.is-ready"
       }
     ],
@@ -267,12 +321,12 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 1,
-    "totalDuration": 542,
+    "totalDuration": 760,
     "failedActions": 0
   },
   "actions": [],
   "scenarios": [],
   "mermaid": "stateDiagram-v2\n  state \"b38c67d1 (d=0)\" as s_b38c67d1",
   "dot": "digraph {\n  \"b38c67d1749995ed\" [label=\"b38c67d1\\nd=0 f=3\"];\n}",
-  "generatedAt": "2026-05-06T08:56:32.375Z"
+  "generatedAt": "2026-05-06T11:15:45.962Z"
 }
