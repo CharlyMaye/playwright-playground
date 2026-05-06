@@ -1,6 +1,6 @@
 {
-  "url": "http://localhost:4206/legacy-input?standalone=true&culture=fr-FR&theme=light&type=checkbox&value=false&isDisabled=true&isReadOnly=false",
-  "target": "legacy-input-type-checkbox-value-false-isDisabled-true-isReadOnly-false-light",
+  "url": "http://localhost:4206/legacy-groupbox?standalone=true&culture=fr-FR&theme=light&variant=ing-simple",
+  "target": "legacy-groupbox-variant-ing-simple-light",
   "config": {
     "rootSelector": "section.is-ready",
     "boundary": "overflow",
@@ -175,36 +175,36 @@
   "graph": {
     "states": [
       {
-        "id": "9de2487630fd4645",
+        "id": "61a768fc07b65962",
         "facts": [
           {
-            "uid": "testid:input-legacy",
-            "tag": "input",
+            "uid": "testid:btn-groupbox-action",
+            "tag": "button",
             "role": null,
-            "accessibleName": "",
-            "visible": true,
-            "enabled": false,
+            "accessibleName": null,
+            "visible": false,
+            "enabled": true,
             "focusable": true,
-            "text": "",
-            "inputType": "checkbox",
+            "text": "Action",
+            "inputType": null,
             "ariaExpanded": null,
             "ariaControls": null,
             "ariaOwns": null,
             "tabindex": null,
             "contentEditable": false,
             "boundingBox": {
-              "x": 8,
-              "y": 0,
-              "width": 20,
-              "height": 20
+              "x": 1181,
+              "y": 5,
+              "width": 79,
+              "height": 32
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "[data-testid=\"input-legacy\"]"
+            "cssSelector": "[data-testid=\"btn-groupbox-action\"]"
           }
         ],
         "depth": 0,
-        "timestamp": 1778051440784,
+        "timestamp": 1778051621572,
         "scopeSelector": "section.is-ready"
       }
     ],
@@ -216,12 +216,12 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 1,
-    "totalDuration": 495,
+    "totalDuration": 462,
     "failedActions": 0
   },
   "actions": [],
   "scenarios": [],
-  "mermaid": "stateDiagram-v2\n  state \"9de24876 (d=0)\" as s_9de24876",
-  "dot": "digraph {\n  \"9de2487630fd4645\" [label=\"9de24876\\nd=0 f=1\"];\n}",
-  "generatedAt": "2026-05-06T07:10:40.784Z"
+  "mermaid": "stateDiagram-v2\n  state \"61a768fc (d=0)\" as s_61a768fc",
+  "dot": "digraph {\n  \"61a768fc07b65962\" [label=\"61a768fc\\nd=0 f=1\"];\n}",
+  "generatedAt": "2026-05-06T07:13:41.572Z"
 }
