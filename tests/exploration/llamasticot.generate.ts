@@ -32,7 +32,7 @@ test.describe('LlamaSticot Exploration — Generate', () => {
         explorationConfig: target.config,
       });
 
-      test(`generate: ${target.name}`, async ({ explorer, explorationGraph, scenarioExporter, rulesEngine, page }) => {
+      test(`generate: ${target.name}`, async ({ explorer, explorationGraph, scenarioExporter, page }) => {
         const explorationTimeout = target.config.timeout ?? 30_000;
         test.setTimeout(explorationTimeout + 30_000);
 
@@ -46,21 +46,12 @@ test.describe('LlamaSticot Exploration — Generate', () => {
 
         const summary = explorer.getSummary();
 
-        const roots = explorationGraph.getRoots();
-        const initialFacts = roots.length > 0 ? roots[0].facts : [];
-        const actions = await rulesEngine.evaluate(initialFacts);
-
         writeJSON(`llamasticot-${target.name}.json`, {
           url: target.url,
           target: target.name,
           config: target.config,
           graph: explorationGraph.toJSON(),
           summary,
-          actions: actions.map((a) => ({
-            type: a.type,
-            targetUid: (a as { targetUid?: string }).targetUid,
-            priority: a.priority,
-          })),
           scenarios: scenarioExporter.exportScenarios(),
           mermaid: explorationGraph.toMermaid(),
           dot: explorationGraph.toDOT(),

@@ -35,7 +35,7 @@ test.describe('ScenarioExporter', () => {
     expect(scenarios).toHaveLength(1);
     expect(scenarios[0].steps).toHaveLength(2);
     expect(scenarios[0].name).toContain('click');
-    expect(scenarios[0].selectors.length).toBeGreaterThan(0);
+    expect(scenarios[0].targetUids.length).toBeGreaterThan(0);
   });
 
   test('exports scenarios from a branching graph', () => {
@@ -108,7 +108,7 @@ test.describe('ScenarioExporter', () => {
     const scenarios = exporter.exportScenarios();
     expect(scenarios).toHaveLength(1);
     expect(scenarios[0].name).toContain('sequence');
-    expect(scenarios[0].selectors).toContain('btn1');
-    expect(scenarios[0].selectors).toContain('input1');
+    expect(scenarios[0].targetUids).toContain('btn1');
+    expect(scenarios[0].targetUids).toContain('input1');
   });
 });

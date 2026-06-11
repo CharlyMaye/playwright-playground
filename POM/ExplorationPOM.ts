@@ -6,13 +6,12 @@ import { BuilderPOM, ConcreteBuilderPOM } from './BuilderPOM';
 type Scenario = {
   name: string;
   steps: CandidateAction[];
-  selectors: string[];
+  targetUids: string[];
 };
 
 type ExplorationOutput = {
   url: string;
   target: string;
-  scope: string;
   config: Record<string, unknown>;
   graph: SerializedGraph;
   scenarios: Scenario[];
@@ -105,8 +104,18 @@ export class ConcreteExplorationPOM extends ConcreteBuilderPOM<ExplorationSelect
         for (let i = 0; i < scenario.steps.length; i++) {
           const step = scenario.steps[i];
           const uid = this.#sanitizeUid((step as { targetUid?: string }).targetUid ?? '');
+          const isCrossDomain = this.#isCrossDomainNavigation(step);
           this._addAction(async () => {
-            await this.#executeAction(step);
+            if (isCrossDomain && step.type === 'click') {
+              // External link: hover to capture visual state without navigating away
+              const locator = this.#resolveByUid(
+                (step as UnitaryAction).targetUid,
+                (step as UnitaryAction & { targetSelector?: string }).targetSelector
+              );
+              await locator.hover();
+            } else {
+              await this.#executeAction(step);
+            }
           }, `${prefix}--scenario-${scenarioIndex}--${step.type}-${uid}`);
         }
       }
@@ -220,6 +229,22 @@ export class ConcreteExplorationPOM extends ConcreteBuilderPOM<ExplorationSelect
     }
     // Fallback — treat uid as selector
     return root.locator(uid);
+  }
+
+  #isCrossDomainNavigation(action: CandidateAction): boolean {
+    if (!this.#data) return false;
+    const targetUid = (action as { targetUid?: string }).targetUid;
+    const transition = this.#data.graph.transitions.find(
+      (t: Transition) =>
+        t.to === '__external_navigation__' &&
+        (t.action as { targetUid?: string }).targetUid === targetUid
+    );
+    if (!transition?.navigationUrl) return false;
+    try {
+      return new URL(this.#data.url).origin !== new URL(transition.navigationUrl).origin;
+    } catch {
+      return true;
+    }
   }
 
   async #executeAction(action: CandidateAction): Promise<void> {

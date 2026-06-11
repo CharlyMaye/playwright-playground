@@ -4,7 +4,7 @@ import { CandidateAction, SerializedGraph, Transition } from './types';
 export type Scenario = {
   name: string;
   steps: CandidateAction[];
-  selectors: string[];
+  targetUids: string[];
 };
 
 export abstract class ScenarioExporter {
@@ -41,9 +41,9 @@ export class ConcreteScenarioExporter extends ScenarioExporter {
 
   #pathToScenario(path: Transition[]): Scenario {
     const steps = path.map((t) => t.action);
-    const selectors = this.#extractSelectors(steps);
+    const targetUids = this.#extractTargetUids(steps);
     const name = steps.map((s) => this.#actionLabel(s)).join(' → ');
-    return { name, steps, selectors };
+    return { name, steps, targetUids };
   }
 
   #actionLabel(action: CandidateAction): string {
@@ -54,17 +54,17 @@ export class ConcreteScenarioExporter extends ScenarioExporter {
     return `${action.type}_${target}`;
   }
 
-  #extractSelectors(actions: CandidateAction[]): string[] {
-    const selectors = new Set<string>();
+  #extractTargetUids(actions: CandidateAction[]): string[] {
+    const uids = new Set<string>();
     for (const action of actions) {
       if (action.type === 'sequence') {
         for (const step of action.steps) {
-          selectors.add(step.action.targetUid);
+          uids.add(step.action.targetUid);
         }
       } else {
-        selectors.add((action as { targetUid: string }).targetUid);
+        uids.add((action as { targetUid: string }).targetUid);
       }
     }
-    return [...selectors];
+    return [...uids];
   }
 }

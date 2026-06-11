@@ -9,7 +9,7 @@ const DATA_DIR = path.resolve(__dirname, '..', '.exploration-data');
 
 const SCOPES = ['body', 'main', 'header', 'footer', 'body-content'] as const;
 
-describe('IANA Exploration — Replay', () => {
+describe('IANA Replay', () => {
   for (const scope of SCOPES) {
     const jsonPath = path.join(DATA_DIR, `iana-${scope}.json`);
 

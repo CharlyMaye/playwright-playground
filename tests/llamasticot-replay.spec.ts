@@ -9,7 +9,7 @@ const { describe } = test;
 
 const DATA_DIR = path.resolve(__dirname, '..', '.exploration-data');
 
-describe('LlamaSticot Exploration — Replay', () => {
+describe('LlamaSticot Replay', () => {
   for (const target of LLAMASTICOT_TARGETS) {
     const jsonPath = path.join(DATA_DIR, `llamasticot-${target.name}.json`);
 

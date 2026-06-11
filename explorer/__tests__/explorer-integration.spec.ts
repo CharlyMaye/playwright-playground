@@ -231,7 +231,7 @@ test.describe('Explorer — Integration with local HTML page', () => {
       for (const scenario of scenarios) {
         expect(scenario.name).toBeTruthy();
         expect(scenario.steps.length).toBeGreaterThan(0);
-        expect(scenario.selectors.length).toBeGreaterThan(0);
+        expect(scenario.targetUids.length).toBeGreaterThan(0);
       }
     }
   });

@@ -195,14 +195,30 @@ Exemple :
 
 ```json
 {
-  "component": "...",
-  "roles": [...],
-  "rules": [...],
-  "scenario": [
-    { "action": "hover" },
-    { "action": "focus" },
-    { "action": "click" }
-  ]
+  "url": "http://localhost:4206/button?theme=light",
+  "target": "button-enabled-light",
+  "config": { "maxDepth": 3, "strategy": "bfs" },
+  "graph": {
+    "states": [{ "id": "abc123", "depth": 0 }],
+    "transitions": [{ "from": "abc123", "to": "def456",
+      "action": { "type": "hover", "targetUid": "button[0]" } }]
+  },
+  "summary": { "statesDiscovered": 2, "transitions": 3 },
+  "scenarios": [
+    {
+      "name": "hover_button[0] → click_button[0]",
+      "steps": [
+        { "type": "hover", "targetUid": "button[0]",
+          "targetSelector": "button.primary", "priority": 9 },
+        { "type": "click", "targetUid": "button[0]",
+          "targetSelector": "button.primary", "priority": 10 }
+      ],
+      "targetUids": ["button[0]"]
+    }
+  ],
+  "mermaid": "stateDiagram-v2 ...",
+  "dot": "digraph { ... }",
+  "generatedAt": "2026-06-11T10:00:00.000Z"
 }
 ```
 

@@ -79,7 +79,7 @@ test.describe('IANA Exploration — Generate', () => {
         },
       });
 
-      test(`generate: ${scopeName}`, async ({ explorer, explorationGraph, scenarioExporter, rulesEngine, page }) => {
+      test(`generate: ${scopeName}`, async ({ explorer, explorationGraph, scenarioExporter, page }) => {
         const explorationTimeout = overrides.timeout ?? 30_000;
         test.setTimeout(explorationTimeout + 30_000);
         await page.goto(IANA_URL, { waitUntil: 'load' });
@@ -89,21 +89,12 @@ test.describe('IANA Exploration — Generate', () => {
         const summary = explorer.getSummary();
 
         // Collect initial actions for the root state
-        const roots = explorationGraph.getRoots();
-        const initialFacts = roots.length > 0 ? roots[0].facts : [];
-        const actions = await rulesEngine.evaluate(initialFacts);
-
         writeJSON(`iana-${scopeName}.json`, {
           url: IANA_URL,
-          scope: scopeName,
+          target: scopeName,
           config: overrides,
           graph: explorationGraph.toJSON(),
           summary,
-          actions: actions.map((a) => ({
-            type: a.type,
-            targetUid: (a as { targetUid?: string }).targetUid,
-            priority: a.priority,
-          })),
           scenarios: scenarioExporter.exportScenarios(),
           mermaid: explorationGraph.toMermaid(),
           dot: explorationGraph.toDOT(),
