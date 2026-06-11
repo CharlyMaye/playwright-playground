@@ -63,9 +63,12 @@ export class ConcreteActionExecutor extends ActionExecutor {
       case 'fill':
         await locator.fill(action.value, { timeout });
         break;
-      case 'select':
-        await locator.selectOption(action.option, { timeout });
+      case 'select': {
+        const options = await locator.locator('option').allTextContents();
+        const label = options.find((o) => o.trim()) ?? '';
+        if (label) await locator.selectOption({ label }, { timeout });
         break;
+      }
       case 'focus':
         await locator.focus({ timeout });
         break;
@@ -91,7 +94,8 @@ export class ConcreteActionExecutor extends ActionExecutor {
   }
 
   async #executeSequence(action: SequenceAction, start: number): Promise<ActionResult> {
-    const sequenceTimeout = this.#config.stabilizationTimeout * action.steps.length;
+    // Each step's waitAfter gets the full stabilizationTimeout — not a fraction of it.
+    const stepTimeout = this.#config.stabilizationTimeout;
 
     for (const step of action.steps) {
       // Execute the unitary action for this step
@@ -108,7 +112,7 @@ export class ConcreteActionExecutor extends ActionExecutor {
 
       // Evaluate wait condition if present
       if (step.waitAfter) {
-        await this.#evaluateWaitCondition(step.waitAfter, sequenceTimeout);
+        await this.#evaluateWaitCondition(step.waitAfter, stepTimeout);
       }
     }
 

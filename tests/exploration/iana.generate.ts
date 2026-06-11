@@ -21,14 +21,14 @@ const SCOPES: Record<string, Partial<PartialExplorationConfig>> = {
     rootSelector: 'body',
     maxDepth: 1,
     maxStates: 15,
-    maxActionsPerState: 10,
+    maxActionsPerState: 100,
     timeout: 30_000,
   },
   main: {
     rootSelector: 'main',
     maxDepth: 1,
     maxStates: 10,
-    maxActionsPerState: 5,
+    maxActionsPerState: 100,
   },
   header: {
     rootSelector: 'header',

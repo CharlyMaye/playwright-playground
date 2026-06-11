@@ -26,6 +26,8 @@ L'exploration repose sur un **moteur de règles** (`RulesEngine.ts`) qui, pour c
 | `accessibleName`  | string\|null  | `aria-label` / `aria-labelledby` / label associé / `title`          |
 | `text`            | string        | Contenu textuel (tronqué à 200 chars)                               |
 | `contentEditable` | boolean       | `isContentEditable`                                                 |
+| `ariaOwns`        | string\|null  | Valeur de `aria-owns`                                               |
+| `tabindex`        | number\|null  | Valeur numérique de `tabindex`                                      |
 
 ### Sélecteur d'extraction DOM
 
@@ -53,13 +55,15 @@ a, button, input, select, textarea, [role], [tabindex], [contenteditable], detai
 | `role=menuitem`                                 | visible         | click  | 9        |
 | `aria-expanded=false` (any)                     | enabled visible | click  | 13       |
 | `summary`                                       | visible         | click  | 12       |
+| `role=option`                                   | visible         | click  | 8        |
+| `role=treeitem`                                 | visible         | click  | 8        |
 
 ### Rules visuelles additionnelles (VISUAL_STATE_RULES dans llamasticot-rules.ts)
 
 Appliquées automatiquement à tous les targets LlamaSticot :
 
-- **hover** sur `button` (priorité 9), `a` (priorité 4)
-- **focus** sur `button` (priorité 8), `a` (priorité 3)
+- **hover** sur `button` (priorité 9), `a` (priorité 4), `input` (priorité 6)
+- **focus** sur `button` (priorité 8), `a` (priorité 3), `input` (priorité 5)
 - **mousedown** sur `button` (priorité 7), `a` (priorité 2)
 
 ### Ajout de rules custom par target

@@ -21,7 +21,12 @@ describe('LlamaSticot Exploration — Replay', () => {
         const data = JSON.parse(fs.readFileSync(jsonPath, 'utf-8')) as { graph: { states: unknown[] } };
         expect(data.graph.states.length).toBeGreaterThan(0);
 
-        await instance.load(jsonPath).enableScreenshot().goto().replayAll().execute();
+        await instance
+          .load(jsonPath)
+          .enableScreenshot() //
+          .goto()
+          .replayAll()
+          .execute();
 
         expect(testContext.page.url()).toBeDefined();
       });

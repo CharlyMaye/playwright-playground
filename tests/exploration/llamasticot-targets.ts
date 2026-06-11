@@ -157,9 +157,6 @@ export const LLAMASTICOT_TARGETS: ExplorationTarget[] = [
     queryParams: { variant: '' },
   }),
 
-  // Interactive target — confirms full pipeline (extract → rules → execute → graph).
-  createLlamasticotTarget('mat-button', { theme: 'light', captureScreenshots: false }),
-
   // legacy-text-area — single state (no inputs, always enabled)
   createLlamasticotTarget('legacy-text-area', { theme: 'light' }),
 
@@ -275,4 +272,196 @@ export const LLAMASTICOT_TARGETS: ExplorationTarget[] = [
   createLlamasticotTarget('legacy-layout-header-body-footer', { theme: 'light', configOverrides: { maxDepth: 0 } }),
   createLlamasticotTarget('legacy-layout-header-body-footer-with-nav', { theme: 'light', configOverrides: { maxDepth: 0 } }),
   createLlamasticotTarget('legacy-layout-header-body-footer-groupbox-grid', { theme: 'light', configOverrides: { maxDepth: 0 } }),
+
+  // ═══════════════════════════════════════════════════════════
+  // ANGULAR MATERIAL
+  // ═══════════════════════════════════════════════════════════
+
+  // ─── mat-button ─── (9 variants × enabled/disabled)
+  createLlamasticotTarget('mat-button', { theme: 'light', queryParams: { variant: 'text' } }),
+  createLlamasticotTarget('mat-button', { theme: 'light', queryParams: { variant: 'text', disabled: 'true' } }),
+  createLlamasticotTarget('mat-button', { theme: 'light', queryParams: { variant: 'elevated' } }),
+  createLlamasticotTarget('mat-button', { theme: 'light', queryParams: { variant: 'elevated', disabled: 'true' } }),
+  createLlamasticotTarget('mat-button', { theme: 'light', queryParams: { variant: 'outlined' } }),
+  createLlamasticotTarget('mat-button', { theme: 'light', queryParams: { variant: 'outlined', disabled: 'true' } }),
+  createLlamasticotTarget('mat-button', { theme: 'light', queryParams: { variant: 'filled' } }),
+  createLlamasticotTarget('mat-button', { theme: 'light', queryParams: { variant: 'filled', disabled: 'true' } }),
+  createLlamasticotTarget('mat-button', { theme: 'light', queryParams: { variant: 'tonal' } }),
+  createLlamasticotTarget('mat-button', { theme: 'light', queryParams: { variant: 'tonal', disabled: 'true' } }),
+  createLlamasticotTarget('mat-button', { theme: 'light', queryParams: { variant: 'icon' } }),
+  createLlamasticotTarget('mat-button', { theme: 'light', queryParams: { variant: 'icon', disabled: 'true' } }),
+  createLlamasticotTarget('mat-button', { theme: 'light', queryParams: { variant: 'fab' } }),
+  createLlamasticotTarget('mat-button', { theme: 'light', queryParams: { variant: 'fab', disabled: 'true' } }),
+  createLlamasticotTarget('mat-button', { theme: 'light', queryParams: { variant: 'mini-fab' } }),
+  createLlamasticotTarget('mat-button', { theme: 'light', queryParams: { variant: 'mini-fab', disabled: 'true' } }),
+  createLlamasticotTarget('mat-button', { theme: 'light', queryParams: { variant: 'extended-fab' } }),
+  createLlamasticotTarget('mat-button', { theme: 'light', queryParams: { variant: 'extended-fab', disabled: 'true' } }),
+
+  // ─── mat-card ───
+  createLlamasticotTarget('mat-card', { theme: 'light' }),
+  createLlamasticotTarget('mat-card/raw', { theme: 'light', configOverrides: { maxDepth: 0 } }),
+  createLlamasticotTarget('mat-card/v2', { theme: 'light' }),
+
+  // ─── mat-input ───
+  createLlamasticotTarget('mat-input', { theme: 'light' }),
+  createLlamasticotTarget('mat-input', { theme: 'light', queryParams: { isDisabled: 'true' } }),
+  createLlamasticotTarget('mat-input', { theme: 'light', queryParams: { isReadOnly: 'true' } }),
+  createLlamasticotTarget('mat-input', { theme: 'light', queryParams: { hasError: 'true' } }),
+
+  // ─── mat-select ───
+  createLlamasticotTarget('mat-select', { theme: 'light' }),
+  createLlamasticotTarget('mat-select', { theme: 'light', queryParams: { isDisabled: 'true' } }),
+
+  // ─── mat-checkbox ───
+  createLlamasticotTarget('mat-checkbox', { theme: 'light' }),
+  createLlamasticotTarget('mat-checkbox', { theme: 'light', queryParams: { checked: 'true' } }),
+  createLlamasticotTarget('mat-checkbox', { theme: 'light', queryParams: { indeterminate: 'true' } }),
+  createLlamasticotTarget('mat-checkbox', { theme: 'light', queryParams: { disabled: 'true' } }),
+  createLlamasticotTarget('mat-checkbox', { theme: 'light', queryParams: { checked: 'true', disabled: 'true' } }),
+
+  // ─── mat-radio-button ───
+  createLlamasticotTarget('mat-radio-button', { theme: 'light' }),
+  createLlamasticotTarget('mat-radio-button', { theme: 'light', queryParams: { disabled: 'true' } }),
+
+  // ─── mat-slide-toggle ───
+  createLlamasticotTarget('mat-slide-toggle', { theme: 'light' }),
+  createLlamasticotTarget('mat-slide-toggle', { theme: 'light', queryParams: { checked: 'true' } }),
+  createLlamasticotTarget('mat-slide-toggle', { theme: 'light', queryParams: { disabled: 'true' } }),
+  createLlamasticotTarget('mat-slide-toggle', { theme: 'light', queryParams: { checked: 'true', disabled: 'true' } }),
+
+  // ─── mat-slider ───
+  createLlamasticotTarget('mat-slider', { theme: 'light', queryParams: { type: 'single' } }),
+  createLlamasticotTarget('mat-slider', { theme: 'light', queryParams: { type: 'single', disabled: 'true' } }),
+  createLlamasticotTarget('mat-slider', { theme: 'light', queryParams: { type: 'range' } }),
+  createLlamasticotTarget('mat-slider', { theme: 'light', queryParams: { type: 'range', disabled: 'true' } }),
+
+  // ─── mat-progress-bar ───
+  createLlamasticotTarget('mat-progress-bar', { theme: 'light', queryParams: { mode: 'determinate' }, configOverrides: { maxDepth: 0 } }),
+  createLlamasticotTarget('mat-progress-bar', { theme: 'light', queryParams: { mode: 'indeterminate' }, configOverrides: { maxDepth: 0 } }),
+  createLlamasticotTarget('mat-progress-bar', { theme: 'light', queryParams: { mode: 'buffer' }, configOverrides: { maxDepth: 0 } }),
+  createLlamasticotTarget('mat-progress-bar', { theme: 'light', queryParams: { mode: 'query' }, configOverrides: { maxDepth: 0 } }),
+
+  // ─── mat-progress-spinner ───
+  createLlamasticotTarget('mat-progress-spinner', { theme: 'light', queryParams: { mode: 'determinate' }, configOverrides: { maxDepth: 0 } }),
+  createLlamasticotTarget('mat-progress-spinner', { theme: 'light', queryParams: { mode: 'indeterminate' }, configOverrides: { maxDepth: 0 } }),
+
+  // ─── mat-badge ───
+  createLlamasticotTarget('mat-badge', { theme: 'light', queryParams: { target: 'button', color: 'primary' }, configOverrides: { maxDepth: 0 } }),
+  createLlamasticotTarget('mat-badge', { theme: 'light', queryParams: { target: 'button', color: 'accent' }, configOverrides: { maxDepth: 0 } }),
+  createLlamasticotTarget('mat-badge', { theme: 'light', queryParams: { target: 'button', color: 'warn' }, configOverrides: { maxDepth: 0 } }),
+  createLlamasticotTarget('mat-badge', { theme: 'light', queryParams: { target: 'icon', color: 'primary' }, configOverrides: { maxDepth: 0 } }),
+  createLlamasticotTarget('mat-badge', { theme: 'light', queryParams: { target: 'icon', color: 'accent' }, configOverrides: { maxDepth: 0 } }),
+  createLlamasticotTarget('mat-badge', { theme: 'light', queryParams: { target: 'icon', color: 'warn' }, configOverrides: { maxDepth: 0 } }),
+
+  // ─── mat-divider ───
+  createLlamasticotTarget('mat-divider', { theme: 'light', queryParams: { orientation: 'horizontal' }, configOverrides: { maxDepth: 0 } }),
+  createLlamasticotTarget('mat-divider', { theme: 'light', queryParams: { orientation: 'horizontal', inset: 'true' }, configOverrides: { maxDepth: 0 } }),
+  createLlamasticotTarget('mat-divider', { theme: 'light', queryParams: { orientation: 'vertical' }, configOverrides: { maxDepth: 0 } }),
+
+  // ─── mat-icon ───
+  createLlamasticotTarget('mat-icon', { theme: 'light', configOverrides: { maxDepth: 0 } }),
+  createLlamasticotTarget('mat-icon', { theme: 'light', queryParams: { color: 'primary' }, configOverrides: { maxDepth: 0 } }),
+  createLlamasticotTarget('mat-icon', { theme: 'light', queryParams: { color: 'accent' }, configOverrides: { maxDepth: 0 } }),
+  createLlamasticotTarget('mat-icon', { theme: 'light', queryParams: { color: 'warn' }, configOverrides: { maxDepth: 0 } }),
+
+  // ─── mat-toolbar ───
+  createLlamasticotTarget('mat-toolbar', { theme: 'light' }),
+  createLlamasticotTarget('mat-toolbar', { theme: 'light', queryParams: { color: 'primary' } }),
+  createLlamasticotTarget('mat-toolbar', { theme: 'light', queryParams: { color: 'accent' } }),
+  createLlamasticotTarget('mat-toolbar', { theme: 'light', queryParams: { color: 'warn' } }),
+
+  // ─── mat-chips ───
+  createLlamasticotTarget('mat-chips', { theme: 'light', queryParams: { type: 'display' } }),
+  createLlamasticotTarget('mat-chips', { theme: 'light', queryParams: { type: 'selectable' } }),
+  createLlamasticotTarget('mat-chips', { theme: 'light', queryParams: { type: 'removable' } }),
+
+  // ─── mat-list ───
+  createLlamasticotTarget('mat-list', { theme: 'light', queryParams: { type: 'basic' } }),
+  createLlamasticotTarget('mat-list', { theme: 'light', queryParams: { type: 'icon' } }),
+  createLlamasticotTarget('mat-list', { theme: 'light', queryParams: { type: 'nav' } }),
+
+  // ─── mat-grid-list (visual only) ───
+  createLlamasticotTarget('mat-grid-list', { theme: 'light', configOverrides: { maxDepth: 0 } }),
+
+  // ─── mat-autocomplete (CDK overlay) ───
+  createLlamasticotTarget('mat-autocomplete', {
+    theme: 'light',
+    configOverrides: { overflowSelectors: [...LLAMASTICOT_OVERFLOW_SELECTORS] },
+  }),
+
+  // ─── mat-datepicker (CDK overlay) ───
+  createLlamasticotTarget('mat-datepicker', {
+    theme: 'light',
+    configOverrides: { overflowSelectors: [...LLAMASTICOT_OVERFLOW_SELECTORS] },
+  }),
+  createLlamasticotTarget('mat-datepicker', { theme: 'light', queryParams: { disabled: 'true' } }),
+  createLlamasticotTarget('mat-datepicker', { theme: 'light', queryParams: { readonly: 'true' } }),
+
+  // ─── mat-menu (CDK overlay) ───
+  createLlamasticotTarget('mat-menu', {
+    theme: 'light',
+    configOverrides: { overflowSelectors: [...LLAMASTICOT_OVERFLOW_SELECTORS] },
+  }),
+  createLlamasticotTarget('mat-menu', { theme: 'light', queryParams: { disabled: 'true' } }),
+
+  // ─── mat-snackbar (CDK overlay) ───
+  createLlamasticotTarget('mat-snackbar', {
+    theme: 'light',
+    queryParams: { type: 'basic' },
+    configOverrides: { overflowSelectors: [...LLAMASTICOT_OVERFLOW_SELECTORS] },
+  }),
+  createLlamasticotTarget('mat-snackbar', {
+    theme: 'light',
+    queryParams: { type: 'with-action' },
+    configOverrides: { overflowSelectors: [...LLAMASTICOT_OVERFLOW_SELECTORS] },
+  }),
+
+  // ─── mat-tooltip (hover triggers via VISUAL_STATE_RULES) ───
+  createLlamasticotTarget('mat-tooltip', { theme: 'light', queryParams: { position: 'above' } }),
+  createLlamasticotTarget('mat-tooltip', { theme: 'light', queryParams: { position: 'below' } }),
+  createLlamasticotTarget('mat-tooltip', { theme: 'light', queryParams: { position: 'left' } }),
+  createLlamasticotTarget('mat-tooltip', { theme: 'light', queryParams: { position: 'right' } }),
+  createLlamasticotTarget('mat-tooltip', { theme: 'light', queryParams: { position: 'above', disabled: 'true' } }),
+
+  // ─── mat-tabs ───
+  createLlamasticotTarget('mat-tabs', { theme: 'light', configOverrides: { maxDepth: 1 } }),
+
+  // ─── mat-expansion-panel ───
+  createLlamasticotTarget('mat-expansion-panel', { theme: 'light' }),
+
+  // ─── mat-stepper ───
+  createLlamasticotTarget('mat-stepper', { theme: 'light', queryParams: { orientation: 'horizontal' } }),
+  createLlamasticotTarget('mat-stepper', { theme: 'light', queryParams: { orientation: 'vertical' } }),
+
+  // ─── mat-sidenav ───
+  createLlamasticotTarget('mat-sidenav', { theme: 'light', queryParams: { mode: 'side' }, configOverrides: { maxDepth: 1 } }),
+  createLlamasticotTarget('mat-sidenav', { theme: 'light', queryParams: { mode: 'over' }, configOverrides: { maxDepth: 1 } }),
+  createLlamasticotTarget('mat-sidenav', { theme: 'light', queryParams: { mode: 'push' }, configOverrides: { maxDepth: 1 } }),
+
+  // ─── mat-bottom-sheet (CDK overlay) ───
+  createLlamasticotTarget('mat-bottom-sheet', {
+    theme: 'light',
+    configOverrides: { overflowSelectors: [...LLAMASTICOT_OVERFLOW_SELECTORS] },
+  }),
+
+  // ─── mat-dialog (CDK overlay) ───
+  createLlamasticotTarget('mat-dialog', {
+    theme: 'light',
+    queryParams: { type: 'basic' },
+    configOverrides: { overflowSelectors: [...LLAMASTICOT_OVERFLOW_SELECTORS] },
+  }),
+  createLlamasticotTarget('mat-dialog', {
+    theme: 'light',
+    queryParams: { type: 'fullscreen' },
+    configOverrides: { overflowSelectors: [...LLAMASTICOT_OVERFLOW_SELECTORS] },
+  }),
+
+  // ─── mat-table ───
+  createLlamasticotTarget('mat-table', { theme: 'light', configOverrides: { maxDepth: 1 } }),
+
+  // ─── mat-paginator ───
+  createLlamasticotTarget('mat-paginator', { theme: 'light' }),
+
+  // ─── mat-tree ───
+  createLlamasticotTarget('mat-tree', { theme: 'light' }),
 ];

@@ -174,8 +174,7 @@ export class ConcreteDOMExtractor extends DOMExtractor {
   #deduplicateRepeated(facts: ElementFact[]): ElementFact[] {
     const seen = new Map<string, ElementFact>();
     for (const fact of facts) {
-      // Structure key: tag + role + inputType + enabled + visible
-      const structureKey = `${fact.tag}|${fact.role}|${fact.inputType}|${fact.enabled}|${fact.visible}`;
+      const structureKey = `${fact.tag}|${fact.role}|${fact.inputType}|${fact.enabled}|${fact.visible}|${fact.accessibleName}|${fact.text.substring(0, 50)}`;
       if (!seen.has(structureKey)) {
         seen.set(structureKey, fact);
       }

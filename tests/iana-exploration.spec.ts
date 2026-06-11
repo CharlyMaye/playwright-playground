@@ -17,7 +17,12 @@ describe('IANA Exploration — Replay', () => {
       test(`replay all scenarios (${scope})`, {}, async ({ instance, testContext }) => {
         test.setTimeout(120_000);
 
-        await instance.load(jsonPath).enableScreenshot().goto().replayAll().execute();
+        await instance
+          .load(jsonPath)
+          .enableScreenshot() //
+          .goto()
+          .replayAll()
+          .execute();
 
         expect(testContext.page.url()).toBeDefined();
       });
