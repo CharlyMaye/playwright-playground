@@ -14,7 +14,7 @@ export class ConcreteStateManager extends StateManager {
   readonly #visitedStates = new Set<string>();
   readonly #config: ExplorationConfig;
 
-  constructor(protected explorationConfig: ExplorationConfig) {
+  constructor(explorationConfig: ExplorationConfig) {
     super();
     this.#config = explorationConfig;
   }
@@ -39,27 +39,17 @@ export class ConcreteStateManager extends StateManager {
   }
 
   #hashFacts(facts: ElementFact[]): string {
-    const strategy = this.#config.domHashStrategy;
+    // 'interactive-only' hashes element identity + ARIA state; 'structure' also includes tag + role.
+    const serialize =
+      this.#config.domHashStrategy === 'interactive-only'
+        ? (f: ElementFact) => `${f.uid}|${f.visible}|${f.enabled}|${f.ariaExpanded}`
+        : (f: ElementFact) => `${f.tag}|${f.role}|${f.uid}|${f.visible}|${f.enabled}|${f.ariaExpanded}`;
 
-    let dataToHash: string;
-
-    if (strategy === 'interactive-only') {
-      // Hash only interactive elements' identity + ARIA state
-      const interactiveData = facts
-        .filter((f) => f.isInScope)
-        .map((f) => `${f.uid}|${f.visible}|${f.enabled}|${f.ariaExpanded}`)
-        .sort()
-        .join('\n');
-      dataToHash = interactiveData;
-    } else {
-      // Hash full structure: tags + roles + visibility + enabled state
-      const structureData = facts
-        .filter((f) => f.isInScope)
-        .map((f) => `${f.tag}|${f.role}|${f.uid}|${f.visible}|${f.enabled}|${f.ariaExpanded}`)
-        .sort()
-        .join('\n');
-      dataToHash = structureData;
-    }
+    const dataToHash = facts
+      .filter((f) => f.isInScope)
+      .map(serialize)
+      .sort()
+      .join('\n');
 
     return createHash('sha256').update(dataToHash).digest('hex').substring(0, 16);
   }

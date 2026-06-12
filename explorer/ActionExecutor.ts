@@ -1,9 +1,10 @@
+import type { Locator } from '@playwright/test';
 import { Injector } from '../engine';
 import { TestContext } from '../engine/test.context';
 import { ExplorationConfig } from './ExplorationConfig';
 import { ExplorationScope } from './ExplorationScope';
 import { ReadinessChecker } from './ReadinessChecker';
-import { ActionResult, CandidateAction, ElementFact, SequenceAction, UnitaryAction, WaitCondition } from './types';
+import { ActionResult, CandidateAction, ElementFact, SelectAction, SequenceAction, UnitaryAction, WaitCondition } from './types';
 
 export abstract class ActionExecutor {
   abstract execute(action: CandidateAction): Promise<ActionResult>;
@@ -16,12 +17,7 @@ export class ConcreteActionExecutor extends ActionExecutor {
   readonly #config: ExplorationConfig;
   readonly #readiness: ReadinessChecker;
 
-  constructor(
-    protected testContext: TestContext,
-    protected explorationScope: ExplorationScope,
-    protected explorationConfig: ExplorationConfig,
-    protected readinessChecker: ReadinessChecker
-  ) {
+  constructor(testContext: TestContext, explorationScope: ExplorationScope, explorationConfig: ExplorationConfig, readinessChecker: ReadinessChecker) {
     super();
     this.#page = testContext.page;
     this.#scope = explorationScope;
@@ -39,14 +35,13 @@ export class ConcreteActionExecutor extends ActionExecutor {
         return await this.#executeUnitary(action, start);
       }
     } catch (error) {
-      return {
-        success: false,
-        error: error instanceof Error ? error.message : String(error),
-        newFacts: [],
-        domChanged: false,
-        duration: Date.now() - start,
-      };
+      return this.#result(start, error instanceof Error ? error.message : String(error));
     }
+  }
+
+  #result(start: number, error: string | null = null): ActionResult {
+    const success = error === null;
+    return { success, error, newFacts: [], domChanged: success, duration: Date.now() - start };
   }
 
   async #executeUnitary(action: UnitaryAction, start: number): Promise<ActionResult> {
@@ -63,12 +58,9 @@ export class ConcreteActionExecutor extends ActionExecutor {
       case 'fill':
         await locator.fill(action.value, { timeout });
         break;
-      case 'select': {
-        const options = await locator.locator('option').allTextContents();
-        const label = options.find((o) => o.trim()) ?? '';
-        if (label) await locator.selectOption({ label }, { timeout });
+      case 'select':
+        await this.#selectOption(locator, action, timeout);
         break;
-      }
       case 'focus':
         await locator.focus({ timeout });
         break;
@@ -80,49 +72,38 @@ export class ConcreteActionExecutor extends ActionExecutor {
         break;
     }
 
-    // Wait for DOM stabilization
     await this.#readiness.waitForReady();
     await this.#page.waitForTimeout(this.#config.stabilizationTimeout);
 
-    return {
-      success: true,
-      error: null,
-      newFacts: [],
-      domChanged: true,
-      duration: Date.now() - start,
-    };
+    return this.#result(start);
+  }
+
+  /** Selects the requested option label, or falls back to the first non-empty one. */
+  async #selectOption(locator: Locator, action: SelectAction, timeout: number): Promise<void> {
+    if (action.option) {
+      await locator.selectOption({ label: action.option }, { timeout });
+      return;
+    }
+    const options = await locator.locator('option').allTextContents();
+    const label = options.find((o) => o.trim()) ?? '';
+    if (label) await locator.selectOption({ label }, { timeout });
   }
 
   async #executeSequence(action: SequenceAction, start: number): Promise<ActionResult> {
-    // Each step's waitAfter gets the full stabilizationTimeout — not a fraction of it.
     const stepTimeout = this.#config.stabilizationTimeout;
 
     for (const step of action.steps) {
-      // Execute the unitary action for this step
       const stepResult = await this.#executeUnitary(step.action, start);
       if (!stepResult.success) {
-        return {
-          success: false,
-          error: `Sequence step failed: ${stepResult.error}`,
-          newFacts: [],
-          domChanged: false,
-          duration: Date.now() - start,
-        };
+        return this.#result(start, `Sequence step failed: ${stepResult.error}`);
       }
 
-      // Evaluate wait condition if present
       if (step.waitAfter) {
         await this.#evaluateWaitCondition(step.waitAfter, stepTimeout);
       }
     }
 
-    return {
-      success: true,
-      error: null,
-      newFacts: [],
-      domChanged: true,
-      duration: Date.now() - start,
-    };
+    return this.#result(start);
   }
 
   async #evaluateWaitCondition(condition: WaitCondition, timeout: number): Promise<void> {

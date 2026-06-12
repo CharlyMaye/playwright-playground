@@ -14,7 +14,7 @@ export class ConcreteRulesEngine extends RulesEngine {
   readonly #engine: Engine;
   readonly #config: ExplorationConfig;
 
-  constructor(protected explorationConfig: ExplorationConfig) {
+  constructor(explorationConfig: ExplorationConfig) {
     super();
     this.#engine = new Engine();
     this.#config = explorationConfig;

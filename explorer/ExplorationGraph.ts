@@ -45,13 +45,18 @@ export class ConcreteExplorationGraph extends ExplorationGraph {
   }
 
   addTransition(transition: Transition): void {
-    const out = this.#outgoing.get(transition.from);
-    if (out) out.push(transition);
-    else this.#outgoing.set(transition.from, [transition]);
+    this.#appendTransition(this.#outgoing, transition.from, transition);
+    this.#appendTransition(this.#incoming, transition.to, transition);
+  }
 
-    const inc = this.#incoming.get(transition.to);
-    if (inc) inc.push(transition);
-    else this.#incoming.set(transition.to, [transition]);
+  #appendTransition(index: Map<string, Transition[]>, key: string, transition: Transition): void {
+    const list = index.get(key);
+    if (list) list.push(transition);
+    else index.set(key, [transition]);
+  }
+
+  #allTransitions(): Transition[] {
+    return [...this.#outgoing.values()].flat();
   }
 
   hasState(id: string): boolean {
@@ -153,10 +158,9 @@ export class ConcreteExplorationGraph extends ExplorationGraph {
   }
 
   getStats() {
-    const transitions = [...this.#outgoing.values()].reduce((sum, arr) => sum + arr.length, 0);
     return {
       states: this.#states.size,
-      transitions,
+      transitions: this.#allTransitions().length,
       maxDepth: this.getDepth(),
       cycles: this.getCycles().length,
       deadEnds: this.getLeaves().length,
@@ -164,13 +168,9 @@ export class ConcreteExplorationGraph extends ExplorationGraph {
   }
 
   toJSON(): SerializedGraph {
-    const transitions: Transition[] = [];
-    for (const arr of this.#outgoing.values()) {
-      transitions.push(...arr);
-    }
     return {
       states: this.getAllStates(),
-      transitions,
+      transitions: this.#allTransitions(),
     };
   }
 
@@ -182,11 +182,8 @@ export class ConcreteExplorationGraph extends ExplorationGraph {
       lines.push(`  "${state.id}" [label="${state.id.substring(0, 8)}\\n${label}"];`);
     }
 
-    for (const transitions of this.#outgoing.values()) {
-      for (const t of transitions) {
-        const actionLabel = t.action.type === 'sequence' ? 'sequence' : `${t.action.type}`;
-        lines.push(`  "${t.from}" -> "${t.to}" [label="${actionLabel}"];`);
-      }
+    for (const t of this.#allTransitions()) {
+      lines.push(`  "${t.from}" -> "${t.to}" [label="${t.action.type}"];`);
     }
 
     lines.push('}');
@@ -201,11 +198,8 @@ export class ConcreteExplorationGraph extends ExplorationGraph {
       lines.push(`  state "${shortId} (d=${state.depth})" as ${this.#mermaidId(state.id)}`);
     }
 
-    for (const transitions of this.#outgoing.values()) {
-      for (const t of transitions) {
-        const actionLabel = t.action.type === 'sequence' ? 'sequence' : t.action.type;
-        lines.push(`  ${this.#mermaidId(t.from)} --> ${this.#mermaidId(t.to)} : ${actionLabel}`);
-      }
+    for (const t of this.#allTransitions()) {
+      lines.push(`  ${this.#mermaidId(t.from)} --> ${this.#mermaidId(t.to)} : ${t.action.type}`);
     }
 
     return lines.join('\n');

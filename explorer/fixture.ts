@@ -79,15 +79,7 @@ export const explorerTest = base.extend<ExplorerTestFixture, ExplorerWorkerFixtu
   },
 
   explorer: async ({ explorationConfig }, use) => {
-    INJECTOR.beginScope();
-    try {
-      const config = new ConcreteExplorationConfig(explorationConfig);
-      INJECTOR.provideScopedInstance(ExplorationConfig, config);
-      const explorer = resolve(Explorer);
-      await use(explorer);
-    } finally {
-      INJECTOR.endScope();
-    }
+    await withExplorationScope(explorationConfig, (explorer) => use(explorer));
   },
 
   explorationGraph: async ({ explorer }, use) => {
@@ -139,8 +131,8 @@ export async function withExplorationScope<T>(
 ): Promise<T> {
   INJECTOR.beginScope();
   try {
-    const c = new ConcreteExplorationConfig(config);
-    INJECTOR.provideScopedInstance(ExplorationConfig, c);
+    const explorationConfig = new ConcreteExplorationConfig(config);
+    INJECTOR.provideScopedInstance(ExplorationConfig, explorationConfig);
     const explorer = resolve(Explorer);
     return await fn(explorer);
   } finally {

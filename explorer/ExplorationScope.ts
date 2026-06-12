@@ -18,10 +18,7 @@ export class ConcreteExplorationScope extends ExplorationScope {
   readonly #overflowSelectors: string[];
   readonly #page;
 
-  constructor(
-    protected testContext: TestContext,
-    protected explorationConfig: ExplorationConfig
-  ) {
+  constructor(testContext: TestContext, explorationConfig: ExplorationConfig) {
     super();
     this.#page = testContext.page;
     this.#root = this.#page.locator(explorationConfig.rootSelector);
@@ -42,7 +39,6 @@ export class ConcreteExplorationScope extends ExplorationScope {
   }
 
   async isInScope(element: Locator): Promise<boolean> {
-    // Check if the element is a descendant of the root container
     const isDescendant = await this.#root
       .locator(element)
       .count()
@@ -50,11 +46,8 @@ export class ConcreteExplorationScope extends ExplorationScope {
       .catch(() => false);
 
     if (isDescendant) return true;
-
-    // In strict mode, only descendants of root are in scope
     if (this.#boundary === 'strict') return false;
 
-    // In overflow mode, check if the element lives inside an overflow selector
     for (const selector of this.#overflowSelectors) {
       const overflowContainer = this.#page.locator(selector);
       const found = await overflowContainer
@@ -69,12 +62,9 @@ export class ConcreteExplorationScope extends ExplorationScope {
   }
 
   resolveOverflowTarget(ariaControls: string): Locator | null {
-    if (this.#boundary === 'strict') return null;
+    if (this.#boundary === 'strict' || this.#overflowSelectors.length === 0) return null;
 
-    for (const selector of this.#overflowSelectors) {
-      const target = this.#page.locator(selector).locator(`#${CSS.escape(ariaControls)}`);
-      return target;
-    }
-    return null;
+    const escaped = CSS.escape(ariaControls);
+    return this.#page.locator(this.#overflowSelectors.map((s) => `${s} #${escaped}`).join(', '));
   }
 }

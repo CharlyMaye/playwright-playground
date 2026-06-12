@@ -10,7 +10,7 @@ import { ExplorationScope } from './ExplorationScope';
 import { ReadinessChecker } from './ReadinessChecker';
 import { RulesEngine } from './RulesEngine';
 import { StateManager } from './StateManager';
-import { CandidateAction, StateNode, Transition } from './types';
+import { CandidateAction, DomChanges, getTargetUid, StateNode } from './types';
 
 export type ExplorationSummary = {
   statesDiscovered: number;
@@ -40,24 +40,26 @@ export class ConcreteExplorer extends Explorer {
   readonly #graph: ExplorationGraph;
   readonly #config: ExplorationConfig;
   readonly #readiness: ReadinessChecker;
+  /** URL to replay (via goto) to restore each discovered state during rollback. */
+  readonly #stateUrls = new Map<string, string>();
   #failedActions = 0;
   #startTime = 0;
   #transitionCounter = 0;
 
   constructor(
-    protected testContext: TestContext,
-    protected explorationScope: ExplorationScope,
-    protected dOMExtractor: DOMExtractor,
-    protected rulesEngine: RulesEngine,
-    protected actionExecutor: ActionExecutor,
-    protected stateManager: StateManager,
-    protected explorationGraph: ExplorationGraph,
-    protected explorationConfig: ExplorationConfig,
-    protected readinessChecker: ReadinessChecker
+    testContext: TestContext,
+    _explorationScope: ExplorationScope, // injected to ensure scope is initialized before DOMExtractor
+    domExtractor: DOMExtractor,
+    rulesEngine: RulesEngine,
+    actionExecutor: ActionExecutor,
+    stateManager: StateManager,
+    explorationGraph: ExplorationGraph,
+    explorationConfig: ExplorationConfig,
+    readinessChecker: ReadinessChecker
   ) {
     super();
     this.#page = testContext.page;
-    this.#extractor = dOMExtractor;
+    this.#extractor = domExtractor;
     this.#rulesEngine = rulesEngine;
     this.#executor = actionExecutor;
     this.#stateManager = stateManager;
@@ -74,146 +76,20 @@ export class ConcreteExplorer extends Explorer {
     this.#startTime = Date.now();
     this.#failedActions = 0;
     this.#transitionCounter = 0;
+    this.#stateUrls.clear();
 
-    // Wait for SPA readiness before extracting initial state
-    await this.#readiness.waitForReady();
-
-    // 1. Extract initial facts
-    const initialFacts = await this.#extractor.extract();
-
-    // 2. Capture initial state
-    const initialState = this.#stateManager.captureState(initialFacts, 0, this.#config.rootSelector);
-    this.#stateManager.registerState(initialState);
-    this.#graph.addState(initialState);
-    await this.#captureScreenshot('state', initialState.id);
-
-    // 3. Initialize exploration queue/stack
+    const initialState = await this.#captureInitialState();
     const frontier: StateNode[] = [initialState];
-    // Store the URL/path to replay for rollback
-    const stateUrls = new Map<string, string>();
-    stateUrls.set(initialState.id, this.#page.url());
 
-    // 4. Main exploration loop
     while (frontier.length > 0 && !this.#isTimedOut()) {
-      // BFS = shift (FIFO), DFS = pop (LIFO)
-      const currentState = this.#config.strategy === 'bfs' ? frontier.shift()! : frontier.pop()!;
+      const currentState = this.#takeNext(frontier);
 
-      // Check maxStates limit
-      if (this.#graph.getAllStates().length >= this.#config.maxStates) break;
-
-      // Skip expanding states at or beyond maxDepth
+      if (this.#hasReachedMaxStates()) break;
       if (currentState.depth >= this.#config.maxDepth) continue;
 
-      // Get candidate actions from rules engine
-      const candidates = await this.#rulesEngine.evaluate(currentState.facts);
-
-      // Filter out actions already tried from this state
-      const existingTransitions = this.#graph.getTransitionsFrom(currentState.id);
-      const unexplored = this.#filterUnexplored(candidates, existingTransitions);
-
-      // Execute each unexplored action
-      for (const action of unexplored) {
-        if (this.#isTimedOut()) break;
-        if (this.#graph.getAllStates().length >= this.#config.maxStates) break;
-
-        // Execute the action
-        const result = await this.#executor.execute(action);
-        await this.#captureScreenshot('transition', this.#actionLabel(action));
-
-        if (result.success) {
-          const currentUrl = this.#page.url();
-          const originalUrl = stateUrls.get(currentState.id)!;
-
-          // Navigation detected → boundary transition, don't extract from foreign page
-          if (new URL(currentUrl).pathname !== new URL(originalUrl).pathname) {
-            const navTransition: Transition = {
-              id: `${currentState.id}->nav:${action.type}:${(action as { targetUid: string }).targetUid}`,
-              from: currentState.id,
-              to: '__external_navigation__',
-              action,
-              success: true,
-              duration: result.duration,
-              domChanges: { appeared: [], disappeared: [], modified: [] },
-              navigationUrl: currentUrl,
-            };
-            this.#graph.addTransition(navTransition);
-            await this.#rollbackToState(currentState, stateUrls);
-            continue;
-          }
-
-          // Same page → extract facts normally
-          const newFacts = await this.#extractor.extract();
-          const newState = this.#stateManager.captureState(newFacts, currentState.depth + 1, this.#config.rootSelector);
-
-          // Compute DOM changes
-          const domChanges = computeDomChanges(currentState.facts, newFacts);
-
-          // Create transition
-          const transition: Transition = {
-            id: `${currentState.id}->${newState.id}:${action.type}`,
-            from: currentState.id,
-            to: newState.id,
-            action,
-            success: true,
-            duration: result.duration,
-            domChanges,
-          };
-
-          // Skip self-loops (action didn't change DOM state) but record them
-          // so visual regression tests can replay hover/focus/mousedown actions.
-          if (newState.id === currentState.id) {
-            const selfTransition: Transition = {
-              id: `${currentState.id}->${currentState.id}:${action.type}:${(action as { targetUid: string }).targetUid}`,
-              from: currentState.id,
-              to: currentState.id,
-              action,
-              success: true,
-              duration: result.duration,
-              domChanges,
-              selfLoop: true,
-            };
-            this.#graph.addTransition(selfTransition);
-            await this.#rollbackToState(currentState, stateUrls);
-            continue;
-          }
-
-          // Register state and transition
-          if (this.#stateManager.isNewState(newState.id)) {
-            this.#stateManager.registerState(newState);
-            this.#graph.addState(newState);
-            stateUrls.set(newState.id, this.#page.url());
-            await this.#captureScreenshot('state', newState.id);
-
-            // Add to frontier only if depth limit not reached
-            if (newState.depth < this.#config.maxDepth) {
-              frontier.push(newState);
-            }
-          }
-          this.#graph.addTransition(transition);
-
-          // Rollback: reload page and replay path to current state
-          await this.#rollbackToState(currentState, stateUrls);
-        } else {
-          // Check if the "failure" was actually a navigation
-          const currentUrl = this.#page.url();
-          const originalUrl = stateUrls.get(currentState.id)!;
-          if (new URL(currentUrl).pathname !== new URL(originalUrl).pathname) {
-            const navTransition: Transition = {
-              id: `${currentState.id}->nav:${action.type}:${(action as { targetUid: string }).targetUid}`,
-              from: currentState.id,
-              to: '__external_navigation__',
-              action,
-              success: true,
-              duration: result.duration,
-              domChanges: { appeared: [], disappeared: [], modified: [] },
-              navigationUrl: currentUrl,
-            };
-            this.#graph.addTransition(navTransition);
-            await this.#rollbackToState(currentState, stateUrls);
-          } else {
-            this.#failedActions++;
-          }
-        }
+      for (const action of await this.#unexploredActions(currentState)) {
+        if (this.#isTimedOut() || this.#hasReachedMaxStates()) break;
+        await this.#exploreAction(currentState, action, frontier);
       }
     }
 
@@ -233,25 +109,131 @@ export class ConcreteExplorer extends Explorer {
     };
   }
 
+  async #captureInitialState(): Promise<StateNode> {
+    await this.#readiness.waitForReady();
+
+    const facts = await this.#extractor.extract();
+    const state = this.#stateManager.captureState(facts, 0, this.#config.rootSelector);
+    this.#stateManager.registerState(state);
+    this.#graph.addState(state);
+    this.#stateUrls.set(state.id, this.#page.url());
+    await this.#captureScreenshot('state', state.id);
+    return state;
+  }
+
+  /** Executes one candidate action from `currentState` and records the outcome in the graph. */
+  async #exploreAction(currentState: StateNode, action: CandidateAction, frontier: StateNode[]): Promise<void> {
+    const result = await this.#executor.execute(action);
+    await this.#captureScreenshot('transition', this.#actionLabel(action));
+
+    // A navigation can surface as a success OR as a failure (element detached mid-action).
+    if (this.#navigatedAwayFrom(currentState)) {
+      this.#recordExternalNavigation(currentState, action, result.duration);
+      await this.#rollbackToState(currentState);
+      return;
+    }
+
+    if (!result.success) {
+      this.#failedActions++;
+      return;
+    }
+
+    const newFacts = await this.#extractor.extract();
+    const newState = this.#stateManager.captureState(newFacts, currentState.depth + 1, this.#config.rootSelector);
+    const domChanges = computeDomChanges(currentState.facts, newFacts);
+
+    if (newState.id === currentState.id) {
+      this.#recordSelfLoop(currentState, action, result.duration, domChanges);
+    } else {
+      await this.#recordDiscovery(currentState, newState, action, result.duration, domChanges, frontier);
+    }
+    await this.#rollbackToState(currentState);
+  }
+
+  /** Boundary transition to a foreign page — recorded without extracting facts from it. */
+  #recordExternalNavigation(from: StateNode, action: CandidateAction, duration: number): void {
+    this.#graph.addTransition({
+      id: `${from.id}->nav:${action.type}:${getTargetUid(action)}`,
+      from: from.id,
+      to: '__external_navigation__',
+      action,
+      success: true,
+      duration,
+      domChanges: { appeared: [], disappeared: [], modified: [] },
+      navigationUrl: this.#page.url(),
+    });
+  }
+
+  /** Self-loops are kept so visual regression tests can replay hover/focus/mousedown actions. */
+  #recordSelfLoop(state: StateNode, action: CandidateAction, duration: number, domChanges: DomChanges): void {
+    this.#graph.addTransition({
+      id: `${state.id}->${state.id}:${action.type}:${getTargetUid(action)}`,
+      from: state.id,
+      to: state.id,
+      action,
+      success: true,
+      duration,
+      domChanges,
+      selfLoop: true,
+    });
+  }
+
+  async #recordDiscovery(from: StateNode, to: StateNode, action: CandidateAction, duration: number, domChanges: DomChanges, frontier: StateNode[]): Promise<void> {
+    if (this.#stateManager.isNewState(to.id)) {
+      this.#stateManager.registerState(to);
+      this.#graph.addState(to);
+      this.#stateUrls.set(to.id, this.#page.url());
+      await this.#captureScreenshot('state', to.id);
+
+      if (to.depth < this.#config.maxDepth) {
+        frontier.push(to);
+      }
+    }
+
+    this.#graph.addTransition({
+      id: `${from.id}->${to.id}:${action.type}`,
+      from: from.id,
+      to: to.id,
+      action,
+      success: true,
+      duration,
+      domChanges,
+    });
+  }
+
+  async #unexploredActions(state: StateNode): Promise<CandidateAction[]> {
+    const candidates = await this.#rulesEngine.evaluate(state.facts);
+    const triedActionKeys = new Set(this.#graph.getTransitionsFrom(state.id).map((t) => this.#actionKey(t.action)));
+    return candidates.filter((c) => !triedActionKeys.has(this.#actionKey(c)));
+  }
+
+  #takeNext(frontier: StateNode[]): StateNode {
+    // BFS = shift (FIFO), DFS = pop (LIFO)
+    return this.#config.strategy === 'bfs' ? frontier.shift()! : frontier.pop()!;
+  }
+
+  #hasReachedMaxStates(): boolean {
+    return this.#graph.getAllStates().length >= this.#config.maxStates;
+  }
+
   #isTimedOut(): boolean {
     return Date.now() - this.#startTime >= this.#config.timeout;
   }
 
-  #filterUnexplored(candidates: CandidateAction[], existingTransitions: Transition[]): CandidateAction[] {
-    const triedActionKeys = new Set(existingTransitions.map((t) => this.#actionKey(t.action)));
-    return candidates.filter((c) => !triedActionKeys.has(this.#actionKey(c)));
+  #navigatedAwayFrom(state: StateNode): boolean {
+    const originalUrl = this.#stateUrls.get(state.id)!;
+    return new URL(this.#page.url()).pathname !== new URL(originalUrl).pathname;
   }
 
   #actionKey(action: CandidateAction): string {
     if (action.type === 'sequence') {
       return `sequence:${action.steps.map((s) => `${s.action.type}:${s.action.targetUid}`).join('+')}`;
     }
-    return `${action.type}:${(action as { targetUid: string }).targetUid}`;
+    return `${action.type}:${getTargetUid(action)}`;
   }
 
-  async #rollbackToState(targetState: StateNode, stateUrls: Map<string, string>): Promise<void> {
-    // Solution 1: reload the page and navigate back
-    const url = stateUrls.get(targetState.id);
+  async #rollbackToState(targetState: StateNode): Promise<void> {
+    const url = this.#stateUrls.get(targetState.id);
     if (url) {
       await this.#page.goto(url, { waitUntil: 'load' });
       await this.#readiness.waitForReady();
@@ -264,8 +246,7 @@ export class ConcreteExplorer extends Explorer {
       const types = action.steps.map((s) => s.action.type).join('+');
       return `sequence-${types}`;
     }
-    const target = (action as { targetUid?: string }).targetUid ?? '';
-    return `${action.type}-${target}`;
+    return `${action.type}-${getTargetUid(action)}`;
   }
 
   /**

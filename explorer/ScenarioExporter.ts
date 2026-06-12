@@ -1,5 +1,5 @@
 import { ExplorationGraph } from './ExplorationGraph';
-import { CandidateAction, SerializedGraph, Transition } from './types';
+import { CandidateAction, getTargetUid, SerializedGraph, Transition } from './types';
 
 export type Scenario = {
   name: string;
@@ -50,8 +50,7 @@ export class ConcreteScenarioExporter extends ScenarioExporter {
     if (action.type === 'sequence') {
       return `sequence(${action.steps.map((s) => `${s.action.type}_${s.action.targetUid}`).join('+')})`;
     }
-    const target = (action as { targetUid: string }).targetUid ?? '';
-    return `${action.type}_${target}`;
+    return `${action.type}_${getTargetUid(action)}`;
   }
 
   #extractTargetUids(actions: CandidateAction[]): string[] {
@@ -62,7 +61,7 @@ export class ConcreteScenarioExporter extends ScenarioExporter {
           uids.add(step.action.targetUid);
         }
       } else {
-        uids.add((action as { targetUid: string }).targetUid);
+        uids.add(getTargetUid(action));
       }
     }
     return [...uids];

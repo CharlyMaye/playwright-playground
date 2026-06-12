@@ -1,9 +1,5 @@
 import { z } from 'zod';
 
-// ============================================================
-// Zod v4 schema for validation
-// ============================================================
-
 export const ExplorationConfigSchema = z.object({
   // Stratégie d'exploration
   strategy: z.enum(['bfs', 'dfs']).default('bfs'),
@@ -77,55 +73,18 @@ export type ExplorationConfigData = z.infer<typeof ExplorationConfigSchema>;
 /** Partial config the user can provide — defaults are filled by Zod */
 export type PartialExplorationConfig = z.input<typeof ExplorationConfigSchema>;
 
-// ============================================================
-// Default config
-// ============================================================
-
 export const defaultExplorationConfig: ExplorationConfigData = ExplorationConfigSchema.parse({});
 
-// ============================================================
-// Injectable DI class (abstract + concrete)
-// ============================================================
-
+/**
+ * DI token for the exploration config. The getters delegate to the parsed
+ * Zod data — implemented once here so concrete subclasses only have to
+ * supply the data.
+ */
 export abstract class ExplorationConfig {
-  abstract get strategy(): 'bfs' | 'dfs';
-  abstract get maxDepth(): number;
-  abstract get maxStates(): number;
-  abstract get maxActionsPerState(): number;
-  abstract get timeout(): number;
-
-  abstract get rootSelector(): string;
-  abstract get boundary(): 'strict' | 'overflow';
-  abstract get overflowSelectors(): string[];
-
-  abstract get ignoreSelectors(): string[];
-  abstract get ignoreRepeatedElements(): boolean;
-  abstract get maxRepeatPerAction(): number;
-
-  abstract get fillValues(): Record<string, string>;
-  abstract get selectStrategy(): 'first' | 'random' | 'all';
-
-  abstract get stabilizationTimeout(): number;
-  abstract get domHashStrategy(): 'structure' | 'interactive-only';
-
-  abstract get readinessSelector(): string | undefined;
-  abstract get readinessTimeout(): number;
-
-  abstract get captureStateScreenshots(): boolean;
-  abstract get captureTransitionScreenshots(): boolean;
-  abstract get screenshotsDir(): string | undefined;
-  abstract get screenshotsPrefix(): string;
-
-  abstract get rules(): unknown[] | undefined;
-  abstract get additionalRules(): unknown[] | undefined;
-}
-
-export class ConcreteExplorationConfig extends ExplorationConfig {
   readonly #data: ExplorationConfigData;
 
-  constructor(partial?: PartialExplorationConfig) {
-    super();
-    this.#data = ExplorationConfigSchema.parse(partial ?? {});
+  protected constructor(data: ExplorationConfigData) {
+    this.#data = data;
   }
 
   get strategy() {
@@ -198,10 +157,16 @@ export class ConcreteExplorationConfig extends ExplorationConfig {
     return this.#data.screenshotsPrefix;
   }
 
-  get rules() {
+  get rules(): unknown[] | undefined {
     return this.#data.rules;
   }
-  get additionalRules() {
+  get additionalRules(): unknown[] | undefined {
     return this.#data.additionalRules;
+  }
+}
+
+export class ConcreteExplorationConfig extends ExplorationConfig {
+  constructor(partial?: PartialExplorationConfig) {
+    super(ExplorationConfigSchema.parse(partial ?? {}));
   }
 }

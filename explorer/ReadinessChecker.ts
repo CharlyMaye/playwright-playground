@@ -20,10 +20,7 @@ export class ConcreteReadinessChecker extends ReadinessChecker {
   readonly #page;
   readonly #config: ExplorationConfig;
 
-  constructor(
-    protected testContext: TestContext,
-    protected explorationConfig: ExplorationConfig
-  ) {
+  constructor(testContext: TestContext, explorationConfig: ExplorationConfig) {
     super();
     this.#page = testContext.page;
     this.#config = explorationConfig;

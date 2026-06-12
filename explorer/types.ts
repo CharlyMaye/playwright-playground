@@ -1,10 +1,6 @@
 import type { Page } from '@playwright/test';
 import type { PartialExplorationConfig } from './ExplorationConfig';
 
-// ============================================================
-// ExplorationTarget — generic target descriptor (app-agnostic)
-// ============================================================
-
 /**
  * A single exploration target: a URL + the config to apply when exploring it.
  *
@@ -21,10 +17,6 @@ export type ExplorationTarget = {
   /** Optional hook executed after `goto` and before `explore` (e.g. dismiss banners). */
   preExploreHook?: (page: Page) => Promise<void>;
 };
-
-// ============================================================
-// Phase 2 — Types fondamentaux
-// ============================================================
 
 /** Bounding box d'un élément dans le viewport */
 export type BoundingBox = {
@@ -56,24 +48,28 @@ export type ElementFact = {
   cssSelector: string;
 };
 
-// ============================================================
-// CandidateAction — actions proposées par le moteur de règles
-// ============================================================
+type TargetedAction<Type extends string> = {
+  type: Type;
+  targetUid: string;
+  /**
+   * Page-level CSS selector (computed by DOMExtractor from the captured
+   * ElementFact). When present, ActionExecutor and ExplorationPOM resolve
+   * actions through this selector instead of the scope-relative `targetUid`
+   * heuristic. This avoids index drift between the extractor's
+   * interactive-collection ordering and the executor's per-tag `nth(index)`
+   * ordering on heterogeneous pages.
+   */
+  targetSelector?: string;
+  priority: number;
+};
 
-// `targetSelector` is a page-level CSS selector (computed by DOMExtractor
-// from the captured ElementFact). When present, ActionExecutor and
-// ExplorationPOM resolve actions through this selector instead of the
-// scope-relative `targetUid` heuristic. This avoids index drift between
-// the extractor's interactive-collection ordering and the executor's
-// per-tag `nth(index)` ordering on heterogeneous pages.
-
-export type ClickAction = { type: 'click'; targetUid: string; targetSelector?: string; priority: number };
-export type HoverAction = { type: 'hover'; targetUid: string; targetSelector?: string; priority: number };
-export type FillAction = { type: 'fill'; targetUid: string; targetSelector?: string; value: string; priority: number };
-export type SelectAction = { type: 'select'; targetUid: string; targetSelector?: string; option: string; priority: number };
-export type FocusAction = { type: 'focus'; targetUid: string; targetSelector?: string; priority: number };
-export type ClearAction = { type: 'clear'; targetUid: string; targetSelector?: string; priority: number };
-export type MousedownAction = { type: 'mousedown'; targetUid: string; targetSelector?: string; priority: number };
+export type ClickAction = TargetedAction<'click'>;
+export type HoverAction = TargetedAction<'hover'>;
+export type FillAction = TargetedAction<'fill'> & { value: string };
+export type SelectAction = TargetedAction<'select'> & { option: string };
+export type FocusAction = TargetedAction<'focus'>;
+export type ClearAction = TargetedAction<'clear'>;
+export type MousedownAction = TargetedAction<'mousedown'>;
 
 export type UnitaryAction = ClickAction | HoverAction | FillAction | SelectAction | FocusAction | ClearAction | MousedownAction;
 
@@ -84,10 +80,6 @@ export type SequenceAction = {
 };
 
 export type CandidateAction = UnitaryAction | SequenceAction;
-
-// ============================================================
-// SequenceStep + WaitCondition
-// ============================================================
 
 export type WaitConditionSelector = {
   type: 'selector';
@@ -105,10 +97,6 @@ export type SequenceStep = {
   waitAfter?: WaitCondition;
 };
 
-// ============================================================
-// StateNode — nœud du graphe
-// ============================================================
-
 export type StateNode = {
   id: string;
   facts: ElementFact[];
@@ -116,10 +104,6 @@ export type StateNode = {
   timestamp: number;
   scopeSelector: string;
 };
-
-// ============================================================
-// Transition — arête du graphe
-// ============================================================
 
 export type DomChanges = {
   appeared: string[];
@@ -140,10 +124,6 @@ export type Transition = {
   selfLoop?: boolean;
 };
 
-// ============================================================
-// ActionResult — résultat d'exécution d'une action
-// ============================================================
-
 export type ActionResult = {
   success: boolean;
   error: string | null;
@@ -152,11 +132,12 @@ export type ActionResult = {
   duration: number;
 };
 
-// ============================================================
-// SerializedGraph — format d'export JSON
-// ============================================================
-
 export type SerializedGraph = {
   states: StateNode[];
   transitions: Transition[];
 };
+
+/** Returns the targetUid for unitary actions, or '' for sequence actions. */
+export function getTargetUid(action: CandidateAction): string {
+  return action.type === 'sequence' ? '' : action.targetUid;
+}

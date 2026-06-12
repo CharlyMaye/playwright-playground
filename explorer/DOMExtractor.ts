@@ -6,6 +6,59 @@ import { ElementFact } from './types';
 
 const INTERACTIVE_SELECTOR = ['a', 'button', 'input', 'select', 'textarea', '[role]', '[tabindex]', '[contenteditable]', 'details', 'summary', '[aria-expanded]', '[aria-controls]', '[aria-haspopup]'].join(', ');
 
+/**
+ * Runs IN THE BROWSER via `locator.evaluate` — must stay self-contained
+ * (no closure over module scope, Playwright serializes its source).
+ */
+function collectElementProps(node: SVGElement | HTMLElement) {
+  const htmlEl = node as HTMLElement;
+
+  const computeCssSelector = (target: HTMLElement): string => {
+    const parts: string[] = [];
+    let current: HTMLElement | null = target;
+    while (current && current !== document.documentElement) {
+      let selector = current.tagName.toLowerCase();
+      if (current.dataset.testid) {
+        parts.unshift(`[data-testid="${CSS.escape(current.dataset.testid)}"]`);
+        break;
+      }
+      if (current.id) {
+        parts.unshift(`#${CSS.escape(current.id)}`);
+        break;
+      }
+      const parent: HTMLElement | null = current.parentElement;
+      if (parent) {
+        const siblings = Array.from(parent.children).filter((c: Element) => c.tagName === current!.tagName);
+        if (siblings.length > 1) {
+          const idx = siblings.indexOf(current) + 1;
+          selector += `:nth-of-type(${idx})`;
+        }
+      }
+      parts.unshift(selector);
+      current = parent;
+    }
+    return parts.join(' > ');
+  };
+
+  return {
+    tag: htmlEl.tagName.toLowerCase(),
+    role: htmlEl.getAttribute('role'),
+    text: (htmlEl.textContent ?? '').trim().substring(0, 200),
+    inputType: htmlEl.getAttribute('type'),
+    ariaExpanded: htmlEl.getAttribute('aria-expanded'),
+    ariaControls: htmlEl.getAttribute('aria-controls'),
+    ariaOwns: htmlEl.getAttribute('aria-owns'),
+    tabindex: htmlEl.getAttribute('tabindex'),
+    contentEditable: htmlEl.isContentEditable,
+    dataTestId: htmlEl.getAttribute('data-testid'),
+    id: htmlEl.id,
+    accessibleName: htmlEl.getAttribute('aria-label') ?? htmlEl.getAttribute('aria-labelledby') ?? (htmlEl as HTMLInputElement).labels?.[0]?.textContent?.trim() ?? htmlEl.getAttribute('title') ?? null,
+    disabled: (htmlEl as HTMLButtonElement).disabled ?? false,
+    focusable: htmlEl.tabIndex >= 0,
+    cssSelector: computeCssSelector(htmlEl),
+  };
+}
+
 export abstract class DOMExtractor {
   abstract extract(): Promise<ElementFact[]>;
 }
@@ -15,10 +68,7 @@ export class ConcreteDOMExtractor extends DOMExtractor {
   readonly #scope: ExplorationScope;
   readonly #config: ExplorationConfig;
 
-  constructor(
-    protected explorationScope: ExplorationScope,
-    protected explorationConfig: ExplorationConfig
-  ) {
+  constructor(explorationScope: ExplorationScope, explorationConfig: ExplorationConfig) {
     super();
     this.#scope = explorationScope;
     this.#config = explorationConfig;
@@ -27,23 +77,17 @@ export class ConcreteDOMExtractor extends DOMExtractor {
   async extract(): Promise<ElementFact[]> {
     const facts: ElementFact[] = [];
 
-    // Extract from root scope
     const rootElements = this.#scope.root.locator(INTERACTIVE_SELECTOR);
-    const rootFacts = await this.#extractFromLocators(rootElements, true);
-    facts.push(...rootFacts);
+    facts.push(...(await this.#extractFromLocators(rootElements, true)));
 
-    // If overflow mode, also extract from overflow selectors
     if (this.#scope.boundary === 'overflow') {
       const page = this.#scope.root.page();
       for (const selector of this.#scope.overflowSelectors) {
         const overflowElements = page.locator(selector).locator(INTERACTIVE_SELECTOR);
-        const overflowFacts = await this.#extractFromLocators(overflowElements, false);
-        // Mark overflow elements with isInScope based on aria-controls linkage
-        facts.push(...overflowFacts);
+        facts.push(...(await this.#extractFromLocators(overflowElements, false)));
       }
     }
 
-    // Filter ignored selectors
     return this.#applyFilters(facts);
   }
 
@@ -63,56 +107,7 @@ export class ConcreteDOMExtractor extends DOMExtractor {
   async #extractSingleElement(el: Locator, index: number, isInScope: boolean): Promise<ElementFact | null> {
     try {
       const visible = await el.isVisible().catch(() => false);
-
-      const props = await el.evaluate((node) => {
-        const htmlEl = node as HTMLElement;
-
-        const computeCssSelector = (target: HTMLElement): string => {
-          const parts: string[] = [];
-          let current: HTMLElement | null = target;
-          while (current && current !== document.documentElement) {
-            let selector = current.tagName.toLowerCase();
-            if (current.dataset.testid) {
-              parts.unshift(`[data-testid="${CSS.escape(current.dataset.testid)}"]`);
-              break;
-            }
-            if (current.id) {
-              parts.unshift(`#${CSS.escape(current.id)}`);
-              break;
-            }
-            const parent: HTMLElement | null = current.parentElement;
-            if (parent) {
-              const siblings = Array.from(parent.children).filter((c: Element) => c.tagName === current!.tagName);
-              if (siblings.length > 1) {
-                const idx = siblings.indexOf(current) + 1;
-                selector += `:nth-of-type(${idx})`;
-              }
-            }
-            parts.unshift(selector);
-            current = parent;
-          }
-          return parts.join(' > ');
-        };
-
-        return {
-          tag: htmlEl.tagName.toLowerCase(),
-          role: htmlEl.getAttribute('role'),
-          text: (htmlEl.textContent ?? '').trim().substring(0, 200),
-          inputType: htmlEl.getAttribute('type'),
-          ariaExpanded: htmlEl.getAttribute('aria-expanded'),
-          ariaControls: htmlEl.getAttribute('aria-controls'),
-          ariaOwns: htmlEl.getAttribute('aria-owns'),
-          tabindex: htmlEl.getAttribute('tabindex'),
-          contentEditable: htmlEl.isContentEditable,
-          dataTestId: htmlEl.getAttribute('data-testid'),
-          id: htmlEl.id,
-          accessibleName: htmlEl.getAttribute('aria-label') ?? htmlEl.getAttribute('aria-labelledby') ?? (htmlEl as HTMLInputElement).labels?.[0]?.textContent?.trim() ?? htmlEl.getAttribute('title') ?? null,
-          disabled: (htmlEl as HTMLButtonElement).disabled ?? false,
-          focusable: htmlEl.tabIndex >= 0,
-          cssSelector: computeCssSelector(htmlEl),
-        };
-      });
-
+      const props = await el.evaluate(collectElementProps);
       const boundingBox = await el.boundingBox().catch(() => null);
       const uid = this.#generateUid(props.dataTestId, props.id, props.role, props.accessibleName, props.tag, index);
 
