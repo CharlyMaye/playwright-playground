@@ -1,21 +1,23 @@
-import type { Page } from '@playwright/test';
 import type { PartialExplorationConfig } from './ExplorationConfig';
 
 /**
- * A single exploration target: a URL + the config to apply when exploring it.
+ * A single exploration target: a location + the config to apply when exploring it.
  *
  * Targets are TypeScript values (not JSON) so they can carry a `preExploreHook`
- * function that runs after `page.goto()` and before `explorer.explore()`.
+ * function that runs after navigation and before `explorer.explore()`.
+ *
+ * `TSession` is the driver-specific session handed to the hook (Playwright
+ * `Page` on the web adapter) — the core stays driver-agnostic.
  */
-export type ExplorationTarget = {
+export type ExplorationTarget<TSession = unknown> = {
   /** Unique identifier — used as the JSON output filename suffix. */
   name: string;
   /** Absolute URL to explore. */
   url: string;
   /** Partial config merged on top of the schema defaults. */
   config: PartialExplorationConfig;
-  /** Optional hook executed after `goto` and before `explore` (e.g. dismiss banners). */
-  preExploreHook?: (page: Page) => Promise<void>;
+  /** Optional hook executed after navigation and before `explore` (e.g. dismiss banners). */
+  preExploreHook?: (session: TSession) => Promise<void>;
 };
 
 /** Bounding box d'un élément dans le viewport */
@@ -45,19 +47,24 @@ export type ElementFact = {
   boundingBox: BoundingBox | null;
   isInScope: boolean;
   parentUid: string | null;
-  cssSelector: string;
+  /**
+   * Driver-native selector for the element (CSS on web, UIA path on
+   * desktop…). Opaque to the core: only the driver that produced it can
+   * resolve it — never mix adapters on the same graph.
+   */
+  nativeSelector: string;
 };
 
 type TargetedAction<Type extends string> = {
   type: Type;
   targetUid: string;
   /**
-   * Page-level CSS selector (computed by DOMExtractor from the captured
-   * ElementFact). When present, ActionExecutor and ExplorationPOM resolve
-   * actions through this selector instead of the scope-relative `targetUid`
-   * heuristic. This avoids index drift between the extractor's
-   * interactive-collection ordering and the executor's per-tag `nth(index)`
-   * ordering on heterogeneous pages.
+   * Driver-native selector (copied from the captured ElementFact's
+   * `nativeSelector`). When present, the executor resolves the action
+   * through this selector instead of the scope-relative `targetUid`
+   * heuristic — avoids index drift between the extractor's ordering and
+   * the executor's per-tag `nth(index)` ordering on heterogeneous pages.
+   * Opaque: only the driver that produced it can resolve it.
    */
   targetSelector?: string;
   priority: number;

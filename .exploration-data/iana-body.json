@@ -36,7 +36,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#logo > a"
+            "nativeSelector": "#logo > a"
           },
           {
             "uid": "a[1]",
@@ -61,7 +61,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#header > div:nth-of-type(2) > ul > li:nth-of-type(1) > a"
+            "nativeSelector": "#header > div:nth-of-type(2) > ul > li:nth-of-type(1) > a"
           },
           {
             "uid": "a[2]",
@@ -86,7 +86,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#header > div:nth-of-type(2) > ul > li:nth-of-type(2) > a"
+            "nativeSelector": "#header > div:nth-of-type(2) > ul > li:nth-of-type(2) > a"
           },
           {
             "uid": "a[3]",
@@ -111,7 +111,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#header > div:nth-of-type(2) > ul > li:nth-of-type(3) > a"
+            "nativeSelector": "#header > div:nth-of-type(2) > ul > li:nth-of-type(3) > a"
           },
           {
             "uid": "a[4]",
@@ -136,7 +136,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#header > div:nth-of-type(2) > ul > li:nth-of-type(4) > a"
+            "nativeSelector": "#header > div:nth-of-type(2) > ul > li:nth-of-type(4) > a"
           },
           {
             "uid": "a[5]",
@@ -161,7 +161,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#body > article > main > div > p:nth-of-type(1) > a:nth-of-type(1)"
+            "nativeSelector": "#body > article > main > div > p:nth-of-type(1) > a:nth-of-type(1)"
           },
           {
             "uid": "a[6]",
@@ -186,7 +186,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#body > article > main > div > p:nth-of-type(1) > a:nth-of-type(2)"
+            "nativeSelector": "#body > article > main > div > p:nth-of-type(1) > a:nth-of-type(2)"
           },
           {
             "uid": "a[7]",
@@ -211,7 +211,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#body > article > main > div > ul > li > a"
+            "nativeSelector": "#body > article > main > div > ul > li > a"
           },
           {
             "uid": "a[8]",
@@ -236,7 +236,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(1) > a"
+            "nativeSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(1) > a"
           },
           {
             "uid": "a[9]",
@@ -261,7 +261,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(1) > a"
+            "nativeSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(1) > a"
           },
           {
             "uid": "a[10]",
@@ -286,7 +286,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(2) > a"
+            "nativeSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(2) > a"
           },
           {
             "uid": "a[11]",
@@ -311,7 +311,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(3) > a"
+            "nativeSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(3) > a"
           },
           {
             "uid": "a[12]",
@@ -336,7 +336,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(4) > a"
+            "nativeSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(4) > a"
           },
           {
             "uid": "a[13]",
@@ -361,7 +361,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#footer > table > tbody > tr:nth-of-type(2) > td:nth-of-type(1) > a"
+            "nativeSelector": "#footer > table > tbody > tr:nth-of-type(2) > td:nth-of-type(1) > a"
           },
           {
             "uid": "a[14]",
@@ -386,7 +386,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#footer > table > tbody > tr:nth-of-type(2) > td:nth-of-type(2) > ul > li > a"
+            "nativeSelector": "#footer > table > tbody > tr:nth-of-type(2) > td:nth-of-type(2) > ul > li > a"
           },
           {
             "uid": "a[15]",
@@ -411,7 +411,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#footer > table > tbody > tr:nth-of-type(3) > td:nth-of-type(1) > a"
+            "nativeSelector": "#footer > table > tbody > tr:nth-of-type(3) > td:nth-of-type(1) > a"
           },
           {
             "uid": "a[16]",
@@ -436,7 +436,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#footer > table > tbody > tr:nth-of-type(3) > td:nth-of-type(2) > ul > li:nth-of-type(1) > a"
+            "nativeSelector": "#footer > table > tbody > tr:nth-of-type(3) > td:nth-of-type(2) > ul > li:nth-of-type(1) > a"
           },
           {
             "uid": "a[17]",
@@ -461,7 +461,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#footer > table > tbody > tr:nth-of-type(3) > td:nth-of-type(2) > ul > li:nth-of-type(2) > a"
+            "nativeSelector": "#footer > table > tbody > tr:nth-of-type(3) > td:nth-of-type(2) > ul > li:nth-of-type(2) > a"
           },
           {
             "uid": "a[18]",
@@ -486,7 +486,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(1) > a"
+            "nativeSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(1) > a"
           },
           {
             "uid": "a[19]",
@@ -511,7 +511,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > ul > li:nth-of-type(1) > a"
+            "nativeSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > ul > li:nth-of-type(1) > a"
           },
           {
             "uid": "a[20]",
@@ -536,7 +536,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > ul > li:nth-of-type(2) > a"
+            "nativeSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > ul > li:nth-of-type(2) > a"
           },
           {
             "uid": "a[21]",
@@ -561,7 +561,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > ul > li:nth-of-type(3) > a"
+            "nativeSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > ul > li:nth-of-type(3) > a"
           },
           {
             "uid": "a[22]",
@@ -586,7 +586,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > ul > li:nth-of-type(4) > a"
+            "nativeSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > ul > li:nth-of-type(4) > a"
           },
           {
             "uid": "a[23]",
@@ -611,7 +611,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > ul > li:nth-of-type(5) > a"
+            "nativeSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > ul > li:nth-of-type(5) > a"
           },
           {
             "uid": "a[24]",
@@ -636,7 +636,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#custodian > p > a:nth-of-type(1)"
+            "nativeSelector": "#custodian > p > a:nth-of-type(1)"
           },
           {
             "uid": "a[25]",
@@ -661,7 +661,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#custodian > p > a:nth-of-type(2)"
+            "nativeSelector": "#custodian > p > a:nth-of-type(2)"
           },
           {
             "uid": "a[26]",
@@ -686,7 +686,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#legalnotice > ul > li:nth-of-type(1) > a"
+            "nativeSelector": "#legalnotice > ul > li:nth-of-type(1) > a"
           },
           {
             "uid": "a[27]",
@@ -711,11 +711,11 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#legalnotice > ul > li:nth-of-type(2) > a"
+            "nativeSelector": "#legalnotice > ul > li:nth-of-type(2) > a"
           }
         ],
         "depth": 0,
-        "timestamp": 1781266707459,
+        "timestamp": 1781269608883,
         "scopeSelector": "body"
       }
     ],
@@ -731,7 +731,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 481,
+        "duration": 511,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -750,7 +750,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 527,
+        "duration": 529,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -769,7 +769,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 508,
+        "duration": 514,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -788,7 +788,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 517,
+        "duration": 515,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -807,7 +807,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 528,
+        "duration": 513,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -816,17 +816,17 @@
         "navigationUrl": "https://www.iana.org/about"
       },
       {
-        "id": "6f3ccf49dbfa9944->nav:click:a[15]",
+        "id": "6f3ccf49dbfa9944->nav:click:a[5]",
         "from": "6f3ccf49dbfa9944",
         "to": "__external_navigation__",
         "action": {
           "type": "click",
-          "targetUid": "a[15]",
-          "targetSelector": "#footer > table > tbody > tr:nth-of-type(3) > td:nth-of-type(1) > a",
+          "targetUid": "a[5]",
+          "targetSelector": "#body > article > main > div > p:nth-of-type(1) > a:nth-of-type(1)",
           "priority": 5
         },
         "success": true,
-        "duration": 353,
+        "duration": 355,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -835,42 +835,118 @@
         "navigationUrl": "https://datatracker.ietf.org/doc/html/rfc2606"
       },
       {
-        "id": "6f3ccf49dbfa9944->nav:click:a[16]",
+        "id": "6f3ccf49dbfa9944->nav:click:a[6]",
         "from": "6f3ccf49dbfa9944",
         "to": "__external_navigation__",
         "action": {
           "type": "click",
-          "targetUid": "a[16]",
-          "targetSelector": "#footer > table > tbody > tr:nth-of-type(3) > td:nth-of-type(2) > ul > li:nth-of-type(1) > a",
+          "targetUid": "a[6]",
+          "targetSelector": "#body > article > main > div > p:nth-of-type(1) > a:nth-of-type(2)",
           "priority": 5
         },
         "success": true,
-        "duration": 422,
+        "duration": 597,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
           "modified": []
         },
-        "navigationUrl": "https://www.iana.org/protocols"
+        "navigationUrl": "https://datatracker.ietf.org/doc/html/rfc6761"
       },
       {
-        "id": "6f3ccf49dbfa9944->nav:click:a[17]",
+        "id": "6f3ccf49dbfa9944->nav:click:a[7]",
         "from": "6f3ccf49dbfa9944",
         "to": "__external_navigation__",
         "action": {
           "type": "click",
-          "targetUid": "a[17]",
-          "targetSelector": "#footer > table > tbody > tr:nth-of-type(3) > td:nth-of-type(2) > ul > li:nth-of-type(2) > a",
+          "targetUid": "a[7]",
+          "targetSelector": "#body > article > main > div > ul > li > a",
           "priority": 5
         },
         "success": true,
-        "duration": 509,
+        "duration": 510,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
           "modified": []
         },
-        "navigationUrl": "https://www.iana.org/time-zones"
+        "navigationUrl": "https://www.iana.org/domains/reserved"
+      },
+      {
+        "id": "6f3ccf49dbfa9944->nav:click:a[8]",
+        "from": "6f3ccf49dbfa9944",
+        "to": "__external_navigation__",
+        "action": {
+          "type": "click",
+          "targetUid": "a[8]",
+          "targetSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(1) > a",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 432,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "navigationUrl": "https://www.iana.org/domains"
+      },
+      {
+        "id": "6f3ccf49dbfa9944->nav:click:a[9]",
+        "from": "6f3ccf49dbfa9944",
+        "to": "__external_navigation__",
+        "action": {
+          "type": "click",
+          "targetUid": "a[9]",
+          "targetSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(1) > a",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 352,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "navigationUrl": "https://www.iana.org/domains/root"
+      },
+      {
+        "id": "6f3ccf49dbfa9944->nav:click:a[10]",
+        "from": "6f3ccf49dbfa9944",
+        "to": "__external_navigation__",
+        "action": {
+          "type": "click",
+          "targetUid": "a[10]",
+          "targetSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(2) > a",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 524,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "navigationUrl": "https://www.iana.org/domains/int"
+      },
+      {
+        "id": "6f3ccf49dbfa9944->nav:click:a[11]",
+        "from": "6f3ccf49dbfa9944",
+        "to": "__external_navigation__",
+        "action": {
+          "type": "click",
+          "targetUid": "a[11]",
+          "targetSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(3) > a",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 525,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "navigationUrl": "https://www.iana.org/domains/arpa"
       },
       {
         "id": "6f3ccf49dbfa9944->nav:click:a[18]",
@@ -883,13 +959,13 @@
           "priority": 5
         },
         "success": true,
-        "duration": 430,
+        "duration": 352,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
           "modified": []
         },
-        "navigationUrl": "https://www.iana.org/about"
+        "navigationUrl": "https://www.iana.org/domains/idn-tables"
       },
       {
         "id": "6f3ccf49dbfa9944->nav:click:a[19]",
@@ -902,7 +978,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 612,
+        "duration": 503,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -921,7 +997,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 504,
+        "duration": 501,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -940,7 +1016,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 509,
+        "duration": 503,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -959,7 +1035,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 519,
+        "duration": 507,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -978,7 +1054,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 507,
+        "duration": 505,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -987,17 +1063,17 @@
         "navigationUrl": "https://www.iana.org/contact"
       },
       {
-        "id": "6f3ccf49dbfa9944->nav:click:a[27]",
+        "id": "6f3ccf49dbfa9944->nav:click:a[26]",
         "from": "6f3ccf49dbfa9944",
         "to": "__external_navigation__",
         "action": {
           "type": "click",
-          "targetUid": "a[27]",
-          "targetSelector": "#legalnotice > ul > li:nth-of-type(2) > a",
+          "targetUid": "a[26]",
+          "targetSelector": "#legalnotice > ul > li:nth-of-type(1) > a",
           "priority": 5
         },
         "success": true,
-        "duration": 352,
+        "duration": 353,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1009,12 +1085,12 @@
   },
   "summary": {
     "statesDiscovered": 1,
-    "transitions": 15,
+    "transitions": 19,
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 18967,
-    "failedActions": 13
+    "totalDuration": 20850,
+    "failedActions": 9
   },
   "scenarios": [
     {
@@ -1088,45 +1164,101 @@
       ]
     },
     {
-      "name": "click_a[15]",
+      "name": "click_a[5]",
       "steps": [
         {
           "type": "click",
-          "targetUid": "a[15]",
-          "targetSelector": "#footer > table > tbody > tr:nth-of-type(3) > td:nth-of-type(1) > a",
+          "targetUid": "a[5]",
+          "targetSelector": "#body > article > main > div > p:nth-of-type(1) > a:nth-of-type(1)",
           "priority": 5
         }
       ],
       "targetUids": [
-        "a[15]"
+        "a[5]"
       ]
     },
     {
-      "name": "click_a[16]",
+      "name": "click_a[6]",
       "steps": [
         {
           "type": "click",
-          "targetUid": "a[16]",
-          "targetSelector": "#footer > table > tbody > tr:nth-of-type(3) > td:nth-of-type(2) > ul > li:nth-of-type(1) > a",
+          "targetUid": "a[6]",
+          "targetSelector": "#body > article > main > div > p:nth-of-type(1) > a:nth-of-type(2)",
           "priority": 5
         }
       ],
       "targetUids": [
-        "a[16]"
+        "a[6]"
       ]
     },
     {
-      "name": "click_a[17]",
+      "name": "click_a[7]",
       "steps": [
         {
           "type": "click",
-          "targetUid": "a[17]",
-          "targetSelector": "#footer > table > tbody > tr:nth-of-type(3) > td:nth-of-type(2) > ul > li:nth-of-type(2) > a",
+          "targetUid": "a[7]",
+          "targetSelector": "#body > article > main > div > ul > li > a",
           "priority": 5
         }
       ],
       "targetUids": [
-        "a[17]"
+        "a[7]"
+      ]
+    },
+    {
+      "name": "click_a[8]",
+      "steps": [
+        {
+          "type": "click",
+          "targetUid": "a[8]",
+          "targetSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(1) > a",
+          "priority": 5
+        }
+      ],
+      "targetUids": [
+        "a[8]"
+      ]
+    },
+    {
+      "name": "click_a[9]",
+      "steps": [
+        {
+          "type": "click",
+          "targetUid": "a[9]",
+          "targetSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(1) > a",
+          "priority": 5
+        }
+      ],
+      "targetUids": [
+        "a[9]"
+      ]
+    },
+    {
+      "name": "click_a[10]",
+      "steps": [
+        {
+          "type": "click",
+          "targetUid": "a[10]",
+          "targetSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(2) > a",
+          "priority": 5
+        }
+      ],
+      "targetUids": [
+        "a[10]"
+      ]
+    },
+    {
+      "name": "click_a[11]",
+      "steps": [
+        {
+          "type": "click",
+          "targetUid": "a[11]",
+          "targetSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(3) > a",
+          "priority": 5
+        }
+      ],
+      "targetUids": [
+        "a[11]"
       ]
     },
     {
@@ -1214,21 +1346,21 @@
       ]
     },
     {
-      "name": "click_a[27]",
+      "name": "click_a[26]",
       "steps": [
         {
           "type": "click",
-          "targetUid": "a[27]",
-          "targetSelector": "#legalnotice > ul > li:nth-of-type(2) > a",
+          "targetUid": "a[26]",
+          "targetSelector": "#legalnotice > ul > li:nth-of-type(1) > a",
           "priority": 5
         }
       ],
       "targetUids": [
-        "a[27]"
+        "a[26]"
       ]
     }
   ],
-  "mermaid": "stateDiagram-v2\n  state \"6f3ccf49 (d=0)\" as s_6f3ccf49\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click",
-  "dot": "digraph {\n  \"6f3ccf49dbfa9944\" [label=\"6f3ccf49\\nd=0 f=28\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n}",
-  "generatedAt": "2026-06-12T12:18:45.434Z"
+  "mermaid": "stateDiagram-v2\n  state \"6f3ccf49 (d=0)\" as s_6f3ccf49\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click",
+  "dot": "digraph {\n  \"6f3ccf49dbfa9944\" [label=\"6f3ccf49\\nd=0 f=28\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n}",
+  "generatedAt": "2026-06-12T13:07:08.825Z"
 }

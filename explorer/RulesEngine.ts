@@ -1,26 +1,34 @@
 import { Engine, RuleProperties } from 'json-rules-engine';
 import { Injector } from '../engine';
-import { DEFAULT_HTML_RULES } from './default-rules';
 import { ExplorationConfig } from './ExplorationConfig';
 import { CandidateAction, ElementFact, UnitaryAction } from './types';
+
+/**
+ * Port: the rule set loaded when the config provides none. Rules reference
+ * driver-specific facts (`tag === 'select'`, `inputType`…), so each adapter
+ * registers its own defaults (HTML rules for the web, UIA rules for WPF…).
+ */
+export abstract class DefaultRules {
+  abstract get rules(): RuleProperties[];
+}
 
 export abstract class RulesEngine {
   abstract evaluate(facts: ElementFact[]): Promise<CandidateAction[]>;
   abstract loadRules(rules: RuleProperties[]): void;
 }
 
-@Injector({ Provide: [ExplorationConfig] })
+@Injector({ Provide: [ExplorationConfig, DefaultRules] })
 export class ConcreteRulesEngine extends RulesEngine {
   readonly #engine: Engine;
   readonly #config: ExplorationConfig;
 
-  constructor(explorationConfig: ExplorationConfig) {
+  constructor(explorationConfig: ExplorationConfig, defaultRules: DefaultRules) {
     super();
     this.#engine = new Engine();
     this.#config = explorationConfig;
 
     // Load rules from config — custom rules replace defaults entirely.
-    const baseRules = (this.#config.rules as RuleProperties[] | undefined) ?? DEFAULT_HTML_RULES;
+    const baseRules = (this.#config.rules as RuleProperties[] | undefined) ?? defaultRules.rules;
     this.loadRules(baseRules);
 
     const extra = this.#config.additionalRules as RuleProperties[] | undefined;
@@ -61,7 +69,7 @@ export class ConcreteRulesEngine extends RulesEngine {
   #eventToAction(event: { type: string; params?: Record<string, unknown> }, fact: ElementFact): CandidateAction | null {
     const priority = (event.params?.priority as number) ?? 5;
     const targetUid = fact.uid;
-    const targetSelector = fact.cssSelector;
+    const targetSelector = fact.nativeSelector;
 
     switch (event.type) {
       case 'click':

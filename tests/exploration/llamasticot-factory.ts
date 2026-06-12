@@ -1,3 +1,4 @@
+import type { Page } from '@playwright/test';
 import type { PartialExplorationConfig } from '../../explorer/ExplorationConfig';
 import type { ExplorationTarget } from '../../explorer/types';
 import { LLAMASTICOT_BASE_URL, LLAMASTICOT_OVERFLOW_SELECTORS, LLAMASTICOT_READY_SELECTOR, LLAMASTICOT_SCREENSHOTS_DIR, type LlamasticotTargetOptions } from './llamasticot-config';
@@ -18,7 +19,7 @@ import { VISUAL_STATE_RULES } from './llamasticot-rules';
  * //   url:  'http://localhost:4206/legacy-button/secondary-disabled?standalone=true&culture=fr-FR&theme=light'
  * ```
  */
-export function createLlamasticotTarget(storyPath: string, options: LlamasticotTargetOptions = {}): ExplorationTarget {
+export function createLlamasticotTarget(storyPath: string, options: LlamasticotTargetOptions = {}): ExplorationTarget<Page> {
   const theme = options.theme ?? 'light';
   const culture = options.culture ?? 'fr-FR';
   const overrides = options.configOverrides ?? {};
@@ -68,6 +69,6 @@ export function createLlamasticotTarget(storyPath: string, options: LlamasticotT
 /**
  * Convenience: build both light & dark variants of a story.
  */
-export function createLlamasticotThemeMatrix(storyPath: string, options: Omit<LlamasticotTargetOptions, 'theme'> = {}): ExplorationTarget[] {
+export function createLlamasticotThemeMatrix(storyPath: string, options: Omit<LlamasticotTargetOptions, 'theme'> = {}): ExplorationTarget<Page>[] {
   return (['light', 'dark'] as const).map((theme) => createLlamasticotTarget(storyPath, { ...options, theme }));
 }

@@ -9,13 +9,14 @@
  * Config:   see `llamasticot-config.ts`
  * Builders: see `llamasticot-factory.ts`
  */
+import type { Page } from '@playwright/test';
 import type { ExplorationTarget } from '../../explorer/types';
 import { LLAMASTICOT_OVERFLOW_SELECTORS } from './llamasticot-config';
 import { createLlamasticotTarget, createLlamasticotThemeMatrix } from './llamasticot-factory';
 
 export { createLlamasticotTarget, createLlamasticotThemeMatrix };
 
-export const LLAMASTICOT_TARGETS: ExplorationTarget[] = [
+export const LLAMASTICOT_TARGETS: ExplorationTarget<Page>[] = [
   // Baseline target — captures a standard interactive page with the default ruleset.
   createLlamasticotTarget('legacy-button', { theme: 'light', captureScreenshots: false }),
   createLlamasticotTarget('legacy-button', {

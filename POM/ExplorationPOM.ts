@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import { ExpectContext, TestContext } from '../engine';
-import type { CandidateAction, SerializedGraph, Transition, UnitaryAction } from '../explorer/types';
+import { resolveTargetLocator } from '../explorer/adapters/playwright/locator-resolver';
+import type { CandidateAction, ElementFact, SerializedGraph, Transition, UnitaryAction } from '../explorer/types';
 import { BuilderPOM, ConcreteBuilderPOM } from './BuilderPOM';
 
 type Scenario = {
@@ -189,46 +190,23 @@ export class ConcreteExplorationPOM extends ConcreteBuilderPOM<ExplorationSelect
     return `${index}-${action.type}-${this.#sanitizeUid(action.targetUid)}`;
   }
 
-  #resolveByUid(uid: string, cssSelector?: string) {
+  #resolveByUid(uid: string, nativeSelector?: string) {
     this.#ensureLoaded();
-    // Priority 1: explicit page-level selector carried by the action
-    if (cssSelector) {
-      return this._page.locator(cssSelector);
-    }
-    // Priority 2: find the fact's cssSelector from the graph
-    for (const state of this.#data!.graph.states) {
-      const fact = state.facts.find((f) => f.uid === uid);
-      if (fact?.cssSelector) {
-        return this._page.locator(fact.cssSelector);
-      }
-    }
-    // Fallback: resolve uid directly (same logic as ActionExecutor)
-    return this.#resolveUidFallback(uid);
+    const root = this._page.locator(this._selectors.rootSelector);
+    // Priority 1: explicit selector carried by the action, else the fact's
+    // selector from the graph; shared resolver handles uid fallbacks.
+    const selector = nativeSelector ?? this.#findFactSelector(uid);
+    return resolveTargetLocator(this._page, root, uid, selector);
   }
 
-  #resolveUidFallback(uid: string) {
-    const root = this._page.locator(this._selectors.rootSelector);
-
-    // testid:xxx
-    if (uid.startsWith('testid:')) {
-      return root.getByTestId(uid.slice('testid:'.length));
+  #findFactSelector(uid: string): string | undefined {
+    for (const state of this.#data!.graph.states) {
+      const fact: (ElementFact & { cssSelector?: string }) | undefined = state.facts.find((f) => f.uid === uid);
+      // Legacy JSON files (pre nativeSelector rename) carry `cssSelector`.
+      const selector = fact?.nativeSelector ?? fact?.cssSelector;
+      if (selector) return selector;
     }
-    // #id
-    if (uid.startsWith('#')) {
-      return this._page.locator(uid);
-    }
-    // role:"name"
-    const roleMatch = uid.match(/^(\w+):"(.+)"$/);
-    if (roleMatch) {
-      return root.getByRole(roleMatch[1] as Parameters<typeof root.getByRole>[0], { name: roleMatch[2] });
-    }
-    // tag[index]
-    const indexMatch = uid.match(/^(\w+)\[(\d+)\]$/);
-    if (indexMatch) {
-      return root.locator(indexMatch[1]).nth(parseInt(indexMatch[2], 10));
-    }
-    // Fallback — treat uid as selector
-    return root.locator(uid);
+    return undefined;
   }
 
   #isCrossDomainNavigation(action: CandidateAction): boolean {

@@ -1,13 +1,16 @@
 import { expect, test } from '@playwright/test';
 import path from 'path';
 import { ConcreteTestContext } from '../../engine/test.context';
-import { ConcreteActionExecutor } from '../ActionExecutor';
-import { ConcreteDOMExtractor } from '../DOMExtractor';
+import { PlaywrightExplorationScope } from '../adapters/playwright/ExplorationScope';
+import { HtmlDefaultRules } from '../adapters/playwright/html-default-rules';
+import { PlaywrightActionExecutor } from '../adapters/playwright/PlaywrightActionExecutor';
+import { PlaywrightDOMExtractor } from '../adapters/playwright/PlaywrightDOMExtractor';
+import { PlaywrightNavigationDriver } from '../adapters/playwright/PlaywrightNavigationDriver';
+import { PlaywrightReadinessChecker } from '../adapters/playwright/PlaywrightReadinessChecker';
+import { PlaywrightStateRestorer } from '../adapters/playwright/PlaywrightStateRestorer';
 import { ConcreteExplorationConfig } from '../ExplorationConfig';
 import { ConcreteExplorationGraph } from '../ExplorationGraph';
-import { ConcreteExplorationScope } from '../ExplorationScope';
 import { ConcreteExplorer } from '../Explorer';
-import { ConcreteReadinessChecker } from '../ReadinessChecker';
 import { ConcreteRulesEngine } from '../RulesEngine';
 import { ConcreteScenarioExporter } from '../ScenarioExporter';
 import { ConcreteStateManager } from '../StateManager';
@@ -31,8 +34,8 @@ test.describe('Explorer — Integration with local HTML page', () => {
     const testContext = new ConcreteTestContext();
     testContext.page = page;
 
-    const scope = new ConcreteExplorationScope(testContext, config);
-    const extractor = new ConcreteDOMExtractor(scope, config);
+    const scope = new PlaywrightExplorationScope(testContext, config);
+    const extractor = new PlaywrightDOMExtractor(scope, config);
 
     const facts = await extractor.extract();
 
@@ -67,9 +70,9 @@ test.describe('Explorer — Integration with local HTML page', () => {
     const testContext = new ConcreteTestContext();
     testContext.page = page;
 
-    const scope = new ConcreteExplorationScope(testContext, config);
-    const extractor = new ConcreteDOMExtractor(scope, config);
-    const rulesEngine = new ConcreteRulesEngine(config);
+    const scope = new PlaywrightExplorationScope(testContext, config);
+    const extractor = new PlaywrightDOMExtractor(scope, config);
+    const rulesEngine = new ConcreteRulesEngine(config, new HtmlDefaultRules());
 
     const facts = await extractor.extract();
     const actions = await rulesEngine.evaluate(facts);
@@ -103,8 +106,8 @@ test.describe('Explorer — Integration with local HTML page', () => {
     const testContext = new ConcreteTestContext();
     testContext.page = page;
 
-    const scope = new ConcreteExplorationScope(testContext, config);
-    const extractor = new ConcreteDOMExtractor(scope, config);
+    const scope = new PlaywrightExplorationScope(testContext, config);
+    const extractor = new PlaywrightDOMExtractor(scope, config);
     const stateManager = new ConcreteStateManager(config);
 
     // Capture initial state
@@ -145,15 +148,17 @@ test.describe('Explorer — Integration with local HTML page', () => {
     const testContext = new ConcreteTestContext();
     testContext.page = page;
 
-    const scope = new ConcreteExplorationScope(testContext, config);
-    const extractor = new ConcreteDOMExtractor(scope, config);
-    const rulesEngine = new ConcreteRulesEngine(config);
-    const readiness = new ConcreteReadinessChecker(testContext, config);
-    const actionExecutor = new ConcreteActionExecutor(testContext, scope, config, readiness);
+    const scope = new PlaywrightExplorationScope(testContext, config);
+    const extractor = new PlaywrightDOMExtractor(scope, config);
+    const rulesEngine = new ConcreteRulesEngine(config, new HtmlDefaultRules());
+    const readiness = new PlaywrightReadinessChecker(testContext, config);
+    const actionExecutor = new PlaywrightActionExecutor(testContext, scope, config, readiness);
     const stateManager = new ConcreteStateManager(config);
     const graph = new ConcreteExplorationGraph();
+    const navigation = new PlaywrightNavigationDriver(testContext);
+    const restorer = new PlaywrightStateRestorer(testContext);
 
-    const explorer = new ConcreteExplorer(testContext, scope, extractor, rulesEngine, actionExecutor, stateManager, graph, config, readiness);
+    const explorer = new ConcreteExplorer(extractor, rulesEngine, actionExecutor, stateManager, graph, config, readiness, navigation, restorer);
 
     const resultGraph = await explorer.explore();
 
@@ -197,15 +202,17 @@ test.describe('Explorer — Integration with local HTML page', () => {
     const testContext = new ConcreteTestContext();
     testContext.page = page;
 
-    const scope = new ConcreteExplorationScope(testContext, config);
-    const extractor = new ConcreteDOMExtractor(scope, config);
-    const rulesEngine = new ConcreteRulesEngine(config);
-    const readiness = new ConcreteReadinessChecker(testContext, config);
-    const actionExecutor = new ConcreteActionExecutor(testContext, scope, config, readiness);
+    const scope = new PlaywrightExplorationScope(testContext, config);
+    const extractor = new PlaywrightDOMExtractor(scope, config);
+    const rulesEngine = new ConcreteRulesEngine(config, new HtmlDefaultRules());
+    const readiness = new PlaywrightReadinessChecker(testContext, config);
+    const actionExecutor = new PlaywrightActionExecutor(testContext, scope, config, readiness);
     const stateManager = new ConcreteStateManager(config);
     const graph = new ConcreteExplorationGraph();
+    const navigation = new PlaywrightNavigationDriver(testContext);
+    const restorer = new PlaywrightStateRestorer(testContext);
 
-    const explorer = new ConcreteExplorer(testContext, scope, extractor, rulesEngine, actionExecutor, stateManager, graph, config, readiness);
+    const explorer = new ConcreteExplorer(extractor, rulesEngine, actionExecutor, stateManager, graph, config, readiness, navigation, restorer);
 
     await explorer.explore();
 

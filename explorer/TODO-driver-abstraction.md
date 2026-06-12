@@ -1,5 +1,36 @@
 # TODO — Découpler le moteur d'exploration de Playwright
 
+> **✅ ÉTAT (2026-06-12) : Phases 1 et 2 TERMINÉES.** tsc propre, eslint propre,
+> 43/43 tests, grep de contrôle OK (aucun `@playwright/test` hors
+> `adapters/playwright/`, `fixture.ts` et `__tests__/`).
+>
+> Décisions prises pendant l'implémentation :
+> - `tag` **conservé** (pas renommé en `controlType`) — préserve les hash
+>   d'états et les JSON existants (§2.5 reste optionnel).
+> - `cssSelector → nativeSelector` **fait**, avec lecture rétro-compatible des
+>   JSON legacy dans `ExplorationPOM.#findFactSelector`.
+> - `ExplorationScope` déplacé **entièrement dans l'adapter** (son contrat
+>   parle `Locator` à dessein) ; ses méthodes mortes `isInScope`/
+>   `resolveOverflowTarget` supprimées. Le cœur ne le connaît plus.
+> - `fixture.ts` **reste à la racine** d'`explorer/` (point d'entrée assumé de
+>   l'adapter web, conformément au critère grep).
+> - `ExplorationTarget<TSession>` générique ; les cibles web utilisent
+>   `ExplorationTarget<Page>`.
+> - Capacités : `ActionExecutor.supports(action)` ajouté au port, filtré dans
+>   `Explorer.#unexploredActions` ; l'impl Playwright renvoie `true`.
+> - Port `DefaultRules` injecté dans `ConcreteRulesEngine` ;
+>   `DEFAULT_HTML_RULES` + `HtmlDefaultRules` vivent dans l'adapter.
+>
+> **Non-régression validée (2026-06-12)** : `iana.generate.ts` rejoué après le
+> refactoring — hash d'états **identiques** sur les 5 scopes (body, main,
+> header, footer, body-content), `nativeSelector` présent dans les JSON, zéro
+> `cssSelector` résiduel. Écart : `iana-body` 15→19 transitions, dû à la
+> variance du site live (failedActions 13→9, mêmes candidats), pas au code.
+> Reste à rejouer `llamasticot.generate.ts` quand le serveur `:4206` tourne.
+>
+> Reste : **Phase 3 (WPF)** ci-dessous et les **Options différées** (section
+> dédiée en fin de fichier).
+
 > Objectif : le moteur (`explorer/`) ne doit dépendre que d'abstractions (ports),
 > pour pouvoir remplacer Playwright par Puppeteer, ou par un driver WPF
 > (UI Automation / WinAppDriver / FlaUI), sans toucher au cœur.
@@ -212,6 +243,31 @@
 - [ ] Runner dédié (hors fixture Playwright).
 
 ---
+
+## Options différées (non bloquantes — à décider plus tard)
+
+Consolidation des cases restées ouvertes dans les phases 1-2 :
+
+- [ ] **`FakeDriver` en mémoire** (§2.3) — ★ le plus rentable : tester la
+      boucle BFS/DFS d'`Explorer` sans navigateur. Trivial désormais (tous
+      les ports sont injectables). Recommandé en prochain incrément.
+- [ ] **Rejouer `llamasticot.generate.ts`** (critère de validation) — demande
+      le serveur LlamaSticot sur `:4206`. Vérifier les hash d'états comme
+      fait pour IANA. ⚠️ Au passage : les JSON `llamasticot-*.json` sont
+      actuellement **supprimés du working tree** (restaurables via git).
+- [ ] **`tag → controlType`** (§2.5) — non retenu : invalide les hash et les
+      JSON. À grouper avec le chantier WPF (seul vrai demandeur).
+- [ ] **Régénérer les JSON `.exploration-data` restants** pour basculer sur
+      `nativeSelector` partout (IANA : fait ✅), puis supprimer la lecture
+      rétro-compatible dans `ExplorationPOM.#findFactSelector`.
+- [ ] **Champs web-flavored d'`ElementFact`** (§1.2) — `inputType`,
+      `ariaControls`, `ariaOwns`, `contentEditable`… : option « sac
+      `nativeProps` » à trancher quand le driver WPF existera.
+- [ ] **Scission config cœur / config driver** (§1.4) — option pragmatique
+      retenue (champs opaques interprétés par le driver) ; à réévaluer si un
+      2ᵉ adapter rend la config ambiguë.
+- [ ] **Déplacer `ExplorationPOM` dans l'adapter web** (§2.1) — il consomme
+      déjà le résolveur partagé ; pur rangement.
 
 ## Risques & vigilance
 

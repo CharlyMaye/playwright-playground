@@ -35,7 +35,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#body > article > main > div > p:nth-of-type(1) > a:nth-of-type(1)"
+            "nativeSelector": "#body > article > main > div > p:nth-of-type(1) > a:nth-of-type(1)"
           },
           {
             "uid": "a[1]",
@@ -60,7 +60,7 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#body > article > main > div > p:nth-of-type(1) > a:nth-of-type(2)"
+            "nativeSelector": "#body > article > main > div > p:nth-of-type(1) > a:nth-of-type(2)"
           },
           {
             "uid": "a[2]",
@@ -85,11 +85,11 @@
             },
             "isInScope": true,
             "parentUid": null,
-            "cssSelector": "#body > article > main > div > ul > li > a"
+            "nativeSelector": "#body > article > main > div > ul > li > a"
           }
         ],
         "depth": 0,
-        "timestamp": 1781266752709,
+        "timestamp": 1781269656846,
         "scopeSelector": "#body"
       }
     ],
@@ -105,7 +105,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 572,
+        "duration": 565,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -124,7 +124,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 557,
+        "duration": 554,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -143,7 +143,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 522,
+        "duration": 526,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -159,7 +159,7 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 3176,
+    "totalDuration": 3025,
     "failedActions": 0
   },
   "scenarios": [
@@ -208,5 +208,5 @@
   ],
   "mermaid": "stateDiagram-v2\n  state \"6d860f3c (d=0)\" as s_6d860f3c\n  s_6d860f3c --> s___extern : click\n  s_6d860f3c --> s___extern : click\n  s_6d860f3c --> s___extern : click",
   "dot": "digraph {\n  \"6d860f3cb18b884a\" [label=\"6d860f3c\\nd=0 f=3\"];\n  \"6d860f3cb18b884a\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6d860f3cb18b884a\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6d860f3cb18b884a\" -> \"__external_navigation__\" [label=\"click\"];\n}",
-  "generatedAt": "2026-06-12T12:19:15.732Z"
+  "generatedAt": "2026-06-12T13:07:39.751Z"
 }

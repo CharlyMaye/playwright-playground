@@ -1,15 +1,15 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { Injector } from '../engine';
-import { TestContext } from '../engine/test.context';
 import { ActionExecutor, computeDomChanges } from './ActionExecutor';
 import { DOMExtractor } from './DOMExtractor';
 import { ExplorationConfig } from './ExplorationConfig';
 import { ExplorationGraph } from './ExplorationGraph';
-import { ExplorationScope } from './ExplorationScope';
+import { NavigationDriver } from './NavigationDriver';
 import { ReadinessChecker } from './ReadinessChecker';
 import { RulesEngine } from './RulesEngine';
 import { StateManager } from './StateManager';
+import { RestoreToken, StateRestorer } from './StateRestorer';
 import { CandidateAction, DomChanges, getTargetUid, StateNode } from './types';
 
 export type ExplorationSummary = {
@@ -29,10 +29,9 @@ export abstract class Explorer {
 }
 
 @Injector({
-  Provide: [TestContext, ExplorationScope, DOMExtractor, RulesEngine, ActionExecutor, StateManager, ExplorationGraph, ExplorationConfig, ReadinessChecker],
+  Provide: [DOMExtractor, RulesEngine, ActionExecutor, StateManager, ExplorationGraph, ExplorationConfig, ReadinessChecker, NavigationDriver, StateRestorer],
 })
 export class ConcreteExplorer extends Explorer {
-  readonly #page;
   readonly #extractor: DOMExtractor;
   readonly #rulesEngine: RulesEngine;
   readonly #executor: ActionExecutor;
@@ -40,25 +39,26 @@ export class ConcreteExplorer extends Explorer {
   readonly #graph: ExplorationGraph;
   readonly #config: ExplorationConfig;
   readonly #readiness: ReadinessChecker;
-  /** URL to replay (via goto) to restore each discovered state during rollback. */
-  readonly #stateUrls = new Map<string, string>();
+  readonly #navigation: NavigationDriver;
+  readonly #restorer: StateRestorer;
+  /** Restore token per discovered state, used to roll back during exploration. */
+  readonly #restorePoints = new Map<string, RestoreToken>();
   #failedActions = 0;
   #startTime = 0;
   #transitionCounter = 0;
 
   constructor(
-    testContext: TestContext,
-    _explorationScope: ExplorationScope, // injected to ensure scope is initialized before DOMExtractor
     domExtractor: DOMExtractor,
     rulesEngine: RulesEngine,
     actionExecutor: ActionExecutor,
     stateManager: StateManager,
     explorationGraph: ExplorationGraph,
     explorationConfig: ExplorationConfig,
-    readinessChecker: ReadinessChecker
+    readinessChecker: ReadinessChecker,
+    navigationDriver: NavigationDriver,
+    stateRestorer: StateRestorer
   ) {
     super();
-    this.#page = testContext.page;
     this.#extractor = domExtractor;
     this.#rulesEngine = rulesEngine;
     this.#executor = actionExecutor;
@@ -66,6 +66,8 @@ export class ConcreteExplorer extends Explorer {
     this.#graph = explorationGraph;
     this.#config = explorationConfig;
     this.#readiness = readinessChecker;
+    this.#navigation = navigationDriver;
+    this.#restorer = stateRestorer;
   }
 
   get graph(): ExplorationGraph {
@@ -76,7 +78,7 @@ export class ConcreteExplorer extends Explorer {
     this.#startTime = Date.now();
     this.#failedActions = 0;
     this.#transitionCounter = 0;
-    this.#stateUrls.clear();
+    this.#restorePoints.clear();
 
     const initialState = await this.#captureInitialState();
     const frontier: StateNode[] = [initialState];
@@ -116,7 +118,7 @@ export class ConcreteExplorer extends Explorer {
     const state = this.#stateManager.captureState(facts, 0, this.#config.rootSelector);
     this.#stateManager.registerState(state);
     this.#graph.addState(state);
-    this.#stateUrls.set(state.id, this.#page.url());
+    this.#restorePoints.set(state.id, this.#restorer.snapshotRestorePoint());
     await this.#captureScreenshot('state', state.id);
     return state;
   }
@@ -127,7 +129,7 @@ export class ConcreteExplorer extends Explorer {
     await this.#captureScreenshot('transition', this.#actionLabel(action));
 
     // A navigation can surface as a success OR as a failure (element detached mid-action).
-    if (this.#navigatedAwayFrom(currentState)) {
+    if (this.#restorer.hasLeftRestorePoint(this.#restorePoints.get(currentState.id)!)) {
       this.#recordExternalNavigation(currentState, action, result.duration);
       await this.#rollbackToState(currentState);
       return;
@@ -160,7 +162,7 @@ export class ConcreteExplorer extends Explorer {
       success: true,
       duration,
       domChanges: { appeared: [], disappeared: [], modified: [] },
-      navigationUrl: this.#page.url(),
+      navigationUrl: this.#navigation.currentLocation(),
     });
   }
 
@@ -182,7 +184,7 @@ export class ConcreteExplorer extends Explorer {
     if (this.#stateManager.isNewState(to.id)) {
       this.#stateManager.registerState(to);
       this.#graph.addState(to);
-      this.#stateUrls.set(to.id, this.#page.url());
+      this.#restorePoints.set(to.id, this.#restorer.snapshotRestorePoint());
       await this.#captureScreenshot('state', to.id);
 
       if (to.depth < this.#config.maxDepth) {
@@ -204,7 +206,7 @@ export class ConcreteExplorer extends Explorer {
   async #unexploredActions(state: StateNode): Promise<CandidateAction[]> {
     const candidates = await this.#rulesEngine.evaluate(state.facts);
     const triedActionKeys = new Set(this.#graph.getTransitionsFrom(state.id).map((t) => this.#actionKey(t.action)));
-    return candidates.filter((c) => !triedActionKeys.has(this.#actionKey(c)));
+    return candidates.filter((c) => this.#executor.supports(c)).filter((c) => !triedActionKeys.has(this.#actionKey(c)));
   }
 
   #takeNext(frontier: StateNode[]): StateNode {
@@ -220,11 +222,6 @@ export class ConcreteExplorer extends Explorer {
     return Date.now() - this.#startTime >= this.#config.timeout;
   }
 
-  #navigatedAwayFrom(state: StateNode): boolean {
-    const originalUrl = this.#stateUrls.get(state.id)!;
-    return new URL(this.#page.url()).pathname !== new URL(originalUrl).pathname;
-  }
-
   #actionKey(action: CandidateAction): string {
     if (action.type === 'sequence') {
       return `sequence:${action.steps.map((s) => `${s.action.type}:${s.action.targetUid}`).join('+')}`;
@@ -233,11 +230,11 @@ export class ConcreteExplorer extends Explorer {
   }
 
   async #rollbackToState(targetState: StateNode): Promise<void> {
-    const url = this.#stateUrls.get(targetState.id);
-    if (url) {
-      await this.#page.goto(url, { waitUntil: 'load' });
+    const token = this.#restorePoints.get(targetState.id);
+    if (token !== undefined) {
+      await this.#restorer.restore(token);
       await this.#readiness.waitForReady();
-      await this.#page.waitForTimeout(this.#config.stabilizationTimeout);
+      await this.#navigation.wait(this.#config.stabilizationTimeout);
     }
   }
 
@@ -267,7 +264,7 @@ export class ConcreteExplorer extends Explorer {
       const counter = kind === 'transition' ? `${String(this.#transitionCounter++).padStart(4, '0')}-` : '';
       const file = path.join(dir, `${prefix}${kind}-${counter}${safe}.png`);
 
-      await this.#page.screenshot({ path: file, fullPage: false });
+      await this.#navigation.captureScreenshot(file);
     } catch {
       // best-effort
     }
