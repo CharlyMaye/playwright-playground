@@ -29,4 +29,8 @@ export class PlaywrightStateRestorer extends StateRestorer {
   hasLeftRestorePoint(token: RestoreToken): boolean {
     return new URL(this.#page.url()).pathname !== new URL(token).pathname;
   }
+
+  isWithinApplication(token: RestoreToken): boolean {
+    return new URL(this.#page.url()).origin === new URL(token).origin;
+  }
 }

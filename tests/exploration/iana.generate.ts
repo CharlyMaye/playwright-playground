@@ -23,6 +23,9 @@ const SCOPES: Record<string, Partial<PartialExplorationConfig>> = {
     maxStates: 25,
     maxActionsPerState: 100,
     timeout: 30_000,
+    // Static multi-page site: without this, every link click is recorded as
+    // __external_navigation__ and maxDepth/maxStates never come into play.
+    followNavigation: 'same-application',
   },
   main: {
     rootSelector: 'main',
@@ -81,7 +84,11 @@ test.describe('IANA Exploration — Generate', () => {
 
       test(`generate: ${scopeName}`, async ({ explorer, explorationGraph, scenarioExporter, page }) => {
         const explorationTimeout = overrides.timeout ?? 30_000;
-        test.setTimeout(explorationTimeout + 30_000);
+        // The exploration timeout is only checked between actions: on a live
+        // site one in-flight cycle (click + extract a heavy destination page +
+        // rollback goto) can overshoot it by tens of seconds — especially in
+        // followNavigation mode where destination pages are fully extracted.
+        test.setTimeout(explorationTimeout + 90_000);
         await page.goto(IANA_URL, { waitUntil: 'load' });
 
         await explorer.explore();

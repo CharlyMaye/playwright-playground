@@ -24,4 +24,13 @@ export abstract class StateRestorer {
    * (e.g. an action triggered an external navigation).
    */
   abstract hasLeftRestorePoint(token: RestoreToken): boolean;
+  /**
+   * Whether the current location still belongs to the same application as
+   * the state captured by `token` (same URL origin on the web; same
+   * process/window on desktop backends). Only consulted after
+   * `hasLeftRestorePoint` returned true, when the explorer runs in
+   * `followNavigation: 'same-application'` mode — decides between an
+   * in-app discovery and an external boundary.
+   */
+  abstract isWithinApplication(token: RestoreToken): boolean;
 }

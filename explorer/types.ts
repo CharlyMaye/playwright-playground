@@ -110,6 +110,12 @@ export type StateNode = {
   depth: number;
   timestamp: number;
   scopeSelector: string;
+  /**
+   * Opaque location identifier (URL on the web) the state was captured at.
+   * Only set in `followNavigation` crawler mode, where it is part of the
+   * state identity — absent in SPA mode to preserve existing state hashes.
+   */
+  location?: string;
 };
 
 export type DomChanges = {

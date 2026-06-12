@@ -30,6 +30,19 @@
 >
 > Reste : **Phase 3 (WPF)** ci-dessous et les **Options différées** (section
 > dédiée en fin de fichier).
+>
+> **Ajout (2026-06-12) — mode crawler `followNavigation`** : la config gagne
+> `followNavigation: 'none' | 'same-application'` ('none' = SPA, défaut,
+> hash inchangés). En mode 'same-application', une navigation intra-app
+> devient un état découvert à `depth + 1` (la location opaque entre alors
+> dans l'identité de l'état via `StateManager.captureState(..., location)`),
+> au lieu d'une frontière `__external_navigation__`. Le port `StateRestorer`
+> gagne `isWithinApplication(token)` (web : même origin ; WPF : même
+> process/fenêtre — **à implémenter dans l'adapter WPF, §3.2**). Au passage,
+> `PlaywrightDOMExtractor` batché en un seul `evaluateAll` (3 round-trips ×
+> N éléments → 1 par page ; `visible` reproduit la sémantique
+> `isVisible` de Playwright) — hash vérifiés identiques sur les 4 scopes
+> IANA depth-1.
 
 > Objectif : le moteur (`explorer/`) ne doit dépendre que d'abstractions (ports),
 > pour pouvoir remplacer Playwright par Puppeteer, ou par un driver WPF
@@ -232,15 +245,115 @@
 
 ## Phase 3 — Préparation WPF (ne s'engager qu'après phase 1 validée)
 
-- [ ] Prototyper les deux points durs AVANT tout développement large :
-  - [ ] `StateRestorer` sans URL : redémarrage app + replay du chemin
-        d'actions (nécessite de tracer le chemin racine→état dans le graphe —
-        `ExplorationGraph.getPathsTo` existe déjà ✅).
-  - [ ] Extraction UIA → `ElementFact` (WinAppDriver/Appium ou pont FlaUI).
+> **✅ DÉCISION (2026-06-12) — outillage : WinAppDriver/Appium.**
+> Le driver WPF sera un **agent distant** : le moteur TypeScript (devcontainer
+> Linux) parle en WebDriver HTTP à WinAppDriver tournant sur une machine
+> Windows. L'hôte WSL2 du poste de dev peut jouer ce rôle (joignable depuis le
+> conteneur via `host.docker.internal`). Conséquence : **pas de SDK .NET ni de
+> C# dans le repo** — côté conteneur, le client Appium est un simple paquet
+> npm. L'option « pont FlaUI » est abandonnée (sauf blocage technique
+> découvert au prototypage).
+
+### 3.0 Infra / devcontainer
+
+- [ ] **Configurer le devcontainer** pour le mode agent distant :
+  - [ ] Ajouter la dépendance npm du client WebDriver/Appium
+        (`webdriverio` ou `appium` client) dans `playwright-playground`.
+  - [ ] Exposer l'URL de l'agent via une variable d'environnement
+        (ex. `WPF_DRIVER_URL`, défaut `http://host.docker.internal:4723`)
+        dans `containerEnv` de `devcontainer.json` — PAS de valeur en dur
+        dans le code.
+  - [ ] Vérifier la connectivité conteneur → hôte Windows
+        (`host.docker.internal`, pare-feu Windows : autoriser le port 4723
+        en entrée depuis WSL2/Docker).
+  - [ ] **Ne PAS ajouter** la feature .NET (`dotnet`) : inutile avec
+        l'option Appium, elle alourdirait le build pour tout le monde.
+  - Côté Windows (hors devcontainer) : installer WinAppDriver, activer le
+    Developer Mode, lancer l'agent (manuel ou tâche planifiée).
+- [ ] CI : les tests WPF nécessitent un runner Windows (ou une VM dédiée
+      joignable) — à prévoir dans le pipeline, séparé des tests web.
+
+### 3.1 Échelle de validation AVANT d'écrire l'adapter (go/no-go à chaque étape)
+
+Dans l'ordre, de la moins chère à la plus chère :
+
+- [ ] **1. Audit UIA de l'app WPF cible** (manuel, Windows, zéro code) :
+      ouvrir l'app avec *Accessibility Insights for Windows* et inspecter
+      l'arbre — les contrôles ont-ils `AutomationId`/`Name`/`ControlType` ?
+      **No-go** : arbre pauvre → instrumenter l'app
+      (`AutomationProperties.AutomationId`) AVANT l'adapter. C'est le
+      risque n°1 du chantier.
+- [x] **2. FakeDriver en mémoire** ✅ (2026-06-12) :
+      `explorer/__tests__/explorer-fake-driver.spec.ts` — machine à écrans
+      en mémoire branchée sur les 6 ports, pilotée par le VRAI cœur
+      (`ConcreteExplorer` + `ConcreteRulesEngine` + `ConcreteStateManager` +
+      `ConcreteExplorationGraph`). 3 tests : découverte/cycle/self-loop/
+      navigation externe, filtre de capacités (`hover` non supporté →
+      filtré, 0 échec), stratégie DFS. **46/46 tests** au total.
+      → Preuve architecturale acquise : le travail WPF = un adapter, rien
+      d'autre.
+- [ ] **3. Connectivité conteneur → hôte Windows** :
+      `curl http://host.docker.internal:4723/status` depuis le devcontainer
+      avec WinAppDriver lancé sur l'hôte. **No-go** : pare-feu/WSL2 à régler
+      avant tout.
+      - ⚠️ Constat (2026-06-12) : `host.docker.internal` **ne résolvait pas**
+        dans ce devcontainer (Docker/WSL2 sans Docker Desktop ne le fournit
+        pas). Correctif appliqué dans `devcontainer.json` :
+        `--add-host=host.docker.internal:host-gateway` dans `runArgs`.
+      - ✅ Rebuild fait : `host.docker.internal` résout (→ 172.18.0.1,
+        passerelle bridge Docker). Reste à valider le `/status` avec
+        WinAppDriver lancé côté Windows.
+      - ⚠️ Topologie : 172.18.0.1 = la **VM WSL2** (où tourne dockerd), pas
+        Windows. En réseau WSL **NAT** (défaut), le service Windows doit
+        écouter sur l'IP du vEthernet WSL et être visé via cette IP ; en
+        mode **mirrored** (Win11, `.wslconfig` : `networkingMode=mirrored`),
+        localhost est partagé et c'est plus simple. Procédure côté Windows
+        (PowerShell **admin** — indépendant de la langue de l'OS) :
+        ```powershell
+        # 1. Developer Mode (sans passer par les menus)
+        reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" /t REG_DWORD /f /v "AllowDevelopmentWithoutDevLicense" /d 1
+        # 2. Installer WinAppDriver
+        winget search winappdriver   # puis winget install <id>, ou
+        # https://github.com/microsoft/WinAppDriver/releases (v1.2.1)
+        # 3. Ouvrir le pare-feu
+        New-NetFirewallRule -DisplayName "WinAppDriver (WSL)" -Direction Inbound -LocalPort 4723 -Protocol TCP -Action Allow
+        # 4. IP du vEthernet WSL
+        Get-NetIPAddress -AddressFamily IPv4 | ? InterfaceAlias -like "*WSL*" | select IPAddress
+        # 5. Lancer WinAppDriver à l'écoute sur cette IP (console admin)
+        & "C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe" <IP_WSL> 4723
+        ```
+        Puis depuis le devcontainer, dans l'ordre :
+        `curl http://host.docker.internal:4723/status` ; si échec,
+        `curl http://<IP_WSL>:4723/status` → l'URL gagnante devient la
+        valeur de `WPF_DRIVER_URL`.
+- [ ] **4. Hello-world WinAppDriver** (Calculatrice Windows) depuis un
+      mini-script dans le devcontainer : session WebDriver, `findElement`,
+      clic, et surtout vérifier qu'on récupère TOUS les attributs requis par
+      `ElementFact` : `ControlType`, `Name`, `AutomationId`, `IsEnabled`,
+      `IsOffscreen`, `BoundingRectangle`.
+- [ ] **5. Spike « restore » + mesure de coût** : lancer l'app, 2-3 actions,
+      tuer la session, relancer, rejouer le chemin → même hash de facts ?
+      **Chronométrer** : un restart à 5-15 s × dizaines de rollbacks peut
+      rendre l'exploration impraticable → stratégie alternative à concevoir
+      (navigation interne, réutilisation de session).
+
+> **Plan B agent** : WinAppDriver n'est plus activement maintenu. Si
+> l'étape 4 est instable → **FlaUI.WebDriver** (serveur WebDriver maintenu,
+> basé FlaUI) : même protocole, même client npm, zéro impact sur l'adapter
+> ni le devcontainer.
+
+### 3.2 Adapter WPF
+
+- [ ] `explorer/adapters/wpf/` : implémenter les 6 ports (`DOMExtractor`,
+      `ActionExecutor`, `ReadinessChecker`, `NavigationDriver`,
+      `StateRestorer`, `DefaultRules`) + `registerWpfAdapter()`.
 - [ ] `DEFAULT_WPF_RULES` (conditions sur `controlType`/`role` UIA).
-- [ ] Déclaration de capacités du driver WPF (pas de `hover` fiable, pas de
-      `WaitConditionFunction`).
-- [ ] Runner dédié (hors fixture Playwright).
+- [ ] Déclaration de capacités : `supports()` renvoie `false` pour
+      `hover` (non fiable), `mousedown` (dispatchEvent web-only) et les
+      séquences contenant `WaitConditionFunction` (JS).
+- [ ] Runner dédié (hors fixture Playwright) — un script/runner Node
+      simple suffit, le client Appium n'a pas besoin du test-runner
+      Playwright.
 
 ---
 
@@ -248,9 +361,9 @@
 
 Consolidation des cases restées ouvertes dans les phases 1-2 :
 
-- [ ] **`FakeDriver` en mémoire** (§2.3) — ★ le plus rentable : tester la
-      boucle BFS/DFS d'`Explorer` sans navigateur. Trivial désormais (tous
-      les ports sont injectables). Recommandé en prochain incrément.
+- [x] **`FakeDriver` en mémoire** (§2.3) ✅ fait (2026-06-12) — voir
+      `explorer/__tests__/explorer-fake-driver.spec.ts` et l'étape 2 de
+      l'échelle de validation §3.1.
 - [ ] **Rejouer `llamasticot.generate.ts`** (critère de validation) — demande
       le serveur LlamaSticot sur `:4206`. Vérifier les hash d'états comme
       fait pour IANA. ⚠️ Au passage : les JSON `llamasticot-*.json` sont

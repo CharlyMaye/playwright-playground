@@ -8,6 +8,14 @@ export const ExplorationConfigSchema = z.object({
   maxActionsPerState: z.number().int().min(1).default(10),
   timeout: z.number().int().min(1000).default(30_000),
 
+  // Navigation — 'none' (SPA mode, default): any navigation away from the
+  // current restore point is a boundary, recorded as __external_navigation__.
+  // 'same-application' (crawler mode, for static/multi-page sites): a
+  // navigation that stays inside the application (same URL origin on the
+  // web — see StateRestorer.isWithinApplication) becomes a discovered state
+  // at depth + 1; foreign destinations remain boundaries.
+  followNavigation: z.enum(['none', 'same-application']).default('none'),
+
   // Scope
   rootSelector: z.string().min(1).default('body'),
   boundary: z.enum(['strict', 'overflow']).default('strict'),
@@ -101,6 +109,10 @@ export abstract class ExplorationConfig {
   }
   get timeout() {
     return this.#data.timeout;
+  }
+
+  get followNavigation() {
+    return this.#data.followNavigation;
   }
 
   get rootSelector() {

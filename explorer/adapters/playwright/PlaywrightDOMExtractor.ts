@@ -7,13 +7,37 @@ import { ExplorationScope } from './ExplorationScope';
 
 const INTERACTIVE_SELECTOR = ['a', 'button', 'input', 'select', 'textarea', '[role]', '[tabindex]', '[contenteditable]', 'details', 'summary', '[aria-expanded]', '[aria-controls]', '[aria-haspopup]'].join(', ');
 
-/**
- * Runs IN THE BROWSER via `locator.evaluate` — must stay self-contained
- * (no closure over module scope, Playwright serializes its source).
- */
-function collectElementProps(node: SVGElement | HTMLElement) {
-  const htmlEl = node as HTMLElement;
+type CollectedProps = {
+  tag: string;
+  role: string | null;
+  text: string;
+  inputType: string | null;
+  ariaExpanded: string | null;
+  ariaControls: string | null;
+  ariaOwns: string | null;
+  tabindex: string | null;
+  contentEditable: boolean;
+  dataTestId: string | null;
+  id: string;
+  accessibleName: string | null;
+  disabled: boolean;
+  focusable: boolean;
+  cssSelector: string;
+  visible: boolean;
+  boundingBox: { x: number; y: number; width: number; height: number } | null;
+};
 
+/**
+ * Runs IN THE BROWSER via `locator.evaluateAll` — must stay self-contained
+ * (no closure over module scope, Playwright serializes its source).
+ *
+ * Batched on purpose: one protocol round-trip for the whole page instead of
+ * three per element (`isVisible` + `evaluate` + `boundingBox`) — on heavy
+ * pages (thousands of links) the per-element variant takes minutes.
+ * `visible` mirrors Playwright's `isVisible` semantics: non-empty bounding
+ * box and no `visibility: hidden`.
+ */
+function collectAllElementProps(nodes: (SVGElement | HTMLElement)[]): (CollectedProps | null)[] {
   const computeCssSelector = (target: HTMLElement): string => {
     const parts: string[] = [];
     let current: HTMLElement | null = target;
@@ -41,23 +65,35 @@ function collectElementProps(node: SVGElement | HTMLElement) {
     return parts.join(' > ');
   };
 
-  return {
-    tag: htmlEl.tagName.toLowerCase(),
-    role: htmlEl.getAttribute('role'),
-    text: (htmlEl.textContent ?? '').trim().substring(0, 200),
-    inputType: htmlEl.getAttribute('type'),
-    ariaExpanded: htmlEl.getAttribute('aria-expanded'),
-    ariaControls: htmlEl.getAttribute('aria-controls'),
-    ariaOwns: htmlEl.getAttribute('aria-owns'),
-    tabindex: htmlEl.getAttribute('tabindex'),
-    contentEditable: htmlEl.isContentEditable,
-    dataTestId: htmlEl.getAttribute('data-testid'),
-    id: htmlEl.id,
-    accessibleName: htmlEl.getAttribute('aria-label') ?? htmlEl.getAttribute('aria-labelledby') ?? (htmlEl as HTMLInputElement).labels?.[0]?.textContent?.trim() ?? htmlEl.getAttribute('title') ?? null,
-    disabled: (htmlEl as HTMLButtonElement).disabled ?? false,
-    focusable: htmlEl.tabIndex >= 0,
-    cssSelector: computeCssSelector(htmlEl),
-  };
+  return nodes.map((node) => {
+    try {
+      const htmlEl = node as HTMLElement;
+      const rect = htmlEl.getBoundingClientRect();
+      const visible = rect.width > 0 && rect.height > 0 && window.getComputedStyle(htmlEl).visibility !== 'hidden';
+
+      return {
+        tag: htmlEl.tagName.toLowerCase(),
+        role: htmlEl.getAttribute('role'),
+        text: (htmlEl.textContent ?? '').trim().substring(0, 200),
+        inputType: htmlEl.getAttribute('type'),
+        ariaExpanded: htmlEl.getAttribute('aria-expanded'),
+        ariaControls: htmlEl.getAttribute('aria-controls'),
+        ariaOwns: htmlEl.getAttribute('aria-owns'),
+        tabindex: htmlEl.getAttribute('tabindex'),
+        contentEditable: htmlEl.isContentEditable,
+        dataTestId: htmlEl.getAttribute('data-testid'),
+        id: htmlEl.id,
+        accessibleName: htmlEl.getAttribute('aria-label') ?? htmlEl.getAttribute('aria-labelledby') ?? (htmlEl as HTMLInputElement).labels?.[0]?.textContent?.trim() ?? htmlEl.getAttribute('title') ?? null,
+        disabled: (htmlEl as HTMLButtonElement).disabled ?? false,
+        focusable: htmlEl.tabIndex >= 0,
+        cssSelector: computeCssSelector(htmlEl),
+        visible,
+        boundingBox: visible ? { x: rect.x, y: rect.y, width: rect.width, height: rect.height } : null,
+      };
+    } catch {
+      return null;
+    }
+  });
 }
 
 @Injector({ Provide: [ExplorationScope, ExplorationConfig] })
@@ -89,31 +125,20 @@ export class PlaywrightDOMExtractor extends DOMExtractor {
   }
 
   async #extractFromLocators(locators: Locator, isInScope: boolean): Promise<ElementFact[]> {
-    const count = await locators.count();
+    const allProps = await locators.evaluateAll(collectAllElementProps).catch(() => [] as (CollectedProps | null)[]);
     const facts: ElementFact[] = [];
 
-    for (let i = 0; i < count; i++) {
-      const el = locators.nth(i);
-      const fact = await this.#extractSingleElement(el, i, isInScope);
-      if (fact) facts.push(fact);
-    }
+    for (let i = 0; i < allProps.length; i++) {
+      const props = allProps[i];
+      if (!props) continue;
+      const uid = this.#generateUid(props.dataTestId, props.id, props.role, props.accessibleName, props.tag, i);
 
-    return facts;
-  }
-
-  async #extractSingleElement(el: Locator, index: number, isInScope: boolean): Promise<ElementFact | null> {
-    try {
-      const visible = await el.isVisible().catch(() => false);
-      const props = await el.evaluate(collectElementProps);
-      const boundingBox = await el.boundingBox().catch(() => null);
-      const uid = this.#generateUid(props.dataTestId, props.id, props.role, props.accessibleName, props.tag, index);
-
-      return {
+      facts.push({
         uid,
         tag: props.tag,
         role: props.role,
         accessibleName: props.accessibleName,
-        visible,
+        visible: props.visible,
         enabled: !props.disabled,
         focusable: props.focusable,
         text: props.text,
@@ -123,14 +148,14 @@ export class PlaywrightDOMExtractor extends DOMExtractor {
         ariaOwns: props.ariaOwns,
         tabindex: props.tabindex === null ? null : parseInt(props.tabindex, 10),
         contentEditable: props.contentEditable,
-        boundingBox,
+        boundingBox: props.boundingBox,
         isInScope,
         parentUid: null,
         nativeSelector: props.cssSelector,
-      };
-    } catch {
-      return null;
+      });
     }
+
+    return facts;
   }
 
   #generateUid(dataTestId: string | null, id: string | null, role: string | null, accessibleName: string | null, tag: string, index: number): string {

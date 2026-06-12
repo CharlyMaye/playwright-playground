@@ -89,7 +89,7 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1781269632228,
+        "timestamp": 1781275647550,
         "scopeSelector": "main"
       }
     ],
@@ -105,7 +105,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 586,
+        "duration": 642,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -124,7 +124,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 567,
+        "duration": 588,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -143,7 +143,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 514,
+        "duration": 508,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -159,7 +159,7 @@
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 3106,
+    "totalDuration": 3070,
     "failedActions": 0
   },
   "scenarios": [
@@ -208,5 +208,5 @@
   ],
   "mermaid": "stateDiagram-v2\n  state \"6d860f3c (d=0)\" as s_6d860f3c\n  s_6d860f3c --> s___extern : click\n  s_6d860f3c --> s___extern : click\n  s_6d860f3c --> s___extern : click",
   "dot": "digraph {\n  \"6d860f3cb18b884a\" [label=\"6d860f3c\\nd=0 f=3\"];\n  \"6d860f3cb18b884a\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6d860f3cb18b884a\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6d860f3cb18b884a\" -> \"__external_navigation__\" [label=\"click\"];\n}",
-  "generatedAt": "2026-06-12T13:07:15.181Z"
+  "generatedAt": "2026-06-12T14:47:30.586Z"
 }

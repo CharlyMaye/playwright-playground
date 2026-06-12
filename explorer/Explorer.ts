@@ -115,7 +115,7 @@ export class ConcreteExplorer extends Explorer {
     await this.#readiness.waitForReady();
 
     const facts = await this.#extractor.extract();
-    const state = this.#stateManager.captureState(facts, 0, this.#config.rootSelector);
+    const state = this.#stateManager.captureState(facts, 0, this.#config.rootSelector, this.#locationKey());
     this.#stateManager.registerState(state);
     this.#graph.addState(state);
     this.#restorePoints.set(state.id, this.#restorer.snapshotRestorePoint());
@@ -130,7 +130,11 @@ export class ConcreteExplorer extends Explorer {
 
     // A navigation can surface as a success OR as a failure (element detached mid-action).
     if (this.#restorer.hasLeftRestorePoint(this.#restorePoints.get(currentState.id)!)) {
-      this.#recordExternalNavigation(currentState, action, result.duration);
+      if (this.#config.followNavigation !== 'none' && this.#restorer.isWithinApplication(this.#restorePoints.get(currentState.id)!)) {
+        await this.#exploreNavigationDiscovery(currentState, action, result.duration, frontier);
+      } else {
+        this.#recordExternalNavigation(currentState, action, result.duration);
+      }
       await this.#rollbackToState(currentState);
       return;
     }
@@ -141,7 +145,7 @@ export class ConcreteExplorer extends Explorer {
     }
 
     const newFacts = await this.#extractor.extract();
-    const newState = this.#stateManager.captureState(newFacts, currentState.depth + 1, this.#config.rootSelector);
+    const newState = this.#stateManager.captureState(newFacts, currentState.depth + 1, this.#config.rootSelector, this.#locationKey());
     const domChanges = computeDomChanges(currentState.facts, newFacts);
 
     if (newState.id === currentState.id) {
@@ -150,6 +154,27 @@ export class ConcreteExplorer extends Explorer {
       await this.#recordDiscovery(currentState, newState, action, result.duration, domChanges, frontier);
     }
     await this.#rollbackToState(currentState);
+  }
+
+  /**
+   * Crawler mode (`followNavigation`): an in-application navigation is a
+   * discovery, not a boundary — the destination is captured as a state at
+   * `depth + 1` and pushed to the frontier like any other discovery.
+   * The caller rolls back to `from` afterwards.
+   */
+  async #exploreNavigationDiscovery(from: StateNode, action: CandidateAction, duration: number, frontier: StateNode[]): Promise<void> {
+    await this.#readiness.waitForReady();
+    await this.#navigation.wait(this.#config.stabilizationTimeout);
+
+    const newFacts = await this.#extractor.extract();
+    const newState = this.#stateManager.captureState(newFacts, from.depth + 1, this.#config.rootSelector, this.#locationKey());
+    const domChanges = computeDomChanges(from.facts, newFacts);
+
+    if (newState.id === from.id) {
+      this.#recordSelfLoop(from, action, duration, domChanges);
+      return;
+    }
+    await this.#recordDiscovery(from, newState, action, duration, domChanges, frontier, this.#navigation.currentLocation());
   }
 
   /** Boundary transition to a foreign page — recorded without extracting facts from it. */
@@ -180,7 +205,15 @@ export class ConcreteExplorer extends Explorer {
     });
   }
 
-  async #recordDiscovery(from: StateNode, to: StateNode, action: CandidateAction, duration: number, domChanges: DomChanges, frontier: StateNode[]): Promise<void> {
+  async #recordDiscovery(
+    from: StateNode,
+    to: StateNode,
+    action: CandidateAction,
+    duration: number,
+    domChanges: DomChanges,
+    frontier: StateNode[],
+    navigationUrl?: string
+  ): Promise<void> {
     if (this.#stateManager.isNewState(to.id)) {
       this.#stateManager.registerState(to);
       this.#graph.addState(to);
@@ -200,6 +233,7 @@ export class ConcreteExplorer extends Explorer {
       success: true,
       duration,
       domChanges,
+      ...(navigationUrl !== undefined && { navigationUrl }),
     });
   }
 
@@ -212,6 +246,14 @@ export class ConcreteExplorer extends Explorer {
   #takeNext(frontier: StateNode[]): StateNode {
     // BFS = shift (FIFO), DFS = pop (LIFO)
     return this.#config.strategy === 'bfs' ? frontier.shift()! : frontier.pop()!;
+  }
+
+  /**
+   * Location to fold into state identity — only in crawler mode, so that
+   * SPA-mode state hashes stay identical to historically generated graphs.
+   */
+  #locationKey(): string | undefined {
+    return this.#config.followNavigation === 'none' ? undefined : this.#navigation.currentLocation();
   }
 
   #hasReachedMaxStates(): boolean {
