@@ -715,7 +715,7 @@
           }
         ],
         "depth": 0,
-        "timestamp": 1781254359742,
+        "timestamp": 1781266707459,
         "scopeSelector": "body"
       }
     ],
@@ -731,7 +731,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 389,
+        "duration": 481,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -750,7 +750,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 632,
+        "duration": 527,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -769,7 +769,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 1434,
+        "duration": 508,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -788,7 +788,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 603,
+        "duration": 517,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -807,165 +807,13 @@
           "priority": 5
         },
         "success": true,
-        "duration": 596,
+        "duration": 528,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
           "modified": []
         },
         "navigationUrl": "https://www.iana.org/about"
-      },
-      {
-        "id": "6f3ccf49dbfa9944->nav:click:a[6]",
-        "from": "6f3ccf49dbfa9944",
-        "to": "__external_navigation__",
-        "action": {
-          "type": "click",
-          "targetUid": "a[6]",
-          "targetSelector": "#body > article > main > div > p:nth-of-type(1) > a:nth-of-type(2)",
-          "priority": 5
-        },
-        "success": true,
-        "duration": 413,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "navigationUrl": "https://datatracker.ietf.org/doc/html/rfc2606"
-      },
-      {
-        "id": "6f3ccf49dbfa9944->nav:click:a[7]",
-        "from": "6f3ccf49dbfa9944",
-        "to": "__external_navigation__",
-        "action": {
-          "type": "click",
-          "targetUid": "a[7]",
-          "targetSelector": "#body > article > main > div > ul > li > a",
-          "priority": 5
-        },
-        "success": true,
-        "duration": 605,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "navigationUrl": "https://www.iana.org/domains/reserved"
-      },
-      {
-        "id": "6f3ccf49dbfa9944->nav:click:a[8]",
-        "from": "6f3ccf49dbfa9944",
-        "to": "__external_navigation__",
-        "action": {
-          "type": "click",
-          "targetUid": "a[8]",
-          "targetSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(1) > a",
-          "priority": 5
-        },
-        "success": true,
-        "duration": 501,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "navigationUrl": "https://www.iana.org/domains"
-      },
-      {
-        "id": "6f3ccf49dbfa9944->nav:click:a[10]",
-        "from": "6f3ccf49dbfa9944",
-        "to": "__external_navigation__",
-        "action": {
-          "type": "click",
-          "targetUid": "a[10]",
-          "targetSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(2) > a",
-          "priority": 5
-        },
-        "success": true,
-        "duration": 357,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "navigationUrl": "https://www.iana.org/domains/int"
-      },
-      {
-        "id": "6f3ccf49dbfa9944->nav:click:a[11]",
-        "from": "6f3ccf49dbfa9944",
-        "to": "__external_navigation__",
-        "action": {
-          "type": "click",
-          "targetUid": "a[11]",
-          "targetSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(3) > a",
-          "priority": 5
-        },
-        "success": true,
-        "duration": 600,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "navigationUrl": "https://www.iana.org/domains/arpa"
-      },
-      {
-        "id": "6f3ccf49dbfa9944->nav:click:a[12]",
-        "from": "6f3ccf49dbfa9944",
-        "to": "__external_navigation__",
-        "action": {
-          "type": "click",
-          "targetUid": "a[12]",
-          "targetSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(4) > a",
-          "priority": 5
-        },
-        "success": true,
-        "duration": 1241,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "navigationUrl": "https://www.iana.org/domains/idn-tables"
-      },
-      {
-        "id": "6f3ccf49dbfa9944->nav:click:a[13]",
-        "from": "6f3ccf49dbfa9944",
-        "to": "__external_navigation__",
-        "action": {
-          "type": "click",
-          "targetUid": "a[13]",
-          "targetSelector": "#footer > table > tbody > tr:nth-of-type(2) > td:nth-of-type(1) > a",
-          "priority": 5
-        },
-        "success": true,
-        "duration": 499,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "navigationUrl": "https://www.iana.org/numbers"
-      },
-      {
-        "id": "6f3ccf49dbfa9944->nav:click:a[14]",
-        "from": "6f3ccf49dbfa9944",
-        "to": "__external_navigation__",
-        "action": {
-          "type": "click",
-          "targetUid": "a[14]",
-          "targetSelector": "#footer > table > tbody > tr:nth-of-type(2) > td:nth-of-type(2) > ul > li > a",
-          "priority": 5
-        },
-        "success": true,
-        "duration": 357,
-        "domChanges": {
-          "appeared": [],
-          "disappeared": [],
-          "modified": []
-        },
-        "navigationUrl": "https://www.iana.org/abuse"
       },
       {
         "id": "6f3ccf49dbfa9944->nav:click:a[15]",
@@ -978,13 +826,13 @@
           "priority": 5
         },
         "success": true,
-        "duration": 1162,
+        "duration": 353,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
           "modified": []
         },
-        "navigationUrl": "https://www.iana.org/protocols"
+        "navigationUrl": "https://datatracker.ietf.org/doc/html/rfc2606"
       },
       {
         "id": "6f3ccf49dbfa9944->nav:click:a[16]",
@@ -997,13 +845,32 @@
           "priority": 5
         },
         "success": true,
-        "duration": 1041,
+        "duration": 422,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
           "modified": []
         },
         "navigationUrl": "https://www.iana.org/protocols"
+      },
+      {
+        "id": "6f3ccf49dbfa9944->nav:click:a[17]",
+        "from": "6f3ccf49dbfa9944",
+        "to": "__external_navigation__",
+        "action": {
+          "type": "click",
+          "targetUid": "a[17]",
+          "targetSelector": "#footer > table > tbody > tr:nth-of-type(3) > td:nth-of-type(2) > ul > li:nth-of-type(2) > a",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 509,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "navigationUrl": "https://www.iana.org/time-zones"
       },
       {
         "id": "6f3ccf49dbfa9944->nav:click:a[18]",
@@ -1016,13 +883,32 @@
           "priority": 5
         },
         "success": true,
-        "duration": 547,
+        "duration": 430,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
           "modified": []
         },
         "navigationUrl": "https://www.iana.org/about"
+      },
+      {
+        "id": "6f3ccf49dbfa9944->nav:click:a[19]",
+        "from": "6f3ccf49dbfa9944",
+        "to": "__external_navigation__",
+        "action": {
+          "type": "click",
+          "targetUid": "a[19]",
+          "targetSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > ul > li:nth-of-type(1) > a",
+          "priority": 5
+        },
+        "success": true,
+        "duration": 612,
+        "domChanges": {
+          "appeared": [],
+          "disappeared": [],
+          "modified": []
+        },
+        "navigationUrl": "https://www.iana.org/news"
       },
       {
         "id": "6f3ccf49dbfa9944->nav:click:a[20]",
@@ -1035,13 +921,13 @@
           "priority": 5
         },
         "success": true,
-        "duration": 353,
+        "duration": 504,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
           "modified": []
         },
-        "navigationUrl": "https://www.iana.org/news"
+        "navigationUrl": "https://www.iana.org/performance"
       },
       {
         "id": "6f3ccf49dbfa9944->nav:click:a[21]",
@@ -1054,7 +940,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 587,
+        "duration": 509,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1073,7 +959,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 579,
+        "duration": 519,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1092,7 +978,7 @@
           "priority": 5
         },
         "success": true,
-        "duration": 581,
+        "duration": 507,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1101,17 +987,17 @@
         "navigationUrl": "https://www.iana.org/contact"
       },
       {
-        "id": "6f3ccf49dbfa9944->nav:click:a[26]",
+        "id": "6f3ccf49dbfa9944->nav:click:a[27]",
         "from": "6f3ccf49dbfa9944",
         "to": "__external_navigation__",
         "action": {
           "type": "click",
-          "targetUid": "a[26]",
-          "targetSelector": "#legalnotice > ul > li:nth-of-type(1) > a",
+          "targetUid": "a[27]",
+          "targetSelector": "#legalnotice > ul > li:nth-of-type(2) > a",
           "priority": 5
         },
         "success": true,
-        "duration": 359,
+        "duration": 352,
         "domChanges": {
           "appeared": [],
           "disappeared": [],
@@ -1123,12 +1009,12 @@
   },
   "summary": {
     "statesDiscovered": 1,
-    "transitions": 21,
+    "transitions": 15,
     "maxDepthReached": 0,
     "cycles": 0,
     "deadEnds": 0,
-    "totalDuration": 29756,
-    "failedActions": 7
+    "totalDuration": 18967,
+    "failedActions": 13
   },
   "scenarios": [
     {
@@ -1202,118 +1088,6 @@
       ]
     },
     {
-      "name": "click_a[6]",
-      "steps": [
-        {
-          "type": "click",
-          "targetUid": "a[6]",
-          "targetSelector": "#body > article > main > div > p:nth-of-type(1) > a:nth-of-type(2)",
-          "priority": 5
-        }
-      ],
-      "targetUids": [
-        "a[6]"
-      ]
-    },
-    {
-      "name": "click_a[7]",
-      "steps": [
-        {
-          "type": "click",
-          "targetUid": "a[7]",
-          "targetSelector": "#body > article > main > div > ul > li > a",
-          "priority": 5
-        }
-      ],
-      "targetUids": [
-        "a[7]"
-      ]
-    },
-    {
-      "name": "click_a[8]",
-      "steps": [
-        {
-          "type": "click",
-          "targetUid": "a[8]",
-          "targetSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(1) > a",
-          "priority": 5
-        }
-      ],
-      "targetUids": [
-        "a[8]"
-      ]
-    },
-    {
-      "name": "click_a[10]",
-      "steps": [
-        {
-          "type": "click",
-          "targetUid": "a[10]",
-          "targetSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(2) > a",
-          "priority": 5
-        }
-      ],
-      "targetUids": [
-        "a[10]"
-      ]
-    },
-    {
-      "name": "click_a[11]",
-      "steps": [
-        {
-          "type": "click",
-          "targetUid": "a[11]",
-          "targetSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(3) > a",
-          "priority": 5
-        }
-      ],
-      "targetUids": [
-        "a[11]"
-      ]
-    },
-    {
-      "name": "click_a[12]",
-      "steps": [
-        {
-          "type": "click",
-          "targetUid": "a[12]",
-          "targetSelector": "#footer > table > tbody > tr:nth-of-type(1) > td:nth-of-type(2) > ul > li:nth-of-type(4) > a",
-          "priority": 5
-        }
-      ],
-      "targetUids": [
-        "a[12]"
-      ]
-    },
-    {
-      "name": "click_a[13]",
-      "steps": [
-        {
-          "type": "click",
-          "targetUid": "a[13]",
-          "targetSelector": "#footer > table > tbody > tr:nth-of-type(2) > td:nth-of-type(1) > a",
-          "priority": 5
-        }
-      ],
-      "targetUids": [
-        "a[13]"
-      ]
-    },
-    {
-      "name": "click_a[14]",
-      "steps": [
-        {
-          "type": "click",
-          "targetUid": "a[14]",
-          "targetSelector": "#footer > table > tbody > tr:nth-of-type(2) > td:nth-of-type(2) > ul > li > a",
-          "priority": 5
-        }
-      ],
-      "targetUids": [
-        "a[14]"
-      ]
-    },
-    {
       "name": "click_a[15]",
       "steps": [
         {
@@ -1342,6 +1116,20 @@
       ]
     },
     {
+      "name": "click_a[17]",
+      "steps": [
+        {
+          "type": "click",
+          "targetUid": "a[17]",
+          "targetSelector": "#footer > table > tbody > tr:nth-of-type(3) > td:nth-of-type(2) > ul > li:nth-of-type(2) > a",
+          "priority": 5
+        }
+      ],
+      "targetUids": [
+        "a[17]"
+      ]
+    },
+    {
       "name": "click_a[18]",
       "steps": [
         {
@@ -1353,6 +1141,20 @@
       ],
       "targetUids": [
         "a[18]"
+      ]
+    },
+    {
+      "name": "click_a[19]",
+      "steps": [
+        {
+          "type": "click",
+          "targetUid": "a[19]",
+          "targetSelector": "#footer > table > tbody > tr:nth-of-type(4) > td:nth-of-type(2) > ul > li:nth-of-type(1) > a",
+          "priority": 5
+        }
+      ],
+      "targetUids": [
+        "a[19]"
       ]
     },
     {
@@ -1412,21 +1214,21 @@
       ]
     },
     {
-      "name": "click_a[26]",
+      "name": "click_a[27]",
       "steps": [
         {
           "type": "click",
-          "targetUid": "a[26]",
-          "targetSelector": "#legalnotice > ul > li:nth-of-type(1) > a",
+          "targetUid": "a[27]",
+          "targetSelector": "#legalnotice > ul > li:nth-of-type(2) > a",
           "priority": 5
         }
       ],
       "targetUids": [
-        "a[26]"
+        "a[27]"
       ]
     }
   ],
-  "mermaid": "stateDiagram-v2\n  state \"6f3ccf49 (d=0)\" as s_6f3ccf49\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click",
-  "dot": "digraph {\n  \"6f3ccf49dbfa9944\" [label=\"6f3ccf49\\nd=0 f=28\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n}",
-  "generatedAt": "2026-06-12T08:53:07.288Z"
+  "mermaid": "stateDiagram-v2\n  state \"6f3ccf49 (d=0)\" as s_6f3ccf49\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click\n  s_6f3ccf49 --> s___extern : click",
+  "dot": "digraph {\n  \"6f3ccf49dbfa9944\" [label=\"6f3ccf49\\nd=0 f=28\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n  \"6f3ccf49dbfa9944\" -> \"__external_navigation__\" [label=\"click\"];\n}",
+  "generatedAt": "2026-06-12T12:18:45.434Z"
 }

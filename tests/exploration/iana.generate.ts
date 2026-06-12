@@ -19,8 +19,8 @@ const OUTPUT_DIR = path.resolve(__dirname, '..', '..', '.exploration-data');
 const SCOPES: Record<string, Partial<PartialExplorationConfig>> = {
   body: {
     rootSelector: 'body',
-    maxDepth: 1,
-    maxStates: 15,
+    maxDepth: 3,
+    maxStates: 25,
     maxActionsPerState: 100,
     timeout: 30_000,
   },
