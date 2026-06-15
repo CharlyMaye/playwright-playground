@@ -1,0 +1,113 @@
+/**
+ * Phase 1 — Exploration generator for IANA example-domains page.
+ *
+ * Run manually:   npm run explore
+ * Or directly:    npx playwright test --project=exploration
+ *
+ * Generates JSON files in .exploration-data/ for each scope.
+ * These files are consumed by tests/iana-validation.spec.ts (Phase 2).
+ */
+import * as fs from 'fs';
+import * as path from 'path';
+import { PartialExplorationConfig } from '../../explorer/ExplorationConfig';
+import { explorerTest as test } from '../../explorer/fixture';
+
+const IANA_URL = 'https://www.iana.org/help/example-domains';
+const OUTPUT_DIR = path.resolve(__dirname, '..', '..', '.exploration-data');
+
+/** Scopes to explore — each produces a separate JSON file */
+const SCOPES: Record<string, Partial<PartialExplorationConfig>> = {
+  body: {
+    rootSelector: 'body',
+    maxDepth: 3,
+    maxStates: 25,
+    maxActionsPerState: 100,
+    timeout: 30_000,
+    // Static multi-page site: without this, every link click is recorded as
+    // __external_navigation__ and maxDepth/maxStates never come into play.
+    followNavigation: 'same-application',
+  },
+  main: {
+    rootSelector: 'main',
+    maxDepth: 1,
+    maxStates: 10,
+    maxActionsPerState: 100,
+  },
+  header: {
+    rootSelector: 'header',
+    maxDepth: 1,
+    maxStates: 20,
+    timeout: 10_000,
+  },
+  footer: {
+    rootSelector: 'footer',
+    maxDepth: 1,
+    maxStates: 30,
+    timeout: 10_000,
+  },
+  'body-content': {
+    rootSelector: '#body',
+    maxDepth: 1,
+    maxStates: 20,
+    timeout: 10_000,
+  },
+};
+
+function writeJSON(filename: string, data: unknown): void {
+  fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+  const filePath = path.join(OUTPUT_DIR, filename);
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+  console.log(`  → ${filePath}`);
+}
+
+test.describe('IANA Exploration — Generate', () => {
+  test.describe.configure({ mode: 'serial' });
+
+  for (const [scopeName, overrides] of Object.entries(SCOPES)) {
+    test.describe(`scope: ${scopeName}`, () => {
+      test.use({
+        explorationConfig: {
+          boundary: 'strict',
+          strategy: 'bfs',
+          maxDepth: 1,
+          maxStates: 50,
+          timeout: 15_000,
+          stabilizationTimeout: 300,
+          domHashStrategy: 'interactive-only',
+          ignoreSelectors: [],
+          ignoreRepeatedElements: false,
+          fillValues: {},
+          selectStrategy: 'first',
+          ...overrides,
+        },
+      });
+
+      test(`generate: ${scopeName}`, async ({ explorer, explorationGraph, scenarioExporter, page }) => {
+        const explorationTimeout = overrides.timeout ?? 30_000;
+        // The exploration timeout is only checked between actions: on a live
+        // site one in-flight cycle (click + extract a heavy destination page +
+        // rollback goto) can overshoot it by tens of seconds — especially in
+        // followNavigation mode where destination pages are fully extracted.
+        test.setTimeout(explorationTimeout + 90_000);
+        await page.goto(IANA_URL, { waitUntil: 'load' });
+
+        await explorer.explore();
+
+        const summary = explorer.getSummary();
+
+        // Collect initial actions for the root state
+        writeJSON(`iana-${scopeName}.json`, {
+          url: IANA_URL,
+          target: scopeName,
+          config: overrides,
+          graph: explorationGraph.toJSON(),
+          summary,
+          scenarios: scenarioExporter.exportScenarios(),
+          mermaid: explorationGraph.toMermaid(),
+          dot: explorationGraph.toDOT(),
+          generatedAt: new Date().toISOString(),
+        });
+      });
+    });
+  }
+});

@@ -1,0 +1,69 @@
+import { ExplorationGraph } from './ExplorationGraph';
+import { CandidateAction, getTargetUid, SerializedGraph, Transition } from './types';
+
+export type Scenario = {
+  name: string;
+  steps: CandidateAction[];
+  targetUids: string[];
+};
+
+export abstract class ScenarioExporter {
+  abstract exportScenarios(): Scenario[];
+  abstract exportJSON(): SerializedGraph;
+  abstract exportMermaid(): string;
+  abstract exportDOT(): string;
+}
+
+export class ConcreteScenarioExporter extends ScenarioExporter {
+  readonly #graph: ExplorationGraph;
+
+  constructor(graph: ExplorationGraph) {
+    super();
+    this.#graph = graph;
+  }
+
+  exportScenarios(): Scenario[] {
+    const paths = this.#graph.getScenarios();
+    return paths.map((path) => this.#pathToScenario(path));
+  }
+
+  exportJSON(): SerializedGraph {
+    return this.#graph.toJSON();
+  }
+
+  exportMermaid(): string {
+    return this.#graph.toMermaid();
+  }
+
+  exportDOT(): string {
+    return this.#graph.toDOT();
+  }
+
+  #pathToScenario(path: Transition[]): Scenario {
+    const steps = path.map((t) => t.action);
+    const targetUids = this.#extractTargetUids(steps);
+    const name = steps.map((s) => this.#actionLabel(s)).join(' → ');
+    return { name, steps, targetUids };
+  }
+
+  #actionLabel(action: CandidateAction): string {
+    if (action.type === 'sequence') {
+      return `sequence(${action.steps.map((s) => `${s.action.type}_${s.action.targetUid}`).join('+')})`;
+    }
+    return `${action.type}_${getTargetUid(action)}`;
+  }
+
+  #extractTargetUids(actions: CandidateAction[]): string[] {
+    const uids = new Set<string>();
+    for (const action of actions) {
+      if (action.type === 'sequence') {
+        for (const step of action.steps) {
+          uids.add(step.action.targetUid);
+        }
+      } else {
+        uids.add(getTargetUid(action));
+      }
+    }
+    return [...uids];
+  }
+}

@@ -9,7 +9,12 @@ class Injector {
   #singletonTypes = new Map<AbstractType<any> | Type<any>, Type<any>>();
   #singletonTypesByName = new Map<string, AbstractType<any>>();
 
+  #scopedTypes = new Map<AbstractType<any> | Type<any>, Type<any>>();
+  #scopedTypesByName = new Map<string, AbstractType<any>>();
+
   #createdInstance = new Map<AbstractType<any> | Type<any>, any>();
+  #scopedInstances = new Map<AbstractType<any> | Type<any>, any>();
+  #inScope = false;
 
   public register<TConcrete>(token: Type<TConcrete>): void;
   public register<TAbstract, TConcrete>(
@@ -51,10 +56,54 @@ class Injector {
     this.#singletonTypesByName.set(token.name, token);
   }
 
+  public registerScoped<TConcrete>(token: Type<TConcrete>): void;
+  public registerScoped<TAbstract, TConcrete>(
+    token: AbstractType<TAbstract> | Type<TAbstract>,
+    useClass?: Type<TConcrete>
+  ): void;
+  public registerScoped<TAbstract, TConcrete>(
+    token: AbstractType<TAbstract> | Type<TAbstract>,
+    useClass?: Type<TConcrete>
+  ): void {
+    if (this.#scopedTypes.has(token)) {
+      return;
+    }
+    if (!isType(useClass)) {
+      useClass = token as Type<TConcrete>;
+    }
+    this.#scopedTypes.set(token, useClass);
+    this.#scopedTypesByName.set(token.name, token);
+  }
+
+  public beginScope(): void {
+    this.#scopedInstances.clear();
+    this.#inScope = true;
+  }
+
+  public endScope(): void {
+    this.#scopedInstances.clear();
+    this.#inScope = false;
+  }
+
+  public provideScopedInstance<T>(token: AbstractType<T> | Type<T>, instance: T): void {
+    if (!this.#inScope) {
+      throw new Error('Cannot provide scoped instance outside of a scope');
+    }
+    if (!this.#scopedTypes.has(token)) {
+      throw new Error(`Token ${token.name} is not registered as scoped`);
+    }
+    this.#scopedInstances.set(token, instance);
+  }
+
   public get<T>(token: AbstractType<T> | Type<T>): T {
-    // Est il enregistrer dans la liste des singletons ?
+    // Est il enregistré dans la liste des singletons ?
     if (this.#singletonTypes.has(token)) {
       return this.#getSingleton(token);
+    }
+
+    // Scoped : 1 instance par scope
+    if (this.#scopedTypes.has(token)) {
+      return this.#getScoped(token);
     }
 
     const resolved = this.#types.get(token);
@@ -64,6 +113,25 @@ class Injector {
 
     const constructorArgs = this.#handleArgsInConstructor<T>(resolved);
     const instance: T = new resolved(...constructorArgs) as T;
+    return instance;
+  }
+
+  #getScoped<T>(token: AbstractType<T> | Type<T>): T {
+    if (!this.#inScope) {
+      throw new Error(
+        `Token ${token.name} is registered as scoped but no scope is active. Call beginScope() before resolving scoped tokens.`
+      );
+    }
+    if (this.#scopedInstances.has(token)) {
+      return this.#scopedInstances.get(token) as T;
+    }
+    const resolved = this.#scopedTypes.get(token) as Type<T>;
+    if (!resolved) {
+      throw new Error(`Token ${token.name} is not registered as scoped`);
+    }
+    const constructorArgs = this.#handleArgsInConstructor<T>(resolved);
+    const instance = new resolved(...constructorArgs);
+    this.#scopedInstances.set(token, instance);
     return instance;
   }
 
@@ -89,7 +157,10 @@ class Injector {
       const parameterNames = getConstructorParameterNames(resolved);
       return parameterNames.map((paramName) => {
         const typeName = camelToPascalCase(paramName);
-        const abstractType = this.#typesByName.get(typeName) || this.#singletonTypesByName.get(typeName);
+        const abstractType =
+          this.#typesByName.get(typeName) ||
+          this.#scopedTypesByName.get(typeName) ||
+          this.#singletonTypesByName.get(typeName);
         if (abstractType) {
           return this.get(abstractType) as unknown;
         } else {

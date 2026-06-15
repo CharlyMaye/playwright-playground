@@ -5,7 +5,7 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['node_modules/', 'test-results/', 'playwright-report/**', 'eslint.config.mjs'],
+    ignores: ['node_modules/', 'test-results/', 'playwright-report/**', 'eslint.config.mjs', 'stories/'],
   },
 
   js.configs.recommended,
@@ -32,7 +32,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['**/fixtures/**'],
+    files: ['**/fixtures/**', '**/fixture.ts'],
     rules: {
       'no-empty-pattern': 'off',
     },

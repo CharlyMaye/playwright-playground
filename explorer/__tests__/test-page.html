@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Explorer Test Page</title>
+    <style>
+      .hidden {
+        display: none;
+      }
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+      .container {
+        border: 1px solid #ccc;
+        padding: 16px;
+        margin: 8px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main-container" class="container">
+      <h1>Test Page</h1>
+
+      <button id="btn-primary" data-testid="btn-primary">Primary Action</button>
+      <button id="btn-secondary" data-testid="btn-secondary">Secondary Action</button>
+
+      <label for="text-input">Name:</label>
+      <input id="text-input" type="text" data-testid="text-input" placeholder="Enter name" />
+
+      <label for="color-select">Color:</label>
+      <select id="color-select" data-testid="color-select">
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+      </select>
+
+      <label>
+        <input id="reveal-checkbox" type="checkbox" data-testid="reveal-checkbox" />
+        Show extra field
+      </label>
+
+      <div id="hidden-section" class="hidden">
+        <label for="extra-input">Extra:</label>
+        <input id="extra-input" type="text" data-testid="extra-input" placeholder="Extra field" />
+      </div>
+    </div>
+
+    <div id="outside-container" class="container">
+      <p>This section is outside the main container.</p>
+      <a href="#" id="outside-link" data-testid="outside-link">Outside Link</a>
+    </div>
+
+    <script>
+      document.getElementById('reveal-checkbox').addEventListener('change', function () {
+        document.getElementById('hidden-section').classList.toggle('hidden', !this.checked);
+      });
+    </script>
+  </body>
+</html>

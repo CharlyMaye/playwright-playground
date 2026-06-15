@@ -54,9 +54,18 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: _isRunningOnCI,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : '50%',
+  workers: process.env.CI ? 1 : 1, //'50%',
   globalSetup: require.resolve('./setup/playwright.global-setup.ts'),
   reporter: _reporters,
+  // Visual diff defaults: tolerate sub-pixel rendering noise (Material ripples,
+  // anti-aliasing) without masking real changes. Animations are also disabled
+  // at capture time via `toHaveScreenshot({ animations: 'disabled' })` here.
+  expect: {
+    toHaveScreenshot: {
+      animations: 'disabled',
+      maxDiffPixelRatio: 0.05,
+    },
+  },
   use: {
     locale: 'en-GB',
     timezoneId: 'Europe/Paris',
@@ -81,7 +90,21 @@ export default defineConfig({
       testMatch: /global-setup\.ts/,
     },
     {
+      name: 'unit-tests',
+      testDir: '.',
+      testMatch: /(__tests__\/.*\.spec\.ts)$/,
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['setup injector'],
+    },
+    {
       name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['setup injector'],
+    },
+    {
+      name: 'exploration',
+      testDir: './tests/exploration',
+      testMatch: /\.generate\.ts$/,
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['setup injector'],
     },
