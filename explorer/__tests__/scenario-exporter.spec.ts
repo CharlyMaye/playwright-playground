@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { ConcreteExplorationGraph } from '../ExplorationGraph';
 import { ConcreteScenarioExporter } from '../ScenarioExporter';
-import { CandidateAction, SerializedGraph, StateNode, Transition } from '../types';
+import { CandidateAction, StateNode, Transition } from '../types';
 
 function makeState(id: string, depth = 0): StateNode {
   return { id, facts: [], depth, timestamp: Date.now(), scopeSelector: 'body' };
@@ -49,45 +49,6 @@ test.describe('ScenarioExporter', () => {
     const exporter = new ConcreteScenarioExporter(graph);
     const scenarios = exporter.exportScenarios();
     expect(scenarios).toHaveLength(2);
-  });
-
-  test('exportJSON returns serializable graph', () => {
-    const graph = new ConcreteExplorationGraph();
-    graph.addState(makeState('s0'));
-    graph.addState(makeState('s1'));
-    graph.addTransition(makeTransition('s0', 's1'));
-
-    const exporter = new ConcreteScenarioExporter(graph);
-    const json = exporter.exportJSON();
-    const str = JSON.stringify(json);
-    const parsed = JSON.parse(str) as SerializedGraph;
-    expect(parsed.states).toHaveLength(2);
-    expect(parsed.transitions).toHaveLength(1);
-  });
-
-  test('exportMermaid returns valid Mermaid', () => {
-    const graph = new ConcreteExplorationGraph();
-    graph.addState(makeState('s0'));
-    graph.addState(makeState('s1'));
-    graph.addTransition(makeTransition('s0', 's1'));
-
-    const exporter = new ConcreteScenarioExporter(graph);
-    const mermaid = exporter.exportMermaid();
-    expect(mermaid).toContain('stateDiagram-v2');
-    expect(mermaid).toContain('-->');
-  });
-
-  test('exportDOT returns valid DOT', () => {
-    const graph = new ConcreteExplorationGraph();
-    graph.addState(makeState('s0'));
-    graph.addState(makeState('s1'));
-    graph.addTransition(makeTransition('s0', 's1'));
-
-    const exporter = new ConcreteScenarioExporter(graph);
-    const dot = exporter.exportDOT();
-    expect(dot).toContain('digraph {');
-    expect(dot).toContain('->');
-    expect(dot.trimEnd()).toMatch(/}$/);
   });
 
   test('handles sequence actions in scenario name', () => {

@@ -19,8 +19,4 @@ export class PlaywrightNavigationDriver extends NavigationDriver {
   async captureScreenshot(path: string): Promise<void> {
     await this.#page.screenshot({ path, fullPage: false });
   }
-
-  async wait(ms: number): Promise<void> {
-    await this.#page.waitForTimeout(ms);
-  }
 }

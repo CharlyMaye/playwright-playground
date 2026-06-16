@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import { ExpectContext, TestContext } from '../engine';
 import { resolveTargetLocator } from '../explorer/adapters/playwright/locator-resolver';
-import type { CandidateAction, ElementFact, SerializedGraph, Transition, UnitaryAction } from '../explorer/types';
+import type { CandidateAction, SerializedGraph, Transition, UnitaryAction } from '../explorer/types';
 import { BuilderPOM, ConcreteBuilderPOM } from './BuilderPOM';
 
 type Scenario = {
@@ -201,8 +201,9 @@ export class ConcreteExplorationPOM extends ConcreteBuilderPOM<ExplorationSelect
 
   #findFactSelector(uid: string): string | undefined {
     for (const state of this.#data!.graph.states) {
-      const fact: (ElementFact & { cssSelector?: string }) | undefined = state.facts.find((f) => f.uid === uid);
-      // Legacy JSON files (pre nativeSelector rename) carry `cssSelector`.
+      // Serialized facts may be minimal (uid + nativeSelector) or legacy
+      // (carrying `cssSelector`); only the selector fields are read here.
+      const fact = state.facts.find((f) => f.uid === uid) as { nativeSelector?: string; cssSelector?: string } | undefined;
       const selector = fact?.nativeSelector ?? fact?.cssSelector;
       if (selector) return selector;
     }

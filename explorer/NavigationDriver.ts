@@ -11,6 +11,4 @@ export abstract class NavigationDriver {
   abstract currentLocation(): string;
   /** Best-effort raw screenshot written to `path`. */
   abstract captureScreenshot(path: string): Promise<void>;
-  /** Passive wait used for DOM/UI stabilization. */
-  abstract wait(ms: number): Promise<void>;
 }

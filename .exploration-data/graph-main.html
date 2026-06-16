@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Exploration Graph</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f8fafc; color: #1e293b; }
+    header { background: #1e293b; color: #f8fafc; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.4rem; margin-bottom: 0.75rem; }
+    .stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .stat { background: rgba(255,255,255,0.1); border-radius: 8px; padding: 0.5rem 1rem; }
+    .stat-val { font-size: 1.5rem; font-weight: bold; }
+    .stat-lbl { font-size: 0.75rem; opacity: 0.7; }
+    main { padding: 2rem; max-width: 1400px; margin: 0 auto; }
+    section { margin-bottom: 2rem; }
+    h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; color: #475569; }
+    .graph-box { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 2rem; overflow-x: auto; }
+    .mermaid { min-height: 200px; }
+    .fallback { display: none; }
+    table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
+    th { background: #f1f5f9; text-align: left; padding: 0.6rem 1rem; font-size: 0.8rem; font-weight: 600; color: #64748b; text-transform: uppercase; }
+    td { padding: 0.6rem 1rem; border-top: 1px solid #f1f5f9; font-size: 0.88rem; vertical-align: middle; }
+    tr:hover td { background: #f8fafc; }
+    .lbl { background: #dbeafe; color: #1d4ed8; border-radius: 4px; padding: 1px 6px; font-size: 0.78rem; font-weight: 600; }
+    .ext { background: #f1f5f9; color: #64748b; border-radius: 4px; padding: 1px 6px; font-size: 0.78rem; }
+    .legend { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; font-size: 0.82rem; }
+    .legend-item { display: flex; align-items: center; gap: 0.4rem; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot-root { background: #22c55e; }
+    .dot-normal { background: #3b82f6; }
+    .dot-leaf { background: #f59e0b; }
+    .dot-ext { background: #94a3b8; }
+    .no-mermaid { background: #fef3c7; border: 1px solid #fde68a; border-radius: 8px; padding: 1rem; margin-top: 1rem; display: none; }
+    pre { background: #1e293b; color: #e2e8f0; padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-size: 0.82rem; line-height: 1.5; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>🗺️ Exploration Graph</h1>
+  <div class="stats">
+    <div class="stat"><div class="stat-val">1</div><div class="stat-lbl">States</div></div>
+    <div class="stat"><div class="stat-val">0</div><div class="stat-lbl">Transitions</div></div>
+    <div class="stat"><div class="stat-val">0</div><div class="stat-lbl">Max depth</div></div>
+    <div class="stat"><div class="stat-val">0</div><div class="stat-lbl">Self-loops</div></div>
+    <div class="stat"><div class="stat-val">0</div><div class="stat-lbl">External nav</div></div>
+  </div>
+</header>
+<main>
+  <section>
+    <div class="legend">
+      <span class="legend-item"><span class="dot dot-root"></span> Initial state</span>
+      <span class="legend-item"><span class="dot dot-normal"></span> State</span>
+      <span class="legend-item"><span class="dot dot-leaf"></span> Dead end (no outgoing)</span>
+      <span class="legend-item"><span class="dot dot-ext"></span> External navigation</span>
+      <span style="color:#64748b;font-size:0.8rem">Dashed arrows = self-loops</span>
+    </div>
+    <div class="graph-box">
+      <div class="mermaid">flowchart TD
+  classDef root fill:#22c55e,stroke:#16a34a,color:#fff,font-weight:bold
+  classDef normal fill:#3b82f6,stroke:#2563eb,color:#fff
+  classDef leaf fill:#f59e0b,stroke:#d97706,color:#fff
+  classDef ext fill:#94a3b8,stroke:#64748b,color:#fff,stroke-dasharray:5 5
+
+  n_c4204ef67e14["S0\nd=0 f=0"]:::root
+</div>
+    </div>
+    <div class="no-mermaid" id="fallback">
+      <strong>⚠️ Mermaid not loaded (offline?)</strong> — raw diagram source:
+      <pre>flowchart TD
+  classDef root fill:#22c55e,stroke:#16a34a,color:#fff,font-weight:bold
+  classDef normal fill:#3b82f6,stroke:#2563eb,color:#fff
+  classDef leaf fill:#f59e0b,stroke:#d97706,color:#fff
+  classDef ext fill:#94a3b8,stroke:#64748b,color:#fff,stroke-dasharray:5 5
+
+  n_c4204ef67e14[&quot;S0\nd=0 f=0&quot;]:::root
+</pre>
+    </div>
+  </section>
+  <section>
+    <h2>States</h2>
+    <table>
+      <thead><tr><th>Label</th><th>Depth</th><th>Facts</th><th>Location</th><th>Transitions to</th><th>ID (truncated)</th></tr></thead>
+      <tbody><tr>
+        <td><strong>S0</strong></td>
+        <td>0</td>
+        <td>0</td>
+        <td><code>https://www.iana.org/</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">c4204ef67e14289c…</code></td>
+      </tr></tbody>
+    </table>
+  </section>
+</main>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'default', flowchart: { curve: 'basis', useMaxWidth: false } });
+  mermaid.run().catch(() => {
+    document.getElementById('fallback').style.display = 'block';
+  });
+</script>
+</body>
+</html>

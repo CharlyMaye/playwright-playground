@@ -9,6 +9,19 @@ import { Explorer } from './Explorer';
 import { RulesEngine } from './RulesEngine';
 import { ConcreteScenarioExporter, ScenarioExporter } from './ScenarioExporter';
 
+/**
+ * Playwright fixtures injected into each exploration test.
+ *
+ * - `explorationConfig`: partial configuration overridable per test via
+ *   `explorerTest.use({ explorationConfig: { … } })`.
+ * - `explorer`: main instance of the exploration engine.
+ * - `explorationGraph`: read-only reference to the graph (alias for `explorer.graph`).
+ * - `rulesEngine`: rules engine, useful to assert the candidate actions of a state.
+ * - `scenarioExporter`: exports scenarios built from the graph.
+ * - `testContext`: DI wrapper around Playwright objects (`page`, `request`…).
+ * - `forEachTest`, `afterEach`, `codeCoverageAutoTestFixture`: internal auto
+ *   fixtures (lifecycle, V8 coverage).
+ */
 type ExplorerTestFixture = {
   explorationConfig: PartialExplorationConfig;
   explorer: Explorer;
@@ -21,6 +34,12 @@ type ExplorerTestFixture = {
   codeCoverageAutoTestFixture: void;
 };
 
+/**
+ * Worker-scoped Playwright fixtures (shared across all tests in the same worker).
+ *
+ * Used as lifecycle hooks for global setup/teardown operations.
+ * Declared with `auto: true`, so they do not need to be destructured in tests.
+ */
 type ExplorerWorkerFixtures = {
   beforeAll: void;
   afterAll: void;
@@ -125,10 +144,19 @@ export const explorerTest = base.extend<ExplorerTestFixture, ExplorerWorkerFixtu
 
 export { expect };
 
-export async function withExplorationScope<T>(
-  config: PartialExplorationConfig,
-  fn: (explorer: Explorer) => Promise<T>
-): Promise<T> {
+/**
+ * Low-level utility for running an exploration inside an isolated DI scope.
+ *
+ * Creates a dependency-injection scope, instantiates the explorer with the
+ * provided config, executes `fn`, then releases the scope. Used internally
+ * by the `explorer` fixture; can also be called directly from standalone
+ * scripts outside Playwright Test.
+ *
+ * @param config - Partial configuration applied to the explorer.
+ * @param fn     - Callback receiving the explorer instance.
+ * @returns      The value returned by `fn`.
+ */
+export async function withExplorationScope<T>(config: PartialExplorationConfig, fn: (explorer: Explorer) => Promise<T>): Promise<T> {
   INJECTOR.beginScope();
   try {
     const explorationConfig = new ConcreteExplorationConfig(config);

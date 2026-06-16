@@ -4,23 +4,26 @@ import { TestContext } from '../../../engine/test.context';
 import { ActionExecutor } from '../../ActionExecutor';
 import { ExplorationConfig } from '../../ExplorationConfig';
 import { ReadinessChecker } from '../../ReadinessChecker';
+import { StabilizationChecker } from '../../StabilizationChecker';
 import { ActionResult, CandidateAction, SelectAction, SequenceAction, UnitaryAction, WaitCondition } from '../../types';
 import { ExplorationScope } from './ExplorationScope';
 import { resolveTargetLocator } from './locator-resolver';
 
-@Injector({ Provide: [TestContext, ExplorationScope, ExplorationConfig, ReadinessChecker] })
+@Injector({ Provide: [TestContext, ExplorationScope, ExplorationConfig, ReadinessChecker, StabilizationChecker] })
 export class PlaywrightActionExecutor extends ActionExecutor {
   readonly #page;
   readonly #scope: ExplorationScope;
   readonly #config: ExplorationConfig;
   readonly #readiness: ReadinessChecker;
+  readonly #stabilization: StabilizationChecker;
 
-  constructor(testContext: TestContext, explorationScope: ExplorationScope, explorationConfig: ExplorationConfig, readinessChecker: ReadinessChecker) {
+  constructor(testContext: TestContext, explorationScope: ExplorationScope, explorationConfig: ExplorationConfig, readinessChecker: ReadinessChecker, stabilizationChecker: StabilizationChecker) {
     super();
     this.#page = testContext.page;
     this.#scope = explorationScope;
     this.#config = explorationConfig;
     this.#readiness = readinessChecker;
+    this.#stabilization = stabilizationChecker;
   }
 
   /** A browser driver supports the full action vocabulary. */
@@ -76,7 +79,7 @@ export class PlaywrightActionExecutor extends ActionExecutor {
     }
 
     await this.#readiness.waitForReady();
-    await this.#page.waitForTimeout(this.#config.stabilizationTimeout);
+    await this.#stabilization.waitUntilStable();
 
     return this.#result(start);
   }
@@ -115,7 +118,9 @@ export class PlaywrightActionExecutor extends ActionExecutor {
         await this.#page.locator(condition.selector).waitFor({ state: condition.state, timeout });
         break;
       case 'stable':
-        await this.#page.waitForTimeout(condition.timeout);
+        // Wait for genuine quiescence (bounded by the condition's own timeout),
+        // not a flat delay — consistent with post-action stabilization.
+        await this.#stabilization.waitUntilStable(condition.timeout);
         break;
       case 'function':
         await this.#page.waitForFunction(condition.expression, undefined, { timeout });

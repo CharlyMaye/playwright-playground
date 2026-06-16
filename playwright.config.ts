@@ -78,7 +78,7 @@ export default defineConfig({
     bypassCSP: true,
     headless: true,
     launchOptions: {
-      slowMo: 50,
+      slowMo: 10,
     },
   },
 

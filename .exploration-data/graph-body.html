@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Exploration Graph</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f8fafc; color: #1e293b; }
+    header { background: #1e293b; color: #f8fafc; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.4rem; margin-bottom: 0.75rem; }
+    .stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .stat { background: rgba(255,255,255,0.1); border-radius: 8px; padding: 0.5rem 1rem; }
+    .stat-val { font-size: 1.5rem; font-weight: bold; }
+    .stat-lbl { font-size: 0.75rem; opacity: 0.7; }
+    main { padding: 2rem; max-width: 1400px; margin: 0 auto; }
+    section { margin-bottom: 2rem; }
+    h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; color: #475569; }
+    .graph-box { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 2rem; overflow-x: auto; }
+    .mermaid { min-height: 200px; }
+    .fallback { display: none; }
+    table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
+    th { background: #f1f5f9; text-align: left; padding: 0.6rem 1rem; font-size: 0.8rem; font-weight: 600; color: #64748b; text-transform: uppercase; }
+    td { padding: 0.6rem 1rem; border-top: 1px solid #f1f5f9; font-size: 0.88rem; vertical-align: middle; }
+    tr:hover td { background: #f8fafc; }
+    .lbl { background: #dbeafe; color: #1d4ed8; border-radius: 4px; padding: 1px 6px; font-size: 0.78rem; font-weight: 600; }
+    .ext { background: #f1f5f9; color: #64748b; border-radius: 4px; padding: 1px 6px; font-size: 0.78rem; }
+    .legend { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; font-size: 0.82rem; }
+    .legend-item { display: flex; align-items: center; gap: 0.4rem; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot-root { background: #22c55e; }
+    .dot-normal { background: #3b82f6; }
+    .dot-leaf { background: #f59e0b; }
+    .dot-ext { background: #94a3b8; }
+    .no-mermaid { background: #fef3c7; border: 1px solid #fde68a; border-radius: 8px; padding: 1rem; margin-top: 1rem; display: none; }
+    pre { background: #1e293b; color: #e2e8f0; padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-size: 0.82rem; line-height: 1.5; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>🗺️ Exploration Graph</h1>
+  <div class="stats">
+    <div class="stat"><div class="stat-val">100</div><div class="stat-lbl">States</div></div>
+    <div class="stat"><div class="stat-val">231</div><div class="stat-lbl">Transitions</div></div>
+    <div class="stat"><div class="stat-val">2</div><div class="stat-lbl">Max depth</div></div>
+    <div class="stat"><div class="stat-val">1</div><div class="stat-lbl">Self-loops</div></div>
+    <div class="stat"><div class="stat-val">18</div><div class="stat-lbl">External nav</div></div>
+  </div>
+</header>
+<main>
+  <section>
+    <div class="legend">
+      <span class="legend-item"><span class="dot dot-root"></span> Initial state</span>
+      <span class="legend-item"><span class="dot dot-normal"></span> State</span>
+      <span class="legend-item"><span class="dot dot-leaf"></span> Dead end (no outgoing)</span>
+      <span class="legend-item"><span class="dot dot-ext"></span> External navigation</span>
+      <span style="color:#64748b;font-size:0.8rem">Dashed arrows = self-loops</span>
+    </div>
+    <div class="graph-box">
+      <div class="mermaid">flowchart TD
+  classDef root fill:#22c55e,stroke:#16a34a,color:#fff,font-weight:bold
+  classDef normal fill:#3b82f6,stroke:#2563eb,color:#fff
+  classDef leaf fill:#f59e0b,stroke:#d97706,color:#fff
+  classDef ext fill:#94a3b8,stroke:#64748b,color:#fff,stroke-dasharray:5 5
+
+  n_8cfa49f50330["S0\nd=0 f=44"]:::normal
+  n_0ca6dcc436d1["S2\nd=1 f=37"]:::normal
+  n_0dfd3df7df4c["S19\nd=1 f=34"]:::leaf
+  n_20f19334101a["S7\nd=1 f=70"]:::leaf
+  n_2153c68cb0e5["S1\nd=1 f=44"]:::normal
+  n_2e75c1c19cd9["S8\nd=1 f=407"]:::leaf
+  n_39e2ceeb9351["S15\nd=1 f=52"]:::leaf
+  n_3b135efb2b60["S20\nd=1 f=34"]:::leaf
+  n_5cb52b76dadb["S21\nd=1 f=37"]:::leaf
+  n_6ad3c8c3d428["S12\nd=1 f=43"]:::leaf
+  n_80a7040540dd["S13\nd=1 f=42"]:::leaf
+  n_93f9662b3a1e["S16\nd=1 f=5199"]:::leaf
+  n_9740ad1fc5ec["S4\nd=1 f=52"]:::normal
+  n_975c262ec764["S23\nd=1 f=0"]:::leaf
+  n_97c2c675b663["S5\nd=1 f=1643"]:::normal
+  n_9f30a9fcd1cb["S11\nd=1 f=6307"]:::leaf
+  n_ac4267d1b168["S24\nd=1 f=0"]:::leaf
+  n_b856159625ea["S17\nd=1 f=37"]:::leaf
+  n_becb855b998d["S22\nd=1 f=34"]:::leaf
+  n_c73a0c8bf248["S10\nd=1 f=42"]:::leaf
+  n_dcc0d365a865["S6\nd=1 f=49"]:::leaf
+  n_ddfcf6f1c25e["S3\nd=1 f=53"]:::normal
+  n_e89cb348302a["S18\nd=1 f=165"]:::leaf
+  n_ea3dce769276["S9\nd=1 f=80"]:::leaf
+  n_f0c01b733160["S14\nd=1 f=53"]:::leaf
+  n_00d1bbaba041["S70\nd=2 f=49"]:::leaf
+  n_08d7b32e2452["S25\nd=2 f=5864"]:::leaf
+  n_0c3934f582f1["S42\nd=2 f=29"]:::leaf
+  n_0db3cd8a67a1["S76\nd=2 f=48"]:::leaf
+  n_118006d5e6d5["S97\nd=2 f=48"]:::leaf
+  n_12d7ddcd6792["S33\nd=2 f=5944"]:::leaf
+  n_151dabff6e0f["S64\nd=2 f=49"]:::leaf
+  n_15e14d8c27ed["S58\nd=2 f=49"]:::leaf
+  n_195fbfde6ccc["S82\nd=2 f=49"]:::leaf
+  n_1a512762a25e["S54\nd=2 f=50"]:::leaf
+  n_1af0af44b81a["S50\nd=2 f=49"]:::leaf
+  n_1bf99019f32a["S59\nd=2 f=49"]:::leaf
+  n_1e9ab629394e["S98\nd=2 f=49"]:::leaf
+  n_1f55c76175cc["S71\nd=2 f=49"]:::leaf
+  n_21fcd29ef6bd["S93\nd=2 f=49"]:::leaf
+  n_2976a983bc60["S47\nd=2 f=49"]:::leaf
+  n_2996edf9ae29["S94\nd=2 f=49"]:::leaf
+  n_2de1ecc75a1b["S90\nd=2 f=49"]:::leaf
+  n_2e783ec9811c["S95\nd=2 f=48"]:::leaf
+  n_3c11d45446e8["S78\nd=2 f=49"]:::leaf
+  n_408732219fc7["S61\nd=2 f=48"]:::leaf
+  n_47c57df07908["S53\nd=2 f=48"]:::leaf
+  n_49313b167848["S40\nd=2 f=5156"]:::leaf
+  n_499c651243c6["S34\nd=2 f=54"]:::leaf
+  n_4a24b34a68bb["S39\nd=2 f=51"]:::leaf
+  n_4cc0dda241a8["S38\nd=2 f=64"]:::leaf
+  n_51915bfb8612["S81\nd=2 f=49"]:::leaf
+  n_52a4db9da579["S26\nd=2 f=5182"]:::leaf
+  n_53c2af2519a1["S36\nd=2 f=47"]:::leaf
+  n_5b77b150f86d["S48\nd=2 f=49"]:::leaf
+  n_5c45d067f84a["S84\nd=2 f=49"]:::leaf
+  n_62ae3c5b3d46["S79\nd=2 f=48"]:::leaf
+  n_6419131eb57a["S80\nd=2 f=50"]:::leaf
+  n_650b2b485d54["S77\nd=2 f=49"]:::leaf
+  n_65f639085675["S63\nd=2 f=49"]:::leaf
+  n_67576a8605c3["S83\nd=2 f=48"]:::leaf
+  n_6d636f5135e1["S99\nd=2 f=49"]:::leaf
+  n_6e519c1d7882["S32\nd=2 f=65"]:::leaf
+  n_6e78119f07cd["S96\nd=2 f=49"]:::leaf
+  n_6f4081779804["S56\nd=2 f=49"]:::leaf
+  n_732a5e0fcb4e["S45\nd=2 f=49"]:::leaf
+  n_7685e6ac82b9["S51\nd=2 f=50"]:::leaf
+  n_78cd7535b03f["S28\nd=2 f=5254"]:::leaf
+  n_78fdff0d5352["S73\nd=2 f=48"]:::leaf
+  n_79b1c2cc020b["S31\nd=2 f=44"]:::leaf
+  n_7f9cf47434dd["S55\nd=2 f=49"]:::leaf
+  n_84aa5aa0fd72["S87\nd=2 f=49"]:::leaf
+  n_873bdab4e4ac["S89\nd=2 f=49"]:::leaf
+  n_8b3b11b39629["S30\nd=2 f=5294"]:::leaf
+  n_96bea4015ee9["S88\nd=2 f=49"]:::leaf
+  n_978e15d1531b["S72\nd=2 f=49"]:::leaf
+  n_9b9865e55489["S46\nd=2 f=49"]:::leaf
+  n_a1b65c023745["S66\nd=2 f=48"]:::leaf
+  n_a777188748d7["S35\nd=2 f=11552"]:::leaf
+  n_ae362ac193fe["S41\nd=2 f=34"]:::leaf
+  n_b3d5f60599c8["S49\nd=2 f=49"]:::leaf
+  n_b81c402f2342["S37\nd=2 f=49"]:::leaf
+  n_b920cc1a71aa["S57\nd=2 f=50"]:::leaf
+  n_bb855e15fe8c["S43\nd=2 f=49"]:::leaf
+  n_bd63b93df237["S62\nd=2 f=49"]:::leaf
+  n_c2e8764090aa["S29\nd=2 f=165"]:::leaf
+  n_c747645b6bd9["S92\nd=2 f=48"]:::leaf
+  n_c89a3e15fb48["S68\nd=2 f=49"]:::leaf
+  n_c8cacbef2262["S74\nd=2 f=49"]:::leaf
+  n_c92a22a630a4["S86\nd=2 f=49"]:::leaf
+  n_ca23eb6e199c["S52\nd=2 f=48"]:::leaf
+  n_cbf87c765d2c["S85\nd=2 f=49"]:::leaf
+  n_d149dbf1297c["S44\nd=2 f=48"]:::leaf
+  n_d4e9c2a06c36["S67\nd=2 f=50"]:::leaf
+  n_d8cc11a3acf9["S75\nd=2 f=50"]:::leaf
+  n_de1386978e40["S60\nd=2 f=50"]:::leaf
+  n_df6042e28b44["S91\nd=2 f=49"]:::leaf
+  n_f2c980f87414["S65\nd=2 f=49"]:::leaf
+  n_fba87f4584e6["S69\nd=2 f=49"]:::leaf
+  n_fdd9a6e63064["S27\nd=2 f=53"]:::leaf
+  __ext__(["⎋ external"]):::ext
+
+  n_8cfa49f50330 -->|"fill:#gsc-i-id1"| n_2153c68cb0e5
+  n_8cfa49f50330 -->|"click:a[0]"| n_0ca6dcc436d1
+  n_8cfa49f50330 -->|"click:a[1]"| n_ddfcf6f1c25e
+  n_8cfa49f50330 -->|"click:a[2]"| n_9740ad1fc5ec
+  n_8cfa49f50330 -->|"click:a[3]"| n_97c2c675b663
+  n_8cfa49f50330 -->|"click:a[4]"| n_dcc0d365a865
+  n_8cfa49f50330 -->|"click:a[5]"| n_20f19334101a
+  n_8cfa49f50330 -->|"click:a[6]"| n_2e75c1c19cd9
+  n_8cfa49f50330 -->|"click:a[7]"| n_ea3dce769276
+  n_8cfa49f50330 -->|"click:a[8]"| n_ea3dce769276
+  n_8cfa49f50330 -->|"click:a[9]"| n_c73a0c8bf248
+  n_8cfa49f50330 -->|"click:a[10]"| n_9f30a9fcd1cb
+  n_8cfa49f50330 -->|"click:a[11]"| n_9f30a9fcd1cb
+  n_8cfa49f50330 -->|"click:a[12]"| n_6ad3c8c3d428
+  n_8cfa49f50330 -->|"click:a[13]"| n_80a7040540dd
+  n_8cfa49f50330 -->|"click:a[23]"| n_f0c01b733160
+  n_8cfa49f50330 -->|"click:a[24]"| n_39e2ceeb9351
+  n_8cfa49f50330 -->|"click:a[25]"| n_dcc0d365a865
+  n_8cfa49f50330 -->|"click:a[26]"| n_20f19334101a
+  n_8cfa49f50330 -->|"click:a[27]"| n_93f9662b3a1e
+  n_8cfa49f50330 -->|"click:a[28]"| n_ea3dce769276
+  n_8cfa49f50330 -->|"click:a[29]"| n_c73a0c8bf248
+  n_8cfa49f50330 -->|"click:a[30]"| n_9f30a9fcd1cb
+  n_8cfa49f50330 -->|"click:a[31]"| n_9f30a9fcd1cb
+  n_8cfa49f50330 -->|"click:a[32]"| n_80a7040540dd
+  n_8cfa49f50330 -->|"click:a[33]"| n_b856159625ea
+  n_8cfa49f50330 -->|"click:a[34]"| n_e89cb348302a
+  n_8cfa49f50330 -->|"click:a[35]"| n_0dfd3df7df4c
+  n_8cfa49f50330 -->|"click:a[36]"| n_3b135efb2b60
+  n_8cfa49f50330 -->|"click:a[37]"| n_5cb52b76dadb
+  n_8cfa49f50330 -->|"click:a[38]"| n_becb855b998d
+  n_8cfa49f50330 -->|"click:a[39]"| n_975c262ec764
+  n_8cfa49f50330 -->|"click:a[40]"| n_ac4267d1b168
+  n_8cfa49f50330 -->|"click:a[41]"| __ext__
+  n_8cfa49f50330 -->|"click:a[42]"| __ext__
+  n_2153c68cb0e5 -.->|"fill:#gsc-i-id1"| n_2153c68cb0e5
+  n_2153c68cb0e5 -->|"click:a[0]"| n_b856159625ea
+  n_2153c68cb0e5 -->|"click:a[1]"| n_f0c01b733160
+  n_2153c68cb0e5 -->|"click:a[2]"| n_39e2ceeb9351
+  n_2153c68cb0e5 -->|"click:a[3]"| n_97c2c675b663
+  n_2153c68cb0e5 -->|"click:a[4]"| n_dcc0d365a865
+  n_2153c68cb0e5 -->|"click:a[5]"| n_20f19334101a
+  n_2153c68cb0e5 -->|"click:a[6]"| n_08d7b32e2452
+  n_2153c68cb0e5 -->|"click:a[7]"| n_ea3dce769276
+  n_2153c68cb0e5 -->|"click:a[8]"| n_ea3dce769276
+  n_2153c68cb0e5 -->|"click:a[9]"| n_c73a0c8bf248
+  n_2153c68cb0e5 -->|"click:a[10]"| n_9f30a9fcd1cb
+  n_2153c68cb0e5 -->|"click:a[11]"| n_9f30a9fcd1cb
+  n_2153c68cb0e5 -->|"click:a[12]"| n_6ad3c8c3d428
+  n_2153c68cb0e5 -->|"click:a[13]"| n_80a7040540dd
+  n_2153c68cb0e5 -->|"click:button:#quot;Clear searc"| n_8cfa49f50330
+  n_2153c68cb0e5 -->|"click:a[23]"| n_f0c01b733160
+  n_2153c68cb0e5 -->|"click:a[24]"| n_39e2ceeb9351
+  n_2153c68cb0e5 -->|"click:a[25]"| n_dcc0d365a865
+  n_2153c68cb0e5 -->|"click:a[26]"| n_20f19334101a
+  n_2153c68cb0e5 -->|"click:a[27]"| n_52a4db9da579
+  n_2153c68cb0e5 -->|"click:a[28]"| n_ea3dce769276
+  n_2153c68cb0e5 -->|"click:a[29]"| n_c73a0c8bf248
+  n_2153c68cb0e5 -->|"click:a[30]"| n_9f30a9fcd1cb
+  n_2153c68cb0e5 -->|"click:a[31]"| n_9f30a9fcd1cb
+  n_2153c68cb0e5 -->|"click:a[32]"| n_80a7040540dd
+  n_2153c68cb0e5 -->|"click:a[33]"| n_b856159625ea
+  n_2153c68cb0e5 -->|"click:a[34]"| n_e89cb348302a
+  n_2153c68cb0e5 -->|"click:a[35]"| n_0dfd3df7df4c
+  n_2153c68cb0e5 -->|"click:a[36]"| n_3b135efb2b60
+  n_2153c68cb0e5 -->|"click:a[37]"| n_5cb52b76dadb
+  n_2153c68cb0e5 -->|"click:a[38]"| n_becb855b998d
+  n_2153c68cb0e5 -->|"click:a[39]"| n_975c262ec764
+  n_2153c68cb0e5 -->|"click:a[40]"| n_ac4267d1b168
+  n_2153c68cb0e5 -->|"click:a[41]"| __ext__
+  n_2153c68cb0e5 -->|"click:a[42]"| __ext__
+  n_0ca6dcc436d1 -->|"click:a[1]"| n_f0c01b733160
+  n_0ca6dcc436d1 -->|"click:a[2]"| n_9f30a9fcd1cb
+  n_0ca6dcc436d1 -->|"click:a[3]"| n_ea3dce769276
+  n_0ca6dcc436d1 -->|"click:a[4]"| n_b856159625ea
+  n_0ca6dcc436d1 -->|"click:a[5]"| n_f0c01b733160
+  n_0ca6dcc436d1 -->|"click:a[6]"| n_ea3dce769276
+  n_0ca6dcc436d1 -->|"click:a[7]"| n_9f30a9fcd1cb
+  n_0ca6dcc436d1 -->|"click:a[8]"| __ext__
+  n_0ca6dcc436d1 -->|"click:a[9]"| __ext__
+  n_0ca6dcc436d1 -->|"click:a[10]"| n_b856159625ea
+  n_0ca6dcc436d1 -->|"click:a[11]"| n_e89cb348302a
+  n_0ca6dcc436d1 -->|"click:a[12]"| n_0dfd3df7df4c
+  n_0ca6dcc436d1 -->|"click:a[13]"| n_fdd9a6e63064
+  n_0ca6dcc436d1 -->|"click:a[14]"| n_3b135efb2b60
+  n_0ca6dcc436d1 -->|"click:a[15]"| n_5cb52b76dadb
+  n_0ca6dcc436d1 -->|"click:a[16]"| n_becb855b998d
+  n_0ca6dcc436d1 -->|"click:a[17]"| n_f0c01b733160
+  n_0ca6dcc436d1 -->|"click:a[18]"| n_39e2ceeb9351
+  n_0ca6dcc436d1 -->|"click:a[19]"| n_dcc0d365a865
+  n_0ca6dcc436d1 -->|"click:a[20]"| n_20f19334101a
+  n_0ca6dcc436d1 -->|"click:a[21]"| n_78cd7535b03f
+  n_0ca6dcc436d1 -->|"click:a[22]"| n_ea3dce769276
+  n_0ca6dcc436d1 -->|"click:a[23]"| n_c73a0c8bf248
+  n_0ca6dcc436d1 -->|"click:a[24]"| n_9f30a9fcd1cb
+  n_0ca6dcc436d1 -->|"click:a[25]"| n_9f30a9fcd1cb
+  n_0ca6dcc436d1 -->|"click:a[26]"| n_80a7040540dd
+  n_0ca6dcc436d1 -->|"click:a[27]"| n_b856159625ea
+  n_0ca6dcc436d1 -->|"click:a[28]"| n_c2e8764090aa
+  n_0ca6dcc436d1 -->|"click:a[29]"| n_0dfd3df7df4c
+  n_0ca6dcc436d1 -->|"click:a[30]"| n_3b135efb2b60
+  n_0ca6dcc436d1 -->|"click:a[31]"| n_5cb52b76dadb
+  n_0ca6dcc436d1 -->|"click:a[32]"| n_becb855b998d
+  n_0ca6dcc436d1 -->|"click:a[33]"| __ext__
+  n_0ca6dcc436d1 -->|"click:a[34]"| __ext__
+  n_0ca6dcc436d1 -->|"click:a[35]"| __ext__
+  n_0ca6dcc436d1 -->|"click:a[36]"| __ext__
+  n_ddfcf6f1c25e -->|"click:a[1]"| n_f0c01b733160
+  n_ddfcf6f1c25e -->|"click:a[2]"| n_9f30a9fcd1cb
+  n_ddfcf6f1c25e -->|"click:a[3]"| n_ea3dce769276
+  n_ddfcf6f1c25e -->|"click:a[4]"| n_b856159625ea
+  n_ddfcf6f1c25e -->|"click:a[5]"| n_39e2ceeb9351
+  n_ddfcf6f1c25e -->|"click:a[6]"| n_dcc0d365a865
+  n_ddfcf6f1c25e -->|"click:a[7]"| n_20f19334101a
+  n_ddfcf6f1c25e -->|"click:a[8]"| n_8b3b11b39629
+  n_ddfcf6f1c25e -->|"click:a[9]"| n_79b1c2cc020b
+  n_ddfcf6f1c25e -->|"click:a[10]"| n_6e519c1d7882
+  n_ddfcf6f1c25e -->|"click:a[11]"| n_f0c01b733160
+  n_ddfcf6f1c25e -->|"click:a[12]"| n_39e2ceeb9351
+  n_ddfcf6f1c25e -->|"click:a[18]"| n_dcc0d365a865
+  n_ddfcf6f1c25e -->|"click:a[22]"| n_20f19334101a
+  n_ddfcf6f1c25e -->|"click:a[23]"| n_12d7ddcd6792
+  n_ddfcf6f1c25e -->|"click:a[26]"| n_499c651243c6
+  n_ddfcf6f1c25e -->|"click:a[32]"| n_6e519c1d7882
+  n_ddfcf6f1c25e -->|"click:a[33]"| n_f0c01b733160
+  n_ddfcf6f1c25e -->|"click:a[34]"| n_39e2ceeb9351
+  n_ddfcf6f1c25e -->|"click:a[35]"| n_dcc0d365a865
+  n_ddfcf6f1c25e -->|"click:a[36]"| n_20f19334101a
+  n_ddfcf6f1c25e -->|"click:a[37]"| n_a777188748d7
+  n_ddfcf6f1c25e -->|"click:a[38]"| n_ea3dce769276
+  n_ddfcf6f1c25e -->|"click:a[39]"| n_c73a0c8bf248
+  n_ddfcf6f1c25e -->|"click:a[40]"| n_9f30a9fcd1cb
+  n_ddfcf6f1c25e -->|"click:a[41]"| n_9f30a9fcd1cb
+  n_ddfcf6f1c25e -->|"click:a[42]"| n_80a7040540dd
+  n_ddfcf6f1c25e -->|"click:a[43]"| n_b856159625ea
+  n_ddfcf6f1c25e -->|"click:a[44]"| n_c2e8764090aa
+  n_ddfcf6f1c25e -->|"click:a[45]"| n_0dfd3df7df4c
+  n_ddfcf6f1c25e -->|"click:a[46]"| n_3b135efb2b60
+  n_ddfcf6f1c25e -->|"click:a[47]"| n_5cb52b76dadb
+  n_ddfcf6f1c25e -->|"click:a[48]"| n_becb855b998d
+  n_ddfcf6f1c25e -->|"click:a[49]"| __ext__
+  n_ddfcf6f1c25e -->|"click:a[50]"| __ext__
+  n_ddfcf6f1c25e -->|"click:a[51]"| __ext__
+  n_ddfcf6f1c25e -->|"click:a[52]"| __ext__
+  n_9740ad1fc5ec -->|"click:a[1]"| n_f0c01b733160
+  n_9740ad1fc5ec -->|"click:a[2]"| n_9f30a9fcd1cb
+  n_9740ad1fc5ec -->|"click:a[3]"| n_ea3dce769276
+  n_9740ad1fc5ec -->|"click:a[4]"| n_b856159625ea
+  n_9740ad1fc5ec -->|"click:a[5]"| n_97c2c675b663
+  n_9740ad1fc5ec -->|"click:a[6]"| n_53c2af2519a1
+  n_9740ad1fc5ec -->|"click:a[7]"| n_b81c402f2342
+  n_9740ad1fc5ec -->|"click:a[8]"| n_4cc0dda241a8
+  n_9740ad1fc5ec -->|"click:a[9]"| n_499c651243c6
+  n_9740ad1fc5ec -->|"click:a[10]"| n_f0c01b733160
+  n_9740ad1fc5ec -->|"click:a[11]"| n_39e2ceeb9351
+  n_9740ad1fc5ec -->|"click:a[12]"| n_39e2ceeb9351
+  n_9740ad1fc5ec -->|"click:a[13]"| n_97c2c675b663
+  n_9740ad1fc5ec -->|"click:a[14]"| n_4a24b34a68bb
+  n_9740ad1fc5ec -->|"click:a[15]"| n_b81c402f2342
+  n_9740ad1fc5ec -->|"click:a[16]"| n_4cc0dda241a8
+  n_9740ad1fc5ec -->|"click:a[17]"| n_dcc0d365a865
+  n_9740ad1fc5ec -->|"click:a[21]"| n_20f19334101a
+  n_9740ad1fc5ec -->|"click:a[22]"| n_49313b167848
+  n_9740ad1fc5ec -->|"click:a[25]"| n_499c651243c6
+  n_9740ad1fc5ec -->|"click:a[31]"| n_6e519c1d7882
+  n_9740ad1fc5ec -->|"click:a[32]"| n_f0c01b733160
+  n_9740ad1fc5ec -->|"click:a[33]"| n_39e2ceeb9351
+  n_9740ad1fc5ec -->|"click:a[34]"| n_dcc0d365a865
+  n_9740ad1fc5ec -->|"click:a[35]"| n_20f19334101a
+  n_9740ad1fc5ec -->|"click:a[36]"| n_a777188748d7
+  n_9740ad1fc5ec -->|"click:a[37]"| n_ea3dce769276
+  n_9740ad1fc5ec -->|"click:a[38]"| n_c73a0c8bf248
+  n_9740ad1fc5ec -->|"click:a[39]"| n_9f30a9fcd1cb
+  n_9740ad1fc5ec -->|"click:a[40]"| n_9f30a9fcd1cb
+  n_9740ad1fc5ec -->|"click:a[41]"| n_80a7040540dd
+  n_9740ad1fc5ec -->|"click:a[42]"| n_b856159625ea
+  n_9740ad1fc5ec -->|"click:a[43]"| n_c2e8764090aa
+  n_9740ad1fc5ec -->|"click:a[44]"| n_0dfd3df7df4c
+  n_9740ad1fc5ec -->|"click:a[45]"| n_3b135efb2b60
+  n_9740ad1fc5ec -->|"click:a[46]"| n_5cb52b76dadb
+  n_9740ad1fc5ec -->|"click:a[47]"| n_becb855b998d
+  n_9740ad1fc5ec -->|"click:a[48]"| __ext__
+  n_9740ad1fc5ec -->|"click:a[49]"| __ext__
+  n_9740ad1fc5ec -->|"click:a[50]"| __ext__
+  n_9740ad1fc5ec -->|"click:a[51]"| __ext__
+  n_97c2c675b663 -->|"click:a[0]"| n_ae362ac193fe
+  n_97c2c675b663 -->|"click:a[1]"| n_f0c01b733160
+  n_97c2c675b663 -->|"click:a[2]"| n_9f30a9fcd1cb
+  n_97c2c675b663 -->|"click:a[3]"| n_ea3dce769276
+  n_97c2c675b663 -->|"click:a[4]"| n_b856159625ea
+  n_97c2c675b663 -->|"click:a[5]"| n_39e2ceeb9351
+  n_97c2c675b663 -->|"click:a[6]"| n_0c3934f582f1
+  n_97c2c675b663 -->|"click:a[7]"| n_bb855e15fe8c
+  n_97c2c675b663 -->|"click:a[8]"| n_d149dbf1297c
+  n_97c2c675b663 -->|"click:a[9]"| n_732a5e0fcb4e
+  n_97c2c675b663 -->|"click:a[10]"| n_9b9865e55489
+  n_97c2c675b663 -->|"click:a[11]"| n_2976a983bc60
+  n_97c2c675b663 -->|"click:a[12]"| n_5b77b150f86d
+  n_97c2c675b663 -->|"click:a[13]"| n_b3d5f60599c8
+  n_97c2c675b663 -->|"click:a[14]"| n_1af0af44b81a
+  n_97c2c675b663 -->|"click:a[15]"| n_7685e6ac82b9
+  n_97c2c675b663 -->|"click:a[16]"| n_ca23eb6e199c
+  n_97c2c675b663 -->|"click:a[17]"| n_47c57df07908
+  n_97c2c675b663 -->|"click:a[18]"| n_1a512762a25e
+  n_97c2c675b663 -->|"click:a[19]"| n_7f9cf47434dd
+  n_97c2c675b663 -->|"click:a[20]"| n_6f4081779804
+  n_97c2c675b663 -->|"click:a[21]"| n_b920cc1a71aa
+  n_97c2c675b663 -->|"click:a[22]"| n_15e14d8c27ed
+  n_97c2c675b663 -->|"click:a[23]"| n_1bf99019f32a
+  n_97c2c675b663 -->|"click:a[24]"| n_de1386978e40
+  n_97c2c675b663 -->|"click:a[25]"| n_408732219fc7
+  n_97c2c675b663 -->|"click:a[26]"| n_bd63b93df237
+  n_97c2c675b663 -->|"click:a[27]"| n_65f639085675
+  n_97c2c675b663 -->|"click:a[28]"| n_151dabff6e0f
+  n_97c2c675b663 -->|"click:a[29]"| n_f2c980f87414
+  n_97c2c675b663 -->|"click:a[30]"| n_a1b65c023745
+  n_97c2c675b663 -->|"click:a[31]"| n_d4e9c2a06c36
+  n_97c2c675b663 -->|"click:a[32]"| n_c89a3e15fb48
+  n_97c2c675b663 -->|"click:a[33]"| n_fba87f4584e6
+  n_97c2c675b663 -->|"click:a[34]"| n_00d1bbaba041
+  n_97c2c675b663 -->|"click:a[35]"| n_1f55c76175cc
+  n_97c2c675b663 -->|"click:a[36]"| n_978e15d1531b
+  n_97c2c675b663 -->|"click:a[37]"| n_78fdff0d5352
+  n_97c2c675b663 -->|"click:a[38]"| n_c8cacbef2262
+  n_97c2c675b663 -->|"click:a[39]"| n_d8cc11a3acf9
+  n_97c2c675b663 -->|"click:a[40]"| n_0db3cd8a67a1
+  n_97c2c675b663 -->|"click:a[41]"| n_650b2b485d54
+  n_97c2c675b663 -->|"click:a[42]"| n_3c11d45446e8
+  n_97c2c675b663 -->|"click:a[43]"| n_62ae3c5b3d46
+  n_97c2c675b663 -->|"click:a[44]"| n_6419131eb57a
+  n_97c2c675b663 -->|"click:a[45]"| n_51915bfb8612
+  n_97c2c675b663 -->|"click:a[46]"| n_195fbfde6ccc
+  n_97c2c675b663 -->|"click:a[47]"| n_67576a8605c3
+  n_97c2c675b663 -->|"click:a[48]"| n_5c45d067f84a
+  n_97c2c675b663 -->|"click:a[49]"| n_cbf87c765d2c
+  n_97c2c675b663 -->|"click:a[50]"| n_c92a22a630a4
+  n_97c2c675b663 -->|"click:a[51]"| n_84aa5aa0fd72
+  n_97c2c675b663 -->|"click:a[52]"| n_96bea4015ee9
+  n_97c2c675b663 -->|"click:a[53]"| n_873bdab4e4ac
+  n_97c2c675b663 -->|"click:a[54]"| n_2de1ecc75a1b
+  n_97c2c675b663 -->|"click:a[55]"| n_df6042e28b44
+  n_97c2c675b663 -->|"click:a[56]"| n_c747645b6bd9
+  n_97c2c675b663 -->|"click:a[57]"| n_21fcd29ef6bd
+  n_97c2c675b663 -->|"click:a[58]"| n_2996edf9ae29
+  n_97c2c675b663 -->|"click:a[59]"| n_2e783ec9811c
+  n_97c2c675b663 -->|"click:a[60]"| n_6e78119f07cd
+  n_97c2c675b663 -->|"click:a[61]"| n_118006d5e6d5
+  n_97c2c675b663 -->|"click:a[62]"| n_1e9ab629394e
+  n_97c2c675b663 -->|"click:a[63]"| n_6d636f5135e1</div>
+    </div>
+    <div class="no-mermaid" id="fallback">
+      <strong>⚠️ Mermaid not loaded (offline?)</strong> — raw diagram source:
+      <pre>flowchart TD
+  classDef root fill:#22c55e,stroke:#16a34a,color:#fff,font-weight:bold
+  classDef normal fill:#3b82f6,stroke:#2563eb,color:#fff
+  classDef leaf fill:#f59e0b,stroke:#d97706,color:#fff
+  classDef ext fill:#94a3b8,stroke:#64748b,color:#fff,stroke-dasharray:5 5
+
+  n_8cfa49f50330[&quot;S0\nd=0 f=44&quot;]:::normal
+  n_0ca6dcc436d1[&quot;S2\nd=1 f=37&quot;]:::normal
+  n_0dfd3df7df4c[&quot;S19\nd=1 f=34&quot;]:::leaf
+  n_20f19334101a[&quot;S7\nd=1 f=70&quot;]:::leaf
+  n_2153c68cb0e5[&quot;S1\nd=1 f=44&quot;]:::normal
+  n_2e75c1c19cd9[&quot;S8\nd=1 f=407&quot;]:::leaf
+  n_39e2ceeb9351[&quot;S15\nd=1 f=52&quot;]:::leaf
+  n_3b135efb2b60[&quot;S20\nd=1 f=34&quot;]:::leaf
+  n_5cb52b76dadb[&quot;S21\nd=1 f=37&quot;]:::leaf
+  n_6ad3c8c3d428[&quot;S12\nd=1 f=43&quot;]:::leaf
+  n_80a7040540dd[&quot;S13\nd=1 f=42&quot;]:::leaf
+  n_93f9662b3a1e[&quot;S16\nd=1 f=5199&quot;]:::leaf
+  n_9740ad1fc5ec[&quot;S4\nd=1 f=52&quot;]:::normal
+  n_975c262ec764[&quot;S23\nd=1 f=0&quot;]:::leaf
+  n_97c2c675b663[&quot;S5\nd=1 f=1643&quot;]:::normal
+  n_9f30a9fcd1cb[&quot;S11\nd=1 f=6307&quot;]:::leaf
+  n_ac4267d1b168[&quot;S24\nd=1 f=0&quot;]:::leaf
+  n_b856159625ea[&quot;S17\nd=1 f=37&quot;]:::leaf
+  n_becb855b998d[&quot;S22\nd=1 f=34&quot;]:::leaf
+  n_c73a0c8bf248[&quot;S10\nd=1 f=42&quot;]:::leaf
+  n_dcc0d365a865[&quot;S6\nd=1 f=49&quot;]:::leaf
+  n_ddfcf6f1c25e[&quot;S3\nd=1 f=53&quot;]:::normal
+  n_e89cb348302a[&quot;S18\nd=1 f=165&quot;]:::leaf
+  n_ea3dce769276[&quot;S9\nd=1 f=80&quot;]:::leaf
+  n_f0c01b733160[&quot;S14\nd=1 f=53&quot;]:::leaf
+  n_00d1bbaba041[&quot;S70\nd=2 f=49&quot;]:::leaf
+  n_08d7b32e2452[&quot;S25\nd=2 f=5864&quot;]:::leaf
+  n_0c3934f582f1[&quot;S42\nd=2 f=29&quot;]:::leaf
+  n_0db3cd8a67a1[&quot;S76\nd=2 f=48&quot;]:::leaf
+  n_118006d5e6d5[&quot;S97\nd=2 f=48&quot;]:::leaf
+  n_12d7ddcd6792[&quot;S33\nd=2 f=5944&quot;]:::leaf
+  n_151dabff6e0f[&quot;S64\nd=2 f=49&quot;]:::leaf
+  n_15e14d8c27ed[&quot;S58\nd=2 f=49&quot;]:::leaf
+  n_195fbfde6ccc[&quot;S82\nd=2 f=49&quot;]:::leaf
+  n_1a512762a25e[&quot;S54\nd=2 f=50&quot;]:::leaf
+  n_1af0af44b81a[&quot;S50\nd=2 f=49&quot;]:::leaf
+  n_1bf99019f32a[&quot;S59\nd=2 f=49&quot;]:::leaf
+  n_1e9ab629394e[&quot;S98\nd=2 f=49&quot;]:::leaf
+  n_1f55c76175cc[&quot;S71\nd=2 f=49&quot;]:::leaf
+  n_21fcd29ef6bd[&quot;S93\nd=2 f=49&quot;]:::leaf
+  n_2976a983bc60[&quot;S47\nd=2 f=49&quot;]:::leaf
+  n_2996edf9ae29[&quot;S94\nd=2 f=49&quot;]:::leaf
+  n_2de1ecc75a1b[&quot;S90\nd=2 f=49&quot;]:::leaf
+  n_2e783ec9811c[&quot;S95\nd=2 f=48&quot;]:::leaf
+  n_3c11d45446e8[&quot;S78\nd=2 f=49&quot;]:::leaf
+  n_408732219fc7[&quot;S61\nd=2 f=48&quot;]:::leaf
+  n_47c57df07908[&quot;S53\nd=2 f=48&quot;]:::leaf
+  n_49313b167848[&quot;S40\nd=2 f=5156&quot;]:::leaf
+  n_499c651243c6[&quot;S34\nd=2 f=54&quot;]:::leaf
+  n_4a24b34a68bb[&quot;S39\nd=2 f=51&quot;]:::leaf
+  n_4cc0dda241a8[&quot;S38\nd=2 f=64&quot;]:::leaf
+  n_51915bfb8612[&quot;S81\nd=2 f=49&quot;]:::leaf
+  n_52a4db9da579[&quot;S26\nd=2 f=5182&quot;]:::leaf
+  n_53c2af2519a1[&quot;S36\nd=2 f=47&quot;]:::leaf
+  n_5b77b150f86d[&quot;S48\nd=2 f=49&quot;]:::leaf
+  n_5c45d067f84a[&quot;S84\nd=2 f=49&quot;]:::leaf
+  n_62ae3c5b3d46[&quot;S79\nd=2 f=48&quot;]:::leaf
+  n_6419131eb57a[&quot;S80\nd=2 f=50&quot;]:::leaf
+  n_650b2b485d54[&quot;S77\nd=2 f=49&quot;]:::leaf
+  n_65f639085675[&quot;S63\nd=2 f=49&quot;]:::leaf
+  n_67576a8605c3[&quot;S83\nd=2 f=48&quot;]:::leaf
+  n_6d636f5135e1[&quot;S99\nd=2 f=49&quot;]:::leaf
+  n_6e519c1d7882[&quot;S32\nd=2 f=65&quot;]:::leaf
+  n_6e78119f07cd[&quot;S96\nd=2 f=49&quot;]:::leaf
+  n_6f4081779804[&quot;S56\nd=2 f=49&quot;]:::leaf
+  n_732a5e0fcb4e[&quot;S45\nd=2 f=49&quot;]:::leaf
+  n_7685e6ac82b9[&quot;S51\nd=2 f=50&quot;]:::leaf
+  n_78cd7535b03f[&quot;S28\nd=2 f=5254&quot;]:::leaf
+  n_78fdff0d5352[&quot;S73\nd=2 f=48&quot;]:::leaf
+  n_79b1c2cc020b[&quot;S31\nd=2 f=44&quot;]:::leaf
+  n_7f9cf47434dd[&quot;S55\nd=2 f=49&quot;]:::leaf
+  n_84aa5aa0fd72[&quot;S87\nd=2 f=49&quot;]:::leaf
+  n_873bdab4e4ac[&quot;S89\nd=2 f=49&quot;]:::leaf
+  n_8b3b11b39629[&quot;S30\nd=2 f=5294&quot;]:::leaf
+  n_96bea4015ee9[&quot;S88\nd=2 f=49&quot;]:::leaf
+  n_978e15d1531b[&quot;S72\nd=2 f=49&quot;]:::leaf
+  n_9b9865e55489[&quot;S46\nd=2 f=49&quot;]:::leaf
+  n_a1b65c023745[&quot;S66\nd=2 f=48&quot;]:::leaf
+  n_a777188748d7[&quot;S35\nd=2 f=11552&quot;]:::leaf
+  n_ae362ac193fe[&quot;S41\nd=2 f=34&quot;]:::leaf
+  n_b3d5f60599c8[&quot;S49\nd=2 f=49&quot;]:::leaf
+  n_b81c402f2342[&quot;S37\nd=2 f=49&quot;]:::leaf
+  n_b920cc1a71aa[&quot;S57\nd=2 f=50&quot;]:::leaf
+  n_bb855e15fe8c[&quot;S43\nd=2 f=49&quot;]:::leaf
+  n_bd63b93df237[&quot;S62\nd=2 f=49&quot;]:::leaf
+  n_c2e8764090aa[&quot;S29\nd=2 f=165&quot;]:::leaf
+  n_c747645b6bd9[&quot;S92\nd=2 f=48&quot;]:::leaf
+  n_c89a3e15fb48[&quot;S68\nd=2 f=49&quot;]:::leaf
+  n_c8cacbef2262[&quot;S74\nd=2 f=49&quot;]:::leaf
+  n_c92a22a630a4[&quot;S86\nd=2 f=49&quot;]:::leaf
+  n_ca23eb6e199c[&quot;S52\nd=2 f=48&quot;]:::leaf
+  n_cbf87c765d2c[&quot;S85\nd=2 f=49&quot;]:::leaf
+  n_d149dbf1297c[&quot;S44\nd=2 f=48&quot;]:::leaf
+  n_d4e9c2a06c36[&quot;S67\nd=2 f=50&quot;]:::leaf
+  n_d8cc11a3acf9[&quot;S75\nd=2 f=50&quot;]:::leaf
+  n_de1386978e40[&quot;S60\nd=2 f=50&quot;]:::leaf
+  n_df6042e28b44[&quot;S91\nd=2 f=49&quot;]:::leaf
+  n_f2c980f87414[&quot;S65\nd=2 f=49&quot;]:::leaf
+  n_fba87f4584e6[&quot;S69\nd=2 f=49&quot;]:::leaf
+  n_fdd9a6e63064[&quot;S27\nd=2 f=53&quot;]:::leaf
+  __ext__([&quot;⎋ external&quot;]):::ext
+
+  n_8cfa49f50330 --&gt;|&quot;fill:#gsc-i-id1&quot;| n_2153c68cb0e5
+  n_8cfa49f50330 --&gt;|&quot;click:a[0]&quot;| n_0ca6dcc436d1
+  n_8cfa49f50330 --&gt;|&quot;click:a[1]&quot;| n_ddfcf6f1c25e
+  n_8cfa49f50330 --&gt;|&quot;click:a[2]&quot;| n_9740ad1fc5ec
+  n_8cfa49f50330 --&gt;|&quot;click:a[3]&quot;| n_97c2c675b663
+  n_8cfa49f50330 --&gt;|&quot;click:a[4]&quot;| n_dcc0d365a865
+  n_8cfa49f50330 --&gt;|&quot;click:a[5]&quot;| n_20f19334101a
+  n_8cfa49f50330 --&gt;|&quot;click:a[6]&quot;| n_2e75c1c19cd9
+  n_8cfa49f50330 --&gt;|&quot;click:a[7]&quot;| n_ea3dce769276
+  n_8cfa49f50330 --&gt;|&quot;click:a[8]&quot;| n_ea3dce769276
+  n_8cfa49f50330 --&gt;|&quot;click:a[9]&quot;| n_c73a0c8bf248
+  n_8cfa49f50330 --&gt;|&quot;click:a[10]&quot;| n_9f30a9fcd1cb
+  n_8cfa49f50330 --&gt;|&quot;click:a[11]&quot;| n_9f30a9fcd1cb
+  n_8cfa49f50330 --&gt;|&quot;click:a[12]&quot;| n_6ad3c8c3d428
+  n_8cfa49f50330 --&gt;|&quot;click:a[13]&quot;| n_80a7040540dd
+  n_8cfa49f50330 --&gt;|&quot;click:a[23]&quot;| n_f0c01b733160
+  n_8cfa49f50330 --&gt;|&quot;click:a[24]&quot;| n_39e2ceeb9351
+  n_8cfa49f50330 --&gt;|&quot;click:a[25]&quot;| n_dcc0d365a865
+  n_8cfa49f50330 --&gt;|&quot;click:a[26]&quot;| n_20f19334101a
+  n_8cfa49f50330 --&gt;|&quot;click:a[27]&quot;| n_93f9662b3a1e
+  n_8cfa49f50330 --&gt;|&quot;click:a[28]&quot;| n_ea3dce769276
+  n_8cfa49f50330 --&gt;|&quot;click:a[29]&quot;| n_c73a0c8bf248
+  n_8cfa49f50330 --&gt;|&quot;click:a[30]&quot;| n_9f30a9fcd1cb
+  n_8cfa49f50330 --&gt;|&quot;click:a[31]&quot;| n_9f30a9fcd1cb
+  n_8cfa49f50330 --&gt;|&quot;click:a[32]&quot;| n_80a7040540dd
+  n_8cfa49f50330 --&gt;|&quot;click:a[33]&quot;| n_b856159625ea
+  n_8cfa49f50330 --&gt;|&quot;click:a[34]&quot;| n_e89cb348302a
+  n_8cfa49f50330 --&gt;|&quot;click:a[35]&quot;| n_0dfd3df7df4c
+  n_8cfa49f50330 --&gt;|&quot;click:a[36]&quot;| n_3b135efb2b60
+  n_8cfa49f50330 --&gt;|&quot;click:a[37]&quot;| n_5cb52b76dadb
+  n_8cfa49f50330 --&gt;|&quot;click:a[38]&quot;| n_becb855b998d
+  n_8cfa49f50330 --&gt;|&quot;click:a[39]&quot;| n_975c262ec764
+  n_8cfa49f50330 --&gt;|&quot;click:a[40]&quot;| n_ac4267d1b168
+  n_8cfa49f50330 --&gt;|&quot;click:a[41]&quot;| __ext__
+  n_8cfa49f50330 --&gt;|&quot;click:a[42]&quot;| __ext__
+  n_2153c68cb0e5 -.-&gt;|&quot;fill:#gsc-i-id1&quot;| n_2153c68cb0e5
+  n_2153c68cb0e5 --&gt;|&quot;click:a[0]&quot;| n_b856159625ea
+  n_2153c68cb0e5 --&gt;|&quot;click:a[1]&quot;| n_f0c01b733160
+  n_2153c68cb0e5 --&gt;|&quot;click:a[2]&quot;| n_39e2ceeb9351
+  n_2153c68cb0e5 --&gt;|&quot;click:a[3]&quot;| n_97c2c675b663
+  n_2153c68cb0e5 --&gt;|&quot;click:a[4]&quot;| n_dcc0d365a865
+  n_2153c68cb0e5 --&gt;|&quot;click:a[5]&quot;| n_20f19334101a
+  n_2153c68cb0e5 --&gt;|&quot;click:a[6]&quot;| n_08d7b32e2452
+  n_2153c68cb0e5 --&gt;|&quot;click:a[7]&quot;| n_ea3dce769276
+  n_2153c68cb0e5 --&gt;|&quot;click:a[8]&quot;| n_ea3dce769276
+  n_2153c68cb0e5 --&gt;|&quot;click:a[9]&quot;| n_c73a0c8bf248
+  n_2153c68cb0e5 --&gt;|&quot;click:a[10]&quot;| n_9f30a9fcd1cb
+  n_2153c68cb0e5 --&gt;|&quot;click:a[11]&quot;| n_9f30a9fcd1cb
+  n_2153c68cb0e5 --&gt;|&quot;click:a[12]&quot;| n_6ad3c8c3d428
+  n_2153c68cb0e5 --&gt;|&quot;click:a[13]&quot;| n_80a7040540dd
+  n_2153c68cb0e5 --&gt;|&quot;click:button:#quot;Clear searc&quot;| n_8cfa49f50330
+  n_2153c68cb0e5 --&gt;|&quot;click:a[23]&quot;| n_f0c01b733160
+  n_2153c68cb0e5 --&gt;|&quot;click:a[24]&quot;| n_39e2ceeb9351
+  n_2153c68cb0e5 --&gt;|&quot;click:a[25]&quot;| n_dcc0d365a865
+  n_2153c68cb0e5 --&gt;|&quot;click:a[26]&quot;| n_20f19334101a
+  n_2153c68cb0e5 --&gt;|&quot;click:a[27]&quot;| n_52a4db9da579
+  n_2153c68cb0e5 --&gt;|&quot;click:a[28]&quot;| n_ea3dce769276
+  n_2153c68cb0e5 --&gt;|&quot;click:a[29]&quot;| n_c73a0c8bf248
+  n_2153c68cb0e5 --&gt;|&quot;click:a[30]&quot;| n_9f30a9fcd1cb
+  n_2153c68cb0e5 --&gt;|&quot;click:a[31]&quot;| n_9f30a9fcd1cb
+  n_2153c68cb0e5 --&gt;|&quot;click:a[32]&quot;| n_80a7040540dd
+  n_2153c68cb0e5 --&gt;|&quot;click:a[33]&quot;| n_b856159625ea
+  n_2153c68cb0e5 --&gt;|&quot;click:a[34]&quot;| n_e89cb348302a
+  n_2153c68cb0e5 --&gt;|&quot;click:a[35]&quot;| n_0dfd3df7df4c
+  n_2153c68cb0e5 --&gt;|&quot;click:a[36]&quot;| n_3b135efb2b60
+  n_2153c68cb0e5 --&gt;|&quot;click:a[37]&quot;| n_5cb52b76dadb
+  n_2153c68cb0e5 --&gt;|&quot;click:a[38]&quot;| n_becb855b998d
+  n_2153c68cb0e5 --&gt;|&quot;click:a[39]&quot;| n_975c262ec764
+  n_2153c68cb0e5 --&gt;|&quot;click:a[40]&quot;| n_ac4267d1b168
+  n_2153c68cb0e5 --&gt;|&quot;click:a[41]&quot;| __ext__
+  n_2153c68cb0e5 --&gt;|&quot;click:a[42]&quot;| __ext__
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[1]&quot;| n_f0c01b733160
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[2]&quot;| n_9f30a9fcd1cb
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[3]&quot;| n_ea3dce769276
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[4]&quot;| n_b856159625ea
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[5]&quot;| n_f0c01b733160
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[6]&quot;| n_ea3dce769276
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[7]&quot;| n_9f30a9fcd1cb
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[8]&quot;| __ext__
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[9]&quot;| __ext__
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[10]&quot;| n_b856159625ea
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[11]&quot;| n_e89cb348302a
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[12]&quot;| n_0dfd3df7df4c
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[13]&quot;| n_fdd9a6e63064
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[14]&quot;| n_3b135efb2b60
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[15]&quot;| n_5cb52b76dadb
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[16]&quot;| n_becb855b998d
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[17]&quot;| n_f0c01b733160
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[18]&quot;| n_39e2ceeb9351
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[19]&quot;| n_dcc0d365a865
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[20]&quot;| n_20f19334101a
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[21]&quot;| n_78cd7535b03f
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[22]&quot;| n_ea3dce769276
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[23]&quot;| n_c73a0c8bf248
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[24]&quot;| n_9f30a9fcd1cb
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[25]&quot;| n_9f30a9fcd1cb
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[26]&quot;| n_80a7040540dd
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[27]&quot;| n_b856159625ea
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[28]&quot;| n_c2e8764090aa
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[29]&quot;| n_0dfd3df7df4c
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[30]&quot;| n_3b135efb2b60
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[31]&quot;| n_5cb52b76dadb
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[32]&quot;| n_becb855b998d
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[33]&quot;| __ext__
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[34]&quot;| __ext__
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[35]&quot;| __ext__
+  n_0ca6dcc436d1 --&gt;|&quot;click:a[36]&quot;| __ext__
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[1]&quot;| n_f0c01b733160
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[2]&quot;| n_9f30a9fcd1cb
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[3]&quot;| n_ea3dce769276
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[4]&quot;| n_b856159625ea
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[5]&quot;| n_39e2ceeb9351
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[6]&quot;| n_dcc0d365a865
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[7]&quot;| n_20f19334101a
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[8]&quot;| n_8b3b11b39629
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[9]&quot;| n_79b1c2cc020b
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[10]&quot;| n_6e519c1d7882
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[11]&quot;| n_f0c01b733160
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[12]&quot;| n_39e2ceeb9351
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[18]&quot;| n_dcc0d365a865
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[22]&quot;| n_20f19334101a
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[23]&quot;| n_12d7ddcd6792
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[26]&quot;| n_499c651243c6
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[32]&quot;| n_6e519c1d7882
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[33]&quot;| n_f0c01b733160
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[34]&quot;| n_39e2ceeb9351
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[35]&quot;| n_dcc0d365a865
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[36]&quot;| n_20f19334101a
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[37]&quot;| n_a777188748d7
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[38]&quot;| n_ea3dce769276
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[39]&quot;| n_c73a0c8bf248
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[40]&quot;| n_9f30a9fcd1cb
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[41]&quot;| n_9f30a9fcd1cb
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[42]&quot;| n_80a7040540dd
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[43]&quot;| n_b856159625ea
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[44]&quot;| n_c2e8764090aa
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[45]&quot;| n_0dfd3df7df4c
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[46]&quot;| n_3b135efb2b60
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[47]&quot;| n_5cb52b76dadb
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[48]&quot;| n_becb855b998d
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[49]&quot;| __ext__
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[50]&quot;| __ext__
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[51]&quot;| __ext__
+  n_ddfcf6f1c25e --&gt;|&quot;click:a[52]&quot;| __ext__
+  n_9740ad1fc5ec --&gt;|&quot;click:a[1]&quot;| n_f0c01b733160
+  n_9740ad1fc5ec --&gt;|&quot;click:a[2]&quot;| n_9f30a9fcd1cb
+  n_9740ad1fc5ec --&gt;|&quot;click:a[3]&quot;| n_ea3dce769276
+  n_9740ad1fc5ec --&gt;|&quot;click:a[4]&quot;| n_b856159625ea
+  n_9740ad1fc5ec --&gt;|&quot;click:a[5]&quot;| n_97c2c675b663
+  n_9740ad1fc5ec --&gt;|&quot;click:a[6]&quot;| n_53c2af2519a1
+  n_9740ad1fc5ec --&gt;|&quot;click:a[7]&quot;| n_b81c402f2342
+  n_9740ad1fc5ec --&gt;|&quot;click:a[8]&quot;| n_4cc0dda241a8
+  n_9740ad1fc5ec --&gt;|&quot;click:a[9]&quot;| n_499c651243c6
+  n_9740ad1fc5ec --&gt;|&quot;click:a[10]&quot;| n_f0c01b733160
+  n_9740ad1fc5ec --&gt;|&quot;click:a[11]&quot;| n_39e2ceeb9351
+  n_9740ad1fc5ec --&gt;|&quot;click:a[12]&quot;| n_39e2ceeb9351
+  n_9740ad1fc5ec --&gt;|&quot;click:a[13]&quot;| n_97c2c675b663
+  n_9740ad1fc5ec --&gt;|&quot;click:a[14]&quot;| n_4a24b34a68bb
+  n_9740ad1fc5ec --&gt;|&quot;click:a[15]&quot;| n_b81c402f2342
+  n_9740ad1fc5ec --&gt;|&quot;click:a[16]&quot;| n_4cc0dda241a8
+  n_9740ad1fc5ec --&gt;|&quot;click:a[17]&quot;| n_dcc0d365a865
+  n_9740ad1fc5ec --&gt;|&quot;click:a[21]&quot;| n_20f19334101a
+  n_9740ad1fc5ec --&gt;|&quot;click:a[22]&quot;| n_49313b167848
+  n_9740ad1fc5ec --&gt;|&quot;click:a[25]&quot;| n_499c651243c6
+  n_9740ad1fc5ec --&gt;|&quot;click:a[31]&quot;| n_6e519c1d7882
+  n_9740ad1fc5ec --&gt;|&quot;click:a[32]&quot;| n_f0c01b733160
+  n_9740ad1fc5ec --&gt;|&quot;click:a[33]&quot;| n_39e2ceeb9351
+  n_9740ad1fc5ec --&gt;|&quot;click:a[34]&quot;| n_dcc0d365a865
+  n_9740ad1fc5ec --&gt;|&quot;click:a[35]&quot;| n_20f19334101a
+  n_9740ad1fc5ec --&gt;|&quot;click:a[36]&quot;| n_a777188748d7
+  n_9740ad1fc5ec --&gt;|&quot;click:a[37]&quot;| n_ea3dce769276
+  n_9740ad1fc5ec --&gt;|&quot;click:a[38]&quot;| n_c73a0c8bf248
+  n_9740ad1fc5ec --&gt;|&quot;click:a[39]&quot;| n_9f30a9fcd1cb
+  n_9740ad1fc5ec --&gt;|&quot;click:a[40]&quot;| n_9f30a9fcd1cb
+  n_9740ad1fc5ec --&gt;|&quot;click:a[41]&quot;| n_80a7040540dd
+  n_9740ad1fc5ec --&gt;|&quot;click:a[42]&quot;| n_b856159625ea
+  n_9740ad1fc5ec --&gt;|&quot;click:a[43]&quot;| n_c2e8764090aa
+  n_9740ad1fc5ec --&gt;|&quot;click:a[44]&quot;| n_0dfd3df7df4c
+  n_9740ad1fc5ec --&gt;|&quot;click:a[45]&quot;| n_3b135efb2b60
+  n_9740ad1fc5ec --&gt;|&quot;click:a[46]&quot;| n_5cb52b76dadb
+  n_9740ad1fc5ec --&gt;|&quot;click:a[47]&quot;| n_becb855b998d
+  n_9740ad1fc5ec --&gt;|&quot;click:a[48]&quot;| __ext__
+  n_9740ad1fc5ec --&gt;|&quot;click:a[49]&quot;| __ext__
+  n_9740ad1fc5ec --&gt;|&quot;click:a[50]&quot;| __ext__
+  n_9740ad1fc5ec --&gt;|&quot;click:a[51]&quot;| __ext__
+  n_97c2c675b663 --&gt;|&quot;click:a[0]&quot;| n_ae362ac193fe
+  n_97c2c675b663 --&gt;|&quot;click:a[1]&quot;| n_f0c01b733160
+  n_97c2c675b663 --&gt;|&quot;click:a[2]&quot;| n_9f30a9fcd1cb
+  n_97c2c675b663 --&gt;|&quot;click:a[3]&quot;| n_ea3dce769276
+  n_97c2c675b663 --&gt;|&quot;click:a[4]&quot;| n_b856159625ea
+  n_97c2c675b663 --&gt;|&quot;click:a[5]&quot;| n_39e2ceeb9351
+  n_97c2c675b663 --&gt;|&quot;click:a[6]&quot;| n_0c3934f582f1
+  n_97c2c675b663 --&gt;|&quot;click:a[7]&quot;| n_bb855e15fe8c
+  n_97c2c675b663 --&gt;|&quot;click:a[8]&quot;| n_d149dbf1297c
+  n_97c2c675b663 --&gt;|&quot;click:a[9]&quot;| n_732a5e0fcb4e
+  n_97c2c675b663 --&gt;|&quot;click:a[10]&quot;| n_9b9865e55489
+  n_97c2c675b663 --&gt;|&quot;click:a[11]&quot;| n_2976a983bc60
+  n_97c2c675b663 --&gt;|&quot;click:a[12]&quot;| n_5b77b150f86d
+  n_97c2c675b663 --&gt;|&quot;click:a[13]&quot;| n_b3d5f60599c8
+  n_97c2c675b663 --&gt;|&quot;click:a[14]&quot;| n_1af0af44b81a
+  n_97c2c675b663 --&gt;|&quot;click:a[15]&quot;| n_7685e6ac82b9
+  n_97c2c675b663 --&gt;|&quot;click:a[16]&quot;| n_ca23eb6e199c
+  n_97c2c675b663 --&gt;|&quot;click:a[17]&quot;| n_47c57df07908
+  n_97c2c675b663 --&gt;|&quot;click:a[18]&quot;| n_1a512762a25e
+  n_97c2c675b663 --&gt;|&quot;click:a[19]&quot;| n_7f9cf47434dd
+  n_97c2c675b663 --&gt;|&quot;click:a[20]&quot;| n_6f4081779804
+  n_97c2c675b663 --&gt;|&quot;click:a[21]&quot;| n_b920cc1a71aa
+  n_97c2c675b663 --&gt;|&quot;click:a[22]&quot;| n_15e14d8c27ed
+  n_97c2c675b663 --&gt;|&quot;click:a[23]&quot;| n_1bf99019f32a
+  n_97c2c675b663 --&gt;|&quot;click:a[24]&quot;| n_de1386978e40
+  n_97c2c675b663 --&gt;|&quot;click:a[25]&quot;| n_408732219fc7
+  n_97c2c675b663 --&gt;|&quot;click:a[26]&quot;| n_bd63b93df237
+  n_97c2c675b663 --&gt;|&quot;click:a[27]&quot;| n_65f639085675
+  n_97c2c675b663 --&gt;|&quot;click:a[28]&quot;| n_151dabff6e0f
+  n_97c2c675b663 --&gt;|&quot;click:a[29]&quot;| n_f2c980f87414
+  n_97c2c675b663 --&gt;|&quot;click:a[30]&quot;| n_a1b65c023745
+  n_97c2c675b663 --&gt;|&quot;click:a[31]&quot;| n_d4e9c2a06c36
+  n_97c2c675b663 --&gt;|&quot;click:a[32]&quot;| n_c89a3e15fb48
+  n_97c2c675b663 --&gt;|&quot;click:a[33]&quot;| n_fba87f4584e6
+  n_97c2c675b663 --&gt;|&quot;click:a[34]&quot;| n_00d1bbaba041
+  n_97c2c675b663 --&gt;|&quot;click:a[35]&quot;| n_1f55c76175cc
+  n_97c2c675b663 --&gt;|&quot;click:a[36]&quot;| n_978e15d1531b
+  n_97c2c675b663 --&gt;|&quot;click:a[37]&quot;| n_78fdff0d5352
+  n_97c2c675b663 --&gt;|&quot;click:a[38]&quot;| n_c8cacbef2262
+  n_97c2c675b663 --&gt;|&quot;click:a[39]&quot;| n_d8cc11a3acf9
+  n_97c2c675b663 --&gt;|&quot;click:a[40]&quot;| n_0db3cd8a67a1
+  n_97c2c675b663 --&gt;|&quot;click:a[41]&quot;| n_650b2b485d54
+  n_97c2c675b663 --&gt;|&quot;click:a[42]&quot;| n_3c11d45446e8
+  n_97c2c675b663 --&gt;|&quot;click:a[43]&quot;| n_62ae3c5b3d46
+  n_97c2c675b663 --&gt;|&quot;click:a[44]&quot;| n_6419131eb57a
+  n_97c2c675b663 --&gt;|&quot;click:a[45]&quot;| n_51915bfb8612
+  n_97c2c675b663 --&gt;|&quot;click:a[46]&quot;| n_195fbfde6ccc
+  n_97c2c675b663 --&gt;|&quot;click:a[47]&quot;| n_67576a8605c3
+  n_97c2c675b663 --&gt;|&quot;click:a[48]&quot;| n_5c45d067f84a
+  n_97c2c675b663 --&gt;|&quot;click:a[49]&quot;| n_cbf87c765d2c
+  n_97c2c675b663 --&gt;|&quot;click:a[50]&quot;| n_c92a22a630a4
+  n_97c2c675b663 --&gt;|&quot;click:a[51]&quot;| n_84aa5aa0fd72
+  n_97c2c675b663 --&gt;|&quot;click:a[52]&quot;| n_96bea4015ee9
+  n_97c2c675b663 --&gt;|&quot;click:a[53]&quot;| n_873bdab4e4ac
+  n_97c2c675b663 --&gt;|&quot;click:a[54]&quot;| n_2de1ecc75a1b
+  n_97c2c675b663 --&gt;|&quot;click:a[55]&quot;| n_df6042e28b44
+  n_97c2c675b663 --&gt;|&quot;click:a[56]&quot;| n_c747645b6bd9
+  n_97c2c675b663 --&gt;|&quot;click:a[57]&quot;| n_21fcd29ef6bd
+  n_97c2c675b663 --&gt;|&quot;click:a[58]&quot;| n_2996edf9ae29
+  n_97c2c675b663 --&gt;|&quot;click:a[59]&quot;| n_2e783ec9811c
+  n_97c2c675b663 --&gt;|&quot;click:a[60]&quot;| n_6e78119f07cd
+  n_97c2c675b663 --&gt;|&quot;click:a[61]&quot;| n_118006d5e6d5
+  n_97c2c675b663 --&gt;|&quot;click:a[62]&quot;| n_1e9ab629394e
+  n_97c2c675b663 --&gt;|&quot;click:a[63]&quot;| n_6d636f5135e1</pre>
+    </div>
+  </section>
+  <section>
+    <h2>States</h2>
+    <table>
+      <thead><tr><th>Label</th><th>Depth</th><th>Facts</th><th>Location</th><th>Transitions to</th><th>ID (truncated)</th></tr></thead>
+      <tbody><tr>
+        <td><strong>S0</strong></td>
+        <td>0</td>
+        <td>44</td>
+        <td><code>https://www.iana.org/</code></td>
+        <td><span class="lbl">S1</span> <span class="lbl">S2</span> <span class="lbl">S3</span> <span class="lbl">S4</span> <span class="lbl">S5</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S8</span> <span class="lbl">S9</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S11</span> <span class="lbl">S12</span> <span class="lbl">S13</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S16</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S11</span> <span class="lbl">S13</span> <span class="lbl">S17</span> <span class="lbl">S18</span> <span class="lbl">S19</span> <span class="lbl">S20</span> <span class="lbl">S21</span> <span class="lbl">S22</span> <span class="lbl">S23</span> <span class="lbl">S24</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">8cfa49f503307112…</code></td>
+      </tr>
+<tr>
+        <td><strong>S2</strong></td>
+        <td>1</td>
+        <td>37</td>
+        <td><code>https://www.iana.org/about</code></td>
+        <td><span class="lbl">S14</span> <span class="lbl">S11</span> <span class="lbl">S9</span> <span class="lbl">S17</span> <span class="lbl">S14</span> <span class="lbl">S9</span> <span class="lbl">S11</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="lbl">S17</span> <span class="lbl">S18</span> <span class="lbl">S19</span> <span class="lbl">S27</span> <span class="lbl">S20</span> <span class="lbl">S21</span> <span class="lbl">S22</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S28</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S11</span> <span class="lbl">S13</span> <span class="lbl">S17</span> <span class="lbl">S29</span> <span class="lbl">S19</span> <span class="lbl">S20</span> <span class="lbl">S21</span> <span class="lbl">S22</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">0ca6dcc436d12c18…</code></td>
+      </tr>
+<tr>
+        <td><strong>S19</strong></td>
+        <td>1</td>
+        <td>34</td>
+        <td><code>https://www.iana.org/performance</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">0dfd3df7df4cf016…</code></td>
+      </tr>
+<tr>
+        <td><strong>S7</strong></td>
+        <td>1</td>
+        <td>70</td>
+        <td><code>https://www.iana.org/domains/arpa</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">20f19334101a0901…</code></td>
+      </tr>
+<tr>
+        <td><strong>S1</strong></td>
+        <td>1</td>
+        <td>44</td>
+        <td><code>https://www.iana.org/</code></td>
+        <td><span class="lbl">S17</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="lbl">S5</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S25</span> <span class="lbl">S9</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S11</span> <span class="lbl">S12</span> <span class="lbl">S13</span> <span class="lbl">S0</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S26</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S11</span> <span class="lbl">S13</span> <span class="lbl">S17</span> <span class="lbl">S18</span> <span class="lbl">S19</span> <span class="lbl">S20</span> <span class="lbl">S21</span> <span class="lbl">S22</span> <span class="lbl">S23</span> <span class="lbl">S24</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">2153c68cb0e50364…</code></td>
+      </tr>
+<tr>
+        <td><strong>S8</strong></td>
+        <td>1</td>
+        <td>407</td>
+        <td><code>https://www.iana.org/domains/idn-tables</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">2e75c1c19cd9ad91…</code></td>
+      </tr>
+<tr>
+        <td><strong>S15</strong></td>
+        <td>1</td>
+        <td>52</td>
+        <td><code>https://www.iana.org/domains/root</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">39e2ceeb93516978…</code></td>
+      </tr>
+<tr>
+        <td><strong>S20</strong></td>
+        <td>1</td>
+        <td>34</td>
+        <td><code>https://www.iana.org/about/excellence</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">3b135efb2b60c4f7…</code></td>
+      </tr>
+<tr>
+        <td><strong>S21</strong></td>
+        <td>1</td>
+        <td>37</td>
+        <td><code>https://www.iana.org/archive</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">5cb52b76dadba041…</code></td>
+      </tr>
+<tr>
+        <td><strong>S12</strong></td>
+        <td>1</td>
+        <td>43</td>
+        <td><code>https://www.iana.org/protocols/apply</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">6ad3c8c3d428257b…</code></td>
+      </tr>
+<tr>
+        <td><strong>S13</strong></td>
+        <td>1</td>
+        <td>42</td>
+        <td><code>https://www.iana.org/time-zones</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">80a7040540dd02b8…</code></td>
+      </tr>
+<tr>
+        <td><strong>S16</strong></td>
+        <td>1</td>
+        <td>5199</td>
+        <td><code>https://www.iana.org/domains/idn-tables</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">93f9662b3a1ed9f6…</code></td>
+      </tr>
+<tr>
+        <td><strong>S4</strong></td>
+        <td>1</td>
+        <td>52</td>
+        <td><code>https://www.iana.org/domains/root</code></td>
+        <td><span class="lbl">S14</span> <span class="lbl">S11</span> <span class="lbl">S9</span> <span class="lbl">S17</span> <span class="lbl">S5</span> <span class="lbl">S36</span> <span class="lbl">S37</span> <span class="lbl">S38</span> <span class="lbl">S34</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="lbl">S15</span> <span class="lbl">S5</span> <span class="lbl">S39</span> <span class="lbl">S37</span> <span class="lbl">S38</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S40</span> <span class="lbl">S34</span> <span class="lbl">S32</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S35</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S11</span> <span class="lbl">S13</span> <span class="lbl">S17</span> <span class="lbl">S29</span> <span class="lbl">S19</span> <span class="lbl">S20</span> <span class="lbl">S21</span> <span class="lbl">S22</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">9740ad1fc5ec54c7…</code></td>
+      </tr>
+<tr>
+        <td><strong>S23</strong></td>
+        <td>1</td>
+        <td>0</td>
+        <td><code>https://pti.icann.org/</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">975c262ec76475cb…</code></td>
+      </tr>
+<tr>
+        <td><strong>S5</strong></td>
+        <td>1</td>
+        <td>1643</td>
+        <td><code>https://www.iana.org/domains/root/db</code></td>
+        <td><span class="lbl">S41</span> <span class="lbl">S14</span> <span class="lbl">S11</span> <span class="lbl">S9</span> <span class="lbl">S17</span> <span class="lbl">S15</span> <span class="lbl">S42</span> <span class="lbl">S43</span> <span class="lbl">S44</span> <span class="lbl">S45</span> <span class="lbl">S46</span> <span class="lbl">S47</span> <span class="lbl">S48</span> <span class="lbl">S49</span> <span class="lbl">S50</span> <span class="lbl">S51</span> <span class="lbl">S52</span> <span class="lbl">S53</span> <span class="lbl">S54</span> <span class="lbl">S55</span> <span class="lbl">S56</span> <span class="lbl">S57</span> <span class="lbl">S58</span> <span class="lbl">S59</span> <span class="lbl">S60</span> <span class="lbl">S61</span> <span class="lbl">S62</span> <span class="lbl">S63</span> <span class="lbl">S64</span> <span class="lbl">S65</span> <span class="lbl">S66</span> <span class="lbl">S67</span> <span class="lbl">S68</span> <span class="lbl">S69</span> <span class="lbl">S70</span> <span class="lbl">S71</span> <span class="lbl">S72</span> <span class="lbl">S73</span> <span class="lbl">S74</span> <span class="lbl">S75</span> <span class="lbl">S76</span> <span class="lbl">S77</span> <span class="lbl">S78</span> <span class="lbl">S79</span> <span class="lbl">S80</span> <span class="lbl">S81</span> <span class="lbl">S82</span> <span class="lbl">S83</span> <span class="lbl">S84</span> <span class="lbl">S85</span> <span class="lbl">S86</span> <span class="lbl">S87</span> <span class="lbl">S88</span> <span class="lbl">S89</span> <span class="lbl">S90</span> <span class="lbl">S91</span> <span class="lbl">S92</span> <span class="lbl">S93</span> <span class="lbl">S94</span> <span class="lbl">S95</span> <span class="lbl">S96</span> <span class="lbl">S97</span> <span class="lbl">S98</span> <span class="lbl">S99</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">97c2c675b6632928…</code></td>
+      </tr>
+<tr>
+        <td><strong>S11</strong></td>
+        <td>1</td>
+        <td>6307</td>
+        <td><code>https://www.iana.org/protocols</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">9f30a9fcd1cb5496…</code></td>
+      </tr>
+<tr>
+        <td><strong>S24</strong></td>
+        <td>1</td>
+        <td>0</td>
+        <td><code>https://www.icann.org/</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">ac4267d1b1683172…</code></td>
+      </tr>
+<tr>
+        <td><strong>S17</strong></td>
+        <td>1</td>
+        <td>37</td>
+        <td><code>https://www.iana.org/about</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">b856159625ea6aa2…</code></td>
+      </tr>
+<tr>
+        <td><strong>S22</strong></td>
+        <td>1</td>
+        <td>34</td>
+        <td><code>https://www.iana.org/contact</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">becb855b998d5cba…</code></td>
+      </tr>
+<tr>
+        <td><strong>S10</strong></td>
+        <td>1</td>
+        <td>42</td>
+        <td><code>https://www.iana.org/abuse</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">c73a0c8bf248cf15…</code></td>
+      </tr>
+<tr>
+        <td><strong>S6</strong></td>
+        <td>1</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/int</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">dcc0d365a8656cc3…</code></td>
+      </tr>
+<tr>
+        <td><strong>S3</strong></td>
+        <td>1</td>
+        <td>53</td>
+        <td><code>https://www.iana.org/domains</code></td>
+        <td><span class="lbl">S14</span> <span class="lbl">S11</span> <span class="lbl">S9</span> <span class="lbl">S17</span> <span class="lbl">S15</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S30</span> <span class="lbl">S31</span> <span class="lbl">S32</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S33</span> <span class="lbl">S34</span> <span class="lbl">S32</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S35</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S11</span> <span class="lbl">S13</span> <span class="lbl">S17</span> <span class="lbl">S29</span> <span class="lbl">S19</span> <span class="lbl">S20</span> <span class="lbl">S21</span> <span class="lbl">S22</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">ddfcf6f1c25e52f0…</code></td>
+      </tr>
+<tr>
+        <td><strong>S18</strong></td>
+        <td>1</td>
+        <td>165</td>
+        <td><code>https://www.iana.org/news</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">e89cb348302ac096…</code></td>
+      </tr>
+<tr>
+        <td><strong>S9</strong></td>
+        <td>1</td>
+        <td>80</td>
+        <td><code>https://www.iana.org/numbers</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">ea3dce7692763b17…</code></td>
+      </tr>
+<tr>
+        <td><strong>S14</strong></td>
+        <td>1</td>
+        <td>53</td>
+        <td><code>https://www.iana.org/domains</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">f0c01b733160a679…</code></td>
+      </tr>
+<tr>
+        <td><strong>S70</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/afamilycompany.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">00d1bbaba0414eb6…</code></td>
+      </tr>
+<tr>
+        <td><strong>S25</strong></td>
+        <td>2</td>
+        <td>5864</td>
+        <td><code>https://www.iana.org/domains/idn-tables</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">08d7b32e24520fb5…</code></td>
+      </tr>
+<tr>
+        <td><strong>S42</strong></td>
+        <td>2</td>
+        <td>29</td>
+        <td><code>https://www.iana.org/whois</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">0c3934f582f1e014…</code></td>
+      </tr>
+<tr>
+        <td><strong>S76</strong></td>
+        <td>2</td>
+        <td>48</td>
+        <td><code>https://www.iana.org/domains/root/db/ai.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">0db3cd8a67a18d8c…</code></td>
+      </tr>
+<tr>
+        <td><strong>S97</strong></td>
+        <td>2</td>
+        <td>48</td>
+        <td><code>https://www.iana.org/domains/root/db/amfam.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">118006d5e6d5a5c0…</code></td>
+      </tr>
+<tr>
+        <td><strong>S33</strong></td>
+        <td>2</td>
+        <td>5944</td>
+        <td><code>https://www.iana.org/domains/idn-tables</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">12d7ddcd67928c68…</code></td>
+      </tr>
+<tr>
+        <td><strong>S64</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/adult.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">151dabff6e0fab03…</code></td>
+      </tr>
+<tr>
+        <td><strong>S58</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/aco.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">15e14d8c27edcf3a…</code></td>
+      </tr>
+<tr>
+        <td><strong>S82</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/akdn.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">195fbfde6ccc97ef…</code></td>
+      </tr>
+<tr>
+        <td><strong>S54</strong></td>
+        <td>2</td>
+        <td>50</td>
+        <td><code>https://www.iana.org/domains/root/db/academy.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">1a512762a25ea18d…</code></td>
+      </tr>
+<tr>
+        <td><strong>S50</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/able.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">1af0af44b81a4bb0…</code></td>
+      </tr>
+<tr>
+        <td><strong>S59</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/active.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">1bf99019f32a9624…</code></td>
+      </tr>
+<tr>
+        <td><strong>S98</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/amica.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">1e9ab629394eb53a…</code></td>
+      </tr>
+<tr>
+        <td><strong>S71</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/afl.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">1f55c76175cc9053…</code></td>
+      </tr>
+<tr>
+        <td><strong>S93</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/amazon.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">21fcd29ef6bd48d6…</code></td>
+      </tr>
+<tr>
+        <td><strong>S47</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/abbott.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">2976a983bc60c876…</code></td>
+      </tr>
+<tr>
+        <td><strong>S94</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/americanexpress.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">2996edf9ae296b48…</code></td>
+      </tr>
+<tr>
+        <td><strong>S90</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/alsace.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">2de1ecc75a1badf5…</code></td>
+      </tr>
+<tr>
+        <td><strong>S95</strong></td>
+        <td>2</td>
+        <td>48</td>
+        <td><code>https://www.iana.org/domains/root/db/americanfamily.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">2e783ec9811c1606…</code></td>
+      </tr>
+<tr>
+        <td><strong>S78</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/aigo.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">3c11d45446e86b3c…</code></td>
+      </tr>
+<tr>
+        <td><strong>S61</strong></td>
+        <td>2</td>
+        <td>48</td>
+        <td><code>https://www.iana.org/domains/root/db/ad.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">408732219fc7fff9…</code></td>
+      </tr>
+<tr>
+        <td><strong>S53</strong></td>
+        <td>2</td>
+        <td>48</td>
+        <td><code>https://www.iana.org/domains/root/db/ac.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">47c57df079086ea0…</code></td>
+      </tr>
+<tr>
+        <td><strong>S40</strong></td>
+        <td>2</td>
+        <td>5156</td>
+        <td><code>https://www.iana.org/domains/idn-tables</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">49313b167848def2…</code></td>
+      </tr>
+<tr>
+        <td><strong>S34</strong></td>
+        <td>2</td>
+        <td>54</td>
+        <td><code>https://www.iana.org/dnssec</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">499c651243c6ee55…</code></td>
+      </tr>
+<tr>
+        <td><strong>S39</strong></td>
+        <td>2</td>
+        <td>51</td>
+        <td><code>https://www.iana.org/domains/root/files</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">4a24b34a68bbba55…</code></td>
+      </tr>
+<tr>
+        <td><strong>S38</strong></td>
+        <td>2</td>
+        <td>64</td>
+        <td><code>https://www.iana.org/domains/root/help</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">4cc0dda241a83fd8…</code></td>
+      </tr>
+<tr>
+        <td><strong>S81</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/airtel.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">51915bfb8612e0bd…</code></td>
+      </tr>
+<tr>
+        <td><strong>S26</strong></td>
+        <td>2</td>
+        <td>5182</td>
+        <td><code>https://www.iana.org/domains/idn-tables</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">52a4db9da579aac0…</code></td>
+      </tr>
+<tr>
+        <td><strong>S36</strong></td>
+        <td>2</td>
+        <td>47</td>
+        <td><code>https://www.iana.org/domains/root/files</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">53c2af2519a1e3b1…</code></td>
+      </tr>
+<tr>
+        <td><strong>S48</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/abbvie.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">5b77b150f86d9736…</code></td>
+      </tr>
+<tr>
+        <td><strong>S84</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/alfaromeo.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">5c45d067f84ac07b…</code></td>
+      </tr>
+<tr>
+        <td><strong>S79</strong></td>
+        <td>2</td>
+        <td>48</td>
+        <td><code>https://www.iana.org/domains/root/db/airbus.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">62ae3c5b3d4682ba…</code></td>
+      </tr>
+<tr>
+        <td><strong>S80</strong></td>
+        <td>2</td>
+        <td>50</td>
+        <td><code>https://www.iana.org/domains/root/db/airforce.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">6419131eb57a837e…</code></td>
+      </tr>
+<tr>
+        <td><strong>S77</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/aig.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">650b2b485d549e98…</code></td>
+      </tr>
+<tr>
+        <td><strong>S63</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/ads.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">65f639085675511f…</code></td>
+      </tr>
+<tr>
+        <td><strong>S83</strong></td>
+        <td>2</td>
+        <td>48</td>
+        <td><code>https://www.iana.org/domains/root/db/al.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">67576a8605c3651a…</code></td>
+      </tr>
+<tr>
+        <td><strong>S99</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/amsterdam.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">6d636f5135e10240…</code></td>
+      </tr>
+<tr>
+        <td><strong>S32</strong></td>
+        <td>2</td>
+        <td>65</td>
+        <td><code>https://www.iana.org/domains/reserved</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">6e519c1d7882dbbc…</code></td>
+      </tr>
+<tr>
+        <td><strong>S96</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/amex.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">6e78119f07cd649f…</code></td>
+      </tr>
+<tr>
+        <td><strong>S56</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/accountant.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">6f40817798047222…</code></td>
+      </tr>
+<tr>
+        <td><strong>S45</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/abarth.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">732a5e0fcb4e8f2a…</code></td>
+      </tr>
+<tr>
+        <td><strong>S51</strong></td>
+        <td>2</td>
+        <td>50</td>
+        <td><code>https://www.iana.org/domains/root/db/abogado.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">7685e6ac82b98ad1…</code></td>
+      </tr>
+<tr>
+        <td><strong>S28</strong></td>
+        <td>2</td>
+        <td>5254</td>
+        <td><code>https://www.iana.org/domains/idn-tables</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">78cd7535b03ffcaa…</code></td>
+      </tr>
+<tr>
+        <td><strong>S73</strong></td>
+        <td>2</td>
+        <td>48</td>
+        <td><code>https://www.iana.org/domains/root/db/ag.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">78fdff0d53529946…</code></td>
+      </tr>
+<tr>
+        <td><strong>S31</strong></td>
+        <td>2</td>
+        <td>44</td>
+        <td><code>https://www.iana.org/dnssec</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">79b1c2cc020b4f0a…</code></td>
+      </tr>
+<tr>
+        <td><strong>S55</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/accenture.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">7f9cf47434dd7554…</code></td>
+      </tr>
+<tr>
+        <td><strong>S87</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/allfinanz.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">84aa5aa0fd721b23…</code></td>
+      </tr>
+<tr>
+        <td><strong>S89</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/ally.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">873bdab4e4ac2e1b…</code></td>
+      </tr>
+<tr>
+        <td><strong>S30</strong></td>
+        <td>2</td>
+        <td>5294</td>
+        <td><code>https://www.iana.org/domains/idn-tables</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">8b3b11b39629e90e…</code></td>
+      </tr>
+<tr>
+        <td><strong>S88</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/allstate.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">96bea4015ee944b5…</code></td>
+      </tr>
+<tr>
+        <td><strong>S72</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/africa.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">978e15d1531be017…</code></td>
+      </tr>
+<tr>
+        <td><strong>S46</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/abb.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">9b9865e5548938eb…</code></td>
+      </tr>
+<tr>
+        <td><strong>S66</strong></td>
+        <td>2</td>
+        <td>48</td>
+        <td><code>https://www.iana.org/domains/root/db/aeg.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">a1b65c0237453c7b…</code></td>
+      </tr>
+<tr>
+        <td><strong>S35</strong></td>
+        <td>2</td>
+        <td>11552</td>
+        <td><code>https://www.iana.org/domains/idn-tables</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">a777188748d730de…</code></td>
+      </tr>
+<tr>
+        <td><strong>S41</strong></td>
+        <td>2</td>
+        <td>34</td>
+        <td><code>https://www.iana.org/</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">ae362ac193fe4ebb…</code></td>
+      </tr>
+<tr>
+        <td><strong>S49</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/abc.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">b3d5f60599c8de19…</code></td>
+      </tr>
+<tr>
+        <td><strong>S37</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/manage</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">b81c402f23422f5a…</code></td>
+      </tr>
+<tr>
+        <td><strong>S57</strong></td>
+        <td>2</td>
+        <td>50</td>
+        <td><code>https://www.iana.org/domains/root/db/accountants.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">b920cc1a71aafb24…</code></td>
+      </tr>
+<tr>
+        <td><strong>S43</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/aaa.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">bb855e15fe8c9e09…</code></td>
+      </tr>
+<tr>
+        <td><strong>S62</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/adac.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">bd63b93df23775be…</code></td>
+      </tr>
+<tr>
+        <td><strong>S29</strong></td>
+        <td>2</td>
+        <td>165</td>
+        <td><code>https://www.iana.org/news</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">c2e8764090aa96b7…</code></td>
+      </tr>
+<tr>
+        <td><strong>S92</strong></td>
+        <td>2</td>
+        <td>48</td>
+        <td><code>https://www.iana.org/domains/root/db/am.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">c747645b6bd94e9c…</code></td>
+      </tr>
+<tr>
+        <td><strong>S68</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/aetna.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">c89a3e15fb480f65…</code></td>
+      </tr>
+<tr>
+        <td><strong>S74</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/agakhan.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">c8cacbef22626c7c…</code></td>
+      </tr>
+<tr>
+        <td><strong>S86</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/alipay.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">c92a22a630a4f7e9…</code></td>
+      </tr>
+<tr>
+        <td><strong>S52</strong></td>
+        <td>2</td>
+        <td>48</td>
+        <td><code>https://www.iana.org/domains/root/db/abudhabi.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">ca23eb6e199c044c…</code></td>
+      </tr>
+<tr>
+        <td><strong>S85</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/alibaba.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">cbf87c765d2cc999…</code></td>
+      </tr>
+<tr>
+        <td><strong>S44</strong></td>
+        <td>2</td>
+        <td>48</td>
+        <td><code>https://www.iana.org/domains/root/db/aarp.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">d149dbf1297c1971…</code></td>
+      </tr>
+<tr>
+        <td><strong>S67</strong></td>
+        <td>2</td>
+        <td>50</td>
+        <td><code>https://www.iana.org/domains/root/db/aero.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">d4e9c2a06c362aba…</code></td>
+      </tr>
+<tr>
+        <td><strong>S75</strong></td>
+        <td>2</td>
+        <td>50</td>
+        <td><code>https://www.iana.org/domains/root/db/agency.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">d8cc11a3acf98f99…</code></td>
+      </tr>
+<tr>
+        <td><strong>S60</strong></td>
+        <td>2</td>
+        <td>50</td>
+        <td><code>https://www.iana.org/domains/root/db/actor.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">de1386978e40d106…</code></td>
+      </tr>
+<tr>
+        <td><strong>S91</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/alstom.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">df6042e28b4494bd…</code></td>
+      </tr>
+<tr>
+        <td><strong>S65</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/ae.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">f2c980f87414df65…</code></td>
+      </tr>
+<tr>
+        <td><strong>S69</strong></td>
+        <td>2</td>
+        <td>49</td>
+        <td><code>https://www.iana.org/domains/root/db/af.html</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">fba87f4584e64468…</code></td>
+      </tr>
+<tr>
+        <td><strong>S27</strong></td>
+        <td>2</td>
+        <td>53</td>
+        <td><code>https://www.iana.org/about/audits</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">fdd9a6e630642401…</code></td>
+      </tr></tbody>
+    </table>
+  </section>
+</main>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'default', flowchart: { curve: 'basis', useMaxWidth: false } });
+  mermaid.run().catch(() => {
+    document.getElementById('fallback').style.display = 'block';
+  });
+</script>
+</body>
+</html>

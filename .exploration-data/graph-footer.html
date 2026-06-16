@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Exploration Graph</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f8fafc; color: #1e293b; }
+    header { background: #1e293b; color: #f8fafc; padding: 1.5rem 2rem; }
+    header h1 { font-size: 1.4rem; margin-bottom: 0.75rem; }
+    .stats { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .stat { background: rgba(255,255,255,0.1); border-radius: 8px; padding: 0.5rem 1rem; }
+    .stat-val { font-size: 1.5rem; font-weight: bold; }
+    .stat-lbl { font-size: 0.75rem; opacity: 0.7; }
+    main { padding: 2rem; max-width: 1400px; margin: 0 auto; }
+    section { margin-bottom: 2rem; }
+    h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; color: #475569; }
+    .graph-box { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 2rem; overflow-x: auto; }
+    .mermaid { min-height: 200px; }
+    .fallback { display: none; }
+    table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
+    th { background: #f1f5f9; text-align: left; padding: 0.6rem 1rem; font-size: 0.8rem; font-weight: 600; color: #64748b; text-transform: uppercase; }
+    td { padding: 0.6rem 1rem; border-top: 1px solid #f1f5f9; font-size: 0.88rem; vertical-align: middle; }
+    tr:hover td { background: #f8fafc; }
+    .lbl { background: #dbeafe; color: #1d4ed8; border-radius: 4px; padding: 1px 6px; font-size: 0.78rem; font-weight: 600; }
+    .ext { background: #f1f5f9; color: #64748b; border-radius: 4px; padding: 1px 6px; font-size: 0.78rem; }
+    .legend { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; font-size: 0.82rem; }
+    .legend-item { display: flex; align-items: center; gap: 0.4rem; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot-root { background: #22c55e; }
+    .dot-normal { background: #3b82f6; }
+    .dot-leaf { background: #f59e0b; }
+    .dot-ext { background: #94a3b8; }
+    .no-mermaid { background: #fef3c7; border: 1px solid #fde68a; border-radius: 8px; padding: 1rem; margin-top: 1rem; display: none; }
+    pre { background: #1e293b; color: #e2e8f0; padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-size: 0.82rem; line-height: 1.5; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>🗺️ Exploration Graph</h1>
+  <div class="stats">
+    <div class="stat"><div class="stat-val">20</div><div class="stat-lbl">States</div></div>
+    <div class="stat"><div class="stat-val">258</div><div class="stat-lbl">Transitions</div></div>
+    <div class="stat"><div class="stat-val">2</div><div class="stat-lbl">Max depth</div></div>
+    <div class="stat"><div class="stat-val">15</div><div class="stat-lbl">Self-loops</div></div>
+    <div class="stat"><div class="stat-val">62</div><div class="stat-lbl">External nav</div></div>
+  </div>
+</header>
+<main>
+  <section>
+    <div class="legend">
+      <span class="legend-item"><span class="dot dot-root"></span> Initial state</span>
+      <span class="legend-item"><span class="dot dot-normal"></span> State</span>
+      <span class="legend-item"><span class="dot dot-leaf"></span> Dead end (no outgoing)</span>
+      <span class="legend-item"><span class="dot dot-ext"></span> External navigation</span>
+      <span style="color:#64748b;font-size:0.8rem">Dashed arrows = self-loops</span>
+    </div>
+    <div class="graph-box">
+      <div class="mermaid">flowchart TD
+  classDef root fill:#22c55e,stroke:#16a34a,color:#fff,font-weight:bold
+  classDef normal fill:#3b82f6,stroke:#2563eb,color:#fff
+  classDef leaf fill:#f59e0b,stroke:#d97706,color:#fff
+  classDef ext fill:#94a3b8,stroke:#64748b,color:#fff,stroke-dasharray:5 5
+
+  n_3705e417989d["S0\nd=0 f=20"]:::root
+  n_0b9196dc7259["S15\nd=1 f=20"]:::normal
+  n_4c247510d9b7["S4\nd=1 f=20"]:::normal
+  n_55ea80bb5b66["S5\nd=1 f=20"]:::normal
+  n_60334a838aa9["S11\nd=1 f=20"]:::normal
+  n_7ec3ae1ea1f7["S8\nd=1 f=0"]:::leaf
+  n_9361b85cec4c["S12\nd=1 f=20"]:::normal
+  n_975c262ec764["S16\nd=1 f=0"]:::leaf
+  n_ac4267d1b168["S17\nd=1 f=0"]:::leaf
+  n_ad159577cb8e["S6\nd=1 f=20"]:::normal
+  n_b830e43fa1e9["S7\nd=1 f=20"]:::normal
+  n_bc298ac9cefe["S1\nd=1 f=20"]:::normal
+  n_c5f94ca62874["S10\nd=1 f=20"]:::normal
+  n_c84fe86d14b6["S14\nd=1 f=20"]:::normal
+  n_ccf701b88a30["S3\nd=1 f=20"]:::normal
+  n_d4e1ebeeae04["S2\nd=1 f=20"]:::normal
+  n_e729396be07a["S13\nd=1 f=20"]:::normal
+  n_e969e65c5155["S9\nd=1 f=20"]:::normal
+  n_30ca3c196654["S19\nd=2 f=20"]:::normal
+  n_d8afa9453db5["S18\nd=2 f=0"]:::leaf
+  __ext__(["⎋ external"]):::ext
+
+  n_3705e417989d -->|"click:a[0]"| n_bc298ac9cefe
+  n_3705e417989d -->|"click:a[1]"| n_d4e1ebeeae04
+  n_3705e417989d -->|"click:a[2]"| n_ccf701b88a30
+  n_3705e417989d -->|"click:a[3]"| n_4c247510d9b7
+  n_3705e417989d -->|"click:a[4]"| n_55ea80bb5b66
+  n_3705e417989d -->|"click:a[5]"| n_ad159577cb8e
+  n_3705e417989d -->|"click:a[6]"| n_b830e43fa1e9
+  n_3705e417989d -->|"click:a[7]"| n_7ec3ae1ea1f7
+  n_3705e417989d -->|"click:a[8]"| n_7ec3ae1ea1f7
+  n_3705e417989d -->|"click:a[9]"| n_e969e65c5155
+  n_3705e417989d -->|"click:a[10]"| n_c5f94ca62874
+  n_3705e417989d -->|"click:a[11]"| n_60334a838aa9
+  n_3705e417989d -->|"click:a[12]"| n_9361b85cec4c
+  n_3705e417989d -->|"click:a[13]"| n_e729396be07a
+  n_3705e417989d -->|"click:a[14]"| n_c84fe86d14b6
+  n_3705e417989d -->|"click:a[15]"| n_0b9196dc7259
+  n_3705e417989d -->|"click:a[16]"| n_975c262ec764
+  n_3705e417989d -->|"click:a[17]"| n_ac4267d1b168
+  n_3705e417989d -->|"click:a[18]"| __ext__
+  n_3705e417989d -->|"click:a[19]"| __ext__
+  n_bc298ac9cefe -.->|"click:a[0]"| n_bc298ac9cefe
+  n_bc298ac9cefe -->|"click:a[1]"| n_d4e1ebeeae04
+  n_bc298ac9cefe -->|"click:a[2]"| n_ccf701b88a30
+  n_bc298ac9cefe -->|"click:a[3]"| n_4c247510d9b7
+  n_bc298ac9cefe -->|"click:a[4]"| n_d8afa9453db5
+  n_bc298ac9cefe -->|"click:a[5]"| n_ad159577cb8e
+  n_bc298ac9cefe -->|"click:a[6]"| n_b830e43fa1e9
+  n_bc298ac9cefe -->|"click:a[7]"| n_7ec3ae1ea1f7
+  n_bc298ac9cefe -->|"click:a[8]"| n_30ca3c196654
+  n_bc298ac9cefe -->|"click:a[9]"| n_e969e65c5155
+  n_bc298ac9cefe -->|"click:a[10]"| n_c5f94ca62874
+  n_bc298ac9cefe -->|"click:a[11]"| n_60334a838aa9
+  n_bc298ac9cefe -->|"click:a[12]"| n_9361b85cec4c
+  n_bc298ac9cefe -->|"click:a[13]"| n_e729396be07a
+  n_bc298ac9cefe -->|"click:a[14]"| n_c84fe86d14b6
+  n_bc298ac9cefe -->|"click:a[15]"| n_0b9196dc7259
+  n_bc298ac9cefe -->|"click:a[16]"| __ext__
+  n_bc298ac9cefe -->|"click:a[17]"| __ext__
+  n_bc298ac9cefe -->|"click:a[18]"| __ext__
+  n_bc298ac9cefe -->|"click:a[19]"| __ext__
+  n_d4e1ebeeae04 -->|"click:a[0]"| n_bc298ac9cefe
+  n_d4e1ebeeae04 -.->|"click:a[1]"| n_d4e1ebeeae04
+  n_d4e1ebeeae04 -->|"click:a[2]"| n_ccf701b88a30
+  n_d4e1ebeeae04 -->|"click:a[3]"| n_4c247510d9b7
+  n_d4e1ebeeae04 -->|"click:a[4]"| n_d8afa9453db5
+  n_d4e1ebeeae04 -->|"click:a[5]"| n_ad159577cb8e
+  n_d4e1ebeeae04 -->|"click:a[6]"| n_b830e43fa1e9
+  n_d4e1ebeeae04 -->|"click:a[7]"| n_30ca3c196654
+  n_d4e1ebeeae04 -->|"click:a[8]"| n_30ca3c196654
+  n_d4e1ebeeae04 -->|"click:a[9]"| n_e969e65c5155
+  n_d4e1ebeeae04 -->|"click:a[10]"| n_c5f94ca62874
+  n_d4e1ebeeae04 -->|"click:a[11]"| n_60334a838aa9
+  n_d4e1ebeeae04 -->|"click:a[12]"| n_9361b85cec4c
+  n_d4e1ebeeae04 -->|"click:a[13]"| n_e729396be07a
+  n_d4e1ebeeae04 -->|"click:a[14]"| n_c84fe86d14b6
+  n_d4e1ebeeae04 -->|"click:a[15]"| n_0b9196dc7259
+  n_d4e1ebeeae04 -->|"click:a[16]"| __ext__
+  n_d4e1ebeeae04 -->|"click:a[17]"| __ext__
+  n_d4e1ebeeae04 -->|"click:a[18]"| __ext__
+  n_d4e1ebeeae04 -->|"click:a[19]"| __ext__
+  n_ccf701b88a30 -->|"click:a[0]"| n_bc298ac9cefe
+  n_ccf701b88a30 -->|"click:a[1]"| n_d4e1ebeeae04
+  n_ccf701b88a30 -.->|"click:a[2]"| n_ccf701b88a30
+  n_ccf701b88a30 -->|"click:a[3]"| n_4c247510d9b7
+  n_ccf701b88a30 -->|"click:a[4]"| n_d8afa9453db5
+  n_ccf701b88a30 -->|"click:a[5]"| n_ad159577cb8e
+  n_ccf701b88a30 -->|"click:a[6]"| n_b830e43fa1e9
+  n_ccf701b88a30 -->|"click:a[7]"| n_30ca3c196654
+  n_ccf701b88a30 -->|"click:a[8]"| n_30ca3c196654
+  n_ccf701b88a30 -->|"click:a[9]"| n_e969e65c5155
+  n_ccf701b88a30 -->|"click:a[10]"| n_c5f94ca62874
+  n_ccf701b88a30 -->|"click:a[11]"| n_60334a838aa9
+  n_ccf701b88a30 -->|"click:a[12]"| n_9361b85cec4c
+  n_ccf701b88a30 -->|"click:a[13]"| n_e729396be07a
+  n_ccf701b88a30 -->|"click:a[14]"| n_c84fe86d14b6
+  n_ccf701b88a30 -->|"click:a[15]"| n_0b9196dc7259
+  n_ccf701b88a30 -->|"click:a[16]"| __ext__
+  n_ccf701b88a30 -->|"click:a[17]"| __ext__
+  n_ccf701b88a30 -->|"click:a[18]"| __ext__
+  n_ccf701b88a30 -->|"click:a[19]"| __ext__
+  n_4c247510d9b7 -->|"click:a[0]"| n_bc298ac9cefe
+  n_4c247510d9b7 -->|"click:a[1]"| n_d4e1ebeeae04
+  n_4c247510d9b7 -->|"click:a[2]"| n_ccf701b88a30
+  n_4c247510d9b7 -.->|"click:a[3]"| n_4c247510d9b7
+  n_4c247510d9b7 -->|"click:a[4]"| n_d8afa9453db5
+  n_4c247510d9b7 -->|"click:a[5]"| n_ad159577cb8e
+  n_4c247510d9b7 -->|"click:a[6]"| n_b830e43fa1e9
+  n_4c247510d9b7 -->|"click:a[7]"| n_30ca3c196654
+  n_4c247510d9b7 -->|"click:a[8]"| n_30ca3c196654
+  n_4c247510d9b7 -->|"click:a[9]"| n_e969e65c5155
+  n_4c247510d9b7 -->|"click:a[10]"| n_c5f94ca62874
+  n_4c247510d9b7 -->|"click:a[11]"| n_60334a838aa9
+  n_4c247510d9b7 -->|"click:a[12]"| n_9361b85cec4c
+  n_4c247510d9b7 -->|"click:a[13]"| n_e729396be07a
+  n_4c247510d9b7 -->|"click:a[14]"| n_c84fe86d14b6
+  n_4c247510d9b7 -->|"click:a[15]"| n_0b9196dc7259
+  n_4c247510d9b7 -->|"click:a[16]"| __ext__
+  n_4c247510d9b7 -->|"click:a[17]"| __ext__
+  n_4c247510d9b7 -->|"click:a[18]"| __ext__
+  n_4c247510d9b7 -->|"click:a[19]"| __ext__
+  n_55ea80bb5b66 -->|"click:a[0]"| n_bc298ac9cefe
+  n_55ea80bb5b66 -->|"click:a[1]"| n_d4e1ebeeae04
+  n_55ea80bb5b66 -->|"click:a[2]"| n_ccf701b88a30
+  n_55ea80bb5b66 -->|"click:a[3]"| n_4c247510d9b7
+  n_55ea80bb5b66 -->|"click:a[4]"| n_d8afa9453db5
+  n_55ea80bb5b66 -->|"click:a[5]"| n_ad159577cb8e
+  n_55ea80bb5b66 -->|"click:a[6]"| n_b830e43fa1e9
+  n_55ea80bb5b66 -->|"click:a[7]"| n_30ca3c196654
+  n_55ea80bb5b66 -->|"click:a[8]"| n_30ca3c196654
+  n_55ea80bb5b66 -->|"click:a[9]"| n_e969e65c5155
+  n_55ea80bb5b66 -->|"click:a[10]"| n_c5f94ca62874
+  n_55ea80bb5b66 -->|"click:a[11]"| n_60334a838aa9
+  n_55ea80bb5b66 -->|"click:a[12]"| n_9361b85cec4c
+  n_55ea80bb5b66 -->|"click:a[13]"| n_e729396be07a
+  n_55ea80bb5b66 -->|"click:a[14]"| n_c84fe86d14b6
+  n_55ea80bb5b66 -->|"click:a[15]"| n_0b9196dc7259
+  n_55ea80bb5b66 -->|"click:a[16]"| __ext__
+  n_55ea80bb5b66 -->|"click:a[17]"| __ext__
+  n_55ea80bb5b66 -->|"click:a[18]"| __ext__
+  n_55ea80bb5b66 -->|"click:a[19]"| __ext__
+  n_ad159577cb8e -->|"click:a[0]"| n_bc298ac9cefe
+  n_ad159577cb8e -->|"click:a[1]"| n_d4e1ebeeae04
+  n_ad159577cb8e -->|"click:a[2]"| n_ccf701b88a30
+  n_ad159577cb8e -->|"click:a[3]"| n_4c247510d9b7
+  n_ad159577cb8e -->|"click:a[4]"| n_d8afa9453db5
+  n_ad159577cb8e -.->|"click:a[5]"| n_ad159577cb8e
+  n_ad159577cb8e -->|"click:a[6]"| n_b830e43fa1e9
+  n_ad159577cb8e -->|"click:a[7]"| n_30ca3c196654
+  n_ad159577cb8e -->|"click:a[8]"| n_30ca3c196654
+  n_ad159577cb8e -->|"click:a[9]"| n_e969e65c5155
+  n_ad159577cb8e -->|"click:a[10]"| n_c5f94ca62874
+  n_ad159577cb8e -->|"click:a[11]"| n_60334a838aa9
+  n_ad159577cb8e -->|"click:a[12]"| n_9361b85cec4c
+  n_ad159577cb8e -->|"click:a[13]"| n_e729396be07a
+  n_ad159577cb8e -->|"click:a[14]"| n_c84fe86d14b6
+  n_ad159577cb8e -->|"click:a[15]"| n_0b9196dc7259
+  n_ad159577cb8e -->|"click:a[16]"| __ext__
+  n_ad159577cb8e -->|"click:a[17]"| __ext__
+  n_ad159577cb8e -->|"click:a[18]"| __ext__
+  n_ad159577cb8e -->|"click:a[19]"| __ext__
+  n_b830e43fa1e9 -->|"click:a[0]"| n_bc298ac9cefe
+  n_b830e43fa1e9 -->|"click:a[1]"| n_d4e1ebeeae04
+  n_b830e43fa1e9 -->|"click:a[2]"| n_ccf701b88a30
+  n_b830e43fa1e9 -->|"click:a[3]"| n_4c247510d9b7
+  n_b830e43fa1e9 -->|"click:a[4]"| n_d8afa9453db5
+  n_b830e43fa1e9 -->|"click:a[5]"| n_ad159577cb8e
+  n_b830e43fa1e9 -.->|"click:a[6]"| n_b830e43fa1e9
+  n_b830e43fa1e9 -->|"click:a[7]"| n_30ca3c196654
+  n_b830e43fa1e9 -->|"click:a[8]"| n_30ca3c196654
+  n_b830e43fa1e9 -->|"click:a[9]"| n_e969e65c5155
+  n_b830e43fa1e9 -->|"click:a[10]"| n_c5f94ca62874
+  n_b830e43fa1e9 -->|"click:a[11]"| n_60334a838aa9
+  n_b830e43fa1e9 -->|"click:a[12]"| n_9361b85cec4c
+  n_b830e43fa1e9 -->|"click:a[13]"| n_e729396be07a
+  n_b830e43fa1e9 -->|"click:a[14]"| n_c84fe86d14b6
+  n_b830e43fa1e9 -->|"click:a[15]"| n_0b9196dc7259
+  n_b830e43fa1e9 -->|"click:a[16]"| __ext__
+  n_b830e43fa1e9 -->|"click:a[17]"| __ext__
+  n_b830e43fa1e9 -->|"click:a[18]"| __ext__
+  n_b830e43fa1e9 -->|"click:a[19]"| __ext__
+  n_e969e65c5155 -->|"click:a[0]"| n_bc298ac9cefe
+  n_e969e65c5155 -->|"click:a[1]"| n_d4e1ebeeae04
+  n_e969e65c5155 -->|"click:a[2]"| n_ccf701b88a30
+  n_e969e65c5155 -->|"click:a[3]"| n_4c247510d9b7
+  n_e969e65c5155 -->|"click:a[4]"| n_d8afa9453db5
+  n_e969e65c5155 -->|"click:a[5]"| n_ad159577cb8e
+  n_e969e65c5155 -->|"click:a[6]"| n_b830e43fa1e9
+  n_e969e65c5155 -->|"click:a[7]"| n_30ca3c196654
+  n_e969e65c5155 -->|"click:a[8]"| n_30ca3c196654
+  n_e969e65c5155 -.->|"click:a[9]"| n_e969e65c5155
+  n_e969e65c5155 -->|"click:a[10]"| n_c5f94ca62874
+  n_e969e65c5155 -->|"click:a[11]"| n_60334a838aa9
+  n_e969e65c5155 -->|"click:a[12]"| n_9361b85cec4c
+  n_e969e65c5155 -->|"click:a[13]"| n_e729396be07a
+  n_e969e65c5155 -->|"click:a[14]"| n_c84fe86d14b6
+  n_e969e65c5155 -->|"click:a[15]"| n_0b9196dc7259
+  n_e969e65c5155 -->|"click:a[16]"| __ext__
+  n_e969e65c5155 -->|"click:a[17]"| __ext__
+  n_e969e65c5155 -->|"click:a[18]"| __ext__
+  n_e969e65c5155 -->|"click:a[19]"| __ext__
+  n_c5f94ca62874 -->|"click:a[0]"| n_bc298ac9cefe
+  n_c5f94ca62874 -->|"click:a[1]"| n_d4e1ebeeae04
+  n_c5f94ca62874 -->|"click:a[2]"| n_ccf701b88a30
+  n_c5f94ca62874 -->|"click:a[3]"| n_4c247510d9b7
+  n_c5f94ca62874 -->|"click:a[4]"| n_d8afa9453db5
+  n_c5f94ca62874 -->|"click:a[5]"| n_ad159577cb8e
+  n_c5f94ca62874 -->|"click:a[6]"| n_b830e43fa1e9
+  n_c5f94ca62874 -->|"click:a[7]"| n_30ca3c196654
+  n_c5f94ca62874 -->|"click:a[8]"| n_30ca3c196654
+  n_c5f94ca62874 -->|"click:a[9]"| n_e969e65c5155
+  n_c5f94ca62874 -.->|"click:a[10]"| n_c5f94ca62874
+  n_c5f94ca62874 -->|"click:a[11]"| n_60334a838aa9
+  n_c5f94ca62874 -->|"click:a[12]"| n_9361b85cec4c
+  n_c5f94ca62874 -->|"click:a[13]"| n_e729396be07a
+  n_c5f94ca62874 -->|"click:a[14]"| n_c84fe86d14b6
+  n_c5f94ca62874 -->|"click:a[15]"| n_0b9196dc7259
+  n_c5f94ca62874 -->|"click:a[16]"| __ext__
+  n_c5f94ca62874 -->|"click:a[17]"| __ext__
+  n_c5f94ca62874 -->|"click:a[18]"| __ext__
+  n_c5f94ca62874 -->|"click:a[19]"| __ext__
+  n_60334a838aa9 -->|"click:a[0]"| n_bc298ac9cefe
+  n_60334a838aa9 -->|"click:a[1]"| n_d4e1ebeeae04
+  n_60334a838aa9 -->|"click:a[2]"| n_ccf701b88a30
+  n_60334a838aa9 -->|"click:a[3]"| n_4c247510d9b7
+  n_60334a838aa9 -->|"click:a[4]"| n_55ea80bb5b66
+  n_60334a838aa9 -->|"click:a[5]"| n_ad159577cb8e
+  n_60334a838aa9 -->|"click:a[6]"| n_b830e43fa1e9
+  n_60334a838aa9 -->|"click:a[7]"| n_30ca3c196654
+  n_60334a838aa9 -->|"click:a[8]"| n_30ca3c196654
+  n_60334a838aa9 -->|"click:a[9]"| n_e969e65c5155
+  n_60334a838aa9 -->|"click:a[10]"| n_c5f94ca62874
+  n_60334a838aa9 -.->|"click:a[11]"| n_60334a838aa9
+  n_60334a838aa9 -->|"click:a[12]"| n_9361b85cec4c
+  n_60334a838aa9 -->|"click:a[13]"| n_e729396be07a
+  n_60334a838aa9 -->|"click:a[14]"| n_c84fe86d14b6
+  n_60334a838aa9 -->|"click:a[15]"| n_0b9196dc7259
+  n_60334a838aa9 -->|"click:a[16]"| __ext__
+  n_60334a838aa9 -->|"click:a[17]"| __ext__
+  n_60334a838aa9 -->|"click:a[18]"| __ext__
+  n_60334a838aa9 -->|"click:a[19]"| __ext__
+  n_9361b85cec4c -->|"click:a[0]"| n_bc298ac9cefe
+  n_9361b85cec4c -->|"click:a[1]"| n_d4e1ebeeae04
+  n_9361b85cec4c -->|"click:a[2]"| n_ccf701b88a30
+  n_9361b85cec4c -->|"click:a[3]"| n_4c247510d9b7
+  n_9361b85cec4c -->|"click:a[4]"| n_d8afa9453db5
+  n_9361b85cec4c -->|"click:a[5]"| n_ad159577cb8e
+  n_9361b85cec4c -->|"click:a[6]"| n_b830e43fa1e9
+  n_9361b85cec4c -->|"click:a[7]"| n_30ca3c196654
+  n_9361b85cec4c -->|"click:a[8]"| n_30ca3c196654
+  n_9361b85cec4c -->|"click:a[9]"| n_e969e65c5155
+  n_9361b85cec4c -->|"click:a[10]"| n_c5f94ca62874
+  n_9361b85cec4c -->|"click:a[11]"| n_60334a838aa9
+  n_9361b85cec4c -.->|"click:a[12]"| n_9361b85cec4c
+  n_9361b85cec4c -->|"click:a[13]"| n_e729396be07a
+  n_9361b85cec4c -->|"click:a[14]"| n_c84fe86d14b6
+  n_9361b85cec4c -->|"click:a[15]"| n_0b9196dc7259
+  n_9361b85cec4c -->|"click:a[16]"| __ext__
+  n_9361b85cec4c -->|"click:a[17]"| __ext__
+  n_9361b85cec4c -->|"click:a[18]"| __ext__
+  n_9361b85cec4c -->|"click:a[19]"| __ext__
+  n_e729396be07a -->|"click:a[0]"| n_bc298ac9cefe
+  n_e729396be07a -->|"click:a[1]"| n_d4e1ebeeae04
+  n_e729396be07a -->|"click:a[2]"| n_ccf701b88a30
+  n_e729396be07a -->|"click:a[3]"| n_4c247510d9b7
+  n_e729396be07a -->|"click:a[4]"| n_d8afa9453db5
+  n_e729396be07a -->|"click:a[5]"| n_ad159577cb8e
+  n_e729396be07a -->|"click:a[6]"| n_b830e43fa1e9
+  n_e729396be07a -->|"click:a[7]"| n_30ca3c196654
+  n_e729396be07a -->|"click:a[8]"| n_30ca3c196654
+  n_e729396be07a -->|"click:a[9]"| n_e969e65c5155
+  n_e729396be07a -->|"click:a[10]"| n_c5f94ca62874
+  n_e729396be07a -->|"click:a[11]"| n_60334a838aa9
+  n_e729396be07a -->|"click:a[12]"| n_9361b85cec4c
+  n_e729396be07a -.->|"click:a[13]"| n_e729396be07a
+  n_e729396be07a -->|"click:a[14]"| n_c84fe86d14b6
+  n_e729396be07a -->|"click:a[15]"| n_0b9196dc7259
+  n_e729396be07a -->|"click:a[16]"| __ext__
+  n_e729396be07a -->|"click:a[17]"| __ext__
+  n_e729396be07a -->|"click:a[18]"| __ext__
+  n_e729396be07a -->|"click:a[19]"| __ext__
+  n_c84fe86d14b6 -->|"click:a[0]"| n_bc298ac9cefe
+  n_c84fe86d14b6 -->|"click:a[1]"| n_d4e1ebeeae04
+  n_c84fe86d14b6 -->|"click:a[2]"| n_ccf701b88a30
+  n_c84fe86d14b6 -->|"click:a[3]"| n_4c247510d9b7
+  n_c84fe86d14b6 -->|"click:a[4]"| n_d8afa9453db5
+  n_c84fe86d14b6 -->|"click:a[5]"| n_ad159577cb8e
+  n_c84fe86d14b6 -->|"click:a[6]"| n_b830e43fa1e9
+  n_c84fe86d14b6 -->|"click:a[7]"| n_30ca3c196654
+  n_c84fe86d14b6 -->|"click:a[8]"| n_30ca3c196654
+  n_c84fe86d14b6 -->|"click:a[9]"| n_e969e65c5155
+  n_c84fe86d14b6 -->|"click:a[10]"| n_c5f94ca62874
+  n_c84fe86d14b6 -->|"click:a[11]"| n_60334a838aa9
+  n_c84fe86d14b6 -->|"click:a[12]"| n_9361b85cec4c
+  n_c84fe86d14b6 -->|"click:a[13]"| n_e729396be07a
+  n_c84fe86d14b6 -.->|"click:a[14]"| n_c84fe86d14b6
+  n_c84fe86d14b6 -->|"click:a[15]"| n_0b9196dc7259
+  n_c84fe86d14b6 -->|"click:a[16]"| __ext__
+  n_c84fe86d14b6 -->|"click:a[17]"| __ext__
+  n_c84fe86d14b6 -->|"click:a[18]"| __ext__
+  n_c84fe86d14b6 -->|"click:a[19]"| __ext__
+  n_0b9196dc7259 -->|"click:a[0]"| n_bc298ac9cefe
+  n_0b9196dc7259 -->|"click:a[1]"| n_d4e1ebeeae04
+  n_0b9196dc7259 -->|"click:a[2]"| n_ccf701b88a30
+  n_0b9196dc7259 -->|"click:a[3]"| n_4c247510d9b7
+  n_0b9196dc7259 -->|"click:a[4]"| n_55ea80bb5b66
+  n_0b9196dc7259 -->|"click:a[5]"| n_ad159577cb8e
+  n_0b9196dc7259 -->|"click:a[6]"| n_b830e43fa1e9
+  n_0b9196dc7259 -->|"click:a[7]"| n_30ca3c196654
+  n_0b9196dc7259 -->|"click:a[8]"| n_30ca3c196654
+  n_0b9196dc7259 -->|"click:a[9]"| n_e969e65c5155
+  n_0b9196dc7259 -->|"click:a[10]"| n_c5f94ca62874
+  n_0b9196dc7259 -->|"click:a[11]"| n_60334a838aa9
+  n_0b9196dc7259 -->|"click:a[12]"| n_9361b85cec4c
+  n_0b9196dc7259 -->|"click:a[13]"| n_e729396be07a
+  n_0b9196dc7259 -->|"click:a[14]"| n_c84fe86d14b6
+  n_0b9196dc7259 -.->|"click:a[15]"| n_0b9196dc7259
+  n_0b9196dc7259 -->|"click:a[16]"| __ext__
+  n_0b9196dc7259 -->|"click:a[17]"| __ext__
+  n_0b9196dc7259 -->|"click:a[18]"| __ext__
+  n_0b9196dc7259 -->|"click:a[19]"| __ext__
+  n_30ca3c196654 -->|"click:a[0]"| n_bc298ac9cefe
+  n_30ca3c196654 -->|"click:a[1]"| n_d4e1ebeeae04
+  n_30ca3c196654 -->|"click:a[2]"| n_ccf701b88a30
+  n_30ca3c196654 -->|"click:a[3]"| n_4c247510d9b7
+  n_30ca3c196654 -->|"click:a[4]"| n_d8afa9453db5
+  n_30ca3c196654 -->|"click:a[5]"| n_ad159577cb8e
+  n_30ca3c196654 -->|"click:a[6]"| n_b830e43fa1e9
+  n_30ca3c196654 -.->|"click:a[7]"| n_30ca3c196654
+  n_30ca3c196654 -.->|"click:a[8]"| n_30ca3c196654
+  n_30ca3c196654 -->|"click:a[9]"| n_e969e65c5155
+  n_30ca3c196654 -->|"click:a[10]"| n_c5f94ca62874
+  n_30ca3c196654 -->|"click:a[11]"| n_60334a838aa9
+  n_30ca3c196654 -->|"click:a[12]"| n_9361b85cec4c
+  n_30ca3c196654 -->|"click:a[13]"| n_e729396be07a
+  n_30ca3c196654 -->|"click:a[14]"| n_c84fe86d14b6
+  n_30ca3c196654 -->|"click:a[15]"| n_0b9196dc7259
+  n_30ca3c196654 -->|"click:a[16]"| __ext__
+  n_30ca3c196654 -->|"click:a[17]"| __ext__
+  n_30ca3c196654 -->|"click:a[18]"| __ext__
+  n_30ca3c196654 -->|"click:a[19]"| __ext__</div>
+    </div>
+    <div class="no-mermaid" id="fallback">
+      <strong>⚠️ Mermaid not loaded (offline?)</strong> — raw diagram source:
+      <pre>flowchart TD
+  classDef root fill:#22c55e,stroke:#16a34a,color:#fff,font-weight:bold
+  classDef normal fill:#3b82f6,stroke:#2563eb,color:#fff
+  classDef leaf fill:#f59e0b,stroke:#d97706,color:#fff
+  classDef ext fill:#94a3b8,stroke:#64748b,color:#fff,stroke-dasharray:5 5
+
+  n_3705e417989d[&quot;S0\nd=0 f=20&quot;]:::root
+  n_0b9196dc7259[&quot;S15\nd=1 f=20&quot;]:::normal
+  n_4c247510d9b7[&quot;S4\nd=1 f=20&quot;]:::normal
+  n_55ea80bb5b66[&quot;S5\nd=1 f=20&quot;]:::normal
+  n_60334a838aa9[&quot;S11\nd=1 f=20&quot;]:::normal
+  n_7ec3ae1ea1f7[&quot;S8\nd=1 f=0&quot;]:::leaf
+  n_9361b85cec4c[&quot;S12\nd=1 f=20&quot;]:::normal
+  n_975c262ec764[&quot;S16\nd=1 f=0&quot;]:::leaf
+  n_ac4267d1b168[&quot;S17\nd=1 f=0&quot;]:::leaf
+  n_ad159577cb8e[&quot;S6\nd=1 f=20&quot;]:::normal
+  n_b830e43fa1e9[&quot;S7\nd=1 f=20&quot;]:::normal
+  n_bc298ac9cefe[&quot;S1\nd=1 f=20&quot;]:::normal
+  n_c5f94ca62874[&quot;S10\nd=1 f=20&quot;]:::normal
+  n_c84fe86d14b6[&quot;S14\nd=1 f=20&quot;]:::normal
+  n_ccf701b88a30[&quot;S3\nd=1 f=20&quot;]:::normal
+  n_d4e1ebeeae04[&quot;S2\nd=1 f=20&quot;]:::normal
+  n_e729396be07a[&quot;S13\nd=1 f=20&quot;]:::normal
+  n_e969e65c5155[&quot;S9\nd=1 f=20&quot;]:::normal
+  n_30ca3c196654[&quot;S19\nd=2 f=20&quot;]:::normal
+  n_d8afa9453db5[&quot;S18\nd=2 f=0&quot;]:::leaf
+  __ext__([&quot;⎋ external&quot;]):::ext
+
+  n_3705e417989d --&gt;|&quot;click:a[0]&quot;| n_bc298ac9cefe
+  n_3705e417989d --&gt;|&quot;click:a[1]&quot;| n_d4e1ebeeae04
+  n_3705e417989d --&gt;|&quot;click:a[2]&quot;| n_ccf701b88a30
+  n_3705e417989d --&gt;|&quot;click:a[3]&quot;| n_4c247510d9b7
+  n_3705e417989d --&gt;|&quot;click:a[4]&quot;| n_55ea80bb5b66
+  n_3705e417989d --&gt;|&quot;click:a[5]&quot;| n_ad159577cb8e
+  n_3705e417989d --&gt;|&quot;click:a[6]&quot;| n_b830e43fa1e9
+  n_3705e417989d --&gt;|&quot;click:a[7]&quot;| n_7ec3ae1ea1f7
+  n_3705e417989d --&gt;|&quot;click:a[8]&quot;| n_7ec3ae1ea1f7
+  n_3705e417989d --&gt;|&quot;click:a[9]&quot;| n_e969e65c5155
+  n_3705e417989d --&gt;|&quot;click:a[10]&quot;| n_c5f94ca62874
+  n_3705e417989d --&gt;|&quot;click:a[11]&quot;| n_60334a838aa9
+  n_3705e417989d --&gt;|&quot;click:a[12]&quot;| n_9361b85cec4c
+  n_3705e417989d --&gt;|&quot;click:a[13]&quot;| n_e729396be07a
+  n_3705e417989d --&gt;|&quot;click:a[14]&quot;| n_c84fe86d14b6
+  n_3705e417989d --&gt;|&quot;click:a[15]&quot;| n_0b9196dc7259
+  n_3705e417989d --&gt;|&quot;click:a[16]&quot;| n_975c262ec764
+  n_3705e417989d --&gt;|&quot;click:a[17]&quot;| n_ac4267d1b168
+  n_3705e417989d --&gt;|&quot;click:a[18]&quot;| __ext__
+  n_3705e417989d --&gt;|&quot;click:a[19]&quot;| __ext__
+  n_bc298ac9cefe -.-&gt;|&quot;click:a[0]&quot;| n_bc298ac9cefe
+  n_bc298ac9cefe --&gt;|&quot;click:a[1]&quot;| n_d4e1ebeeae04
+  n_bc298ac9cefe --&gt;|&quot;click:a[2]&quot;| n_ccf701b88a30
+  n_bc298ac9cefe --&gt;|&quot;click:a[3]&quot;| n_4c247510d9b7
+  n_bc298ac9cefe --&gt;|&quot;click:a[4]&quot;| n_d8afa9453db5
+  n_bc298ac9cefe --&gt;|&quot;click:a[5]&quot;| n_ad159577cb8e
+  n_bc298ac9cefe --&gt;|&quot;click:a[6]&quot;| n_b830e43fa1e9
+  n_bc298ac9cefe --&gt;|&quot;click:a[7]&quot;| n_7ec3ae1ea1f7
+  n_bc298ac9cefe --&gt;|&quot;click:a[8]&quot;| n_30ca3c196654
+  n_bc298ac9cefe --&gt;|&quot;click:a[9]&quot;| n_e969e65c5155
+  n_bc298ac9cefe --&gt;|&quot;click:a[10]&quot;| n_c5f94ca62874
+  n_bc298ac9cefe --&gt;|&quot;click:a[11]&quot;| n_60334a838aa9
+  n_bc298ac9cefe --&gt;|&quot;click:a[12]&quot;| n_9361b85cec4c
+  n_bc298ac9cefe --&gt;|&quot;click:a[13]&quot;| n_e729396be07a
+  n_bc298ac9cefe --&gt;|&quot;click:a[14]&quot;| n_c84fe86d14b6
+  n_bc298ac9cefe --&gt;|&quot;click:a[15]&quot;| n_0b9196dc7259
+  n_bc298ac9cefe --&gt;|&quot;click:a[16]&quot;| __ext__
+  n_bc298ac9cefe --&gt;|&quot;click:a[17]&quot;| __ext__
+  n_bc298ac9cefe --&gt;|&quot;click:a[18]&quot;| __ext__
+  n_bc298ac9cefe --&gt;|&quot;click:a[19]&quot;| __ext__
+  n_d4e1ebeeae04 --&gt;|&quot;click:a[0]&quot;| n_bc298ac9cefe
+  n_d4e1ebeeae04 -.-&gt;|&quot;click:a[1]&quot;| n_d4e1ebeeae04
+  n_d4e1ebeeae04 --&gt;|&quot;click:a[2]&quot;| n_ccf701b88a30
+  n_d4e1ebeeae04 --&gt;|&quot;click:a[3]&quot;| n_4c247510d9b7
+  n_d4e1ebeeae04 --&gt;|&quot;click:a[4]&quot;| n_d8afa9453db5
+  n_d4e1ebeeae04 --&gt;|&quot;click:a[5]&quot;| n_ad159577cb8e
+  n_d4e1ebeeae04 --&gt;|&quot;click:a[6]&quot;| n_b830e43fa1e9
+  n_d4e1ebeeae04 --&gt;|&quot;click:a[7]&quot;| n_30ca3c196654
+  n_d4e1ebeeae04 --&gt;|&quot;click:a[8]&quot;| n_30ca3c196654
+  n_d4e1ebeeae04 --&gt;|&quot;click:a[9]&quot;| n_e969e65c5155
+  n_d4e1ebeeae04 --&gt;|&quot;click:a[10]&quot;| n_c5f94ca62874
+  n_d4e1ebeeae04 --&gt;|&quot;click:a[11]&quot;| n_60334a838aa9
+  n_d4e1ebeeae04 --&gt;|&quot;click:a[12]&quot;| n_9361b85cec4c
+  n_d4e1ebeeae04 --&gt;|&quot;click:a[13]&quot;| n_e729396be07a
+  n_d4e1ebeeae04 --&gt;|&quot;click:a[14]&quot;| n_c84fe86d14b6
+  n_d4e1ebeeae04 --&gt;|&quot;click:a[15]&quot;| n_0b9196dc7259
+  n_d4e1ebeeae04 --&gt;|&quot;click:a[16]&quot;| __ext__
+  n_d4e1ebeeae04 --&gt;|&quot;click:a[17]&quot;| __ext__
+  n_d4e1ebeeae04 --&gt;|&quot;click:a[18]&quot;| __ext__
+  n_d4e1ebeeae04 --&gt;|&quot;click:a[19]&quot;| __ext__
+  n_ccf701b88a30 --&gt;|&quot;click:a[0]&quot;| n_bc298ac9cefe
+  n_ccf701b88a30 --&gt;|&quot;click:a[1]&quot;| n_d4e1ebeeae04
+  n_ccf701b88a30 -.-&gt;|&quot;click:a[2]&quot;| n_ccf701b88a30
+  n_ccf701b88a30 --&gt;|&quot;click:a[3]&quot;| n_4c247510d9b7
+  n_ccf701b88a30 --&gt;|&quot;click:a[4]&quot;| n_d8afa9453db5
+  n_ccf701b88a30 --&gt;|&quot;click:a[5]&quot;| n_ad159577cb8e
+  n_ccf701b88a30 --&gt;|&quot;click:a[6]&quot;| n_b830e43fa1e9
+  n_ccf701b88a30 --&gt;|&quot;click:a[7]&quot;| n_30ca3c196654
+  n_ccf701b88a30 --&gt;|&quot;click:a[8]&quot;| n_30ca3c196654
+  n_ccf701b88a30 --&gt;|&quot;click:a[9]&quot;| n_e969e65c5155
+  n_ccf701b88a30 --&gt;|&quot;click:a[10]&quot;| n_c5f94ca62874
+  n_ccf701b88a30 --&gt;|&quot;click:a[11]&quot;| n_60334a838aa9
+  n_ccf701b88a30 --&gt;|&quot;click:a[12]&quot;| n_9361b85cec4c
+  n_ccf701b88a30 --&gt;|&quot;click:a[13]&quot;| n_e729396be07a
+  n_ccf701b88a30 --&gt;|&quot;click:a[14]&quot;| n_c84fe86d14b6
+  n_ccf701b88a30 --&gt;|&quot;click:a[15]&quot;| n_0b9196dc7259
+  n_ccf701b88a30 --&gt;|&quot;click:a[16]&quot;| __ext__
+  n_ccf701b88a30 --&gt;|&quot;click:a[17]&quot;| __ext__
+  n_ccf701b88a30 --&gt;|&quot;click:a[18]&quot;| __ext__
+  n_ccf701b88a30 --&gt;|&quot;click:a[19]&quot;| __ext__
+  n_4c247510d9b7 --&gt;|&quot;click:a[0]&quot;| n_bc298ac9cefe
+  n_4c247510d9b7 --&gt;|&quot;click:a[1]&quot;| n_d4e1ebeeae04
+  n_4c247510d9b7 --&gt;|&quot;click:a[2]&quot;| n_ccf701b88a30
+  n_4c247510d9b7 -.-&gt;|&quot;click:a[3]&quot;| n_4c247510d9b7
+  n_4c247510d9b7 --&gt;|&quot;click:a[4]&quot;| n_d8afa9453db5
+  n_4c247510d9b7 --&gt;|&quot;click:a[5]&quot;| n_ad159577cb8e
+  n_4c247510d9b7 --&gt;|&quot;click:a[6]&quot;| n_b830e43fa1e9
+  n_4c247510d9b7 --&gt;|&quot;click:a[7]&quot;| n_30ca3c196654
+  n_4c247510d9b7 --&gt;|&quot;click:a[8]&quot;| n_30ca3c196654
+  n_4c247510d9b7 --&gt;|&quot;click:a[9]&quot;| n_e969e65c5155
+  n_4c247510d9b7 --&gt;|&quot;click:a[10]&quot;| n_c5f94ca62874
+  n_4c247510d9b7 --&gt;|&quot;click:a[11]&quot;| n_60334a838aa9
+  n_4c247510d9b7 --&gt;|&quot;click:a[12]&quot;| n_9361b85cec4c
+  n_4c247510d9b7 --&gt;|&quot;click:a[13]&quot;| n_e729396be07a
+  n_4c247510d9b7 --&gt;|&quot;click:a[14]&quot;| n_c84fe86d14b6
+  n_4c247510d9b7 --&gt;|&quot;click:a[15]&quot;| n_0b9196dc7259
+  n_4c247510d9b7 --&gt;|&quot;click:a[16]&quot;| __ext__
+  n_4c247510d9b7 --&gt;|&quot;click:a[17]&quot;| __ext__
+  n_4c247510d9b7 --&gt;|&quot;click:a[18]&quot;| __ext__
+  n_4c247510d9b7 --&gt;|&quot;click:a[19]&quot;| __ext__
+  n_55ea80bb5b66 --&gt;|&quot;click:a[0]&quot;| n_bc298ac9cefe
+  n_55ea80bb5b66 --&gt;|&quot;click:a[1]&quot;| n_d4e1ebeeae04
+  n_55ea80bb5b66 --&gt;|&quot;click:a[2]&quot;| n_ccf701b88a30
+  n_55ea80bb5b66 --&gt;|&quot;click:a[3]&quot;| n_4c247510d9b7
+  n_55ea80bb5b66 --&gt;|&quot;click:a[4]&quot;| n_d8afa9453db5
+  n_55ea80bb5b66 --&gt;|&quot;click:a[5]&quot;| n_ad159577cb8e
+  n_55ea80bb5b66 --&gt;|&quot;click:a[6]&quot;| n_b830e43fa1e9
+  n_55ea80bb5b66 --&gt;|&quot;click:a[7]&quot;| n_30ca3c196654
+  n_55ea80bb5b66 --&gt;|&quot;click:a[8]&quot;| n_30ca3c196654
+  n_55ea80bb5b66 --&gt;|&quot;click:a[9]&quot;| n_e969e65c5155
+  n_55ea80bb5b66 --&gt;|&quot;click:a[10]&quot;| n_c5f94ca62874
+  n_55ea80bb5b66 --&gt;|&quot;click:a[11]&quot;| n_60334a838aa9
+  n_55ea80bb5b66 --&gt;|&quot;click:a[12]&quot;| n_9361b85cec4c
+  n_55ea80bb5b66 --&gt;|&quot;click:a[13]&quot;| n_e729396be07a
+  n_55ea80bb5b66 --&gt;|&quot;click:a[14]&quot;| n_c84fe86d14b6
+  n_55ea80bb5b66 --&gt;|&quot;click:a[15]&quot;| n_0b9196dc7259
+  n_55ea80bb5b66 --&gt;|&quot;click:a[16]&quot;| __ext__
+  n_55ea80bb5b66 --&gt;|&quot;click:a[17]&quot;| __ext__
+  n_55ea80bb5b66 --&gt;|&quot;click:a[18]&quot;| __ext__
+  n_55ea80bb5b66 --&gt;|&quot;click:a[19]&quot;| __ext__
+  n_ad159577cb8e --&gt;|&quot;click:a[0]&quot;| n_bc298ac9cefe
+  n_ad159577cb8e --&gt;|&quot;click:a[1]&quot;| n_d4e1ebeeae04
+  n_ad159577cb8e --&gt;|&quot;click:a[2]&quot;| n_ccf701b88a30
+  n_ad159577cb8e --&gt;|&quot;click:a[3]&quot;| n_4c247510d9b7
+  n_ad159577cb8e --&gt;|&quot;click:a[4]&quot;| n_d8afa9453db5
+  n_ad159577cb8e -.-&gt;|&quot;click:a[5]&quot;| n_ad159577cb8e
+  n_ad159577cb8e --&gt;|&quot;click:a[6]&quot;| n_b830e43fa1e9
+  n_ad159577cb8e --&gt;|&quot;click:a[7]&quot;| n_30ca3c196654
+  n_ad159577cb8e --&gt;|&quot;click:a[8]&quot;| n_30ca3c196654
+  n_ad159577cb8e --&gt;|&quot;click:a[9]&quot;| n_e969e65c5155
+  n_ad159577cb8e --&gt;|&quot;click:a[10]&quot;| n_c5f94ca62874
+  n_ad159577cb8e --&gt;|&quot;click:a[11]&quot;| n_60334a838aa9
+  n_ad159577cb8e --&gt;|&quot;click:a[12]&quot;| n_9361b85cec4c
+  n_ad159577cb8e --&gt;|&quot;click:a[13]&quot;| n_e729396be07a
+  n_ad159577cb8e --&gt;|&quot;click:a[14]&quot;| n_c84fe86d14b6
+  n_ad159577cb8e --&gt;|&quot;click:a[15]&quot;| n_0b9196dc7259
+  n_ad159577cb8e --&gt;|&quot;click:a[16]&quot;| __ext__
+  n_ad159577cb8e --&gt;|&quot;click:a[17]&quot;| __ext__
+  n_ad159577cb8e --&gt;|&quot;click:a[18]&quot;| __ext__
+  n_ad159577cb8e --&gt;|&quot;click:a[19]&quot;| __ext__
+  n_b830e43fa1e9 --&gt;|&quot;click:a[0]&quot;| n_bc298ac9cefe
+  n_b830e43fa1e9 --&gt;|&quot;click:a[1]&quot;| n_d4e1ebeeae04
+  n_b830e43fa1e9 --&gt;|&quot;click:a[2]&quot;| n_ccf701b88a30
+  n_b830e43fa1e9 --&gt;|&quot;click:a[3]&quot;| n_4c247510d9b7
+  n_b830e43fa1e9 --&gt;|&quot;click:a[4]&quot;| n_d8afa9453db5
+  n_b830e43fa1e9 --&gt;|&quot;click:a[5]&quot;| n_ad159577cb8e
+  n_b830e43fa1e9 -.-&gt;|&quot;click:a[6]&quot;| n_b830e43fa1e9
+  n_b830e43fa1e9 --&gt;|&quot;click:a[7]&quot;| n_30ca3c196654
+  n_b830e43fa1e9 --&gt;|&quot;click:a[8]&quot;| n_30ca3c196654
+  n_b830e43fa1e9 --&gt;|&quot;click:a[9]&quot;| n_e969e65c5155
+  n_b830e43fa1e9 --&gt;|&quot;click:a[10]&quot;| n_c5f94ca62874
+  n_b830e43fa1e9 --&gt;|&quot;click:a[11]&quot;| n_60334a838aa9
+  n_b830e43fa1e9 --&gt;|&quot;click:a[12]&quot;| n_9361b85cec4c
+  n_b830e43fa1e9 --&gt;|&quot;click:a[13]&quot;| n_e729396be07a
+  n_b830e43fa1e9 --&gt;|&quot;click:a[14]&quot;| n_c84fe86d14b6
+  n_b830e43fa1e9 --&gt;|&quot;click:a[15]&quot;| n_0b9196dc7259
+  n_b830e43fa1e9 --&gt;|&quot;click:a[16]&quot;| __ext__
+  n_b830e43fa1e9 --&gt;|&quot;click:a[17]&quot;| __ext__
+  n_b830e43fa1e9 --&gt;|&quot;click:a[18]&quot;| __ext__
+  n_b830e43fa1e9 --&gt;|&quot;click:a[19]&quot;| __ext__
+  n_e969e65c5155 --&gt;|&quot;click:a[0]&quot;| n_bc298ac9cefe
+  n_e969e65c5155 --&gt;|&quot;click:a[1]&quot;| n_d4e1ebeeae04
+  n_e969e65c5155 --&gt;|&quot;click:a[2]&quot;| n_ccf701b88a30
+  n_e969e65c5155 --&gt;|&quot;click:a[3]&quot;| n_4c247510d9b7
+  n_e969e65c5155 --&gt;|&quot;click:a[4]&quot;| n_d8afa9453db5
+  n_e969e65c5155 --&gt;|&quot;click:a[5]&quot;| n_ad159577cb8e
+  n_e969e65c5155 --&gt;|&quot;click:a[6]&quot;| n_b830e43fa1e9
+  n_e969e65c5155 --&gt;|&quot;click:a[7]&quot;| n_30ca3c196654
+  n_e969e65c5155 --&gt;|&quot;click:a[8]&quot;| n_30ca3c196654
+  n_e969e65c5155 -.-&gt;|&quot;click:a[9]&quot;| n_e969e65c5155
+  n_e969e65c5155 --&gt;|&quot;click:a[10]&quot;| n_c5f94ca62874
+  n_e969e65c5155 --&gt;|&quot;click:a[11]&quot;| n_60334a838aa9
+  n_e969e65c5155 --&gt;|&quot;click:a[12]&quot;| n_9361b85cec4c
+  n_e969e65c5155 --&gt;|&quot;click:a[13]&quot;| n_e729396be07a
+  n_e969e65c5155 --&gt;|&quot;click:a[14]&quot;| n_c84fe86d14b6
+  n_e969e65c5155 --&gt;|&quot;click:a[15]&quot;| n_0b9196dc7259
+  n_e969e65c5155 --&gt;|&quot;click:a[16]&quot;| __ext__
+  n_e969e65c5155 --&gt;|&quot;click:a[17]&quot;| __ext__
+  n_e969e65c5155 --&gt;|&quot;click:a[18]&quot;| __ext__
+  n_e969e65c5155 --&gt;|&quot;click:a[19]&quot;| __ext__
+  n_c5f94ca62874 --&gt;|&quot;click:a[0]&quot;| n_bc298ac9cefe
+  n_c5f94ca62874 --&gt;|&quot;click:a[1]&quot;| n_d4e1ebeeae04
+  n_c5f94ca62874 --&gt;|&quot;click:a[2]&quot;| n_ccf701b88a30
+  n_c5f94ca62874 --&gt;|&quot;click:a[3]&quot;| n_4c247510d9b7
+  n_c5f94ca62874 --&gt;|&quot;click:a[4]&quot;| n_d8afa9453db5
+  n_c5f94ca62874 --&gt;|&quot;click:a[5]&quot;| n_ad159577cb8e
+  n_c5f94ca62874 --&gt;|&quot;click:a[6]&quot;| n_b830e43fa1e9
+  n_c5f94ca62874 --&gt;|&quot;click:a[7]&quot;| n_30ca3c196654
+  n_c5f94ca62874 --&gt;|&quot;click:a[8]&quot;| n_30ca3c196654
+  n_c5f94ca62874 --&gt;|&quot;click:a[9]&quot;| n_e969e65c5155
+  n_c5f94ca62874 -.-&gt;|&quot;click:a[10]&quot;| n_c5f94ca62874
+  n_c5f94ca62874 --&gt;|&quot;click:a[11]&quot;| n_60334a838aa9
+  n_c5f94ca62874 --&gt;|&quot;click:a[12]&quot;| n_9361b85cec4c
+  n_c5f94ca62874 --&gt;|&quot;click:a[13]&quot;| n_e729396be07a
+  n_c5f94ca62874 --&gt;|&quot;click:a[14]&quot;| n_c84fe86d14b6
+  n_c5f94ca62874 --&gt;|&quot;click:a[15]&quot;| n_0b9196dc7259
+  n_c5f94ca62874 --&gt;|&quot;click:a[16]&quot;| __ext__
+  n_c5f94ca62874 --&gt;|&quot;click:a[17]&quot;| __ext__
+  n_c5f94ca62874 --&gt;|&quot;click:a[18]&quot;| __ext__
+  n_c5f94ca62874 --&gt;|&quot;click:a[19]&quot;| __ext__
+  n_60334a838aa9 --&gt;|&quot;click:a[0]&quot;| n_bc298ac9cefe
+  n_60334a838aa9 --&gt;|&quot;click:a[1]&quot;| n_d4e1ebeeae04
+  n_60334a838aa9 --&gt;|&quot;click:a[2]&quot;| n_ccf701b88a30
+  n_60334a838aa9 --&gt;|&quot;click:a[3]&quot;| n_4c247510d9b7
+  n_60334a838aa9 --&gt;|&quot;click:a[4]&quot;| n_55ea80bb5b66
+  n_60334a838aa9 --&gt;|&quot;click:a[5]&quot;| n_ad159577cb8e
+  n_60334a838aa9 --&gt;|&quot;click:a[6]&quot;| n_b830e43fa1e9
+  n_60334a838aa9 --&gt;|&quot;click:a[7]&quot;| n_30ca3c196654
+  n_60334a838aa9 --&gt;|&quot;click:a[8]&quot;| n_30ca3c196654
+  n_60334a838aa9 --&gt;|&quot;click:a[9]&quot;| n_e969e65c5155
+  n_60334a838aa9 --&gt;|&quot;click:a[10]&quot;| n_c5f94ca62874
+  n_60334a838aa9 -.-&gt;|&quot;click:a[11]&quot;| n_60334a838aa9
+  n_60334a838aa9 --&gt;|&quot;click:a[12]&quot;| n_9361b85cec4c
+  n_60334a838aa9 --&gt;|&quot;click:a[13]&quot;| n_e729396be07a
+  n_60334a838aa9 --&gt;|&quot;click:a[14]&quot;| n_c84fe86d14b6
+  n_60334a838aa9 --&gt;|&quot;click:a[15]&quot;| n_0b9196dc7259
+  n_60334a838aa9 --&gt;|&quot;click:a[16]&quot;| __ext__
+  n_60334a838aa9 --&gt;|&quot;click:a[17]&quot;| __ext__
+  n_60334a838aa9 --&gt;|&quot;click:a[18]&quot;| __ext__
+  n_60334a838aa9 --&gt;|&quot;click:a[19]&quot;| __ext__
+  n_9361b85cec4c --&gt;|&quot;click:a[0]&quot;| n_bc298ac9cefe
+  n_9361b85cec4c --&gt;|&quot;click:a[1]&quot;| n_d4e1ebeeae04
+  n_9361b85cec4c --&gt;|&quot;click:a[2]&quot;| n_ccf701b88a30
+  n_9361b85cec4c --&gt;|&quot;click:a[3]&quot;| n_4c247510d9b7
+  n_9361b85cec4c --&gt;|&quot;click:a[4]&quot;| n_d8afa9453db5
+  n_9361b85cec4c --&gt;|&quot;click:a[5]&quot;| n_ad159577cb8e
+  n_9361b85cec4c --&gt;|&quot;click:a[6]&quot;| n_b830e43fa1e9
+  n_9361b85cec4c --&gt;|&quot;click:a[7]&quot;| n_30ca3c196654
+  n_9361b85cec4c --&gt;|&quot;click:a[8]&quot;| n_30ca3c196654
+  n_9361b85cec4c --&gt;|&quot;click:a[9]&quot;| n_e969e65c5155
+  n_9361b85cec4c --&gt;|&quot;click:a[10]&quot;| n_c5f94ca62874
+  n_9361b85cec4c --&gt;|&quot;click:a[11]&quot;| n_60334a838aa9
+  n_9361b85cec4c -.-&gt;|&quot;click:a[12]&quot;| n_9361b85cec4c
+  n_9361b85cec4c --&gt;|&quot;click:a[13]&quot;| n_e729396be07a
+  n_9361b85cec4c --&gt;|&quot;click:a[14]&quot;| n_c84fe86d14b6
+  n_9361b85cec4c --&gt;|&quot;click:a[15]&quot;| n_0b9196dc7259
+  n_9361b85cec4c --&gt;|&quot;click:a[16]&quot;| __ext__
+  n_9361b85cec4c --&gt;|&quot;click:a[17]&quot;| __ext__
+  n_9361b85cec4c --&gt;|&quot;click:a[18]&quot;| __ext__
+  n_9361b85cec4c --&gt;|&quot;click:a[19]&quot;| __ext__
+  n_e729396be07a --&gt;|&quot;click:a[0]&quot;| n_bc298ac9cefe
+  n_e729396be07a --&gt;|&quot;click:a[1]&quot;| n_d4e1ebeeae04
+  n_e729396be07a --&gt;|&quot;click:a[2]&quot;| n_ccf701b88a30
+  n_e729396be07a --&gt;|&quot;click:a[3]&quot;| n_4c247510d9b7
+  n_e729396be07a --&gt;|&quot;click:a[4]&quot;| n_d8afa9453db5
+  n_e729396be07a --&gt;|&quot;click:a[5]&quot;| n_ad159577cb8e
+  n_e729396be07a --&gt;|&quot;click:a[6]&quot;| n_b830e43fa1e9
+  n_e729396be07a --&gt;|&quot;click:a[7]&quot;| n_30ca3c196654
+  n_e729396be07a --&gt;|&quot;click:a[8]&quot;| n_30ca3c196654
+  n_e729396be07a --&gt;|&quot;click:a[9]&quot;| n_e969e65c5155
+  n_e729396be07a --&gt;|&quot;click:a[10]&quot;| n_c5f94ca62874
+  n_e729396be07a --&gt;|&quot;click:a[11]&quot;| n_60334a838aa9
+  n_e729396be07a --&gt;|&quot;click:a[12]&quot;| n_9361b85cec4c
+  n_e729396be07a -.-&gt;|&quot;click:a[13]&quot;| n_e729396be07a
+  n_e729396be07a --&gt;|&quot;click:a[14]&quot;| n_c84fe86d14b6
+  n_e729396be07a --&gt;|&quot;click:a[15]&quot;| n_0b9196dc7259
+  n_e729396be07a --&gt;|&quot;click:a[16]&quot;| __ext__
+  n_e729396be07a --&gt;|&quot;click:a[17]&quot;| __ext__
+  n_e729396be07a --&gt;|&quot;click:a[18]&quot;| __ext__
+  n_e729396be07a --&gt;|&quot;click:a[19]&quot;| __ext__
+  n_c84fe86d14b6 --&gt;|&quot;click:a[0]&quot;| n_bc298ac9cefe
+  n_c84fe86d14b6 --&gt;|&quot;click:a[1]&quot;| n_d4e1ebeeae04
+  n_c84fe86d14b6 --&gt;|&quot;click:a[2]&quot;| n_ccf701b88a30
+  n_c84fe86d14b6 --&gt;|&quot;click:a[3]&quot;| n_4c247510d9b7
+  n_c84fe86d14b6 --&gt;|&quot;click:a[4]&quot;| n_d8afa9453db5
+  n_c84fe86d14b6 --&gt;|&quot;click:a[5]&quot;| n_ad159577cb8e
+  n_c84fe86d14b6 --&gt;|&quot;click:a[6]&quot;| n_b830e43fa1e9
+  n_c84fe86d14b6 --&gt;|&quot;click:a[7]&quot;| n_30ca3c196654
+  n_c84fe86d14b6 --&gt;|&quot;click:a[8]&quot;| n_30ca3c196654
+  n_c84fe86d14b6 --&gt;|&quot;click:a[9]&quot;| n_e969e65c5155
+  n_c84fe86d14b6 --&gt;|&quot;click:a[10]&quot;| n_c5f94ca62874
+  n_c84fe86d14b6 --&gt;|&quot;click:a[11]&quot;| n_60334a838aa9
+  n_c84fe86d14b6 --&gt;|&quot;click:a[12]&quot;| n_9361b85cec4c
+  n_c84fe86d14b6 --&gt;|&quot;click:a[13]&quot;| n_e729396be07a
+  n_c84fe86d14b6 -.-&gt;|&quot;click:a[14]&quot;| n_c84fe86d14b6
+  n_c84fe86d14b6 --&gt;|&quot;click:a[15]&quot;| n_0b9196dc7259
+  n_c84fe86d14b6 --&gt;|&quot;click:a[16]&quot;| __ext__
+  n_c84fe86d14b6 --&gt;|&quot;click:a[17]&quot;| __ext__
+  n_c84fe86d14b6 --&gt;|&quot;click:a[18]&quot;| __ext__
+  n_c84fe86d14b6 --&gt;|&quot;click:a[19]&quot;| __ext__
+  n_0b9196dc7259 --&gt;|&quot;click:a[0]&quot;| n_bc298ac9cefe
+  n_0b9196dc7259 --&gt;|&quot;click:a[1]&quot;| n_d4e1ebeeae04
+  n_0b9196dc7259 --&gt;|&quot;click:a[2]&quot;| n_ccf701b88a30
+  n_0b9196dc7259 --&gt;|&quot;click:a[3]&quot;| n_4c247510d9b7
+  n_0b9196dc7259 --&gt;|&quot;click:a[4]&quot;| n_55ea80bb5b66
+  n_0b9196dc7259 --&gt;|&quot;click:a[5]&quot;| n_ad159577cb8e
+  n_0b9196dc7259 --&gt;|&quot;click:a[6]&quot;| n_b830e43fa1e9
+  n_0b9196dc7259 --&gt;|&quot;click:a[7]&quot;| n_30ca3c196654
+  n_0b9196dc7259 --&gt;|&quot;click:a[8]&quot;| n_30ca3c196654
+  n_0b9196dc7259 --&gt;|&quot;click:a[9]&quot;| n_e969e65c5155
+  n_0b9196dc7259 --&gt;|&quot;click:a[10]&quot;| n_c5f94ca62874
+  n_0b9196dc7259 --&gt;|&quot;click:a[11]&quot;| n_60334a838aa9
+  n_0b9196dc7259 --&gt;|&quot;click:a[12]&quot;| n_9361b85cec4c
+  n_0b9196dc7259 --&gt;|&quot;click:a[13]&quot;| n_e729396be07a
+  n_0b9196dc7259 --&gt;|&quot;click:a[14]&quot;| n_c84fe86d14b6
+  n_0b9196dc7259 -.-&gt;|&quot;click:a[15]&quot;| n_0b9196dc7259
+  n_0b9196dc7259 --&gt;|&quot;click:a[16]&quot;| __ext__
+  n_0b9196dc7259 --&gt;|&quot;click:a[17]&quot;| __ext__
+  n_0b9196dc7259 --&gt;|&quot;click:a[18]&quot;| __ext__
+  n_0b9196dc7259 --&gt;|&quot;click:a[19]&quot;| __ext__
+  n_30ca3c196654 --&gt;|&quot;click:a[0]&quot;| n_bc298ac9cefe
+  n_30ca3c196654 --&gt;|&quot;click:a[1]&quot;| n_d4e1ebeeae04
+  n_30ca3c196654 --&gt;|&quot;click:a[2]&quot;| n_ccf701b88a30
+  n_30ca3c196654 --&gt;|&quot;click:a[3]&quot;| n_4c247510d9b7
+  n_30ca3c196654 --&gt;|&quot;click:a[4]&quot;| n_d8afa9453db5
+  n_30ca3c196654 --&gt;|&quot;click:a[5]&quot;| n_ad159577cb8e
+  n_30ca3c196654 --&gt;|&quot;click:a[6]&quot;| n_b830e43fa1e9
+  n_30ca3c196654 -.-&gt;|&quot;click:a[7]&quot;| n_30ca3c196654
+  n_30ca3c196654 -.-&gt;|&quot;click:a[8]&quot;| n_30ca3c196654
+  n_30ca3c196654 --&gt;|&quot;click:a[9]&quot;| n_e969e65c5155
+  n_30ca3c196654 --&gt;|&quot;click:a[10]&quot;| n_c5f94ca62874
+  n_30ca3c196654 --&gt;|&quot;click:a[11]&quot;| n_60334a838aa9
+  n_30ca3c196654 --&gt;|&quot;click:a[12]&quot;| n_9361b85cec4c
+  n_30ca3c196654 --&gt;|&quot;click:a[13]&quot;| n_e729396be07a
+  n_30ca3c196654 --&gt;|&quot;click:a[14]&quot;| n_c84fe86d14b6
+  n_30ca3c196654 --&gt;|&quot;click:a[15]&quot;| n_0b9196dc7259
+  n_30ca3c196654 --&gt;|&quot;click:a[16]&quot;| __ext__
+  n_30ca3c196654 --&gt;|&quot;click:a[17]&quot;| __ext__
+  n_30ca3c196654 --&gt;|&quot;click:a[18]&quot;| __ext__
+  n_30ca3c196654 --&gt;|&quot;click:a[19]&quot;| __ext__</pre>
+    </div>
+  </section>
+  <section>
+    <h2>States</h2>
+    <table>
+      <thead><tr><th>Label</th><th>Depth</th><th>Facts</th><th>Location</th><th>Transitions to</th><th>ID (truncated)</th></tr></thead>
+      <tbody><tr>
+        <td><strong>S0</strong></td>
+        <td>0</td>
+        <td>20</td>
+        <td><code>https://www.iana.org/</code></td>
+        <td><span class="lbl">S1</span> <span class="lbl">S2</span> <span class="lbl">S3</span> <span class="lbl">S4</span> <span class="lbl">S5</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S8</span> <span class="lbl">S8</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S12</span> <span class="lbl">S13</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="lbl">S16</span> <span class="lbl">S17</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">3705e417989ddf15…</code></td>
+      </tr>
+<tr>
+        <td><strong>S15</strong></td>
+        <td>1</td>
+        <td>20</td>
+        <td><code>https://www.iana.org/contact</code></td>
+        <td><span class="lbl">S1</span> <span class="lbl">S2</span> <span class="lbl">S3</span> <span class="lbl">S4</span> <span class="lbl">S5</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S19</span> <span class="lbl">S19</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S12</span> <span class="lbl">S13</span> <span class="lbl">S14</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">0b9196dc7259a838…</code></td>
+      </tr>
+<tr>
+        <td><strong>S4</strong></td>
+        <td>1</td>
+        <td>20</td>
+        <td><code>https://www.iana.org/domains/arpa</code></td>
+        <td><span class="lbl">S1</span> <span class="lbl">S2</span> <span class="lbl">S3</span> <span class="lbl">S18</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S19</span> <span class="lbl">S19</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S12</span> <span class="lbl">S13</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">4c247510d9b7aa60…</code></td>
+      </tr>
+<tr>
+        <td><strong>S5</strong></td>
+        <td>1</td>
+        <td>20</td>
+        <td><code>https://www.iana.org/domains/idn-tables</code></td>
+        <td><span class="lbl">S1</span> <span class="lbl">S2</span> <span class="lbl">S3</span> <span class="lbl">S4</span> <span class="lbl">S18</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S19</span> <span class="lbl">S19</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S12</span> <span class="lbl">S13</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">55ea80bb5b66b64a…</code></td>
+      </tr>
+<tr>
+        <td><strong>S11</strong></td>
+        <td>1</td>
+        <td>20</td>
+        <td><code>https://www.iana.org/news</code></td>
+        <td><span class="lbl">S1</span> <span class="lbl">S2</span> <span class="lbl">S3</span> <span class="lbl">S4</span> <span class="lbl">S5</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S19</span> <span class="lbl">S19</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S12</span> <span class="lbl">S13</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">60334a838aa9dfec…</code></td>
+      </tr>
+<tr>
+        <td><strong>S8</strong></td>
+        <td>1</td>
+        <td>0</td>
+        <td><code>https://www.iana.org/protocols</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">7ec3ae1ea1f7bdc0…</code></td>
+      </tr>
+<tr>
+        <td><strong>S12</strong></td>
+        <td>1</td>
+        <td>20</td>
+        <td><code>https://www.iana.org/performance</code></td>
+        <td><span class="lbl">S1</span> <span class="lbl">S2</span> <span class="lbl">S3</span> <span class="lbl">S4</span> <span class="lbl">S18</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S19</span> <span class="lbl">S19</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S13</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">9361b85cec4cef27…</code></td>
+      </tr>
+<tr>
+        <td><strong>S16</strong></td>
+        <td>1</td>
+        <td>0</td>
+        <td><code>https://pti.icann.org/</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">975c262ec76475cb…</code></td>
+      </tr>
+<tr>
+        <td><strong>S17</strong></td>
+        <td>1</td>
+        <td>0</td>
+        <td><code>https://www.icann.org/</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">ac4267d1b1683172…</code></td>
+      </tr>
+<tr>
+        <td><strong>S6</strong></td>
+        <td>1</td>
+        <td>20</td>
+        <td><code>https://www.iana.org/numbers</code></td>
+        <td><span class="lbl">S1</span> <span class="lbl">S2</span> <span class="lbl">S3</span> <span class="lbl">S4</span> <span class="lbl">S18</span> <span class="lbl">S7</span> <span class="lbl">S19</span> <span class="lbl">S19</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S12</span> <span class="lbl">S13</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">ad159577cb8e0576…</code></td>
+      </tr>
+<tr>
+        <td><strong>S7</strong></td>
+        <td>1</td>
+        <td>20</td>
+        <td><code>https://www.iana.org/abuse</code></td>
+        <td><span class="lbl">S1</span> <span class="lbl">S2</span> <span class="lbl">S3</span> <span class="lbl">S4</span> <span class="lbl">S18</span> <span class="lbl">S6</span> <span class="lbl">S19</span> <span class="lbl">S19</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S12</span> <span class="lbl">S13</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">b830e43fa1e99401…</code></td>
+      </tr>
+<tr>
+        <td><strong>S1</strong></td>
+        <td>1</td>
+        <td>20</td>
+        <td><code>https://www.iana.org/domains</code></td>
+        <td><span class="lbl">S2</span> <span class="lbl">S3</span> <span class="lbl">S4</span> <span class="lbl">S18</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S8</span> <span class="lbl">S19</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S12</span> <span class="lbl">S13</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">bc298ac9cefe8271…</code></td>
+      </tr>
+<tr>
+        <td><strong>S10</strong></td>
+        <td>1</td>
+        <td>20</td>
+        <td><code>https://www.iana.org/about</code></td>
+        <td><span class="lbl">S1</span> <span class="lbl">S2</span> <span class="lbl">S3</span> <span class="lbl">S4</span> <span class="lbl">S18</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S19</span> <span class="lbl">S19</span> <span class="lbl">S9</span> <span class="lbl">S11</span> <span class="lbl">S12</span> <span class="lbl">S13</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">c5f94ca62874a9ad…</code></td>
+      </tr>
+<tr>
+        <td><strong>S14</strong></td>
+        <td>1</td>
+        <td>20</td>
+        <td><code>https://www.iana.org/archive</code></td>
+        <td><span class="lbl">S1</span> <span class="lbl">S2</span> <span class="lbl">S3</span> <span class="lbl">S4</span> <span class="lbl">S18</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S19</span> <span class="lbl">S19</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S12</span> <span class="lbl">S13</span> <span class="lbl">S15</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">c84fe86d14b6904f…</code></td>
+      </tr>
+<tr>
+        <td><strong>S3</strong></td>
+        <td>1</td>
+        <td>20</td>
+        <td><code>https://www.iana.org/domains/int</code></td>
+        <td><span class="lbl">S1</span> <span class="lbl">S2</span> <span class="lbl">S4</span> <span class="lbl">S18</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S19</span> <span class="lbl">S19</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S12</span> <span class="lbl">S13</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">ccf701b88a3067f5…</code></td>
+      </tr>
+<tr>
+        <td><strong>S2</strong></td>
+        <td>1</td>
+        <td>20</td>
+        <td><code>https://www.iana.org/domains/root</code></td>
+        <td><span class="lbl">S1</span> <span class="lbl">S3</span> <span class="lbl">S4</span> <span class="lbl">S18</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S19</span> <span class="lbl">S19</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S12</span> <span class="lbl">S13</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">d4e1ebeeae0455ec…</code></td>
+      </tr>
+<tr>
+        <td><strong>S13</strong></td>
+        <td>1</td>
+        <td>20</td>
+        <td><code>https://www.iana.org/about/excellence</code></td>
+        <td><span class="lbl">S1</span> <span class="lbl">S2</span> <span class="lbl">S3</span> <span class="lbl">S4</span> <span class="lbl">S18</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S19</span> <span class="lbl">S19</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S12</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">e729396be07a3261…</code></td>
+      </tr>
+<tr>
+        <td><strong>S9</strong></td>
+        <td>1</td>
+        <td>20</td>
+        <td><code>https://www.iana.org/time-zones</code></td>
+        <td><span class="lbl">S1</span> <span class="lbl">S2</span> <span class="lbl">S3</span> <span class="lbl">S4</span> <span class="lbl">S18</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S19</span> <span class="lbl">S19</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S12</span> <span class="lbl">S13</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">e969e65c51557142…</code></td>
+      </tr>
+<tr>
+        <td><strong>S19</strong></td>
+        <td>2</td>
+        <td>20</td>
+        <td><code>https://www.iana.org/protocols</code></td>
+        <td><span class="lbl">S1</span> <span class="lbl">S2</span> <span class="lbl">S3</span> <span class="lbl">S4</span> <span class="lbl">S18</span> <span class="lbl">S6</span> <span class="lbl">S7</span> <span class="lbl">S9</span> <span class="lbl">S10</span> <span class="lbl">S11</span> <span class="lbl">S12</span> <span class="lbl">S13</span> <span class="lbl">S14</span> <span class="lbl">S15</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span> <span class="ext">⎋ external</span></td>
+        <td><code style="font-size:0.7em;color:#64748b">30ca3c1966540ba2…</code></td>
+      </tr>
+<tr>
+        <td><strong>S18</strong></td>
+        <td>2</td>
+        <td>0</td>
+        <td><code>https://www.iana.org/domains/idn-tables</code></td>
+        <td>—</td>
+        <td><code style="font-size:0.7em;color:#64748b">d8afa9453db5667c…</code></td>
+      </tr></tbody>
+    </table>
+  </section>
+</main>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'default', flowchart: { curve: 'basis', useMaxWidth: false } });
+  mermaid.run().catch(() => {
+    document.getElementById('fallback').style.display = 'block';
+  });
+</script>
+</body>
+</html>

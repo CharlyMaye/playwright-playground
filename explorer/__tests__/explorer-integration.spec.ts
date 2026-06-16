@@ -7,10 +7,15 @@ import { PlaywrightActionExecutor } from '../adapters/playwright/PlaywrightActio
 import { PlaywrightDOMExtractor } from '../adapters/playwright/PlaywrightDOMExtractor';
 import { PlaywrightNavigationDriver } from '../adapters/playwright/PlaywrightNavigationDriver';
 import { PlaywrightReadinessChecker } from '../adapters/playwright/PlaywrightReadinessChecker';
+import { PlaywrightStabilizationChecker } from '../adapters/playwright/PlaywrightStabilizationChecker';
 import { PlaywrightStateRestorer } from '../adapters/playwright/PlaywrightStateRestorer';
 import { ConcreteExplorationConfig } from '../ExplorationConfig';
 import { ConcreteExplorationGraph } from '../ExplorationGraph';
+import { graphToDOT, graphToMermaid, serializeGraph } from '../GraphSerializer';
 import { ConcreteExplorer } from '../Explorer';
+import { CompositeExplorationObserver } from '../CompositeExplorationObserver';
+import { FactEvictionObserver } from '../FactEvictionObserver';
+import { ScreenshotObserver } from '../ScreenshotObserver';
 import { ConcreteRulesEngine } from '../RulesEngine';
 import { ConcreteScenarioExporter } from '../ScenarioExporter';
 import { ConcreteStateManager } from '../StateManager';
@@ -54,6 +59,37 @@ test.describe('Explorer — Integration with local HTML page', () => {
     expect(outsideLink).toBeUndefined();
   });
 
+  test('ignoreSelectors excludes elements by real CSS selector (match + ancestor)', async ({ page }) => {
+    await page.goto(TEST_PAGE, { waitUntil: 'load' });
+
+    const config = new ConcreteExplorationConfig({
+      rootSelector: '#main-container',
+      boundary: 'strict',
+      maxDepth: 0,
+      stabilizationTimeout: 200,
+      // Attribute selector → direct match; `label` → ancestor match (the
+      // checkbox is wrapped in a <label>, reachable only via `closest`).
+      ignoreSelectors: ['[data-testid="btn-secondary"]', 'label'],
+    });
+
+    const testContext = new ConcreteTestContext();
+    testContext.page = page;
+
+    const scope = new PlaywrightExplorationScope(testContext, config);
+    const extractor = new PlaywrightDOMExtractor(scope, config);
+
+    const facts = await extractor.extract();
+    const uids = facts.map((f) => f.uid);
+
+    // Direct match: the secondary button is gone, the primary one stays.
+    // (The old uid-substring logic could never have matched `[data-testid=…]`.)
+    expect(uids).not.toContain('testid:btn-secondary');
+    expect(uids).toContain('testid:btn-primary');
+
+    // Ancestor match: the checkbox lives inside an ignored <label>.
+    expect(uids).not.toContain('testid:reveal-checkbox');
+  });
+
   test('rules engine produces correct actions for detected elements', async ({ page }) => {
     await page.goto(TEST_PAGE, { waitUntil: 'load' });
 
@@ -91,6 +127,45 @@ test.describe('Explorer — Integration with local HTML page', () => {
     for (let i = 1; i < actions.length; i++) {
       expect(actions[i].priority).toBeLessThanOrEqual(actions[i - 1].priority);
     }
+  });
+
+  test('selectStrategy expands <select> options (first → 1, all → one per option)', async ({ page }) => {
+    await page.goto(TEST_PAGE, { waitUntil: 'load' });
+
+    const baseConfig = {
+      rootSelector: '#main-container',
+      boundary: 'strict' as const,
+      maxDepth: 0,
+      maxStates: 10,
+      timeout: 10_000,
+      stabilizationTimeout: 200,
+      // The default cap (10) would hide some of the 3 select actions behind
+      // higher-priority clicks/fills — raise it so coverage is observable.
+      maxActionsPerState: 50,
+    };
+
+    const testContext = new ConcreteTestContext();
+    testContext.page = page;
+
+    const selectActionsFor = async (selectStrategy: 'first' | 'all') => {
+      const config = new ConcreteExplorationConfig({ ...baseConfig, selectStrategy });
+      const scope = new PlaywrightExplorationScope(testContext, config);
+      const extractor = new PlaywrightDOMExtractor(scope, config);
+      const rulesEngine = new ConcreteRulesEngine(config, new HtmlDefaultRules());
+      const facts = await extractor.extract();
+      const actions = await rulesEngine.evaluate(facts);
+      return actions.filter((a) => a.type === 'select');
+    };
+
+    // 'first': a single action, empty option (executor picks the first one).
+    const firstSelects = await selectActionsFor('first');
+    expect(firstSelects).toHaveLength(1);
+    expect(firstSelects[0]).toMatchObject({ type: 'select', option: '' });
+
+    // 'all': one action per option — the test page's <select> has Red/Green/Blue.
+    const allSelects = await selectActionsFor('all');
+    expect(allSelects).toHaveLength(3);
+    expect(allSelects.map((a) => (a.type === 'select' ? a.option : '')).sort()).toEqual(['Blue', 'Green', 'Red']);
   });
 
   test('state manager produces different hashes for different DOMs', async ({ page }) => {
@@ -152,13 +227,14 @@ test.describe('Explorer — Integration with local HTML page', () => {
     const extractor = new PlaywrightDOMExtractor(scope, config);
     const rulesEngine = new ConcreteRulesEngine(config, new HtmlDefaultRules());
     const readiness = new PlaywrightReadinessChecker(testContext, config);
-    const actionExecutor = new PlaywrightActionExecutor(testContext, scope, config, readiness);
+    const stabilization = new PlaywrightStabilizationChecker(testContext, config);
+    const actionExecutor = new PlaywrightActionExecutor(testContext, scope, config, readiness, stabilization);
     const stateManager = new ConcreteStateManager(config);
     const graph = new ConcreteExplorationGraph();
     const navigation = new PlaywrightNavigationDriver(testContext);
     const restorer = new PlaywrightStateRestorer(testContext);
 
-    const explorer = new ConcreteExplorer(extractor, rulesEngine, actionExecutor, stateManager, graph, config, readiness, navigation, restorer);
+    const explorer = new ConcreteExplorer(extractor, rulesEngine, actionExecutor, stateManager, graph, config, readiness, navigation, restorer, stabilization, new CompositeExplorationObserver(new ScreenshotObserver(navigation, config), new FactEvictionObserver(config)));
 
     const resultGraph = await explorer.explore();
 
@@ -183,6 +259,14 @@ test.describe('Explorer — Integration with local HTML page', () => {
     const summary = explorer.getSummary();
     expect(summary.statesDiscovered).toBeGreaterThanOrEqual(1);
     expect(summary.totalDuration).toBeGreaterThan(0);
+
+    // Memory guard: with the default serializeFacts ('minimal'), facts are
+    // evicted to uid + nativeSelector once a state has been explored.
+    const root = resultGraph.getRoots()[0];
+    expect(root.facts.length).toBeGreaterThan(0);
+    for (const fact of root.facts) {
+      expect(Object.keys(fact).sort()).toEqual(['nativeSelector', 'uid']);
+    }
   });
 
   test('scenario exporter produces scenarios from exploration', async ({ page }) => {
@@ -206,29 +290,30 @@ test.describe('Explorer — Integration with local HTML page', () => {
     const extractor = new PlaywrightDOMExtractor(scope, config);
     const rulesEngine = new ConcreteRulesEngine(config, new HtmlDefaultRules());
     const readiness = new PlaywrightReadinessChecker(testContext, config);
-    const actionExecutor = new PlaywrightActionExecutor(testContext, scope, config, readiness);
+    const stabilization = new PlaywrightStabilizationChecker(testContext, config);
+    const actionExecutor = new PlaywrightActionExecutor(testContext, scope, config, readiness, stabilization);
     const stateManager = new ConcreteStateManager(config);
     const graph = new ConcreteExplorationGraph();
     const navigation = new PlaywrightNavigationDriver(testContext);
     const restorer = new PlaywrightStateRestorer(testContext);
 
-    const explorer = new ConcreteExplorer(extractor, rulesEngine, actionExecutor, stateManager, graph, config, readiness, navigation, restorer);
+    const explorer = new ConcreteExplorer(extractor, rulesEngine, actionExecutor, stateManager, graph, config, readiness, navigation, restorer, stabilization, new CompositeExplorationObserver(new ScreenshotObserver(navigation, config), new FactEvictionObserver(config)));
 
     await explorer.explore();
 
     const exporter = new ConcreteScenarioExporter(graph);
 
     // JSON export
-    const json = exporter.exportJSON();
+    const json = serializeGraph(graph);
     expect(json.states.length).toBeGreaterThanOrEqual(1);
     expect(JSON.stringify(json)).toBeTruthy();
 
     // Mermaid export
-    const mermaid = exporter.exportMermaid();
+    const mermaid = graphToMermaid(graph);
     expect(mermaid).toContain('stateDiagram-v2');
 
     // DOT export
-    const dot = exporter.exportDOT();
+    const dot = graphToDOT(graph);
     expect(dot).toContain('digraph {');
 
     // Scenarios

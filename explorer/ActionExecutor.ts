@@ -13,7 +13,17 @@ export abstract class ActionExecutor {
   abstract supports(action: CandidateAction): boolean;
 }
 
-/** Utility: compute simple diff of appeared/disappeared/modified elements */
+/**
+ * Computes the diff between two DOM element snapshots.
+ *
+ * Called after each action to measure the impact of the interaction: which
+ * elements appeared, disappeared or changed state (visibility, enabled,
+ * `aria-expanded`). The result is stored in {@link Transition.domChanges}.
+ *
+ * @param before - Facts captured before the action.
+ * @param after  - Facts captured after the action.
+ * @returns      UIDs of appeared, disappeared and modified elements.
+ */
 export function computeDomChanges(before: ElementFact[], after: ElementFact[]): { appeared: string[]; disappeared: string[]; modified: string[] } {
   const beforeUids = new Set(before.map((f) => f.uid));
   const afterUids = new Set(after.map((f) => f.uid));

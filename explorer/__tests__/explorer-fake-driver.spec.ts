@@ -5,9 +5,13 @@ import { DOMExtractor } from '../DOMExtractor';
 import { ConcreteExplorationConfig } from '../ExplorationConfig';
 import { ConcreteExplorationGraph } from '../ExplorationGraph';
 import { ConcreteExplorer } from '../Explorer';
+import { CompositeExplorationObserver } from '../CompositeExplorationObserver';
+import { FactEvictionObserver } from '../FactEvictionObserver';
+import { ScreenshotObserver } from '../ScreenshotObserver';
 import { NavigationDriver } from '../NavigationDriver';
 import { ReadinessChecker } from '../ReadinessChecker';
 import { ConcreteRulesEngine, DefaultRules } from '../RulesEngine';
+import { StabilizationChecker } from '../StabilizationChecker';
 import { ConcreteStateManager } from '../StateManager';
 import { RestoreToken, StateRestorer } from '../StateRestorer';
 import { ActionResult, CandidateAction, ElementFact, getTargetUid } from '../types';
@@ -98,9 +102,6 @@ class FakeNavigationDriver extends NavigationDriver {
   async captureScreenshot(): Promise<void> {
     // no-op
   }
-  async wait(): Promise<void> {
-    // no-op
-  }
 }
 
 /** Restores the exact screen — richer than the URL-based web restorer. */
@@ -128,6 +129,12 @@ class FakeStateRestorer extends StateRestorer {
 class FakeReadinessChecker extends ReadinessChecker {
   async waitForReady(): Promise<void> {
     // no-op
+  }
+}
+
+class FakeStabilizationChecker extends StabilizationChecker {
+  async waitUntilStable(): Promise<void> {
+    // no-op — the fake driver mutates synchronously, nothing to settle.
   }
 }
 
@@ -166,6 +173,7 @@ function buildExplorer(app: FakeApp, strategy: 'bfs' | 'dfs') {
     timeout: 10_000,
     stabilizationTimeout: 0,
   });
+  const navigation = new FakeNavigationDriver(app);
   return new ConcreteExplorer(
     new FakeDOMExtractor(app),
     new ConcreteRulesEngine(config, new FakeDefaultRules()),
@@ -174,8 +182,10 @@ function buildExplorer(app: FakeApp, strategy: 'bfs' | 'dfs') {
     new ConcreteExplorationGraph(),
     config,
     new FakeReadinessChecker(),
-    new FakeNavigationDriver(app),
-    new FakeStateRestorer(app)
+    navigation,
+    new FakeStateRestorer(app),
+    new FakeStabilizationChecker(),
+    new CompositeExplorationObserver(new ScreenshotObserver(navigation, config), new FactEvictionObserver(config))
   );
 }
 
@@ -238,9 +248,6 @@ class FakeSiteNavigationDriver extends NavigationDriver {
   async captureScreenshot(): Promise<void> {
     // no-op
   }
-  async wait(): Promise<void> {
-    // no-op
-  }
 }
 
 class FakeSiteRestorer extends StateRestorer {
@@ -274,6 +281,7 @@ function buildSiteExplorer(site: FakeSite, followNavigation: 'none' | 'same-appl
     stabilizationTimeout: 0,
     followNavigation,
   });
+  const navigation = new FakeSiteNavigationDriver(site);
   return new ConcreteExplorer(
     new FakeSiteExtractor(site),
     new ConcreteRulesEngine(config, new FakeDefaultRules()),
@@ -282,8 +290,10 @@ function buildSiteExplorer(site: FakeSite, followNavigation: 'none' | 'same-appl
     new ConcreteExplorationGraph(),
     config,
     new FakeReadinessChecker(),
-    new FakeSiteNavigationDriver(site),
-    new FakeSiteRestorer(site)
+    navigation,
+    new FakeSiteRestorer(site),
+    new FakeStabilizationChecker(),
+    new CompositeExplorationObserver(new ScreenshotObserver(navigation, config), new FactEvictionObserver(config))
   );
 }
 
@@ -296,7 +306,7 @@ test.describe('Explorer — followNavigation on an in-memory multi-page fake (no
 
     // Only the home page is ever a state; both links are external boundaries.
     expect(graph.getAllStates()).toHaveLength(1);
-    const transitions = graph.toJSON().transitions;
+    const transitions = graph.getTransitions();
     expect(transitions.filter((t) => t.to === '__external_navigation__')).toHaveLength(2);
     expect(explorer.getSummary().maxDepthReached).toBe(0);
   });
@@ -312,7 +322,7 @@ test.describe('Explorer — followNavigation on an in-memory multi-page fake (no
     expect(states).toHaveLength(3);
     expect(states.map((s) => s.location).sort()).toEqual(['app://about', 'app://deep', 'app://home']);
 
-    const transitions = graph.toJSON().transitions;
+    const transitions = graph.getTransitions();
     const external = transitions.filter((t) => t.to === '__external_navigation__');
     expect(external).toHaveLength(1);
     expect(external[0].navigationUrl).toBe('https://external.example/page');
@@ -352,7 +362,7 @@ test.describe('Explorer — core loop on an in-memory fake driver (no browser)',
     expect(summary.failedActions).toBe(0);
 
     // 4 click transitions: home→panel, home→external, panel→home, panel↺
-    const transitions = graph.toJSON().transitions;
+    const transitions = graph.getTransitions();
     expect(transitions).toHaveLength(4);
 
     const external = transitions.filter((t) => t.to === '__external_navigation__');
@@ -371,7 +381,7 @@ test.describe('Explorer — core loop on an in-memory fake driver (no browser)',
 
     const graph = await explorer.explore();
 
-    const actionTypes = graph.toJSON().transitions.map((t) => t.action.type);
+    const actionTypes = graph.getTransitions().map((t) => t.action.type);
     expect(actionTypes).not.toContain('hover');
     expect(explorer.getSummary().failedActions).toBe(0);
   });
@@ -383,6 +393,6 @@ test.describe('Explorer — core loop on an in-memory fake driver (no browser)',
     const graph = await explorer.explore();
 
     expect(graph.getAllStates()).toHaveLength(2);
-    expect(graph.toJSON().transitions).toHaveLength(4);
+    expect(graph.getTransitions()).toHaveLength(4);
   });
 });

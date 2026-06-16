@@ -12,6 +12,7 @@ type CollectedProps = {
   role: string | null;
   text: string;
   inputType: string | null;
+  options: string[] | null;
   ariaExpanded: string | null;
   ariaControls: string | null;
   ariaOwns: string | null;
@@ -25,19 +26,26 @@ type CollectedProps = {
   cssSelector: string;
   visible: boolean;
   boundingBox: { x: number; y: number; width: number; height: number } | null;
+  /** `true` if the element matches (or descends from) one of the configured `ignoreSelectors`. */
+  ignored: boolean;
 };
 
 /**
  * Runs IN THE BROWSER via `locator.evaluateAll` — must stay self-contained
- * (no closure over module scope, Playwright serializes its source).
+ * (no closure over module scope, Playwright serializes its source). The
+ * `ignoreSelectors` list is passed as a serialized argument, not captured.
  *
  * Batched on purpose: one protocol round-trip for the whole page instead of
  * three per element (`isVisible` + `evaluate` + `boundingBox`) — on heavy
  * pages (thousands of links) the per-element variant takes minutes.
  * `visible` mirrors Playwright's `isVisible` semantics: non-empty bounding
  * box and no `visibility: hidden`.
+ *
+ * `ignored` is computed here, against the real DOM, so `ignoreSelectors`
+ * behaves as documented — genuine CSS selectors matched on the element or
+ * any of its ancestors (`matches` / `closest`), not a uid/tag substring.
  */
-function collectAllElementProps(nodes: (SVGElement | HTMLElement)[]): (CollectedProps | null)[] {
+function collectAllElementProps(nodes: (SVGElement | HTMLElement)[], ignoreSelectors: string[]): (CollectedProps | null)[] {
   const computeCssSelector = (target: HTMLElement): string => {
     const parts: string[] = [];
     let current: HTMLElement | null = target;
@@ -71,11 +79,21 @@ function collectAllElementProps(nodes: (SVGElement | HTMLElement)[]): (Collected
       const rect = htmlEl.getBoundingClientRect();
       const visible = rect.width > 0 && rect.height > 0 && window.getComputedStyle(htmlEl).visibility !== 'hidden';
 
+      // Per-selector try/catch: an invalid selector must skip that rule, not abort the whole node.
+      const ignored = ignoreSelectors.some((sel) => {
+        try {
+          return htmlEl.matches(sel) || htmlEl.closest(sel) !== null;
+        } catch {
+          return false;
+        }
+      });
+
       return {
         tag: htmlEl.tagName.toLowerCase(),
         role: htmlEl.getAttribute('role'),
         text: (htmlEl.textContent ?? '').trim().substring(0, 200),
         inputType: htmlEl.getAttribute('type'),
+        options: htmlEl.tagName === 'SELECT' ? Array.from((htmlEl as HTMLSelectElement).options).map((o) => o.label) : null,
         ariaExpanded: htmlEl.getAttribute('aria-expanded'),
         ariaControls: htmlEl.getAttribute('aria-controls'),
         ariaOwns: htmlEl.getAttribute('aria-owns'),
@@ -89,6 +107,7 @@ function collectAllElementProps(nodes: (SVGElement | HTMLElement)[]): (Collected
         cssSelector: computeCssSelector(htmlEl),
         visible,
         boundingBox: visible ? { x: rect.x, y: rect.y, width: rect.width, height: rect.height } : null,
+        ignored,
       };
     } catch {
       return null;
@@ -125,12 +144,13 @@ export class PlaywrightDOMExtractor extends DOMExtractor {
   }
 
   async #extractFromLocators(locators: Locator, isInScope: boolean): Promise<ElementFact[]> {
-    const allProps = await locators.evaluateAll(collectAllElementProps).catch(() => [] as (CollectedProps | null)[]);
+    const allProps = await locators.evaluateAll(collectAllElementProps, this.#config.ignoreSelectors).catch(() => [] as (CollectedProps | null)[]);
     const facts: ElementFact[] = [];
 
     for (let i = 0; i < allProps.length; i++) {
       const props = allProps[i];
-      if (!props) continue;
+      // Skip unreadable nodes and elements excluded by `ignoreSelectors`.
+      if (!props || props.ignored) continue;
       const uid = this.#generateUid(props.dataTestId, props.id, props.role, props.accessibleName, props.tag, i);
 
       facts.push({
@@ -143,6 +163,7 @@ export class PlaywrightDOMExtractor extends DOMExtractor {
         focusable: props.focusable,
         text: props.text,
         inputType: props.inputType,
+        ...(props.options !== null && { options: props.options }),
         ariaExpanded: props.ariaExpanded === null ? null : props.ariaExpanded === 'true',
         ariaControls: props.ariaControls,
         ariaOwns: props.ariaOwns,
@@ -173,12 +194,8 @@ export class PlaywrightDOMExtractor extends DOMExtractor {
   #applyFilters(facts: ElementFact[]): ElementFact[] {
     let filtered = facts;
 
-    // Filter by ignoreSelectors — we match on uid/tag patterns
-    if (this.#config.ignoreSelectors.length > 0) {
-      filtered = filtered.filter((fact) => {
-        return !this.#config.ignoreSelectors.some((sel) => fact.uid.includes(sel) || fact.tag === sel);
-      });
-    }
+    // `ignoreSelectors` is applied in-browser by `collectAllElementProps`
+    // (real CSS matching), so it is already excluded by the time we get here.
 
     // Deduplicate repeated elements if configured
     if (this.#config.ignoreRepeatedElements) {

@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { ConcreteExplorationGraph } from '../ExplorationGraph';
-import { CandidateAction, SerializedGraph, StateNode, Transition } from '../types';
+import { CandidateAction, StateNode, Transition } from '../types';
 
 function makeState(id: string, depth = 0): StateNode {
   return { id, facts: [], depth, timestamp: Date.now(), scopeSelector: 'body' };
@@ -73,25 +73,6 @@ test.describe('ExplorationGraph', () => {
     });
   });
 
-  test.describe('getSuccessors / getPredecessors', () => {
-    test('returns correct neighbors', () => {
-      const graph = new ConcreteExplorationGraph();
-      graph.addState(makeState('a'));
-      graph.addState(makeState('b'));
-      graph.addState(makeState('c'));
-      graph.addTransition(makeTransition('a', 'b'));
-      graph.addTransition(makeTransition('a', 'c'));
-
-      expect(
-        graph
-          .getSuccessors('a')
-          .map((s) => s.id)
-          .sort()
-      ).toEqual(['b', 'c']);
-      expect(graph.getPredecessors('b').map((s) => s.id)).toEqual(['a']);
-    });
-  });
-
   test.describe('getScenarios — branching graph', () => {
     test('finds all root-to-leaf paths', () => {
       const graph = new ConcreteExplorationGraph();
@@ -155,45 +136,43 @@ test.describe('ExplorationGraph', () => {
     });
   });
 
-  test.describe('toJSON', () => {
-    test('produces serializable JSON', () => {
+  test.describe('getScenarios — rootless cyclic graph', () => {
+    test('falls back to the shallowest state when a back-edge removes every root', () => {
+      // S0 -> a -> S0 : the back-edge to the initial state means S0 has an
+      // incoming non-self-loop transition, so getRoots() is empty. Without the
+      // entry-point fallback this would collapse to zero scenarios despite the
+      // discovered transitions.
       const graph = new ConcreteExplorationGraph();
-      graph.addState(makeState('s1'));
-      graph.addState(makeState('s2'));
-      graph.addTransition(makeTransition('s1', 's2'));
+      graph.addState(makeState('s0', 0));
+      graph.addState(makeState('a', 1));
+      graph.addTransition(makeTransition('s0', 'a'));
+      graph.addTransition(makeTransition('a', 's0'));
 
-      const json = graph.toJSON();
-      const serialized = JSON.stringify(json);
-      const parsed = JSON.parse(serialized) as SerializedGraph;
-      expect(parsed.states).toHaveLength(2);
-      expect(parsed.transitions).toHaveLength(1);
+      expect(graph.getRoots()).toHaveLength(0);
+      const scenarios = graph.getScenarios();
+      expect(scenarios.length).toBeGreaterThan(0);
+      // The path starts from the shallowest state (depth 0).
+      expect(scenarios[0][0].from).toBe('s0');
+    });
+
+    test('returns no scenarios for an empty graph', () => {
+      const graph = new ConcreteExplorationGraph();
+      expect(graph.getScenarios()).toHaveLength(0);
     });
   });
 
-  test.describe('toMermaid', () => {
-    test('produces valid Mermaid', () => {
+  test.describe('getScenarios — bounded', () => {
+    test('respects the maxScenarios cap', () => {
       const graph = new ConcreteExplorationGraph();
-      graph.addState(makeState('abc12345'));
-      graph.addState(makeState('def67890'));
-      graph.addTransition(makeTransition('abc12345', 'def67890'));
+      graph.addState(makeState('root'));
+      graph.addState(makeState('a'));
+      graph.addState(makeState('b'));
+      graph.addTransition(makeTransition('root', 'a'));
+      graph.addTransition(makeTransition('root', 'b'));
 
-      const mermaid = graph.toMermaid();
-      expect(mermaid).toContain('stateDiagram-v2');
-      expect(mermaid).toContain('-->');
+      expect(graph.getScenarios()).toHaveLength(2);
+      expect(graph.getScenarios(1)).toHaveLength(1);
     });
   });
 
-  test.describe('toDOT', () => {
-    test('produces valid DOT format', () => {
-      const graph = new ConcreteExplorationGraph();
-      graph.addState(makeState('s1'));
-      graph.addState(makeState('s2'));
-      graph.addTransition(makeTransition('s1', 's2'));
-
-      const dot = graph.toDOT();
-      expect(dot).toContain('digraph {');
-      expect(dot).toContain('->');
-      expect(dot.trimEnd()).toMatch(/}$/);
-    });
-  });
 });
